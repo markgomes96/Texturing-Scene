@@ -12,8 +12,6 @@
 #include <iostream>
 #include <ctime>
 
-#include "game.h"		//class refrences
-#include "input.h"
 #include "structs.h"
 
 using namespace std;

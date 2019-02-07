@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include "includes.h"
+#include "input.h"
 
 class Game 
 {
@@ -9,13 +10,13 @@ private:
 
 public:
 	//Variables related to Game class
-	Input input
+	Input input;
 	
 	//Constructor
 	Game();
 
 	//Game functions
-	void init(int window_width, int window_height);
+	void init();
 	void update();
 	void render();
 

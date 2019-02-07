@@ -10,7 +10,7 @@ private:
 public:
 	
 	//Variables related to Input class
-	//mouse positions and button toggles
+	vect3d mousePosition;
 	
 	//Constructor
 	Input();

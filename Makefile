@@ -19,7 +19,7 @@ input.o : input.cc $(INCLUDES) $(HEADERS)
 game.o : game.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c game.cc
 
-main.o : main.cc
+main.o : main.cc $(OBJS)
 	$(C++) -c main.cc 
 
 clean :

@@ -1,7 +1,7 @@
 #ifndef STRUCTS
 #define STRUCTS
 
-typedef struct colortype
+typedef struct colortype	//stores object color
 {
 	float red;
 	float green;
@@ -18,7 +18,7 @@ typedef struct colortype
 	}
 } colortype;
 
-typedef struct vect3d		//stores data for a 3D vector used for calcualtions
+typedef struct vect3d		//stores data for a 3D vector used for calculations
 {
 	float x;
 	float y;

@@ -2,6 +2,7 @@
 #define INPUT_CC
 
 #include "includes.h"
+#include "input.h"
 
 Input::Input() 
 { }
@@ -42,19 +43,19 @@ void Input::specialInput(int key, int x, int y)
 	switch(key)
 	{
 		case GLUT_KEY_UP:
-			rotX--;
+			//up key
 		break;
 			
 		case GLUT_KEY_DOWN:
-			rotX++;
+			//down key
 		break;
 
 		case GLUT_KEY_RIGHT:
-			rotZ++;
+			//right key
 		break;
 			
 		case GLUT_KEY_LEFT:
-			rotZ--;
+			//left key
 		break;
 	}
 }
