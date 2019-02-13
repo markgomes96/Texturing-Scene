@@ -6,7 +6,7 @@ LDLIBS =  -lglut -lGL -lGLU -lX11 -lm
 
 INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h
-OBJS 	   = game.o input.o
+OBJS 	   = game.o input.o physobj.o testobj.o
 
 all : run
 
@@ -15,6 +15,12 @@ run: main.o $(INCLUDES) $(HEADERS) $(OBJS)
 
 input.o : input.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c input.cc
+
+physobj.o : physobj.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c physobj.cc
+
+testobj.o : testobj.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c testobj.cc
 
 game.o : game.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c game.cc

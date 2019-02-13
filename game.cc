@@ -4,17 +4,29 @@
 #include "includes.h"
 #include "game.h"
 
+/*
+* Handles all functions of the game
+*/
+
+/*
+* Fix face vertex bug -> no cubes show up?
+*/
+
 Game::Game() 
 { }
 
 void Game::init() 
 {
 	//initilize other objects
+	floor = TestObj(vect3(0.0, 0.0, 0.0), vect3(5.0, 5.0, 1.0));
+	cube = TestObj(vect3(0.0, 0.0, 2.0), vect3(1.0, 1.0, 1.0));
 }
 
 void Game::update() 
 {
 	//update gameobjects
+
+	//***add in PhysicsEngine class to handle all PhysObj interactions
 }
 
 void Game::render()
@@ -30,6 +42,7 @@ void Game::render()
 
 	glColor3f(0.0,1.0,0.0);
 
+	/*
 	// Draw testing base
 	glPushMatrix();
 
@@ -58,6 +71,11 @@ void Game::render()
 	glEnd();
 
 	glPopMatrix();
+	*/
+
+	//Physics test
+	drawBox(&floor.faces[0], &floor.position);
+	drawBox(&cube.faces[0], &cube.position);
 
 	glutSwapBuffers();
 }
@@ -74,6 +92,40 @@ void Game::keyboard( unsigned char key, int x, int y )
 void Game::specialInput(int key, int x, int y) 
 {
 	input.specialInput(key, x, y);
+}
+
+//phys testing functions
+void Game::drawBox( struct box *face, vect3 *position )
+{
+	int i, j;
+
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glPolygonMode(GL_BACK, GL_FILL);
+
+	glPushMatrix();
+	glTranslatef( position -> x, position -> y, position -> z);		//move box to right position
+
+	for(j = 0; j < 6; j++)	//draw box
+	{
+
+	glColor3f(face[j].color.red,
+		  face[j].color.green,
+		  face[j].color.blue);
+
+	glBegin( GL_POLYGON );
+		for (i = 0; i < 4; i++)
+		{
+			glVertex3f(face[j].point[i].x,
+				face[j].point[i].y,
+				face[j].point[i].z);
+			cout << "( " << face[j].point[i].x << " , " << 
+					face[j].point[i].y << " , " <<
+					face[j].point[i].z << " ) " << endl;
+		}
+	glEnd();
+	}
+
+	glPopMatrix();
 }
 
 #endif

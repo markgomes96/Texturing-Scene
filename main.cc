@@ -17,7 +17,7 @@ void display( void )
 void update( void ) 
 {
 	g.update();
-	//display();
+	display();
 }
 
 void reshape (int w, int h)
