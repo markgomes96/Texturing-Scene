@@ -19,6 +19,7 @@ public:
 	//vect3 velocity;
 	//vect3 acceleration;
 
+	bool isStatic;		//isStatic -> not affected by kinematics
 
 	//Constructor
 	PhysObj();

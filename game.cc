@@ -8,17 +8,13 @@
 * Handles all functions of the game
 */
 
-/*
-* Fix face vertex bug -> no cubes show up?
-*/
-
 Game::Game() 
 { }
 
 void Game::init() 
 {
 	//initilize other objects
-	floor = TestObj(vect3(0.0, 0.0, 0.0), vect3(5.0, 5.0, 1.0));
+	floor = TestObj(vect3(0.0, 0.0, 0.0), vect3(10.0, 10.0, 1.0));
 	cube = TestObj(vect3(0.0, 0.0, 2.0), vect3(1.0, 1.0, 1.0));
 }
 
@@ -34,9 +30,9 @@ void Game::render()
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();   	//call this before setting the viewing position 
 
-	gluLookAt( 20.0,   2.0, 2.5,  	// Eye
-		0.0,   0.0, 0.0,  	// Center
-		0.0,   0.0, 1.0); 	// Up
+	gluLookAt( 20.0,  5.0,  5.0,  	// Eye
+		    0.0,  0.0,  1.0,  	// Center
+		    0.0,  0.0,  1.0); 	// Up
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -118,9 +114,12 @@ void Game::drawBox( struct box *face, vect3 *position )
 			glVertex3f(face[j].point[i].x,
 				face[j].point[i].y,
 				face[j].point[i].z);
+
+			/*
 			cout << "( " << face[j].point[i].x << " , " << 
 					face[j].point[i].y << " , " <<
 					face[j].point[i].z << " ) " << endl;
+			*/
 		}
 	glEnd();
 	}

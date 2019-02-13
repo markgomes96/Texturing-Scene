@@ -52,6 +52,8 @@ int main(int argc, char** argv)
 	glutInit(&argc, argv);
 	init(WINDOW_MAX_X, WINDOW_MAX_Y, WINDOW_POSITION_X, WINDOW_POSITION_Y);
 
+	g.init();
+
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(specialInput);
