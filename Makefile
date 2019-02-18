@@ -5,8 +5,8 @@ INCDIRS = -I/usr/include
 LDLIBS =  -lglut -lGL -lGLU -lX11 -lm
 
 INCLUDES   = includes.h
-HEADERS    = structs.h game.h input.h
-OBJS 	   = game.o input.o
+HEADERS    = structs.h game.h input.h globals.h
+OBJS 	   = game.o input.o levelCreate.o
 
 all : run
 
@@ -18,6 +18,9 @@ input.o : input.cc $(INCLUDES) $(HEADERS)
 
 game.o : game.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c game.cc
+
+levelCreate.o : levelCreate.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c levelCreate.cc
 
 main.o : main.cc $(OBJS)
 	$(C++) -c main.cc 
