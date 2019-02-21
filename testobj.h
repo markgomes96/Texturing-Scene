@@ -15,13 +15,14 @@ private:
 public:
 	//Variables related to TestObj class
 	struct box faces[6];
-	vect3 position;		//world position
+	vertex position;		//world position
 	
 	//Constructors
 	TestObj();
-	TestObj(vect3 wpos, vect3 scale);
+	TestObj(vertex wpos, vect3 scale, bool isStat);
 
 	//Game functions
+	//void updateObject(vertex wpos);
 	void defineBox(box *face, vect3 scale);
 };
 

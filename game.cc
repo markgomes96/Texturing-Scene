@@ -14,8 +14,11 @@ Game::Game()
 void Game::init() 
 {
 	//initilize other objects
-	floor = TestObj(vect3(0.0, 0.0, 0.0), vect3(10.0, 10.0, 1.0));
-	cube = TestObj(vect3(0.0, 0.0, 2.0), vect3(1.0, 1.0, 1.0));
+	floor = TestObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
+	cube = TestObj(vertex(0.0, 0.0, 3.0, 1.0), vect3(1.0, 1.0, 1.0), false);
+
+	physObjList.push_back(floor);
+	physObjList.push_back(cube);
 }
 
 void Game::update() 
@@ -23,6 +26,7 @@ void Game::update()
 	//update gameobjects
 
 	//***add in PhysicsEngine class to handle all PhysObj interactions
+	physEng.updateObjects(physObjList);
 }
 
 void Game::render()
@@ -70,8 +74,12 @@ void Game::render()
 	*/
 
 	//Physics test
-	drawBox(&floor.faces[0], &floor.position);
-	drawBox(&cube.faces[0], &cube.position);
+	drawBox(&floor.faces[0], &floor.collCenter);
+	drawBox(&cube.faces[0], &cube.collCenter);
+
+	//Draw bounds
+	drawBounds(&floor.bounds[0]);
+	drawBounds(&cube.bounds[0]);
 
 	glutSwapBuffers();
 }
@@ -91,7 +99,7 @@ void Game::specialInput(int key, int x, int y)
 }
 
 //phys testing functions
-void Game::drawBox( struct box *face, vect3 *position )
+void Game::drawBox( struct box *face, vertex *position )
 {
 	int i, j;
 
@@ -114,15 +122,35 @@ void Game::drawBox( struct box *face, vect3 *position )
 			glVertex3f(face[j].point[i].x,
 				face[j].point[i].y,
 				face[j].point[i].z);
-
-			/*
-			cout << "( " << face[j].point[i].x << " , " << 
-					face[j].point[i].y << " , " <<
-					face[j].point[i].z << " ) " << endl;
-			*/
 		}
 	glEnd();
 	}
+
+	glPopMatrix();
+}
+
+void Game::drawBounds( vertex *bounds )
+{
+	glPushMatrix();
+
+	glLineWidth(5.0);
+	glColor3f(1.0, 0.0, 0.0);
+	for(int i = 0; i < 8; i++)
+	{
+		glBegin( GL_LINES );
+			if(i == 7)
+			{
+				glVertex3f( bounds[i].x, bounds[i].y, bounds[i].z );
+				glVertex3f( bounds[0].x, bounds[0].y, bounds[0].z );
+			}
+			else
+			{
+				glVertex3f( bounds[i].x, bounds[i].y, bounds[i].z );
+				glVertex3f( bounds[i+1].x, bounds[i+1].y, bounds[i+1].z );
+			}
+		glEnd();
+	}
+	glLineWidth(1.0);
 
 	glPopMatrix();
 }

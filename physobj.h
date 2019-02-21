@@ -13,8 +13,16 @@ private:
 
 public:
 	//Variables related to PhysObj class
-	vertex bounds[8];	//box collider 3D; World Space
 
+	//expirement with just using mins/maxs
+	float lxm[2];	float lym[2];	float lzm[2];
+	float wxm[2];	float wym[2];	float wzm[2];
+	//
+
+	vertex bounds[8];		//box collider 3D; World Space
+	vertex collCenter;		//collision center
+
+	/***ADD IN BASIC MOTION***/
 	//vect3 gravity;
 	//vect3 velocity;
 	//vect3 acceleration;
@@ -25,7 +33,8 @@ public:
 	PhysObj();
 
 	//Game functions
-	void createBounds(box *face, vect3 wpos);
+	void updatePhysics(vertex wpos);
+	void createBounds(box *face, vertex wpos);
 };
 
 #endif

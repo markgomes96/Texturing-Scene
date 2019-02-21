@@ -5,8 +5,8 @@ INCDIRS = -I/usr/include
 LDLIBS =  -lglut -lGL -lGLU -lX11 -lm
 
 INCLUDES   = includes.h
-HEADERS    = structs.h game.h input.h
-OBJS 	   = game.o input.o physobj.o testobj.o
+HEADERS    = #structs.h game.h input.h
+OBJS 	   = game.o input.o physobj.o testobj.o physicsengine.o
 
 all : run
 
@@ -21,6 +21,9 @@ physobj.o : physobj.cc $(INCLUDES) $(HEADERS)
 
 testobj.o : testobj.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c testobj.cc
+
+physicsengine.o : physicsengine.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c physicsengine.cc
 
 game.o : game.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c game.cc
