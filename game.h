@@ -20,11 +20,11 @@ public:
 	Input input;
 	PhysicsEngine physEng;
 
-	float frameRate;	// phys-time vars
+	float frameRate;			// phys-time vars
+	vector<TestObj> golist;		// game object list
 
-	TestObj floor;		// phys obj test vars
+	TestObj floor;				// phys obj test vars
 	TestObj cube;
-	vector<PhysObj> physObjList;
 	
 	// Constructor
 	Game();

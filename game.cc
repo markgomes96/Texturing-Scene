@@ -14,22 +14,19 @@ Game::Game()
 void Game::init() 
 {
 	frameRate = 60.0;
-
-	floor = TestObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
-	cube = TestObj(vertex(0.0, 0.0, 3.0, 1.0), vect3(1.0, 1.0, 1.0), false);
-
-	physObjList.push_back(floor);
-	physObjList.push_back(cube);
-
 	physEng = PhysicsEngine(frameRate);
+
+	// ***Test objects for phyiscs***
+	floor = TestObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
+	cube = TestObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 1.0, 1.0), false);
+	golist.push_back(floor);
+	golist.push_back(cube);
 }
 
 void Game::update() 
 {
-	// Update gameobjects
-
-	//***add in PhysicsEngine class to handle all PhysObj interactions
-	physEng.updateObjects(physObjList);
+	// Update each phyisc object
+	physEng.updateObjects(golist);
 
 	glutLockFrameRate(frameRate);
 }
@@ -37,23 +34,22 @@ void Game::update()
 void Game::render()
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-	glLoadIdentity();   	//call this before setting the viewing position 
+	glLoadIdentity(); 
 
 	gluLookAt( 20.0,  5.0,  5.0,  	// Eye
-		    0.0,  0.0,  1.0,  	// Center
-		    0.0,  0.0,  1.0); 	// Up
+		        0.0,  0.0,  1.0,  	// Center
+		        0.0,  0.0,  1.0); 	// Up
 
 	glEnable(GL_DEPTH_TEST);
 
 	glColor3f(0.0,1.0,0.0);
 
 	// Physics test
-	drawBox(&floor.faces[0], &floor.collCenter);
-	drawBox(&cube.faces[0], &cube.collCenter);
-
-	// Draw bounds
-	drawBounds(&floor.bounds[0]);
-	drawBounds(&cube.bounds[0]);
+	for(int i = 0; i < golist.size(); i++)
+	{
+		drawBox(&golist[i].faces[0], &golist[i].collCenter);	// draw faces
+		drawBounds(&golist[i].bounds[0]);						// draw box collider
+	}
 
 	glutSwapBuffers();
 }
@@ -83,7 +79,7 @@ void Game::glutLockFrameRate(float desiredFrameRate)
 	while((glutGet(GLUT_ELAPSED_TIME)-startTime) < millisecondsToWait);
 }
 
-// Phys testing functions
+// ***Phys testing functions***
 void Game::drawBox( struct box *face, vertex *position )
 {
 	int i, j;
@@ -92,9 +88,9 @@ void Game::drawBox( struct box *face, vertex *position )
 	glPolygonMode(GL_BACK, GL_FILL);
 
 	glPushMatrix();
-	glTranslatef( position -> x, position -> y, position -> z);		//move box to right position
+	glTranslatef( position -> x, position -> y, position -> z);		// move box to right position
 
-	for(j = 0; j < 6; j++)	//draw box
+	for(j = 0; j < 6; j++)		// draw box
 	{
 
 	glColor3f(face[j].color.red,

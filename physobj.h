@@ -12,9 +12,9 @@ class PhysObj
 private:
 
 public:
-	//Variables related to PhysObj class
+	// Variables related to PhysObj class
 
-	//expirement with just using mins/maxs
+	// ***expirement with just using mins/maxs***
 	float lxm[2];	float lym[2];	float lzm[2];
 	float wxm[2];	float wym[2];	float wzm[2];
 	//
@@ -22,16 +22,16 @@ public:
 	vertex bounds[8];		//box collider 3D; World Space
 	vertex collCenter;		//collision center
 
-	// kinematic motion
+	// Kinematic motion vars
 	vect3 velocity;
 	vect3 acceleration;
 
-	bool isStatic;		//isStatic -> not affected by kinematics
+	bool isStatic;		// isStatic -> not affected by kinematics
 
-	//Constructor
+	// Constructor
 	PhysObj();
 
-	//Game functions
+	// Game functions
 	void updatePhysics();
 	void createBounds(box *face, vertex wpos);
 };

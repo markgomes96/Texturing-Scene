@@ -23,14 +23,6 @@ TestObj::TestObj(vertex wpos, vect3 scale, bool isStat)
 	position = collCenter;
 }
 
-/*
-void TestObj::updateObject(vertex wpos)
-{
-	position = wpos;
-	updatePhysics(position);
-}
-*/
-
 void TestObj::defineBox(box *face, vect3 scale)
 {
 	face[0].point[0].x = -1.0 * scale.x;  // Bottom

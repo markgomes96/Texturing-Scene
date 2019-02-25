@@ -2,12 +2,12 @@
 #define PHYSOCSENGINE_H
 
 #include "includes.h"
-#include "physobj.h"
+#include "testobj.h"
 
 /*
 * Handles all phsical interactions of PhysObjs
 * 1 Meter = 1 Unit
-* Time Step = 0.01 seconds
+* Time Step = (1.0 / frameRate) seconds
 */
 
 class PhysicsEngine 
@@ -24,9 +24,9 @@ public:
 	PhysicsEngine(float fr);
 
 	// Game functions
-	void updateObjects(vector<PhysObj> &objList);	//move objects based on velocity/acceleration
-	void updatePosition(PhysObj &obj);
-	//void checkCollisions();		//check new positions for collisions
+	void updateObjects(vector<TestObj> &golist);	//move objects based on velocity/acceleration
+	void updatePosition(TestObj &go);
+	void checkCollision(TestObj &go1, TestObj &go2);
 
 	// Vector utiltiy functions
 	vect3 vectUnit(vect3 a);

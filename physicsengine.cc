@@ -4,6 +4,12 @@
 #include "includes.h"
 #include "physicsengine.h"
 
+/*
+ * --Possible Bugs--
+ * -Object moves so fast it passes colliding object completly
+ * -Time scale for the phyics seems too fast?
+ */
+
 PhysicsEngine::PhysicsEngine() 
 { }
 
@@ -13,28 +19,70 @@ PhysicsEngine::PhysicsEngine(float fr)
 	timeStep = (1.0 / frameRate);
 }
 
-void PhysicsEngine::updateObjects(vector<PhysObj> &objlist)
+void PhysicsEngine::updateObjects(vector<TestObj> &golist)
 {
-	//cout << objlist[0].collCenter.z << endl;
-	//Update collision center in each object after everything
-
-	for(int i = 0; i < objlist.size(); i++)
+	// update position of every object
+	for(int i = 0; i < golist.size(); i++)
 	{
-		updatePostion(objlist[i]);
+		if(!golist[i].isStatic)
+		{
+			updatePosition(golist[i]);
+		}
+	}
+
+	//***Add in distance condition to reduce calcs?***
+	// check for collisions
+	for(int i = 0; i < golist.size(); i++)
+	{
+		for(int j = 0; j < golist.size(); j++)
+		{
+			if(!golist[i].isStatic)
+				checkCollision(golist[i], golist[j]);
+		}
 	}
 }
 
-void PhysicsEngine::updatePosition(PhysObj &obj)
+void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
 {
-	obj.velocity = vectAdd(obj.velocity, vectMult(obj.acceleration, timeStep));
-	obj.collCenter.x += obj.velocity.x;	
-	obj.collCenter.y += obj.velocity.y;	
-	obj.collCenter.z += obj.velocity.z;
-	
-	obj.updatePhysics();
+	float overlap = 0.0;
+
+	// ***Collisions in Z-axis***
+	if(go1.wzm[0] < go2.wzm[1] && go1.wzm[0] > go2.wzm[0])		// bottom collision
+	{
+		go1.velocity = vect3(0.0, 0.0, 0.0);		//reset velocity
+		overlap = go2.wzm[1] - go1.wzm[0];			//move go1 back to bounds of go2
+		go1.collCenter.z += overlap;
+		go1.updatePhysics();						//update go1 box collider
+	}
+	else if(go1.wzm[1] < go2.wzm[1] && go1.wzm[1] > go2.wzm[0])		//top collision
+	{
+		go1.velocity = vect3(0.0, 0.0, 0.0);		// reset velocity
+		overlap = go1.wzm[1] - go2.wzm[0];			// move go1 back to bounds of go2
+		go1.collCenter.z -= overlap;
+		go1.updatePhysics();						//update go box collider
+	}
+
+	// ***Collisions in Y-axis***
+
+	// ***Collisions in X-axis***
+
 }
 
-// Vector utility functions
+void PhysicsEngine::updatePosition(TestObj &go)
+{
+	// update velocity with acceleration
+	go.velocity = vectAdd(go.velocity, vectMult(go.acceleration, timeStep));
+
+	// update position with velocity
+	go.collCenter.x += go.velocity.x;	
+	go.collCenter.y += go.velocity.y;	
+	go.collCenter.z += go.velocity.z;
+
+	// update object box collider
+	go.updatePhysics();
+}
+
+// ***Vector utility functions***
 vect3 PhysicsEngine::vectUnit(vect3 a)
 {
 	float magn = vectMagn(a);
