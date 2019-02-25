@@ -22,10 +22,9 @@ public:
 	vertex bounds[8];		//box collider 3D; World Space
 	vertex collCenter;		//collision center
 
-	/***ADD IN BASIC MOTION***/
-	//vect3 gravity;
-	//vect3 velocity;
-	//vect3 acceleration;
+	// kinematic motion
+	vect3 velocity;
+	vect3 acceleration;
 
 	bool isStatic;		//isStatic -> not affected by kinematics
 
@@ -33,7 +32,7 @@ public:
 	PhysObj();
 
 	//Game functions
-	void updatePhysics(vertex wpos);
+	void updatePhysics();
 	void createBounds(box *face, vertex wpos);
 };
 

@@ -9,16 +9,17 @@
 */
 
 PhysObj::PhysObj() 
-{ }
+{ 
+	velocity = vect3(0.0, 0.0, 0.0);
+	acceleration = vect3(0.0, 0.0, -9.8);
+}
 
-void PhysObj::updatePhysics(vertex wpos)
+void PhysObj::updatePhysics()
 {
 	// Update bounds to new world position
-	collCenter = wpos;		//update collision center
-
-	wxm[0] = lxm[0] + wpos.x;	wxm[1] = lxm[1] + wpos.x;	//update world extrema
-	wym[0] = lym[0] + wpos.y;	wym[1] = lym[1] + wpos.y;
-	wzm[0] = lzm[0] + wpos.z;	wzm[1] = lzm[1] + wpos.z;
+	wxm[0] = lxm[0] + collCenter.x;	wxm[1] = lxm[1] + collCenter.x;	//update world extrema
+	wym[0] = lym[0] + collCenter.y;	wym[1] = lym[1] + collCenter.y;
+	wzm[0] = lzm[0] + collCenter.z;	wzm[1] = lzm[1] + collCenter.z;
 
 	int ind = 0;
 	for(int x = 0; x < 2; x++)			//update would bounds

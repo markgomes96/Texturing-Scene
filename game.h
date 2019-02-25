@@ -16,28 +16,33 @@ class Game
 private:
 
 public:
-	//Variables related to Game class
+	// Variables related to Game class
 	Input input;
 	PhysicsEngine physEng;
 
-	TestObj floor;
+	float frameRate;	// phys-time vars
+
+	TestObj floor;		// phys obj test vars
 	TestObj cube;
 	vector<PhysObj> physObjList;
 	
-	//Constructor
+	// Constructor
 	Game();
 
-	//Game functions
+	// Game functions
 	void init();
 	void update();
 	void render();
 
-	//Input relay functions
+	// Input relay functions
 	void mouse( int button, int state, int x, int y );
 	void keyboard( unsigned char key, int x, int y );
 	void specialInput(int key, int x, int y);
 
-	//Physics testing functions
+	// Phys-Time functions
+	void glutLockFrameRate(float desiredFrameRate);
+
+	// Physics testing functions
 	void drawBox( struct box *face, vertex *position );
 	void drawBounds( vertex *bounds );
 };

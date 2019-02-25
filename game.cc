@@ -13,20 +13,25 @@ Game::Game()
 
 void Game::init() 
 {
-	//initilize other objects
+	frameRate = 60.0;
+
 	floor = TestObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
 	cube = TestObj(vertex(0.0, 0.0, 3.0, 1.0), vect3(1.0, 1.0, 1.0), false);
 
 	physObjList.push_back(floor);
 	physObjList.push_back(cube);
+
+	physEng = PhysicsEngine(frameRate);
 }
 
 void Game::update() 
 {
-	//update gameobjects
+	// Update gameobjects
 
 	//***add in PhysicsEngine class to handle all PhysObj interactions
 	physEng.updateObjects(physObjList);
+
+	glutLockFrameRate(frameRate);
 }
 
 void Game::render()
@@ -42,49 +47,18 @@ void Game::render()
 
 	glColor3f(0.0,1.0,0.0);
 
-	/*
-	// Draw testing base
-	glPushMatrix();
-
-	glColor3f (0.0,0.0,1.0);
-	//glRotatef(0, 0, 0, 1);
-	//glRotatef(0, 1, 0, 0);
-	glTranslatef(0.0, 0.0, -3.5);
-
-	gluCylinder(gluNewQuadric(), 
-	    (GLdouble) 7,		//base radius
-	    (GLdouble) 7,		//top radius
-	    (GLdouble) 1,		//hieght
-	    (GLint)    4,		//slices
-	    (GLint)    20 );		//stacks
-
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glPolygonMode(GL_BACK, GL_FILL);
-
-	glColor3f(1.0, 0.0, 0.0);
-	glRotatef(45, 0, 0, 1);
-	glBegin ( GL_POLYGON );
-		glVertex3f ( 4.95, 4.95, 1 );
-		glVertex3f ( -4.95, 4.95, 1 );	
-		glVertex3f ( -4.95, -4.95, 1 );
-		glVertex3f ( 4.95, -4.95, 1 );
-	glEnd();
-
-	glPopMatrix();
-	*/
-
-	//Physics test
+	// Physics test
 	drawBox(&floor.faces[0], &floor.collCenter);
 	drawBox(&cube.faces[0], &cube.collCenter);
 
-	//Draw bounds
+	// Draw bounds
 	drawBounds(&floor.bounds[0]);
 	drawBounds(&cube.bounds[0]);
 
 	glutSwapBuffers();
 }
 
-//Input replay functions
+// Input replay functions
 void Game::mouse( int button, int state, int x, int y ) 
 {
 	input.mouse(button, state, x, y);
@@ -98,7 +72,18 @@ void Game::specialInput(int key, int x, int y)
 	input.specialInput(key, x, y);
 }
 
-//phys testing functions
+// Physics / Framerate
+void Game::glutLockFrameRate(float desiredFrameRate)
+{
+	int millisecondsToWait = (int)((1.0 / desiredFrameRate) * 1000);
+	
+	int startTime = glutGet(GLUT_ELAPSED_TIME);
+
+	do{/*wait*/}
+	while((glutGet(GLUT_ELAPSED_TIME)-startTime) < millisecondsToWait);
+}
+
+// Phys testing functions
 void Game::drawBox( struct box *face, vertex *position )
 {
 	int i, j;
