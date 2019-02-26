@@ -6,7 +6,7 @@ LDLIBS =  -lglut -lGL -lGLU -lX11 -lm
 
 INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h
-OBJS 	   = game.o input.o levelCreate.o
+OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o
 
 all : run
 
@@ -21,6 +21,12 @@ game.o : game.cc $(INCLUDES) $(HEADERS)
 
 levelCreate.o : levelCreate.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c levelCreate.cc
+
+defineBox.o : defineBox.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c defineBox.cc
+
+drawBox.o : drawBox.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c drawBox.cc
 
 main.o : main.cc $(OBJS)
 	$(C++) -c main.cc 

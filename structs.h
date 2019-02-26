@@ -35,4 +35,24 @@ typedef struct vect3d		//stores data for a 3D vector used for calculations
 	}
 } vect3d;
 
+//structs to create cubes for display cases//
+/*
+typedef struct vertex {
+        float x;
+        float y;
+        float z;
+        float w;
+} vertex;
+
+typedef struct colortype {
+	float red;
+	float green;
+	float blue;
+} colortype;
+*/
+typedef struct box {
+	vect3d point[4];
+	colortype color;	
+} box;
+//////////////////////////////////////////////
 #endif
