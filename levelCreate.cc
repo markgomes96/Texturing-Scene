@@ -11,8 +11,8 @@ void buildHeritageHall(){
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();   	//call this before setting the viewing position 
 
-	gluLookAt( 1.2,   -3.0, 0.5,  	// Eye
-		1.2,   10.0, 1.0,  	// Center
+	gluLookAt( 1.2,   2.0, 0.5,  	// Eye
+		1.2,   -1.2, 0.2,  	// Center
 		0.0,   0.0, 1.0); 	// Up
 
 	glEnable(GL_DEPTH_TEST);
@@ -30,11 +30,40 @@ void buildHeritageHall(){
 		glVertex3f ( 24, 181, -2 );
 		glVertex3f ( 0, 181, -2 );
 	glEnd();
+	glPopMatrix();
 
+	glPushMatrix();
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glPolygonMode(GL_BACK, GL_FILL);
+	glColor3f(1.0, 0.0, 1.0);
+	glScalef(0.1, 0.1, 0.1);
+	glBegin ( GL_POLYGON );
+		glVertex3f ( 0, 0, -2 );
+		glVertex3f ( 24, 0, -2 );	
+		glVertex3f ( 24, -24, -2 );
+		glVertex3f ( 0, -24, -2 );
+	glEnd();
 	glPopMatrix();
 //////////////////////////////////////////////
 //ceiling//
-// the ceiling is set up as arches and flats
+
+//ceiling above front area
+	glPushMatrix();
+	glPolygonMode(GL_FRONT, GL_FILL);
+	glPolygonMode(GL_BACK, GL_FILL);
+	glColor3f(1.0, 0.0, 1.0);
+	glScalef(0.1, 0.1, 0.1);
+	glBegin ( GL_POLYGON );
+		glVertex3f ( 0, 0, 14 );
+		glVertex3f ( 24, 0, 14 );	
+		glVertex3f ( 24, -24, 14 );
+		glVertex3f ( 0, -24, 14 );
+	glEnd();
+	glPopMatrix();
+
+
+
+// the ceiling of heritage hall is set up as arches and flats
 
   //flats from front to back	
 	glPushMatrix();
@@ -402,8 +431,8 @@ void buildHeritageHall(){
 	 glColor3f(1.0, 1.0, 1.0);
 	glScalef(0.1, 0.1, 0.1);
 	 glBegin ( GL_POLYGON );
-		glVertex3f ( 24, 0, -2 );
-		glVertex3f ( 24, 0, 18 );	
+		glVertex3f ( 24, -24, -2 );
+		glVertex3f ( 24, -24, 18 );	
 		glVertex3f ( 24, 181, 18 );
 		glVertex3f ( 24, 181, -2 );
 	 glEnd();
@@ -434,6 +463,32 @@ void buildHeritageHall(){
 		glVertex3f ( 24, 0, 9 );
 	 glEnd();
 	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, 14 );
+		glVertex3f ( 0, -1, 14 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, 9 );
+		glVertex3f ( 0, 0, 9 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
        //frontwall leftindent
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -445,6 +500,32 @@ void buildHeritageHall(){
 		glVertex3f ( 0, 0, 9 );	
 		glVertex3f ( 2, 0, 9 );
 		glVertex3f ( 2, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 0, -1, -2 );
+		glVertex3f ( 0, -1, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 2, 0, -2 );
+		glVertex3f ( 2, 0, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
 	 glEnd();
 	glPopMatrix();
        //frontwall rightindent
@@ -461,6 +542,31 @@ void buildHeritageHall(){
 	 glEnd();
 	glPopMatrix();
 
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, -2 );
+		glVertex3f ( 24, -1, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 22, 0, -2 );
+		glVertex3f ( 22, 0, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
 	//flats for pillars
 	 //left
 	glPushMatrix();
@@ -473,6 +579,45 @@ void buildHeritageHall(){
 		glVertex3f ( 7.5, 0, 9 );	
 		glVertex3f ( 9, 0, 9 );
 		glVertex3f ( 9, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, -1, -2 );
+		glVertex3f ( 7.5, -1, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, 0, -2 );
+		glVertex3f ( 7.5, 0, 9 );	
+		glVertex3f ( 7.5, -1, 9 );
+		glVertex3f ( 7.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 9, 0, -2 );
+		glVertex3f ( 9, 0, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
 	 glEnd();
 	glPopMatrix();
 	 //right
@@ -488,6 +633,738 @@ void buildHeritageHall(){
 		glVertex3f ( 15, 0, -2 );
 	 glEnd();
 	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, -1, -2 );
+		glVertex3f ( 16.5, -1, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 15, 0, -2 );
+		glVertex3f ( 15, 0, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, 0, -2 );
+		glVertex3f ( 16.5, 0, 9 );	
+		glVertex3f ( 16.5, -1, 9 );
+		glVertex3f ( 16.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+///////////////////////////////////////////////////////////
+//arches towards food court///////////////////////////////
+
+glPushMatrix();
+glRotatef(-90, 0.0, 0.0, 1.0);
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, 14 );
+		glVertex3f ( 0, 0, 14 );	
+		glVertex3f ( 0, 0, 9 );
+		glVertex3f ( 24, 0, 9 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, 14 );
+		glVertex3f ( 0, -1, 14 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, 9 );
+		glVertex3f ( 0, 0, 9 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
+       //frontwall leftindent
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 0, 0, -2 );
+		glVertex3f ( 0, 0, 9 );	
+		glVertex3f ( 2, 0, 9 );
+		glVertex3f ( 2, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 0, -1, -2 );
+		glVertex3f ( 0, -1, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 2, 0, -2 );
+		glVertex3f ( 2, 0, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+       //frontwall rightindent
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, -2 );
+		glVertex3f ( 24, 0, 9 );	
+		glVertex3f ( 22, 0, 9 );
+		glVertex3f ( 22, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, -2 );
+		glVertex3f ( 24, -1, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 22, 0, -2 );
+		glVertex3f ( 22, 0, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+	//flats for pillars
+	 //left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, 0, -2 );
+		glVertex3f ( 7.5, 0, 9 );	
+		glVertex3f ( 9, 0, 9 );
+		glVertex3f ( 9, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, -1, -2 );
+		glVertex3f ( 7.5, -1, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, 0, -2 );
+		glVertex3f ( 7.5, 0, 9 );	
+		glVertex3f ( 7.5, -1, 9 );
+		glVertex3f ( 7.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 9, 0, -2 );
+		glVertex3f ( 9, 0, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+	 //right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, 0, -2 );
+		glVertex3f ( 16.5, 0, 9 );	
+		glVertex3f ( 15, 0, 9 );
+		glVertex3f ( 15, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, -1, -2 );
+		glVertex3f ( 16.5, -1, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 15, 0, -2 );
+		glVertex3f ( 15, 0, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, 0, -2 );
+		glVertex3f ( 16.5, 0, 9 );	
+		glVertex3f ( 16.5, -1, 9 );
+		glVertex3f ( 16.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+glPopMatrix();
+
+/////////////////////////////////////////////////////////////////////////
+//arches in wall oppisite food court route///////////////////////////////
+
+glPushMatrix();
+
+glTranslatef(2.45, 0.0, 0.0);
+glRotatef(-90, 0.0, 0.0, 1.0);
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, 14 );
+		glVertex3f ( 0, 0, 14 );	
+		glVertex3f ( 0, 0, 9 );
+		glVertex3f ( 24, 0, 9 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, 14 );
+		glVertex3f ( 0, -1, 14 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, 9 );
+		glVertex3f ( 0, 0, 9 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
+       //frontwall leftindent
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 0, 0, -2 );
+		glVertex3f ( 0, 0, 9 );	
+		glVertex3f ( 2, 0, 9 );
+		glVertex3f ( 2, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 0, -1, -2 );
+		glVertex3f ( 0, -1, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 2, 0, -2 );
+		glVertex3f ( 2, 0, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+       //frontwall rightindent
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, -2 );
+		glVertex3f ( 24, 0, 9 );	
+		glVertex3f ( 22, 0, 9 );
+		glVertex3f ( 22, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, -2 );
+		glVertex3f ( 24, -1, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 22, 0, -2 );
+		glVertex3f ( 22, 0, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+	//flats for pillars
+	 //left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, 0, -2 );
+		glVertex3f ( 7.5, 0, 9 );	
+		glVertex3f ( 9, 0, 9 );
+		glVertex3f ( 9, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, -1, -2 );
+		glVertex3f ( 7.5, -1, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, 0, -2 );
+		glVertex3f ( 7.5, 0, 9 );	
+		glVertex3f ( 7.5, -1, 9 );
+		glVertex3f ( 7.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 9, 0, -2 );
+		glVertex3f ( 9, 0, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+	 //right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, 0, -2 );
+		glVertex3f ( 16.5, 0, 9 );	
+		glVertex3f ( 15, 0, 9 );
+		glVertex3f ( 15, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, -1, -2 );
+		glVertex3f ( 16.5, -1, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 15, 0, -2 );
+		glVertex3f ( 15, 0, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, 0, -2 );
+		glVertex3f ( 16.5, 0, 9 );	
+		glVertex3f ( 16.5, -1, 9 );
+		glVertex3f ( 16.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+glPopMatrix();
+
+/////////////////////////////////////////////////////////////////////////
+//arches in front of pres room///////////////////////////////
+
+glPushMatrix();
+
+glTranslatef(0.0, -2.4, 0.0);
+
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, 14 );
+		glVertex3f ( 0, 0, 14 );	
+		glVertex3f ( 0, 0, 9 );
+		glVertex3f ( 24, 0, 9 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, 14 );
+		glVertex3f ( 0, -1, 14 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, 9 );
+		glVertex3f ( 0, 0, 9 );	
+		glVertex3f ( 0, -1, 9 );
+		glVertex3f ( 24, -1, 9 );
+	 glEnd();
+	glPopMatrix();
+       //frontwall leftindent
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 0, 0, -2 );
+		glVertex3f ( 0, 0, 9 );	
+		glVertex3f ( 2, 0, 9 );
+		glVertex3f ( 2, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 0, -1, -2 );
+		glVertex3f ( 0, -1, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 2, 0, -2 );
+		glVertex3f ( 2, 0, 9 );	
+		glVertex3f ( 2, -1, 9 );
+		glVertex3f ( 2, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+       //frontwall rightindent
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, 0, -2 );
+		glVertex3f ( 24, 0, 9 );	
+		glVertex3f ( 22, 0, 9 );
+		glVertex3f ( 22, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 24, -1, -2 );
+		glVertex3f ( 24, -1, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 22, 0, -2 );
+		glVertex3f ( 22, 0, 9 );	
+		glVertex3f ( 22, -1, 9 );
+		glVertex3f ( 22, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+	//flats for pillars
+	 //left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, 0, -2 );
+		glVertex3f ( 7.5, 0, 9 );	
+		glVertex3f ( 9, 0, 9 );
+		glVertex3f ( 9, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, -1, -2 );
+		glVertex3f ( 7.5, -1, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 7.5, 0, -2 );
+		glVertex3f ( 7.5, 0, 9 );	
+		glVertex3f ( 7.5, -1, 9 );
+		glVertex3f ( 7.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 9, 0, -2 );
+		glVertex3f ( 9, 0, 9 );	
+		glVertex3f ( 9, -1, 9 );
+		glVertex3f ( 9, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+	 //right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, 0, -2 );
+		glVertex3f ( 16.5, 0, 9 );	
+		glVertex3f ( 15, 0, 9 );
+		glVertex3f ( 15, 0, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.6, 0.6, 0.6);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, -1, -2 );
+		glVertex3f ( 16.5, -1, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 15, 0, -2 );
+		glVertex3f ( 15, 0, 9 );	
+		glVertex3f ( 15, -1, 9 );
+		glVertex3f ( 15, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.8, 0.8, 0.8);
+	glScalef(0.1, 0.1, 0.1);
+	 glBegin ( GL_POLYGON );
+		glVertex3f ( 16.5, 0, -2 );
+		glVertex3f ( 16.5, 0, 9 );	
+		glVertex3f ( 16.5, -1, 9 );
+		glVertex3f ( 16.5, -1, -2 );
+	 glEnd();
+	glPopMatrix();
+
+glPopMatrix();
 
 ///////////////////////////////////////////
 //objects inside the level//
@@ -547,6 +1424,11 @@ void buildHeritageHall(){
 	 glScalef(0.15, 0.4, 0.4);
 	 drawBox(&faces[0]);
 	glPopMatrix();
+////////////////////////////////////////////////////
+//front area
+
+
+//swap buffers
 	glutSwapBuffers();
 
 }
