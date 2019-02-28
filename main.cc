@@ -17,7 +17,7 @@ void display( void )
 void update( void ) 
 {
 	g.update();
-	//display();
+	display();
 }
 
 void reshape (int w, int h)
@@ -51,6 +51,8 @@ int main(int argc, char** argv)
 	//set up opengl
 	glutInit(&argc, argv);
 	init(WINDOW_MAX_X, WINDOW_MAX_Y, WINDOW_POSITION_X, WINDOW_POSITION_Y);
+
+	g.init();
 
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
