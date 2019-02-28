@@ -11,12 +11,20 @@ Game g;		//global objects
 
 void display( void ) 
 {
+#ifdef LEVEL
+	buildHeritageHall();
+#else
 	g.render();
+#endif
 }
 
 void update( void ) 
 {
+#ifdef LEVEL
+
+#else
 	g.update();
+#endif
 	display();
 }
 
