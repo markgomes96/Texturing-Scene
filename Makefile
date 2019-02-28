@@ -8,37 +8,39 @@ INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h
 OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o
 
+CF =	#-DLEVEL -> to switch to level scene
+
 all : run
 
 run: main.o $(INCLUDES) $(HEADERS) $(OBJS) 
-	$(C++) -o run main.o $(OBJS) $(INCDIRS) $(LIBDIRS) $(LDLIBS) 
+	$(C++) $(CF) -o run  main.o $(OBJS) $(INCDIRS) $(LIBDIRS) $(LDLIBS) 
 
 input.o : input.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c input.cc
+	$(C++) $(CF) -c input.cc
 
 physobj.o : physobj.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c physobj.cc
+	$(C++) $(CF) -c physobj.cc
 
 testobj.o : testobj.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c testobj.cc
+	$(C++) $(CF) -c testobj.cc
 
 physicsengine.o : physicsengine.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c physicsengine.cc
+	$(C++) $(CF) -c physicsengine.cc
 
 game.o : game.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c game.cc
+	$(C++) $(CF) -c game.cc
 
 levelCreate.o : levelCreate.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c levelCreate.cc
+	$(C++) $(CF) -c levelCreate.cc
 
 defineBox.o : defineBox.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c defineBox.cc
+	$(C++) $(CF) -c defineBox.cc
 
 drawBox.o : drawBox.cc $(INCLUDES) $(HEADERS)
-	$(C++) -c drawBox.cc
+	$(C++) $(CF) -c drawBox.cc
 
 main.o : main.cc $(OBJS)
-	$(C++) -c main.cc 
+	$(C++) $(CF) -c main.cc 
 
 clean :
 	rm *.o
