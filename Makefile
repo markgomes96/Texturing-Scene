@@ -5,8 +5,8 @@ INCDIRS = -I/usr/include
 LDLIBS =  -lglut -lGL -lGLU -lX11 -lm
 
 INCLUDES   = includes.h
-HEADERS    = #structs.h game.h input.h
-OBJS 	   = game.o input.o physobj.o testobj.o physicsengine.o
+HEADERS    = structs.h game.h input.h globals.h
+OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o
 
 all : run
 
@@ -27,6 +27,15 @@ physicsengine.o : physicsengine.cc $(INCLUDES) $(HEADERS)
 
 game.o : game.cc $(INCLUDES) $(HEADERS)
 	$(C++) -c game.cc
+
+levelCreate.o : levelCreate.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c levelCreate.cc
+
+defineBox.o : defineBox.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c defineBox.cc
+
+drawBox.o : drawBox.cc $(INCLUDES) $(HEADERS)
+	$(C++) -c drawBox.cc
 
 main.o : main.cc $(OBJS)
 	$(C++) -c main.cc 

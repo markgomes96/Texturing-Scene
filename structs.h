@@ -59,4 +59,24 @@ typedef struct box {
 	colortype color;	
 } box;
 
+//structs to create cubes for display cases//
+/*
+typedef struct vertex {
+        float x;
+        float y;
+        float z;
+        float w;
+} vertex;
+
+typedef struct colortype {
+	float red;
+	float green;
+	float blue;
+} colortype;
+*/
+typedef struct box {
+	vect3d point[4];
+	colortype color;	
+} box;
+//////////////////////////////////////////////
 #endif

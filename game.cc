@@ -3,6 +3,7 @@
 
 #include "includes.h"
 #include "game.h"
+#include "globals.h"
 
 /*
 * Handles all functions of the game

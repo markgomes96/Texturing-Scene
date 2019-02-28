@@ -33,6 +33,7 @@ public:
 	void init();
 	void update();
 	void render();
+	
 
 	// Input relay functions
 	void mouse( int button, int state, int x, int y );
