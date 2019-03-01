@@ -1,6 +1,10 @@
 #include "includes.h"
 #include "game.h"
 
+extern void buildHeritageHall(void);
+extern double centerX, centerY, centerZ;
+extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+
 // Constant values for window size and place
 const int WINDOW_POSITION_X = 500;
 const int WINDOW_POSITION_Y = 5;
@@ -13,6 +17,9 @@ void display( void )
 {
 #ifdef LEVEL
 	buildHeritageHall();
+
+	cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl; 
+	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
 #else
 	g.render();
 #endif

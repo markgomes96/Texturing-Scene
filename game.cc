@@ -3,7 +3,7 @@
 
 #include "includes.h"
 #include "game.h"
-#include "globals.h"
+
 
 /*
 * Handles all functions of the game
@@ -37,7 +37,9 @@ void Game::render()
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity(); 
 
-	gluLookAt( 20.0,  5.0,  5.0,  	// Eye
+	gluLookAt( 20.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 20.0 
+			5.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 5.0
+			5.0, //CAMERA_R*cos(CAMERA_THETA*M_PI/180.0), 5.0 Eye
 		        0.0,  0.0,  1.0,  	// Center
 		        0.0,  0.0,  1.0); 	// Up
 
