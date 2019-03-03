@@ -34,6 +34,7 @@ void Game::update()
 
 void Game::render()
 {
+/*
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity(); 
 
@@ -52,7 +53,9 @@ void Game::render()
 		drawBounds(&golist[i].bounds[0]);						// draw box collider
 	}
 
-	glutSwapBuffers();
+	glutSwapBuffers();*/
+
+buildHeritageHall();
 }
 
 // Input replay functions
