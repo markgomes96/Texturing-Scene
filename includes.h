@@ -13,6 +13,7 @@
 #include <ctime>
 
 #include "structs.h"
+#include "globals.h"
 
 using namespace std;
 
