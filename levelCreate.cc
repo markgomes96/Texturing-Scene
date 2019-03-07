@@ -1391,12 +1391,27 @@ glPopMatrix();
 
 	//drawing 8 cases in rough location
 //left side cubes front to back
+	/*bottom*/
 	glPushMatrix();
-	 glTranslatef(0.55, 2.4675, 0.0);
-	 glScalef(0.15, 0.4, 0.6);
-	 drawBox(&faces[0]);
+	glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,0.0,0.0);
+    glEnd();
 	glPopMatrix();
 
+	/*top*/
+	glPushMatrix();
+    glTranslated(0.0,0.0,1.0);
+	glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,0.0,0.0);
+    glEnd();
+	glPopMatrix();
+	
 	glPushMatrix();
 	 glTranslatef(0.55, 5.7575, 0.0);
 	 glScalef(0.15, 0.4, 0.6);
