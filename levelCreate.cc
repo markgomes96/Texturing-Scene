@@ -11,7 +11,7 @@ void buildHeritageHall(){
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();   	//call this before setting the viewing position 
 
-	gluLookAt( 1.2,   -0.2, 0.2,  	// Eye
+	gluLookAt( 1.2,   -0.4, 0.2,  	// Eye
 		1.2,   3.6, 0.7,  	// Center
 		0.0,   0.0, 1.0); 	// Up
 
@@ -1401,9 +1401,9 @@ glPopMatrix();
     glEnd();
 	glPopMatrix();
 
-	/*top*/
+	/*top of base*/
 	glPushMatrix();
-    glTranslated(0.0,0.0,1.0);
+    glTranslated(0.0,0.0,0.4572);
 	glBegin(GL_POLYGON);
     glVertex3f(0.0,0.0,0.0);
     glVertex3f(0.0,2.8702,0.0);
@@ -1412,6 +1412,59 @@ glPopMatrix();
     glEnd();
 	glPopMatrix();
 	
+	/*left side of base*/
+	glPushMatrix();
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(0.0,2.8702,0.4572);
+    glVertex3f(0.0,0.0,0.4572);
+    glEnd();
+    glPopMatrix();
+
+	/*right side of base*/	
+	glPushMatrix();
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5748,0.0,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.4572);
+    glVertex3f(1.5748,0.0,0.4572);
+    glEnd();
+    glPopMatrix();
+
+	/*back of base*/
+	glPushMatrix();
+   	glColor3f(0.0,1.0,1.0); 
+	glBegin(GL_POLYGON);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(0.0,2.8702,0.4572);
+    glVertex3f(1.5748,2.8702,0.4572);
+    glVertex3f(1.5748,2.8702,0.0);
+    glEnd();
+    glPopMatrix();
+
+	/*front of base*/
+	glPushMatrix();
+	glColor3f(1.0,0.0,0.0);
+	glBegin(GL_POLYGON);
+    glVertex3f(1.5748,0.0,0.0);
+    glVertex3f(1.5748,0.0,0.4572);
+    glVertex3f(0.0,0.0,0.4572);
+    glVertex3f(0.0,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
+	/*top of case*/
+	glPushMatrix();
+    glTranslated(0.0,0.0,2.5146);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
 	glPushMatrix();
 	 glTranslatef(0.55, 5.7575, 0.0);
 	 glScalef(0.15, 0.4, 0.6);
