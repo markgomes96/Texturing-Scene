@@ -71,6 +71,21 @@ void Input::keyboard( unsigned char key, int x, int y )
 		}
 		glutPostRedisplay();	
 		
+	}
+	else if (key == '+') {
+		//move forward
+		CAMERA_R -= 0.5;
+		if (CAMERA_R <= 0.0) {
+			CAMERA_R = 0.0;
+		}
+		glutPostRedisplay();
+	}
+	else if (key == '-') {
+		//move backward
+		CAMERA_R += 0.5;
+		if (CAMERA_R >= 30.0) {
+			CAMERA_R = 30.0;
+		}
 	}	
 }
 
@@ -92,13 +107,28 @@ void Input::specialInput(int key, int x, int y)
 
 		case GLUT_KEY_RIGHT:
 			//pan right
-			centerY += 1.0;
+		/*	if (centerX > 0.0 && centerY > 0.0) { //pos x and y
+				centerX -= 1.0;
+			}
+			else if (centerX > 0.0 && centerY < 0.0) { //pos x and neg y
+				centerX += 1.0;
+			}
+			else if (centerX < 0.0 && centerY > 0.0) { //neg x and pos y
+				
+			}
+			else if (centerX < 0.0 && centerY < 0.0) { //neg x and y
+				
+			}	
+		*/			
+			centerY -= 1.0;
+			centerX -= 1.0;
 			glutPostRedisplay();
 		break;
 			
 		case GLUT_KEY_LEFT:
 			//pan left
 			centerY -= 1.0;
+			centerX += 1.0;
 			glutPostRedisplay();
 		break;
 		

@@ -11,7 +11,7 @@ const int WINDOW_POSITION_Y = 5;
 const int WINDOW_MAX_X = 800;
 const int WINDOW_MAX_Y = 800;
 
-Game g;		//global objects
+extern Game g;		//global objects
 
 void display( void ) 
 {

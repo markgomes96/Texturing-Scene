@@ -13,4 +13,6 @@ extern void buildHeritageHall(void);
 void defineBox( struct box* );
 void drawBox( struct box* );
 
+Game g;
+
 #endif

@@ -24,7 +24,6 @@ void buildHeritageHall(){
 
 	glEnable(GL_DEPTH_TEST);
 
-
 //floor//
 	glPushMatrix();
 	glPolygonMode(GL_FRONT, GL_FILL);
@@ -1460,6 +1459,10 @@ glPopMatrix();
 ////////////////////////////////////////////////////
 //food court area
 
+
+////////////////////////////////////////////////////
+//HUD
+	g.HUD();
 
 //swap buffers
 	glutSwapBuffers();

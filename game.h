@@ -32,6 +32,7 @@ public:
 	// Game functions
 	void init();
 	void update();
+	void HUD();
 	void render();
 	
 

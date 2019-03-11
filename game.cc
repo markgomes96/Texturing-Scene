@@ -32,6 +32,50 @@ void Game::update()
 	glutLockFrameRate(frameRate);
 }
 
+void Game::HUD() 
+{
+	//displays HUD in a 2D square on the bottom left on the screen
+	float testNumber = 3.0000;
+
+	char *test = (char*) malloc(64*sizeof(char));
+	sprintf(test, "TEST: %6.4f", testNumber);
+
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0.0, 100.0, 0.0, 100.0);
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glColor3f(1.0, 1.0, 1.0);
+
+	glBegin(GL_POLYGON);
+	glVertex2f(0.0, 0.0);
+	glVertex2f(0.0, 30.0);
+	glVertex2f(30.0, 30.0);
+	glVertex2f(30.0, 0.0);
+	glEnd();
+	glFlush();
+
+	glColor3f(1.0, 0.0, 1.0);
+	//drawString(10, 10, GLUT_BITMAP_HELVETICA_12, test);
+
+	const char* c;
+	glRasterPos2i(10, 10);
+	for (c=test;*c!='\0';c++) {
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
+	}	
+
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+
+	free(test);
+}	
+
 void Game::render()
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
