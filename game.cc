@@ -32,6 +32,13 @@ void Game::update()
 	glutLockFrameRate(frameRate);
 }
 
+void Game::character() 
+{
+	
+
+
+}
+
 void Game::HUD() 
 {
 	//displays HUD in a 2D square on the bottom left on the screen
