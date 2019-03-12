@@ -42,11 +42,14 @@ void Game::character()
 void Game::HUD() 
 {
 	//displays HUD in a 2D square on the bottom left on the screen
-	float testNumber = 3.0000;
+	float testNumber = 3.00;
 
 	char *test = (char*) malloc(64*sizeof(char));
-	sprintf(test, "TEST: %6.4f", testNumber);
+	sprintf(test, "STATS: %6.4f", testNumber);
 
+	char *HUDtitle = (char*) malloc(64*sizeof(char));
+	sprintf(HUDtitle, "HUD");
+	
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
@@ -62,11 +65,18 @@ void Game::HUD()
 
 	glColor3f(0.0, 0.0, 0.0); //black
 
+	//test stats
 	const char* c;
-	glRasterPos2i(10, 10);
+	glRasterPos2i(5, 20);
 	for (c=test;*c!='\0';c++) {
-		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
+		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
 	}	
+
+	//HUD title
+	glRasterPos2i(10, 25);
+	for (c=HUDtitle;*c!='\0';c++) {
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
+	}
 
 	glColor3f(1.0, 1.0, 1.0);
 	glRecti(0.0, 0.0, 30.0, 30.0);

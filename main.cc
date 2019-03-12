@@ -1,17 +1,17 @@
 #include "includes.h"
 #include "game.h"
 
-extern void buildHeritageHall(void);
-extern double centerX, centerY, centerZ;
-extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
-
 // Constant values for window size and place
 const int WINDOW_POSITION_X = 500;
 const int WINDOW_POSITION_Y = 5;
 const int WINDOW_MAX_X = 800;
 const int WINDOW_MAX_Y = 800;
 
-extern Game g;		//global objects
+//global objects
+extern Game g;	
+extern void buildHeritageHall(void);
+extern double centerX, centerY, centerZ;
+extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 
 void display( void ) 
 {
@@ -19,8 +19,8 @@ void display( void )
 	buildHeritageHall();
 	g.HUD();
 
-	cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl; 
-	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
+	//cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl; 
+//	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
 	glutSwapBuffers();
 #else
 	g.render();

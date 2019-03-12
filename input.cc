@@ -108,38 +108,42 @@ void Input::specialInput(int key, int x, int y)
 		case GLUT_KEY_RIGHT:
 			//pan right
 			if (centerX > 30.0 && centerY > -30.0) { 
-				//centerX += 1.0;
 				centerY -= 1.0;
 				
 			}
 			else if (centerY > 30.0) {
 				centerX += 1.0;
-				//centerY -= 1.0;
 			}	
 			else if (centerY < -30.0) {
 				centerY += 1.0;
 				centerX -= 1.0;
 			}	
-			else{
-			//else if (centerY > 0.0) {
-			//	centerY += 1.0;
-			//	centerX -= 0.0;
-			//	break;
-			//}	
-				
-			centerY += 1.0;
-			centerX -= 1.0;
-			//if (centerX < -30.0) {
-			//	centerY = -centerY;
-			//}
+			else {		
+				centerY += 1.0;
+				centerX -= 1.0;
 			}	
 			glutPostRedisplay();
 		break;
 			
 		case GLUT_KEY_LEFT:
 			//pan left
-			//centerY += 1.0;
-			centerX += 1.0;
+			//centerX += 1.0;
+			if (centerX > 30.0 && centerY < 30.0) { 
+				centerY += 1.0;
+				
+			}
+			else if (centerX < -30.0 && centerY > 30.0) {
+				centerY -= 1.0;
+				centerX += 1.0;
+			}	
+			else if (centerY > 30.0) {
+				centerX -= 1.0;
+			}		
+			else {		
+				centerY -= 1.0;
+				centerX += 1.0;
+			}
+
 			glutPostRedisplay();
 		break;
 		

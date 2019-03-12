@@ -1461,8 +1461,6 @@ glPopMatrix();
 
 
 
-//swap buffers
-	//glutSwapBuffers();
 
 }
 #endif

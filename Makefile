@@ -2,7 +2,7 @@
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Linux)
 	CCFLAGS += -D LINUX
-	LDLIBS = -lglut -lGL -lGLU -lX11 -lm
+	LBLIBS = -I.usr/include -L/usr/lib64 -lglut -lGL -lGLU -lX11 -lm
 endif
 ifeq ($(UNAME_S), Darwin)
 	CCFLAGS += -D OSX
