@@ -1460,12 +1460,9 @@ glPopMatrix();
 //food court area
 
 
-////////////////////////////////////////////////////
-//HUD
-	g.HUD();
 
 //swap buffers
-	glutSwapBuffers();
+	//glutSwapBuffers();
 
 }
 #endif

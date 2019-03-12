@@ -56,18 +56,11 @@ void Game::HUD()
 	glPushMatrix();
 	glLoadIdentity();
 
-	glColor3f(1.0, 1.0, 1.0);
+	glDisable(GL_CULL_FACE);
 
-	glBegin(GL_POLYGON);
-	glVertex2f(0.0, 0.0);
-	glVertex2f(0.0, 30.0);
-	glVertex2f(30.0, 30.0);
-	glVertex2f(30.0, 0.0);
-	glEnd();
-	glFlush();
+	glClear(GL_DEPTH_BUFFER_BIT);
 
-	glColor3f(1.0, 0.0, 1.0);
-	//drawString(10, 10, GLUT_BITMAP_HELVETICA_12, test);
+	glColor3f(0.0, 0.0, 0.0); //black
 
 	const char* c;
 	glRasterPos2i(10, 10);
@@ -75,10 +68,14 @@ void Game::HUD()
 		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
 	}	
 
+	glColor3f(1.0, 1.0, 1.0);
+	glRecti(0.0, 0.0, 30.0, 30.0);
+
 	glPopMatrix();
 	glMatrixMode(GL_PROJECTION);
 	glPopMatrix();
 	glMatrixMode(GL_MODELVIEW);
+	//glPopMatrix();
 
 	free(test);
 }	

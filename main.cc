@@ -17,9 +17,11 @@ void display( void )
 {
 #ifdef LEVEL
 	buildHeritageHall();
+	g.HUD();
 
 	cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl; 
 	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
+	glutSwapBuffers();
 #else
 	g.render();
 #endif
