@@ -4,6 +4,9 @@
 #include "includes.h"
 #include "input.h"
 
+extern double centerX, centerY, centerZ;
+extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+
 Input::Input() 
 { }
 
@@ -32,10 +35,58 @@ void Input::mouse( int button, int state, int x, int y )
 
 void Input::keyboard( unsigned char key, int x, int y )
 { 	
-	if ( key == 'q' || key == 'Q') 		//exit the program
-	{
+	if ( key == 'q' || key == 'Q') {
+		//exit the program
 		exit(0);
 	}
+	else if (key == 'w' || key == 'W') {
+		//move up
+		CAMERA_THETA -= 1.0;
+		if (CAMERA_THETA < 0.0) {
+			CAMERA_THETA += 360.0;
+		}
+		glutPostRedisplay();	
+	}
+	else if (key == 's' || key == 'S') {
+		//move down
+		CAMERA_THETA += 1.0;
+		if (CAMERA_THETA > 0.0) {
+			CAMERA_THETA -= 360.0;
+		}
+		glutPostRedisplay();	
+	}
+	else if (key == 'a' || key == 'A') {
+		//move left
+		CAMERA_PHI -= 1.0;
+		if (CAMERA_PHI < 0.0) {
+			CAMERA_PHI += 360.0;
+		}
+		glutPostRedisplay();	
+	}
+	else if (key == 'd' || key == 'D') {
+		//move right
+		CAMERA_PHI += 1.0;
+		if (CAMERA_PHI > 0.0) {
+			CAMERA_PHI -= 360.0;
+		}
+		glutPostRedisplay();	
+		
+	}
+	else if (key == '+') {
+		//move forward
+		CAMERA_R -= 0.5;
+		if (CAMERA_R <= 0.0) {
+			CAMERA_R = 0.0;
+		}
+		glutPostRedisplay();
+	}
+	else if (key == '-') {
+		//move backward
+		CAMERA_R += 0.5;
+		if (CAMERA_R >= 30.0) {
+			CAMERA_R = 30.0;
+		}
+	}	
 }
 
 void Input::specialInput(int key, int x, int y)
@@ -43,20 +94,75 @@ void Input::specialInput(int key, int x, int y)
 	switch(key)
 	{
 		case GLUT_KEY_UP:
-			//up key
+			//pan up
+			centerZ += 1.0;
+			glutPostRedisplay();
 		break;
 			
 		case GLUT_KEY_DOWN:
-			//down key
+			//pan down
+			centerZ -= 1.0;
+			glutPostRedisplay();
 		break;
 
 		case GLUT_KEY_RIGHT:
-			//right key
+			//pan right
+			if (centerX > 30.0 && centerY > -30.0) { 
+				centerY -= 1.0;
+				
+			}
+			else if (centerY > 30.0) {
+				centerX += 1.0;
+			}	
+			else if (centerY < -30.0) {
+				centerY += 1.0;
+				centerX -= 1.0;
+			}	
+			else {		
+				centerY += 1.0;
+				centerX -= 1.0;
+			}	
+			glutPostRedisplay();
 		break;
 			
 		case GLUT_KEY_LEFT:
-			//left key
+			//pan left
+			//centerX += 1.0;
+			if (centerX > 30.0 && centerY < 30.0) { 
+				centerY += 1.0;
+				
+			}
+			else if (centerX < -30.0 && centerY > 30.0) {
+				centerY -= 1.0;
+				centerX += 1.0;
+			}	
+			else if (centerY > 30.0) {
+				centerX -= 1.0;
+			}		
+			else {		
+				centerY -= 1.0;
+				centerX += 1.0;
+			}
+
+			glutPostRedisplay();
 		break;
+		
+		case GLUT_KEY_PAGE_UP:
+			//move forward
+			CAMERA_R -= 0.5;
+			if (CAMERA_R <= 0.0) {
+				CAMERA_R = 0.0;
+			}
+			glutPostRedisplay();
+		break;
+
+		case GLUT_KEY_PAGE_DOWN:
+			//move backward
+			CAMERA_R += 0.5;
+			if (CAMERA_R >= 30.0) {
+				CAMERA_R = 30.0;
+			}
+		break;	
 	}
 }
 
