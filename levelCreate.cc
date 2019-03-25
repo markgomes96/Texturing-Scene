@@ -18,8 +18,9 @@ void buildHeritageHall(){
 		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),  // 0.2 Eye
 		centerX,  //1.2
 		centerY, //3.6
-		centerZ, //0.7 Center
-
+		centerZ,
+        0,0,1 //0.7 Center
+);
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -1505,7 +1506,6 @@ glPopMatrix();
 
 	/*top glass 1*/
 	glPushMatrix();
-    glTranslated(0.0,0.0,2.5146);
     glBegin(GL_POLYGON);
     glVertex3f(0.127,0.127,2.5146);
     glVertex3f(0.127,2.7432,2.5146);
@@ -1514,6 +1514,249 @@ glPopMatrix();
     glEnd();
     glPopMatrix();
 
+/*dc 2*/
+    /*bottom 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
+    /*top base 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.4572);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
+    /*left base 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(0.0,2.8702,0.4572);
+    glVertex3f(0.0,0.0,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*right base 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5748,0.0,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.4572);
+    glVertex3f(1.5748,0.0,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*back base 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glColor3f(0.0,1.0,1.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(0.0,2.8702,0.4572);
+    glVertex3f(1.5748,2.8702,0.4572);
+    glVertex3f(1.5748,2.8702,0.0);
+    glEnd();
+    glPopMatrix();
+
+    /*front base 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5748,0.0,0.0);
+    glVertex3f(1.5748,0.0,0.4572);
+    glVertex3f(0.0,0.0,0.4572);
+    glVertex3f(0.0,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
+    /*front glass 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,0.127,0.4572);
+    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(0.127,0.127,2.5146);
+    glEnd();
+    glPopMatrix();
+    
+    /*left glass 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,2.7432,2.5146);
+    glVertex3f(0.127,0.127,2.5146);
+    glVertex3f(0.127,0.127,0.4572);
+    glVertex3f(0.127,2.7432,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*right glass 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glColor3f(0.0,1.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glVertex3f(1.4478,0.127,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*top glass 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,0.127,2.5146);
+    glVertex3f(0.127,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glVertex3f(1.4478,0.127,2.5146);
+    glEnd();
+    glPopMatrix();
+
+/*dc 3*/
+    /*bottom 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
+    /*top base 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.4572);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
+    /*left base 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,0.0,0.0);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(0.0,2.8702,0.4572);
+    glVertex3f(0.0,0.0,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*right base 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5748,0.0,0.0);
+    glVertex3f(1.5748,2.8702,0.0);
+    glVertex3f(1.5748,2.8702,0.4572);
+    glVertex3f(1.5748,0.0,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*back base 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glColor3f(0.0,1.0,1.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.0,2.8702,0.0);
+    glVertex3f(0.0,2.8702,0.4572);
+    glVertex3f(1.5748,2.8702,0.4572);
+    glVertex3f(1.5748,2.8702,0.0);
+    glEnd();
+    glPopMatrix();   
+ 
+    /*front base 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.5748,0.0,0.0);
+    glVertex3f(1.5748,0.0,0.4572);
+    glVertex3f(0.0,0.0,0.4572);
+    glVertex3f(0.0,0.0,0.0);
+    glEnd();
+    glPopMatrix();
+
+    /*front glass 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,0.127,0.4572);
+    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(0.127,0.127,2.5146);
+    glEnd();
+    glPopMatrix();
+
+    /*back glass 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glVertex3f(0.127,2.7432,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*left glass 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,2.7432,2.5146);
+    glVertex3f(0.127,0.127,2.5146);
+    glVertex3f(0.127,0.127,0.4572);
+    glVertex3f(0.127,2.7432,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*right glass 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glColor3f(0.0,1.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glVertex3f(1.4478,0.127,0.4572);
+    glEnd();
+    glPopMatrix();
+
+    /*top glass 3*/
+    glPushMatrix();
+    glTranslated(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,0.127,2.5146);
+    glVertex3f(0.127,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glVertex3f(1.4478,0.127,2.5146);
+    glEnd();
+    glPopMatrix();
 	glPushMatrix();
 	 glTranslatef(0.55, 5.7575, 0.0);
 	 glScalef(0.15, 0.4, 0.6);
