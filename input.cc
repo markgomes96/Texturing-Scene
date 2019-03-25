@@ -6,9 +6,45 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double prev_mouse_x, prev_mouse_y;
+extern double mouse_dx, mouse_dy;
+extern double x_rotat, y_rotat;
+extern double sensitivity;
 
 Input::Input() 
 { }
+
+void Input::passiveMouseMovement(int x, int y){
+	//cout << "mouse moved while no buttons were pressed" << endl;
+	//cout << "mouse at " << x << " " << y << endl;
+
+	y = 800 - y; //this needs to be dynamic eventually
+
+	//calculate change in x and y
+	mouse_dx = x - prev_mouse_x; 
+	mouse_dy = y- prev_mouse_y;
+
+	//reset prev mouse x and y
+	prev_mouse_x = x;
+	prev_mouse_y = y;
+
+	//calculate rotation angle for x and y
+    x_rotat = x_rotat + mouse_dx*sensitivity;
+	y_rotat = y_rotat + mouse_dy*sensitivity;
+	
+	//restrict y
+	if(y_rotat > 90){
+		y_rotat = 90;
+	}
+	if(y_rotat < -90){
+		y_rotat = -90;
+	}
+	glutPostRedisplay();
+}
+
+void Input::mouseMovement(int x, int y){
+	//cout << "mouse moved while buttons were pressed" << endl;
+}
 
 void Input::mouse( int button, int state, int x, int y )
 { 	
@@ -39,7 +75,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//exit the program
 		exit(0);
 	}
-	else if (key == 'w' || key == 'W') {
+/*	else if (key == 'w' || key == 'W') {
 		//move up
 		CAMERA_THETA -= 1.0;
 		if (CAMERA_THETA < 0.0) {
@@ -71,8 +107,9 @@ void Input::keyboard( unsigned char key, int x, int y )
 		}
 		glutPostRedisplay();	
 		
-	}
-	else if (key == '+') {
+	
+	} */
+	else if (key == 'w') {
 		//move forward
 		CAMERA_R -= 0.5;
 		if (CAMERA_R <= 0.0) {
@@ -80,7 +117,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 		}
 		glutPostRedisplay();
 	}
-	else if (key == '-') {
+	else if (key == 's') {
 		//move backward
 		CAMERA_R += 0.5;
 		if (CAMERA_R >= 30.0) {
@@ -91,7 +128,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 
 void Input::specialInput(int key, int x, int y)
 {
-	switch(key)
+/*	switch(key)
 	{
 		case GLUT_KEY_UP:
 			//pan up
@@ -163,7 +200,7 @@ void Input::specialInput(int key, int x, int y)
 				CAMERA_R = 30.0;
 			}
 		break;	
-	}
+	}*/
 }
 
 #endif

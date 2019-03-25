@@ -17,6 +17,8 @@ public:
 
 	//Game functions
 	void mouse( int button, int state, int x, int y );
+	void passiveMouseMovement(int x, int y);
+	void mouseMovement(int x, int y);
 	void keyboard( unsigned char key, int x, int y );
 	void specialInput(int key, int x, int y);
 };

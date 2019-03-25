@@ -1,3 +1,7 @@
+
+		//learnopengl.com/Getting-started/Camerain(x_rotat*M_PI/180.0), 
+
+
 #ifndef LEVELS
 #define LEVELS
 
@@ -8,21 +12,24 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double x_rotat, y_rotat;
 
 void buildHeritageHall(){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-	glLoadIdentity();   	//call this before setting the viewing position 
 
-	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2  
-		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2
-		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),  // 0.2 Eye
-		centerX,  //1.2
-		centerY, //3.6
-		centerZ, //0.7 Center
-		0.0,   0.0, 1.0); 	// Up
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
+	gluLookAt( 1.2, 3.6, 0.7,
+		CAMERA_R*cos(y_rotat*M_PI/180.0)*cos(x_rotat*M_PI/180.0),  
+		CAMERA_R*sin(y_rotat*M_PI/180.0), 
+		CAMERA_R*cos(y_rotat*M_PI/180.0)*sin(x_rotat*M_PI/180.0),
+		0.0,   0.0, 1.0); 	// Up */
 
 	glEnable(GL_DEPTH_TEST);
+
+	
 
 //floor//
 	glPushMatrix();

@@ -12,19 +12,23 @@ extern Game g;
 extern void buildHeritageHall(void);
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double x_rotat, y_rotat;
 
 void display( void ) 
 {
 #ifdef LEVEL
+	
 	buildHeritageHall();
 	g.HUD();
 
 	//cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl; 
 //	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
+
 	glutSwapBuffers();
 #else
 	g.render();
 #endif
+
 }
 
 void update( void ) 
@@ -61,6 +65,8 @@ void init(int window_width, int window_height, int window_position_x, int window
 // Relay functions for input handling
 void mouse( int button, int state, int x, int y ) { g.mouse(button, state, x, y); }
 void keyboard( unsigned char key, int x, int y ) { g.keyboard(key, x, y); }
+void passiveMouseMovement(int x, int y) {g.passiveMouseMovement(x, y);}
+void mouseMovement(int x, int y) {g.mouseMovement(x, y);}
 void specialInput(int key, int x, int y) {g.specialInput(key, x, y); }
 
 int main(int argc, char** argv) 
@@ -74,10 +80,18 @@ int main(int argc, char** argv)
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(specialInput);
+	//initalize mouse movement function
+	glutPassiveMotionFunc(passiveMouseMovement);
+	glutMotionFunc(mouseMovement);
+
 
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame
 	glutIdleFunc(update);			//update game
+
+	
 	
 	glutMainLoop();
 }
+
+
