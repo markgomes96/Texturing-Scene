@@ -2,11 +2,12 @@
 #define INPUT_CC
 
 #include "includes.h"
+#include "game.h"
 #include "input.h"
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
-
+extern Game g; 
 Input::Input() 
 { }
 
@@ -86,7 +87,14 @@ void Input::keyboard( unsigned char key, int x, int y )
 		if (CAMERA_R >= 30.0) {
 			CAMERA_R = 30.0;
 		}
-	}	
+	} 
+	else if ( key == 't' ) { 
+		//Throw Object 
+		g.createProjectile( 1,1,6,1,1,1,1 ); 
+	}
+
+
+	
 }
 
 void Input::specialInput(int key, int x, int y)

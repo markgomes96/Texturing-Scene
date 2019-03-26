@@ -35,6 +35,7 @@ public:
 	void character();
 	void HUD();
 	void render();
+	void createProjectile( double, double, double, double, double, double, double ); 
 	
 
 	// Input relay functions
