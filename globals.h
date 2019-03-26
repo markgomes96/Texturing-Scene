@@ -12,6 +12,7 @@ double CAMERA_PHI = 85.5;
 extern void buildHeritageHall(void);
 void defineBox( struct box* );
 void drawBox( struct box* );
+void drawDisplayCase(void);
 
 Game g;
 
