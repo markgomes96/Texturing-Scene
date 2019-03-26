@@ -59,3 +59,7 @@ clean :
 pristine :
 	rm *.o
 	rm run
+
+purge :
+	rm *.o
+	rm run
