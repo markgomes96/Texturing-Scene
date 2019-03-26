@@ -19,7 +19,7 @@ INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h
 OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o
 
-CF = -DLEVEL	#-DLEVEL -> to switch to level scene
+#CF = -DLEVEL	#-DLEVEL -> to switch to level scene
 
 all : run
 
@@ -57,5 +57,9 @@ clean :
 	rm *.o
 
 pristine :
+	rm *.o
+	rm run
+
+purge :
 	rm *.o
 	rm run
