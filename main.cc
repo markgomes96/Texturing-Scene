@@ -8,18 +8,22 @@ const int WINDOW_MAX_X = 800;
 const int WINDOW_MAX_Y = 800;
 
 //global objects
-extern Game g;	
+extern Game g;
 extern void buildHeritageHall(void);
+extern void buildCameraScene(void);
+extern void buildDisplay(void);
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 
-void display( void ) 
+void display( void )
 {
 #ifdef LEVEL
-	buildHeritageHall();
+	buildDisplay();
+	//buildCameraScene();
+	//buildHeritageHall();
 	g.HUD();
 
-	//cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl; 
+	//cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl;
 //	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
 	glutSwapBuffers();
 #else
@@ -27,7 +31,7 @@ void display( void )
 #endif
 }
 
-void update( void ) 
+void update( void )
 {
 #ifdef LEVEL
 
@@ -47,10 +51,10 @@ void reshape (int w, int h)
 }
 
 // OpenGl initilization
-void init(int window_width, int window_height, int window_position_x, int window_position_y) 
+void init(int window_width, int window_height, int window_position_x, int window_position_y)
 {
 	glutInitDisplayMode ( GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH );
-	glutInitWindowSize (window_width, window_height); 
+	glutInitWindowSize (window_width, window_height);
 	glutInitWindowPosition (window_position_x, window_position_y);
 	glutCreateWindow ("Bear Force One");
 
@@ -63,7 +67,7 @@ void mouse( int button, int state, int x, int y ) { g.mouse(button, state, x, y)
 void keyboard( unsigned char key, int x, int y ) { g.keyboard(key, x, y); }
 void specialInput(int key, int x, int y) {g.specialInput(key, x, y); }
 
-int main(int argc, char** argv) 
+int main(int argc, char** argv)
 {
 	//set up opengl
 	glutInit(&argc, argv);
@@ -78,6 +82,6 @@ int main(int argc, char** argv)
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame
 	glutIdleFunc(update);			//update game
-	
+
 	glutMainLoop();
 }
