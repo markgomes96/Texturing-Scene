@@ -5,6 +5,8 @@
 	#include <GL/gl.h>		//graphics libraries
 	#include <GL/glu.h>
 	#include <GL/glut.h>
+	#include <glm/glm.hpp>
+	#include <glm/gtc/matrix_transform.hpp>
 
 	#include <vector>		//utility libraries
 	#include <cmath>

@@ -13,11 +13,11 @@ CC = gcc
 C++ = g++ 
 #LIBDIRS = -L/usr/lib64
 #INCDIRS = -I/usr/include
-#LDLIBS =  -lglut -lGL -lGLU -lX11 -lm
+#LDLIBS =  -lglut -lGL -lGLU  -lX11 -lm
 
 INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h
-OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o
+OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.cc
 
 CF = -DLEVEL	#-DLEVEL -> to switch to level scene
 

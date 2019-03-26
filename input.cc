@@ -10,6 +10,7 @@ extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern double sensitivity;
+extern glm::vec3 cameraFront;
 
 Input::Input() 
 { }
@@ -18,7 +19,7 @@ void Input::passiveMouseMovement(int x, int y){
 	//cout << "mouse moved while no buttons were pressed" << endl;
 	//cout << "mouse at " << x << " " << y << endl;
 
-	y = 800 - y; //this needs to be dynamic eventually
+	//y = 800 - y; //this needs to be dynamic eventually
 
 	//calculate change in x and y
 	mouse_dx = x - prev_mouse_x; 
@@ -33,12 +34,20 @@ void Input::passiveMouseMovement(int x, int y){
 	y_rotat = y_rotat + mouse_dy*sensitivity;
 	
 	//restrict y
-	if(y_rotat > 90){
-		y_rotat = 90;
+	if(y_rotat > 89){
+		y_rotat = 89;
 	}
-	if(y_rotat < -90){
-		y_rotat = -90;
+	if(y_rotat < -89){
+		y_rotat = -89;
 	}
+
+/*	glm::vec3 front;
+    front.x = cos(glm::radians((float)y_rotat)) * cos(glm::radians((float)x_rotat));
+    front.y = sin(glm::radians((float)y_rotat));
+    front.z = cos(glm::radians((float)y_rotat))  * sin(glm::radians((float) x_rotat));
+    cameraFront = glm::normalize(front); */
+
+
 	glutPostRedisplay();
 }
 

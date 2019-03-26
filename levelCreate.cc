@@ -1,7 +1,3 @@
-
-		//learnopengl.com/Getting-started/Camerain(x_rotat*M_PI/180.0), 
-
-
 #ifndef LEVELS
 #define LEVELS
 
@@ -13,19 +9,36 @@
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double x_rotat, y_rotat;
+extern glm::vec3 cameraPos, cameraFront, cameraUp;
+
 
 void buildHeritageHall(){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
 	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
+	glLoadIdentity(); 
 
-	gluLookAt( 1.2, 3.6, 0.7,
-		CAMERA_R*cos(y_rotat*M_PI/180.0)*cos(x_rotat*M_PI/180.0),  
-		CAMERA_R*sin(y_rotat*M_PI/180.0), 
-		CAMERA_R*cos(y_rotat*M_PI/180.0)*sin(x_rotat*M_PI/180.0),
-		0.0,   0.0, 1.0); 	// Up */
+	glm::vec3 front;
+	front.x = cos(glm::radians((float)y_rotat)) * cos(glm::radians((float)x_rotat));
+	front.y = sin(glm::radians((float)y_rotat));
+	front.z = cos(glm::radians((float)y_rotat))  * sin(glm::radians((float)x_rotat));
+	cameraFront = glm::normalize(front);
+
+	cout << front.x << " " << front.y << " " << front.z << endl;
+
+//	glm::mat4 projection = glm::perspective(glm::radians(fov), 1.0f, 0.1f, 100.0f);
+
+//	glm::mat4 view;
+//	view = glm::lookAt(cameraPos, cameraPos+cameraFront, cameraUp);
+
+	centerX = (double) cameraPos.x + cameraFront.x;
+	centerY = (double) cameraPos.y + cameraFront.y;
+	centerZ = (double) cameraPos.z + cameraFront.z;
+
+	gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
+				centerX, centerY, centerZ,
+				(double)cameraUp.x, (double)cameraUp.y, (double)cameraUp.z); 	// Up */
 
 	glEnable(GL_DEPTH_TEST);
 
