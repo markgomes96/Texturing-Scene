@@ -1595,6 +1595,18 @@ glPopMatrix();
     glEnd();
     glPopMatrix();
     
+	/*back glass 2*/
+    glPushMatrix();
+    glTranslated(7.26298984,0.0,0.0);
+    glColor3f(1.0,0.0,0.0);
+    glBegin(GL_POLYGON);
+    glVertex3f(0.127,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glVertex3f(0.127,2.7432,0.4572);
+    glEnd();
+    glPopMatrix();
+
     /*left glass 2*/
     glPushMatrix();
     glTranslated(7.26298984,0.0,0.0);
