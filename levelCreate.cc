@@ -19,19 +19,21 @@ void buildHeritageHall(){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity(); 
 
-	glm::vec3 front;
+/*	glm::vec3 front;
 	front.x = cos(glm::radians((float)y_rotat)) * cos(glm::radians((float)x_rotat));
 	front.y = sin(glm::radians((float)y_rotat));
 	front.z = cos(glm::radians((float)y_rotat))  * sin(glm::radians((float)x_rotat));
-	cameraFront = glm::normalize(front);
+	cameraFront = glm::normalize(front); */
 
-	cout << front.x << " " << front.y << " " << front.z << endl;
+//	cout << front.x << " " << front.y << " " << front.z << endl;
 
 //	glm::mat4 projection = glm::perspective(glm::radians(fov), 1.0f, 0.1f, 100.0f);
 
 //	glm::mat4 view;
 //	view = glm::lookAt(cameraPos, cameraPos+cameraFront, cameraUp);
 
+
+	//might be problem with where my origin is
 	centerX = (double) cameraPos.x + cameraFront.x;
 	centerY = (double) cameraPos.y + cameraFront.y;
 	centerZ = (double) cameraPos.z + cameraFront.z;
