@@ -5,11 +5,12 @@
 #include "game.h"
 #include "globals.h"
 #include "structs.h"
+#include "prototypes.h"
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 
-void buildHeritageHall(){
+void buildHeritageHall(void){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();   	//call this before setting the viewing positi

@@ -3,7 +3,7 @@
 
 #include "includes.h"
 #include "game.h"
-//#include "globals.h"
+#include "prototypes.h"
 
 void drawDisplayCase()
 {
