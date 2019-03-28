@@ -4,15 +4,15 @@
 #include "includes.h"
 #include "game.h"
 
-
+extern void buildHeritageHall();
 /*
 * Handles all functions of the game
 */
 
-Game::Game() 
+Game::Game()
 { }
 
-void Game::init() 
+void Game::init()
 {
 	frameRate = 60.0;
 	physEng = PhysicsEngine(frameRate);
@@ -24,7 +24,7 @@ void Game::init()
 	golist.push_back(cube);
 }
 
-void Game::update() 
+void Game::update()
 {
 	// Update each phyisc object
 	physEng.updateObjects(golist);
@@ -32,14 +32,47 @@ void Game::update()
 	glutLockFrameRate(frameRate);
 }
 
-void Game::character() 
+void Game::character()
 {
-	
+
 
 
 }
+void Game::minimap(){
+	glTranslatef(10,0,0);
+	glPushMatrix();
+	float testNumber = 3.00;
 
-void Game::HUD() 
+	char *test = (char*) malloc(64*sizeof(char));
+	sprintf(test, "STATS: %6.4f", testNumber);
+
+	char *HUDtitle = (char*) malloc(64*sizeof(char));
+	sprintf(HUDtitle, "HUD");
+
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+	gluOrtho2D(0.0, 125.0, 0.0, 125.0);
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
+	glDisable(GL_CULL_FACE);
+
+	glClear(GL_DEPTH_BUFFER_BIT);
+	buildHeritageHall();
+	glColor3f(1.0, 1.0, 1.0);
+	glRecti(0.0, 0.0, 30.0, 30.0);
+
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glMatrixMode(GL_MODELVIEW);
+	glPopMatrix();
+
+}
+void Game::HUD()
 {
 	//displays HUD in a 2D square on the bottom left on the screen
 	float testNumber = 3.00;
@@ -49,7 +82,7 @@ void Game::HUD()
 
 	char *HUDtitle = (char*) malloc(64*sizeof(char));
 	sprintf(HUDtitle, "HUD");
-	
+
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
@@ -70,7 +103,7 @@ void Game::HUD()
 	glRasterPos2i(5, 20);
 	for (c=test;*c!='\0';c++) {
 		glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
-	}	
+	}
 
 	//HUD title
 	glRasterPos2i(10, 25);
@@ -88,14 +121,14 @@ void Game::HUD()
 	//glPopMatrix();
 
 	free(test);
-}	
+}
 
 void Game::render()
 {
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-	glLoadIdentity(); 
+	glLoadIdentity();
 
-	gluLookAt( 20.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 20.0 
+	gluLookAt( 20.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 20.0
 			5.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 5.0
 			5.0, //CAMERA_R*cos(CAMERA_THETA*M_PI/180.0), 5.0 Eye
 		        0.0,  0.0,  1.0,  	// Center
@@ -116,15 +149,15 @@ void Game::render()
 }
 
 // Input replay functions
-void Game::mouse( int button, int state, int x, int y ) 
+void Game::mouse( int button, int state, int x, int y )
 {
 	input.mouse(button, state, x, y);
 }
-void Game::keyboard( unsigned char key, int x, int y ) 
+void Game::keyboard( unsigned char key, int x, int y )
 {
 	input.keyboard(key, x, y);
 }
-void Game::specialInput(int key, int x, int y) 
+void Game::specialInput(int key, int x, int y)
 {
 	input.specialInput(key, x, y);
 }
@@ -133,7 +166,7 @@ void Game::specialInput(int key, int x, int y)
 void Game::glutLockFrameRate(float desiredFrameRate)
 {
 	int millisecondsToWait = (int)((1.0 / desiredFrameRate) * 1000);
-	
+
 	int startTime = glutGet(GLUT_ELAPSED_TIME);
 
 	do{/*wait*/}

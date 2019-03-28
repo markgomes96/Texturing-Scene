@@ -19,9 +19,10 @@ void display( void )
 {
 #ifdef LEVEL
 	buildDisplay();
+	//g.minimap();
 	//buildCameraScene();
 	//buildHeritageHall();
-	g.HUD();
+	//g.HUD();
 
 	//cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl;
 //	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
