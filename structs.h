@@ -73,10 +73,5 @@ typedef struct colortype {
 	float green;
 	float blue;
 } colortype;
-
-typedef struct box {
-	vect3d point[4];
-	colortype color;	
-} box;*/
-//////////////////////////////////////////////
+*/
 #endif
