@@ -32,16 +32,19 @@ void buildHeritageHall(){
 //	glm::mat4 view;
 //	view = glm::lookAt(cameraPos, cameraPos+cameraFront, cameraUp);
 
+	gluLookAt(1.2, -0.2, 0.2, 1.2, 3.6, 0.7, 0.0, 0.0, 1.0);
 
-	//might be problem with where my origin is
-	centerX = (double) cameraPos.x + cameraFront.x;
-	centerY = (double) cameraPos.y + cameraFront.y;
-	centerZ = (double) cameraPos.z + cameraFront.z;
+	
+	if(camera == true){
+			//might be problem with where my origin is
+			centerX = (double) cameraPos.x + cameraFront.x;
+			centerY = (double) cameraPos.y + cameraFront.y;
+			centerZ = (double) cameraPos.z + cameraFront.z;
 
-	gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
-				centerX, centerY, centerZ,
-				(double)cameraUp.x, (double)cameraUp.y, (double)cameraUp.z); 	// Up */
-
+			gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
+						centerX, centerY, centerZ,
+						(double)cameraUp.x, (double)cameraUp.y, (double)cameraUp.z); 	// Up */
+	}
 	glEnable(GL_DEPTH_TEST);
 
 	

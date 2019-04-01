@@ -11,6 +11,7 @@ extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern double sensitivity;
 extern glm::vec3 cameraFront;
+extern bool camera;
 
 Input::Input() 
 { }
@@ -86,6 +87,12 @@ void Input::keyboard( unsigned char key, int x, int y )
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		exit(0);
+	}
+	if(key == 'g'){
+		camera = true;
+	}
+	if(key == 'r'){
+		camera = false;
 	}
 /*	else if (key == 'w' || key == 'W') {
 		//move up
