@@ -63,12 +63,13 @@ void buildCameraScene(){
 	glEnable(GL_SCISSOR_TEST);
 	glLoadIdentity();   	//call this before setting the viewing position
 
-	glViewport(0, 0, 800, 800);
+	//glViewport(0, 0, 800, 800);
 //	glScissor(0, 0, 800, 800);
-	//glScissor(600, 600, 200, 200);
+ glScissor(600, 600, 200, 200);
 	if(true){
 		showMinimap();
 	}
+	glViewport(0, 0, 800, 800);
 	glScissor(0,0,800,800);
 	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2
 		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2
