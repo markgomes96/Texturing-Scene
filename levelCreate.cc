@@ -13,39 +13,17 @@ extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 void showMinimap(){
 	//Function to generate minimap
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	//glLoadIdentity();
-	//glEnable(GL_SCISSOR_TEST);
-	//glMatrixMode(GL_PROJECTION);
-	//glLoadIdentity();
-	//gluOrtho2D(0.0, 100,0.0, 100);
 
 	glPushMatrix();
 	glEnable(GL_SCISSOR_TEST);
-	//glViewport(700, 700, 100, 100);
-	glScissor(600, 600, 200, 200);
+	glScissor(WINDOW_MAX_X-300, 50, 200, 200);
 	glLoadIdentity();
-	gluLookAt(1.0, 1.0, 1.0, centerX, centerY, centerZ, 0 ,0 ,1);
+	gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0 ,0 ,1);
 	glMatrixMode(GL_MODELVIEW);
-	//glPushMatrix();
-	//glLoadIdentity();
+
 	buildHeritageHall();
 	glPopMatrix();
 
-	/*glPushMatrix();
-	glViewport(0,0, 800, 800);
-	glLoadIdentity();
-  glPopMatrix();*/
-
-	//glMatrixMode(GL_MODELVIEW);
-	//glPopMatrix();
-	//glMatrixMode(GL_PROJECTION);
-	//glPopMatrix();
-
-	//Very bad idea
-	//glutInitWindowSize(100,100);
-	//glutInitWindowPosition(100,100);
-	//glutCreateWindow("minimap");
-	//gluPerspective(90, 1, 0, 100);
 }
 void buildDisplay(){
 
@@ -53,8 +31,6 @@ void buildDisplay(){
 	buildCameraScene();
 	buildHeritageHall();
 
-	//glPopMatrix();
-	//glPopMatrix();
 }
 void buildCameraScene(){
 
@@ -63,14 +39,13 @@ void buildCameraScene(){
 	glEnable(GL_SCISSOR_TEST);
 	glLoadIdentity();   	//call this before setting the viewing position
 
-	//glViewport(0, 0, 800, 800);
-//	glScissor(0, 0, 800, 800);
- glScissor(600, 600, 200, 200);
+
+ glScissor(WINDOW_MAX_X-200, 200, 200, 200);
 	if(true){
 		showMinimap();
 	}
-	glViewport(0, 0, 800, 800);
-	glScissor(0,0,800,800);
+	glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
+	glScissor(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
 	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2
 		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2
 		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),  // 0.2 Eye

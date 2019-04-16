@@ -4,6 +4,8 @@
 #include "includes.h"
 #include "game.h"
 
+extern void buildDisplay();
+extern void buildCameraScene();
 extern void buildHeritageHall();
 /*
 * Handles all functions of the game
@@ -39,49 +41,20 @@ void Game::character()
 
 }
 void Game::minimap(){
-	glTranslatef(10,0,0);
-	glPushMatrix();
-	float testNumber = 3.00;
-
-	char *test = (char*) malloc(64*sizeof(char));
-	sprintf(test, "STATS: %6.4f", testNumber);
-
-	char *HUDtitle = (char*) malloc(64*sizeof(char));
-	sprintf(HUDtitle, "HUD");
-
-	glMatrixMode(GL_PROJECTION);
-	glPushMatrix();
-	glLoadIdentity();
-	gluOrtho2D(0.0, 125.0, 0.0, 125.0);
-
-	glMatrixMode(GL_MODELVIEW);
-	glPushMatrix();
-	glLoadIdentity();
-
-	glDisable(GL_CULL_FACE);
-
-	glClear(GL_DEPTH_BUFFER_BIT);
+	buildCameraScene();
 	buildHeritageHall();
-	glColor3f(1.0, 1.0, 1.0);
-	glRecti(0.0, 0.0, 30.0, 30.0);
-
-	glPopMatrix();
-	glMatrixMode(GL_PROJECTION);
-	glPopMatrix();
-	glMatrixMode(GL_MODELVIEW);
-	glPopMatrix();
-
 }
 void Game::HUD()
 {
 	//displays HUD in a 2D square on the bottom left on the screen
+//	buildHeritageHall();
 	float testNumber = 3.00;
 
 	char *test = (char*) malloc(64*sizeof(char));
 	sprintf(test, "STATS: %6.4f", testNumber);
 
-	char *HUDtitle = (char*) malloc(64*sizeof(char));
-	sprintf(HUDtitle, "HUD");
+	/*char *HUDtitle = (char*) malloc(64*sizeof(char));
+	sprintf(HUDtitle, "HUD");*/
 
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
@@ -106,10 +79,10 @@ void Game::HUD()
 	}
 
 	//HUD title
-	glRasterPos2i(10, 25);
+	/*glRasterPos2i(10, 25);
 	for (c=HUDtitle;*c!='\0';c++) {
 		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
-	}
+	}*/
 
 	glColor3f(1.0, 1.0, 1.0);
 	glRecti(0.0, 0.0, 30.0, 30.0);
@@ -120,6 +93,7 @@ void Game::HUD()
 	glMatrixMode(GL_MODELVIEW);
 	//glPopMatrix();
 
+	//buildCameraScene();
 	free(test);
 }
 
