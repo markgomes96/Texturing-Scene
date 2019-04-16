@@ -4,3 +4,4 @@ Jarrett --> HUD and Full screen
 Phuc --> Work with Ed in physcis(thowring, collision..)
 Dylan --> Heritage hall creation
 Lauren --> Camera movement
+Maggi --> display cases and texturing
