@@ -29,5 +29,4 @@ void drawBox( struct box *face )
 
 
 }
-
 #endif
