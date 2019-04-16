@@ -7,12 +7,12 @@
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 
-Input::Input() 
+Input::Input()
 { }
 
 void Input::mouse( int button, int state, int x, int y )
-{ 	
-	switch (button) 
+{
+	switch (button)
 	{
         	case GLUT_LEFT_BUTTON:
 		    	if (state == GLUT_DOWN)
@@ -34,7 +34,7 @@ void Input::mouse( int button, int state, int x, int y )
 }
 
 void Input::keyboard( unsigned char key, int x, int y )
-{ 	
+{
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		exit(0);
@@ -45,7 +45,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 		if (CAMERA_THETA < 0.0) {
 			CAMERA_THETA += 360.0;
 		}
-		glutPostRedisplay();	
+		glutPostRedisplay();
 	}
 	else if (key == 's' || key == 'S') {
 		//move down
@@ -53,7 +53,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 		if (CAMERA_THETA > 0.0) {
 			CAMERA_THETA -= 360.0;
 		}
-		glutPostRedisplay();	
+		glutPostRedisplay();
 	}
 	else if (key == 'a' || key == 'A') {
 		//move left
@@ -61,7 +61,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 		if (CAMERA_PHI < 0.0) {
 			CAMERA_PHI += 360.0;
 		}
-		glutPostRedisplay();	
+		glutPostRedisplay();
 	}
 	else if (key == 'd' || key == 'D') {
 		//move right
@@ -69,8 +69,8 @@ void Input::keyboard( unsigned char key, int x, int y )
 		if (CAMERA_PHI > 0.0) {
 			CAMERA_PHI -= 360.0;
 		}
-		glutPostRedisplay();	
-		
+		glutPostRedisplay();
+
 	}
 	else if (key == '+') {
 		//move forward
@@ -86,7 +86,11 @@ void Input::keyboard( unsigned char key, int x, int y )
 		if (CAMERA_R >= 30.0) {
 			CAMERA_R = 30.0;
 		}
-	}	
+	}
+	else if (key == 27) {
+		//Exit program when pressed. We should probably put a menu here.
+		exit(0);
+	}
 }
 
 void Input::specialInput(int key, int x, int y)
@@ -98,7 +102,7 @@ void Input::specialInput(int key, int x, int y)
 			centerZ += 1.0;
 			glutPostRedisplay();
 		break;
-			
+
 		case GLUT_KEY_DOWN:
 			//pan down
 			centerZ -= 1.0;
@@ -107,46 +111,46 @@ void Input::specialInput(int key, int x, int y)
 
 		case GLUT_KEY_RIGHT:
 			//pan right
-			if (centerX > 30.0 && centerY > -30.0) { 
+			if (centerX > 30.0 && centerY > -30.0) {
 				centerY -= 1.0;
-				
+
 			}
 			else if (centerY > 30.0) {
 				centerX += 1.0;
-			}	
+			}
 			else if (centerY < -30.0) {
 				centerY += 1.0;
 				centerX -= 1.0;
-			}	
-			else {		
+			}
+			else {
 				centerY += 1.0;
 				centerX -= 1.0;
-			}	
+			}
 			glutPostRedisplay();
 		break;
-			
+
 		case GLUT_KEY_LEFT:
 			//pan left
 			//centerX += 1.0;
-			if (centerX > 30.0 && centerY < 30.0) { 
+			if (centerX > 30.0 && centerY < 30.0) {
 				centerY += 1.0;
-				
+
 			}
 			else if (centerX < -30.0 && centerY > 30.0) {
 				centerY -= 1.0;
 				centerX += 1.0;
-			}	
+			}
 			else if (centerY > 30.0) {
 				centerX -= 1.0;
-			}		
-			else {		
+			}
+			else {
 				centerY -= 1.0;
 				centerX += 1.0;
 			}
 
 			glutPostRedisplay();
 		break;
-		
+
 		case GLUT_KEY_PAGE_UP:
 			//move forward
 			CAMERA_R -= 0.5;
@@ -162,7 +166,7 @@ void Input::specialInput(int key, int x, int y)
 			if (CAMERA_R >= 30.0) {
 				CAMERA_R = 30.0;
 			}
-		break;	
+		break;
 	}
 }
 
