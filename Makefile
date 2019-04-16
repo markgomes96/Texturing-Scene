@@ -53,6 +53,9 @@ drawBox.o : drawBox.cc $(INCLUDES) $(HEADERS)
 drawCase.o : drawCase.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) -c drawCase.cc
 
+texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) -c texturing.cc
+
 main.o : main.cc $(OBJS)
 	$(C++) $(CCFLAGS) $(CF) -c main.cc 
 
