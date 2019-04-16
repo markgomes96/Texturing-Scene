@@ -16,6 +16,6 @@ double CAMERA_PHI = 85.5;
 
 Game g;
 
-GLuint textureID[1];
+GLuint textureID[2];
 
 #endif

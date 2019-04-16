@@ -23,6 +23,9 @@ void Game::init()
 	cube = TestObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 1.0, 1.0), false);
 	golist.push_back(floor);
 	golist.push_back(cube);
+
+	loadTextures();
+	cout << "init" << endl;
 }
 
 void Game::update() 

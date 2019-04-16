@@ -23,10 +23,11 @@ void buildHeritageHall(void){
 		centerZ,
         0,0,1 //0.7 Center
 );
+	//loadTextures();
 
+	//glEnable(GL_TEXTURE_2D);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_TEXTURE_2D);
-	loadTextures();
+	//glEnable(GL_TEXTURE_2D);
 
 //floor//
 	//glEnable(GL_TEXTURE_2D);
@@ -48,7 +49,7 @@ void buildHeritageHall(void){
 	glEnd();
 	glPopMatrix();
 
-	glDisable(GL_TEXTURE_2D);
+	//glDisable(GL_TEXTURE_2D);
 
 	glPushMatrix();
 	glPolygonMode(GL_FRONT, GL_FILL);
