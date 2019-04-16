@@ -13,4 +13,3 @@ Dylan --> Heritage hall creation
 Lauren --> Camera movement
 
 Maggi --> Display Cases and Texturing
-
