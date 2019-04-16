@@ -11,7 +11,7 @@
 * Handles all functions of the game
 */
 
-class Game 
+class Game
 {
 private:
 
@@ -25,7 +25,7 @@ public:
 
 	TestObj floor;				// phys obj test vars
 	TestObj cube;
-	
+
 	// Constructor
 	Game();
 
@@ -33,9 +33,10 @@ public:
 	void init();
 	void update();
 	void character();
+	void minimap();
 	void HUD();
 	void render();
-	
+
 
 	// Input relay functions
 	void mouse( int button, int state, int x, int y );
