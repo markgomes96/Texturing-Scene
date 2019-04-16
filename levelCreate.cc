@@ -7,8 +7,9 @@
 #include "structs.h"
 #include "prototypes.h"
 
-extern double centerX, centerY, centerZ;
-extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+//extern double centerX, centerY, centerZ;
+//extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+//extern GLuint textureID[45];
 
 void buildHeritageHall(void){
 
@@ -24,19 +25,30 @@ void buildHeritageHall(void){
 );
 
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
+	loadTextures();
 
 //floor//
+	//glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textureID[0]);	
+
 	glPushMatrix();
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 	glColor3f(1.0, 0.0, 0.0);
 	glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 0, 0, 0 );
-		glVertex3f ( 7.3152, 0, 0 );	
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 7.3152, 0, 0 );
+		glTexCoord2d(1.0, 1.0);	
 		glVertex3f ( 7.3152, 55.1688, 0 );
+		glTexCoord2d(1.0, 0.0);
 		glVertex3f ( 0, 55.1688, 0 );
 	glEnd();
 	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
 
 	glPushMatrix();
 	glPolygonMode(GL_FRONT, GL_FILL);
