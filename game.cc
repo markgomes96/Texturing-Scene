@@ -4,7 +4,9 @@
 #include "includes.h"
 #include "game.h"
 
-
+extern void buildDisplay();
+extern void buildCameraScene();
+extern void buildHeritageHall();
 /*
 * Handles all functions of the game
 */
@@ -46,19 +48,36 @@ void Game::update()
 
 void Game::character()
 {
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
+
+
+<<<<<<< HEAD
+=======
 }
-
+void Game::minimap(){
+	buildCameraScene();
+	buildHeritageHall();
+}
+>>>>>>> master
 void Game::HUD()
 {
 	//displays HUD in a 2D square on the bottom left on the screen
+//	buildHeritageHall();
 	float testNumber = 3.00;
 
 	char *test = (char*) malloc(64*sizeof(char));
 	sprintf(test, "STATS: %6.4f", testNumber);
 
+<<<<<<< HEAD
 	char *HUDtitle = (char*) malloc(64*sizeof(char));
 	sprintf(HUDtitle, "HUD");
+=======
+	/*char *HUDtitle = (char*) malloc(64*sizeof(char));
+	sprintf(HUDtitle, "HUD");*/
+>>>>>>> master
 
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
@@ -83,10 +102,10 @@ void Game::HUD()
 	}
 
 	//HUD title
-	glRasterPos2i(10, 25);
+	/*glRasterPos2i(10, 25);
 	for (c=HUDtitle;*c!='\0';c++) {
 		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, *c);
-	}
+	}*/
 
 	glColor3f(1.0, 1.0, 1.0);
 	glRecti(0.0, 0.0, 30.0, 30.0);
@@ -97,6 +116,7 @@ void Game::HUD()
 	glMatrixMode(GL_MODELVIEW);
 	//glPopMatrix();
 
+	//buildCameraScene();
 	free(test);
 }
 
@@ -105,11 +125,19 @@ void Game::render()
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 
+<<<<<<< HEAD
 	gluLookAt( 0.0 /*20.0*/, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 20.0
 			   20.0 /*0.0*/ /*5.0*/, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 5.0
 			   0.0 /*0.0*/ /*5.0*/, //CAMERA_R*cos(CAMERA_THETA*M_PI/180.0), 5.0 Eye
 		       0.0,  0.0,  1.0,  	// Center
 		       0.0,  0.0,  1.0); 	// Up
+=======
+	gluLookAt( 20.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 20.0
+			5.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 5.0
+			5.0, //CAMERA_R*cos(CAMERA_THETA*M_PI/180.0), 5.0 Eye
+		        0.0,  0.0,  1.0,  	// Center
+		        0.0,  0.0,  1.0); 	// Up
+>>>>>>> master
 
 	glEnable(GL_DEPTH_TEST);
 

@@ -25,7 +25,10 @@ public:
 
 	TestObj floor;				// phys obj test vars
 	TestObj cube;
+<<<<<<< HEAD
 	TestObj cube2;
+=======
+>>>>>>> master
 
 	// Constructor
 	Game();
@@ -34,6 +37,7 @@ public:
 	void init();
 	void update();
 	void character();
+	void minimap();
 	void HUD();
 	void render();
 
