@@ -90,7 +90,10 @@ void Input::keyboard( unsigned char key, int x, int y )
 	} 
 	else if ( key == 't' ) { 
 		//Throw Object 
-		g.createProjectile( 1,1,6,10,10,10,1 ); 
+		g.createProjectile( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 
+		                    CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 
+		                    CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
+		                    0.1,0.1,0.1);
 	}
 
 

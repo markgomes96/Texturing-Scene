@@ -11,9 +11,14 @@
 PhysObj::PhysObj() 
 { 
 	velocity = vect3(0.0, 0.0, 0.0);
-	acceleration = vect3(0.0, 0.0, -9.8);		// initial gravity
+	acceleration = vect3(0.0, 0.0, -0.01);		// initial gravity
 }
 
+void PhysObj::updateVelo(float x, float y, float z){
+    velocity.x += x;
+    velocity.y += y;
+    velocity.z += z;
+}
 void PhysObj::updatePhysics()
 {
 	// Update bounds to new world position

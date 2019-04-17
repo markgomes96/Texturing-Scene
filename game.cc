@@ -18,14 +18,15 @@ void Game::init()
 	physEng = PhysicsEngine(frameRate);
 
 	// ***Test objects for phyiscs***
-	floor = TestObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
+	floor = TestObj(vertex(0.0, 0.0, 0.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
 	cube = TestObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 3.0, 1.0), false);
-	golist.push_back(floor);
-	golist.push_back(cube);
+//	golist.push_back(floor);
+//	golist.push_back(cube);
 }
 
 void Game::createProjectile(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
 	TestObj projectile = TestObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
+	projectile.updateVelo(0.0,-0.2,0.0);
 	golist.push_back(projectile);
 }
 void Game::update() 
