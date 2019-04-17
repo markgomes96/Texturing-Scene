@@ -68,7 +68,7 @@ int main(int argc, char** argv)
 	//set up opengl
 	glutInit(&argc, argv);
 	init(WINDOW_MAX_X, WINDOW_MAX_Y, WINDOW_POSITION_X, WINDOW_POSITION_Y);
-
+    glewInit();
 	g.init();
 
 	glutMouseFunc(mouse);		//input functions

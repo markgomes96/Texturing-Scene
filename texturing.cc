@@ -44,7 +44,7 @@ cout << "hello" << endl;
 	
 	//cout << textureID[0] << endl;
 
-	glBindTexture(GL_TEXTURE_2D, 0);	
+//	glBindTexture(GL_TEXTURE_2D, 0);	
 }
 
 

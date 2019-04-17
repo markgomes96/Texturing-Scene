@@ -27,13 +27,16 @@ void buildHeritageHall(void){
 
 	//glEnable(GL_TEXTURE_2D);
 	glEnable(GL_DEPTH_TEST);
-	//glEnable(GL_TEXTURE_2D);
+	glEnable(GL_TEXTURE_2D);
 
 //floor//
 	//glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, textureID[0]);	
+	//glBindTexture(GL_TEXTURE_2D, textureID[0]);	
 
 	glPushMatrix();
+cout << "before bind" << endl;
+	glBindTexture(GL_TEXTURE_2D, textureID[0]);	
+cout << "after bind" << endl;
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 	glColor3f(1.0, 0.0, 0.0);
@@ -48,7 +51,7 @@ void buildHeritageHall(void){
 		glVertex3f ( 0, 55.1688, 0 );
 	glEnd();
 	glPopMatrix();
-
+cout << "after texture" << endl;
 	//glDisable(GL_TEXTURE_2D);
 
 	glPushMatrix();
@@ -1302,6 +1305,8 @@ glTranslatef(0.0, -7.3152, 0.0);
 	glPopMatrix();
 glPopMatrix();
 
+glDisable(GL_DEPTH_TEST);
+glDisable(GL_TEXTURE_2D);
 ///////////////////////////////////////////
 //objects inside the level//
 
