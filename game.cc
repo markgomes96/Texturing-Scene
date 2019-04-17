@@ -110,6 +110,7 @@ void Game::render()
 	glColor3f(0.0,1.0,0.0);
 
 	// Physics test
+//	printf("Fuck\n");
 	for(int i = 0; i < golist.size(); i++)
 	{
 		drawBox(&golist[i].faces[0], &golist[i].collCenter);	// draw faces
@@ -171,7 +172,6 @@ void Game::drawBox( struct box *face, vertex *position )
 		}
 	glEnd();
 	}
-
 	glPopMatrix();
 }
 

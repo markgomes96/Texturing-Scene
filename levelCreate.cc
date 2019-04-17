@@ -1455,8 +1455,15 @@ glPopMatrix();
 	 glTranslatef(1.85, 15.6275, 0.0);
 	 glScalef(0.15, 0.4, 0.6);
 	 drawBox(&faces[0]);
-	glPopMatrix();
-////////////////////////////////////////////////////
+     glPopMatrix();
+
+     for(int i = 0; i < g.golist.size(); i++)
+     {
+         g.drawBox(&g.golist[i].faces[0], &g.golist[i].collCenter);    // draw faces
+         g.drawBounds(&g.golist[i].bounds[0]);                       // draw box collider
+     }
+
+     ////////////////////////////////////////////////////
 //food court area
 
 

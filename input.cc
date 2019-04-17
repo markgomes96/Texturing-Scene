@@ -90,7 +90,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 	} 
 	else if ( key == 't' ) { 
 		//Throw Object 
-		g.createProjectile( 1,1,6,1,1,1,1 ); 
+		g.createProjectile( 1,1,6,10,10,10,1 ); 
 	}
 
 
