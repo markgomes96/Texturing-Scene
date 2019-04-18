@@ -10,7 +10,7 @@ extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern float sensitivity;
-extern glm::vec3 cameraFront, cameraPos, cameraUp, cameraDirection;
+extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern bool camera;
 
 Input::Input() 
@@ -72,22 +72,33 @@ void Input::keyboard( unsigned char key, int x, int y )
 		camera = false;
 	}
 	if(key == 'w'){
-		cameraDirection = cameraFront - cameraPos;
+		cameraDirection = cameraTarget - cameraPos;
 		cameraDirection = glm::normalize(cameraDirection);
 		cameraPos.x = cameraPos.x + sensitivity*cameraDirection.x;
 		cameraPos.y = cameraPos.y + sensitivity*cameraDirection.y;
+		cameraTarget.x = cameraTarget.x + sensitivity*cameraDirection.x;
+		cameraTarget.y = cameraTarget.y + sensitivity*cameraDirection.y;
+	
 	}
 	if(key == 's'){
-		cameraDirection = cameraFront - cameraPos;
+		cameraDirection = cameraTarget - cameraPos;
 		cameraDirection = glm::normalize(cameraDirection);
 		cameraPos.x = cameraPos.x - sensitivity*cameraDirection.x;
 		cameraPos.y = cameraPos.y - sensitivity*cameraDirection.y;
+		cameraTarget.x = cameraTarget.x - sensitivity*cameraDirection.x;
+		cameraTarget.y = cameraTarget.y - sensitivity*cameraDirection.y;
 	}
 	if(key == 'a'){
-		 cameraPos = cameraPos - glm::normalize(glm::cross(cameraFront, cameraUp)) * sensitivity;
+		 cameraDirection = cameraTarget - cameraPos;
+		 cameraDirection = glm::normalize(cameraDirection);
+		 cameraPos = cameraPos - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+		 cameraTarget = cameraTarget - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
 	}
 	if(key == 'd'){
-		cameraPos = cameraPos + glm::normalize(glm::cross(cameraFront, cameraUp)) * sensitivity;
+		cameraDirection = cameraTarget - cameraPos;
+		cameraDirection = glm::normalize(cameraDirection);
+		cameraPos = cameraPos + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+		cameraTarget = cameraTarget + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
 	}
 
 }

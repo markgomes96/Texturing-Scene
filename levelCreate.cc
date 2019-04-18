@@ -20,8 +20,9 @@ void buildHeritageHall(void){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity(); 
 
-	gluLookAt(3.8, 0.0, 2.0, 3.8, 4.0, 2.0, 0.0, 0.0, 1.0);
-
+	if(camera == false){
+		gluLookAt(3.8, 0.0, 2.0, 3.8, 4.0, 2.0, 0.0, 0.0, 1.0);
+	}
 	
 	if(camera == true){
 			//might be problem with where my origin is
@@ -33,9 +34,9 @@ void buildHeritageHall(void){
 			cout << cameraTarget.x << " " << cameraTarget.y << " " << cameraTarget.z << endl;
 
 			gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
-						(double) cameraTarget.x,// + cameraFront.x,
-						(double) cameraTarget.y, //+ cameraFront.y,
-						(double) cameraTarget.z,// + cameraFront.z,
+						(double) cameraTarget.x, // + cameraFront.x,
+						(double) cameraTarget.y, // + cameraFront.y,
+						(double) cameraTarget.z, // + cameraFront.z,
 						(double) up.x, (double) up.y, (double) up.z); 	// Up */
 	}
 	glEnable(GL_DEPTH_TEST);

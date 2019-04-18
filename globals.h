@@ -19,7 +19,6 @@ glm::vec3 cameraDirection = glm::normalize(cameraPos-cameraTarget);
 
 glm::vec3 up = glm::vec3(0.0f, 0.0f, 1.0f);
 glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
-glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
 
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, 1.0f); //this keeps it upright
 float fov = 45.0f;
@@ -31,7 +30,7 @@ double mouse_dx = 0;
 double mouse_dy = 0;
 double x_rotat = 0.0;
 double y_rotat = 0.0;
-float sensitivity = 0.05;
+float sensitivity = 0.1;
 
 extern void buildHeritageHall(void);
 void defineBox( struct box* );
