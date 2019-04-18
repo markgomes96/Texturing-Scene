@@ -1507,10 +1507,6 @@ glDisable(GL_TEXTURE_2D);
 //objects inside the level//
 
 //display cases "rough"
-<<<<<<< levelCreate.cc
-drawDisplayCase();
-////////////////////////////////////////////////////
-=======
 
    //defining a cube
    struct box faces[6];
@@ -1585,7 +1581,6 @@ drawDisplayCase();
      }
 
      ////////////////////////////////////////////////////
->>>>>>> levelCreate.cc
 //food court area
 
 
