@@ -62,6 +62,14 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//Throw Object 
 		keyarr['t'] = PUSHED;
 	}
+	if (( key == 'z' ) || (key == 'Z')){ 
+		//Make object smaller
+		keyarr['z'] = PUSHED;
+	}
+	if (( key == 'x' ) || (key == 'X')){ 
+		//Make object bigger
+		keyarr['x'] = PUSHED;
+	}
 #ifdef DEV
     if ( key == 'e' || key == 'E'){
         // Create a box where the eye is
@@ -97,6 +105,14 @@ void Input::keyup( unsigned char key, int x, int y )
    	if (( key == 't' ) || (key == 'T')){ 
 		//Throw Object 
 		keyarr['t'] = NOTPUSHED;
+	}
+	if (( key == 'z' ) || (key == 'Z')){ 
+		//Make object smaller
+		keyarr['z'] = NOTPUSHED;
+	}
+	if (( key == 'x' ) || (key == 'X')){ 
+		//Make object bigger
+		keyarr['x'] = NOTPUSHED;
 	}
 #ifdef DEV
     if ( key == 'e' || key == 'E'){

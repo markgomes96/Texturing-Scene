@@ -8,6 +8,7 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double scaleX, scaleY, scaleZ ;
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 extern int jump;
 extern key_state keyarr[127];
@@ -80,8 +81,17 @@ void buildCameraScene(){
 			CAMERA_PHI -= 360.0;
 		}
 		glutPostRedisplay();
-
 	}
+    if ( keyarr['z']){
+        scaleX *= 1.1;
+        scaleY *= 1.1;
+        scaleZ *= 1.1;
+    }
+ if ( keyarr['x']){
+        scaleX /= 1.1;
+        scaleY /= 1.1;
+        scaleZ /= 1.1;
+    }
 	if ( keyarr['t']){
 		//Throw Object
 		g.createProjectile( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI
@@ -89,7 +99,7 @@ void buildCameraScene(){
 				CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI
 					/180.0),
 				CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
-				0.1,0.1,0.1);
+				scaleX, scaleY, scaleZ);
 	}
 #ifdef DEV
 	if ( keyarr['e']){
