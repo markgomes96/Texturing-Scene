@@ -59,6 +59,14 @@ typedef struct box {
 	colortype color;	
 } box;
 
+typedef struct object { 
+	std::string name; 
+	vertex position; 
+	bool isBox; 
+	std::vector<vertex> vertices;    
+	colortype color;
+} object; 
+
 //structs to create cubes for display cases//
 /*
 typedef struct vertex {

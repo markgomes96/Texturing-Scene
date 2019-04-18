@@ -3,6 +3,7 @@
 
 #include "includes.h"
 #include "game.h"
+#include "prototypes.h"
 
 extern void buildDisplay();
 extern void buildCameraScene();
@@ -36,11 +37,16 @@ void Game::init()
 
 	golist.push_back(floor);
 	golist.push_back(cube);
+
+	loadTextures();
+	cout << "init" << endl;
+
 	golist.push_back(cube2);
 	floor = TestObj(vertex(0.0, 0.0, 0.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
 	cube = TestObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 3.0, 1.0), false);
 //	golist.push_back(floor);
 //	golist.push_back(cube);*/
+
 }
 
 // Create throwing object
@@ -131,6 +137,7 @@ void Game::HUD()
 
 void Game::render()
 {
+/*
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 
@@ -151,7 +158,9 @@ void Game::render()
 		drawBounds(&golist[i].bounds[0]);						// draw box collider
 	}
 
-	glutSwapBuffers();
+	glutSwapBuffers();*/
+
+buildHeritageHall();
 }
 
 // Input replay functions
@@ -170,6 +179,14 @@ void Game::keyup( unsigned char key, int x, int y )
 void Game::specialInput(int key, int x, int y)
 {
 	input.specialInput(key, x, y);
+}
+
+void Game::mouseMovement(int x, int y){
+	input.mouseMovement(x, y);
+}
+
+void Game::passiveMouseMovement(int x, int y){
+	input.passiveMouseMovement(x, y);
 }
 
 // Physics / Framerate

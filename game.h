@@ -22,6 +22,7 @@ public:
 
 	float frameRate;			// phys-time vars
 	vector<TestObj> golist;		// game object list
+	vector<object>  SceneObjects; 
 
 	TestObj floor;				// phys obj test vars
 	TestObj cube;
@@ -47,6 +48,8 @@ public:
 	void keyup( unsigned char key, int x, int y );
 
 	void specialInput(int key, int x, int y);
+	void passiveMouseMovement(int x, int y);
+	void mouseMovement(int x, int y);
 
 	// Phys-Time functions
 	void glutLockFrameRate(float desiredFrameRate);

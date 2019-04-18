@@ -7,12 +7,39 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double prev_mouse_x, prev_mouse_y;
+extern double mouse_dx, mouse_dy;
+extern double x_rotat, y_rotat;
+extern float sensitivity;
+extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
+extern bool camera;
 extern int jump;
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 
+
 Input::Input()
 { }
+
+void Input::passiveMouseMovement(int x, int y){
+	
+	y = 800 - y; //this needs to be dynamic eventually
+
+	//calculate change in x and y
+	mouse_dx = x - prev_mouse_x; 
+	mouse_dy = y- prev_mouse_y;
+
+	//reset prev mouse x and y
+	prev_mouse_x = x;
+	prev_mouse_y = y;
+
+
+	
+}
+
+void Input::mouseMovement(int x, int y){
+	//cout << "mouse moved while buttons were pressed" << endl;
+}
 
 void Input::mouse( int button, int state, int x, int y )
 {
@@ -43,21 +70,36 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//exit the program
 		keyarr['q'] = PUSHED;
 	}
-    if (key == 'w' || key == 'W') {
-    	//move forward
-		keyarr['w'] = PUSHED;
+	if(key == 'w'){
+		cameraDirection = cameraTarget - cameraPos;
+		cameraDirection = glm::normalize(cameraDirection);
+		cameraPos.x = cameraPos.x + sensitivity*cameraDirection.x;
+		cameraPos.y = cameraPos.y + sensitivity*cameraDirection.y;
+		cameraTarget.x = cameraTarget.x + sensitivity*cameraDirection.x;
+		cameraTarget.y = cameraTarget.y + sensitivity*cameraDirection.y;
+	
 	}
-	if (key == 's' || key == 'S') {
-		keyarr['s'] = PUSHED;
+	if(key == 's'){
+		cameraDirection = cameraTarget - cameraPos;
+		cameraDirection = glm::normalize(cameraDirection);
+		cameraPos.x = cameraPos.x - sensitivity*cameraDirection.x;
+		cameraPos.y = cameraPos.y - sensitivity*cameraDirection.y;
+		cameraTarget.x = cameraTarget.x - sensitivity*cameraDirection.x;
+		cameraTarget.y = cameraTarget.y - sensitivity*cameraDirection.y;
 	}
-	if (key == 'a' || key == 'A') {
-		//move left
-		keyarr['a'] = PUSHED;
+	if(key == 'a'){
+		 cameraDirection = cameraTarget - cameraPos;
+		 cameraDirection = glm::normalize(cameraDirection);
+		 cameraPos = cameraPos - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+		 cameraTarget = cameraTarget - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
 	}
-    if (key == 'd' || key == 'D') {
-		//move right
-		keyarr['d'] = PUSHED;
+	if(key == 'd'){
+		cameraDirection = cameraTarget - cameraPos;
+		cameraDirection = glm::normalize(cameraDirection);
+		cameraPos = cameraPos + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+		cameraTarget = cameraTarget + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
 	}
+
    	if (( key == 't' ) || (key == 'T')){
 		//Throw Object
 		keyarr['t'] = PUSHED;
@@ -92,21 +134,6 @@ void Input::keyup( unsigned char key, int x, int y )
 		//exit the program
 		keyarr['q'] = NOTPUSHED;
 	}
-    if (key == 'w' || key == 'W') {
-    	//move forward
-		keyarr['w'] = NOTPUSHED;
-	}
-	if (key == 's' || key == 'S') {
-		keyarr['s'] = NOTPUSHED;
-	}
-	if (key == 'a' || key == 'A') {
-		//move left
-		keyarr['a'] = NOTPUSHED;
-	}
-    if (key == 'd' || key == 'D') {
-		//move right
-		keyarr['d'] = NOTPUSHED;
-	}
    	if (( key == 't' ) || (key == 'T')){
 		//Throw Object
 		keyarr['t'] = NOTPUSHED;
@@ -131,80 +158,7 @@ void Input::keyup( unsigned char key, int x, int y )
 }
 void Input::specialInput(int key, int x, int y)
 {
-	switch(key)
-	{
-		case GLUT_KEY_UP:
-			//pan up
-			centerZ += 1.0;
-			glutPostRedisplay();
-		break;
 
-		case GLUT_KEY_DOWN:
-			//pan down
-			centerZ -= 1.0;
-			glutPostRedisplay();
-		break;
-
-		case GLUT_KEY_RIGHT:
-			//pan right
-			if (centerX > 30.0 && centerY > -30.0) {
-				centerY -= 1.0;
-
-			}
-			else if (centerY > 30.0) {
-				centerX += 1.0;
-			}
-			else if (centerY < -30.0) {
-				centerY += 1.0;
-				centerX -= 1.0;
-			}
-			else {
-				centerY += 1.0;
-				centerX -= 1.0;
-			}
-			glutPostRedisplay();
-		break;
-
-		case GLUT_KEY_LEFT:
-			//pan left
-			//centerX += 1.0;
-			if (centerX > 30.0 && centerY < 30.0) {
-				centerY += 1.0;
-
-			}
-			else if (centerX < -30.0 && centerY > 30.0) {
-				centerY -= 1.0;
-				centerX += 1.0;
-			}
-			else if (centerY > 30.0) {
-				centerX -= 1.0;
-			}
-			else {
-				centerY -= 1.0;
-				centerX += 1.0;
-			}
-
-			glutPostRedisplay();
-		break;
-	    #ifdef DEV
-		case GLUT_KEY_PAGE_UP:
-   		//move up
-		CAMERA_THETA -= 1.0;
-		if (CAMERA_THETA < 0.0) {
-			CAMERA_THETA += 360.0;
-		}
-		glutPostRedisplay();
-		break;
-		case GLUT_KEY_PAGE_DOWN:
-				//move down
-		CAMERA_THETA += 1.0;
-		if (CAMERA_THETA > 0.0) {
-			CAMERA_THETA -= 360.0;
-		}
-		glutPostRedisplay();
-		break;
-        #endif
-	}
 }
 
 #endif

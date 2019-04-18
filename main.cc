@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "prototypes.h"
 #include "game.h"
 
 // Constant values for window size and place
@@ -14,10 +15,14 @@ extern void buildCameraScene(void);
 extern void buildDisplay(void);
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double x_rotat, y_rotat;
 
 void display( void )
 {
 #ifdef LEVEL
+	
+	buildHeritageHall();
+	g.HUD();
 	buildDisplay();
 	g.HUD();
 
@@ -26,6 +31,7 @@ void display( void )
 #else
 	g.render();
 #endif
+
 }
 
 void update( void )
@@ -73,6 +79,8 @@ void init(int window_width, int window_height, int window_position_x, int window
 // Relay functions for input handling
 void mouse( int button, int state, int x, int y ) { g.mouse(button, state, x, y); }
 void keyboard( unsigned char key, int x, int y ) { g.keyboard(key, x, y); }
+void passiveMouseMovement(int x, int y) {g.passiveMouseMovement(x, y);}
+void mouseMovement(int x, int y) {g.mouseMovement(x, y);}
 void keyup( unsigned char key, int x, int y ) { g.keyup(key, x, y); }
 void specialInput(int key, int x, int y) {g.specialInput(key, x, y); }
 
@@ -90,13 +98,18 @@ int main(int argc, char** argv)
 	}
 
 	init(WINDOW_MAX_X, WINDOW_MAX_Y, WINDOW_POSITION_X, WINDOW_POSITION_Y);
-
+    glewInit();
 	g.init();
 
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
 	glutKeyboardUpFunc(keyup);
 	glutSpecialFunc(specialInput);
+//	loadVerticesFileData( "vertices" ); //file name is "vertices"
+	//initalize mouse movement function
+	glutPassiveMotionFunc(passiveMouseMovement);
+	glutMotionFunc(mouseMovement);
+
 
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame
@@ -104,3 +117,5 @@ int main(int argc, char** argv)
 
 	glutMainLoop();
 }
+
+
