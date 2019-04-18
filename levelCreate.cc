@@ -8,7 +8,7 @@
 #include "prototypes.h"
 
 
-extern glm::vec3 cameraPos, cameraTarget, up;
+extern glm::vec3 cameraPos, cameraTarget, up, cameraFront;
 
 
 
@@ -113,9 +113,9 @@ void buildHeritageHall(void){
 	glLoadIdentity(); 
 	
 	gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
-			(double) cameraTarget.x, // + cameraFront.x,
-			(double) cameraTarget.y, // + cameraFront.y,
-			(double) cameraTarget.z, // + cameraFront.z,
+			(double) cameraTarget.x,// + cameraFront.x,
+			(double) cameraTarget.y,// + cameraFront.y,
+			(double) cameraTarget.z,// + cameraFront.z,
 			(double) up.x, (double) up.y, (double) up.z); 	// Up */
 
 

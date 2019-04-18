@@ -11,19 +11,20 @@ extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern float sensitivity;
-extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
+extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection; 
 extern bool camera;
 extern int jump;
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
-
+extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 
 Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
-	
-	y = 800 - y; //this needs to be dynamic eventually
+	float sensitivity = 1.0f;
+
+	y = WINDOW_MAX_Y  - y; //this needs to be dynamic eventually
 
 	//calculate change in x and y
 	mouse_dx = x - prev_mouse_x; 
@@ -33,8 +34,30 @@ void Input::passiveMouseMovement(int x, int y){
 	prev_mouse_x = x;
 	prev_mouse_y = y;
 
+	mouse_dx = mouse_dx * sensitivity;
+	mouse_dy = mouse_dy * sensitivity;
 
+	cout << mouse_dx << " " << mouse_dy << endl;
+
+	float yaw, pitch;
+	yaw = yaw + mouse_dx;
+	pitch = pitch + mouse_dy;
 	
+	if(pitch > 89.0){
+		pitch = 89.0;
+	}
+	if(pitch < -89.0){
+		pitch = 89.0;
+	}
+
+	cameraFront.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
+	cameraFront.y = sin(glm::radians(pitch));
+	cameraFront.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+
+	cameraFront = glm::normalize(cameraFront);
+	cameraTarget = cameraTarget + cameraFront;
+
+	//cout << cameraTarget.x << " " << cameraTarget.y << " " << cameraTarget.z << endl;
 }
 
 void Input::mouseMovement(int x, int y){
@@ -67,7 +90,7 @@ void Input::mouse( int button, int state, int x, int y )
 void Input::keyboard( unsigned char key, int x, int y )
 {
 	if ( key == 'q' || key == 'Q') {
-		//exit the program
+		exit(0);
 		keyarr['q'] = PUSHED;
 	}
 	if(key == 'w'){
