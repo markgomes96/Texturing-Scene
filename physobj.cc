@@ -8,10 +8,13 @@
 * Makes an object have physical properties
 */
 
-PhysObj::PhysObj() 
-{ 
+PhysObj::PhysObj()
+{
 	velocity = vect3(0.0, 0.0, 0.0);
 	acceleration = vect3(0.0, 0.0, -9.8);		// initial gravity
+
+	elasticity = 0.2;
+	stationary = false;
 }
 
 void PhysObj::updatePhysics()
@@ -101,6 +104,25 @@ void PhysObj::createBounds(box *face, vertex wpos)		// create cube bound around 
 			}
 		}
 	}
+
+	// store potential largest distances for vertices
+	float dist[] = {(wzm[1] - collCenter.z), (wym[1] - collCenter.y), (wxm[1] - collCenter.x)};
+	float max = -1.0, max2 = -1.0;
+	// find two greatest distances from center
+	for(int i = 0; i < 3; i++)
+	{
+		if(dist[i] > max)
+		{
+			max2 = max;
+			max = dist[i];
+		}
+		else if(dist[i] > max2)
+		{
+			max2 = dist[i];
+		}
+	}
+	csDist = sqrt(pow(max, 2) + pow(max2, 2));
+	prevPos = collCenter;
 }
 
 #endif

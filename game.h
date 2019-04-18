@@ -25,6 +25,10 @@ public:
 
 	TestObj floor;				// phys obj test vars
 	TestObj cube;
+<<<<<<< HEAD
+	TestObj cube2;
+=======
+>>>>>>> master
 
 	// Constructor
 	Game();
