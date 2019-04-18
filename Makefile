@@ -16,8 +16,8 @@ C++ = g++
 #LDLIBS =  -lglut -lGL -lGLU -lX11 -lm
 
 INCLUDES   = includes.h
-HEADERS    = structs.h game.h input.h globals.h prototypes.h
-OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o drawCase.o texturing.o objectdata.o
+HEADERS    = structs.h game.h input.h globals.h ########prototypes.h
+OBJS 	   = game.o input.o defineBox.o levelCreate.o drawBox.o physobj.o testobj.o physicsengine.o objectdata.o
 
 CF = -DLEVEL	#-DLEVEL -> to switch to level scene
 DF = -DDEV

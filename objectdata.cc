@@ -9,26 +9,26 @@
 extern Game g; 
 using namespace std; 
 
-void loadVertex( string line, vertex& ver ){ 
-            std::string buffer;
-	    cout << " Buffer is: " << buffer << endl; 
-            size_t pos = 0;
+void loadVertex( string buffer, vertex& ver ){ 
 
-            pos = buffer.find(",") != std::string::npos; 
-            buffer = buffer.substr( 0, pos );
-            ver.x =  atoi(buffer.c_str());
+	    string token; 
+            size_t pos = 0;
+	    buffer.erase(0,1); 
+            pos = buffer.find(",");
+            token = buffer.substr( 0, pos );
+            ver.x =  atof(token.c_str());
 	    cout << ver.x << endl; 
             buffer.erase( 0, pos + 1 );
 
-            pos = buffer.find(",") != std::string::npos;
-            buffer = buffer.substr( 0, pos );
-            ver.y =  atoi(buffer.c_str());
+            pos = buffer.find(",");
+            token = buffer.substr( 0, pos );
+            ver.y =  atof(token.c_str());
 	    cout << ver.y << endl; 
             buffer.erase( 0, pos + 1 );
 
-            pos = buffer.find(",") != std::string::npos;
-            buffer = buffer.substr( 0, pos );
-            ver.z =  atoi(buffer.c_str());
+            pos = buffer.find(",");
+            token = buffer.substr( 0, pos );
+            ver.z =  atof(token.c_str());
 	    cout << ver.z << endl; 
             buffer.erase( 0, pos + 1 );
 }
@@ -36,6 +36,7 @@ void loadVertex( string line, vertex& ver ){
 void loadVerticesFileData( char* fileName ){ 
 	
 	fstream file( fileName, ios::in ); 
+	if( file.good() ) cout << "File is good" << endl; 
 	object o; 
 	vertex v; 
 	string buffer; 

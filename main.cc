@@ -1,5 +1,4 @@
 #include "includes.h"
-#include "prototypes.h"
 #include "game.h"
 
 // Constant values for window size and place
@@ -67,6 +66,8 @@ void mouse( int button, int state, int x, int y ) { g.mouse(button, state, x, y)
 void keyboard( unsigned char key, int x, int y ) { g.keyboard(key, x, y); }
 void keyup( unsigned char key, int x, int y ) { g.keyup(key, x, y); }
 void specialInput(int key, int x, int y) {g.specialInput(key, x, y); }
+
+void loadVerticesFileData( char* fileName ); 
 
 int main(int argc, char** argv)
 {
