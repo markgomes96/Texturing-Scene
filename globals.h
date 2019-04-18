@@ -13,15 +13,15 @@ double CAMERA_PHI = 85.5;
 bool camera = false;
 
 //mouse vars
-glm::vec3 cameraPos = glm::vec3(1.2f, -0.2f, 1.2f);
+glm::vec3 cameraPos = glm::vec3(1.0f, 0.0f, 0.5f); //1.2f, -0.2f, 0.5f);
 glm::vec3 cameraTarget = glm::vec3(0.0f, 0.0f, 0.0f);
 glm::vec3 cameraDirection = glm::normalize(cameraPos-cameraTarget);
 
-glm::vec3 up = glm::vec3(0.0f, 0.0f, 1.0f);
+glm::vec3 up = glm::vec3(1.0f, 0.0f, 0.0f);
 glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
 glm::vec3 cameraUp = glm::cross(cameraDirection, cameraRight);
 
-glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, 1.0f);
+glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, 1.0f); //this keeps it upright
 float fov = 45.0f;
 
 

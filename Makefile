@@ -9,6 +9,7 @@ ifeq ($(UNAME_S), Darwin)
 	LBLIBS = -framework Carbon -framework OpenGL -framework GLUT
 endif
 
+
 CC = gcc
 C++ = g++ 
 #LIBDIRS = -L/usr/lib64
