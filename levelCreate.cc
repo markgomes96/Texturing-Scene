@@ -34,9 +34,10 @@ void buildHeritageHall(void){
 	//glBindTexture(GL_TEXTURE_2D, textureID[0]);	
 
 	glPushMatrix();
-cout << "before bind" << endl;
+//cout << "before bind" << endl;
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 	glBindTexture(GL_TEXTURE_2D, textureID[0]);	
-cout << "after bind" << endl;
+//cout << "after bind" << endl;
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 	glColor3f(1.0, 0.0, 0.0);
@@ -51,8 +52,8 @@ cout << "after bind" << endl;
 		glVertex3f ( 0, 55.1688, 0 );
 	glEnd();
 	glPopMatrix();
-cout << "after texture" << endl;
-	//glDisable(GL_TEXTURE_2D);
+//cout << "after texture" << endl;
+	glDisable(GL_TEXTURE_2D);
 
 	glPushMatrix();
 	glPolygonMode(GL_FRONT, GL_FILL);
