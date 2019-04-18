@@ -7,6 +7,13 @@
 #include <algorithm> 
 using namespace std; 
 
+// This is a file that will stand-alone (will not be used by the main game)
+//  It simply runs through two files: the levelCreate file and the drawBoxes file
+//  to extract the vertices and place them into an external text file. 
+//  Later, in main, the game will call the vertices file and load the vertices
+//  into the game objects 
+
+
 void writeVertices( fstream& file, string line ){ 
 	unsigned first = line.find('(') + 1; 
 	unsigned last  = line.find(')'); 
