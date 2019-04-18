@@ -164,7 +164,7 @@ void Input::specialInput(int key, int x, int y)
 
 			glutPostRedisplay();
 		break;
-		
+	    #ifdef DEV	
 		case GLUT_KEY_PAGE_UP:
    		//move up
 		CAMERA_THETA -= 1.0;
@@ -182,6 +182,7 @@ void Input::specialInput(int key, int x, int y)
 		}
 		glutPostRedisplay();
 		break;	
+        #endif
 	}
 }
 
