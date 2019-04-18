@@ -11,6 +11,8 @@
 //extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 //extern GLuint textureID[45];
 
+extern glm::vec3 cameraPos, cameraTarget, up;
+
 void buildHeritageHall(void){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
@@ -18,7 +20,7 @@ void buildHeritageHall(void){
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity(); 
 
-	gluLookAt(1.2, -0.2, 0.2, 1.2, 3.6, 0.7, 0.0, 0.0, 1.0);
+	gluLookAt(3.8, 0.0, 2.0, 3.8, 4.0, 2.0, 0.0, 0.0, 1.0);
 
 	
 	if(camera == true){
@@ -27,11 +29,14 @@ void buildHeritageHall(void){
 //			centerY = (double) cameraPos.y + cameraFront.y;
 //			centerZ = (double) cameraPos.z + cameraFront.z;
 
+			cout << cameraPos.x << " " << cameraPos.y << " " << cameraPos.z << endl;
+			cout << cameraTarget.x << " " << cameraTarget.y << " " << cameraTarget.z << endl;
+
 			gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
-						(double) cameraPos.x + cameraFront.x,
-						(double) cameraPos.y + cameraFront.y,
-						(double) cameraPos.z + cameraFront.z,
-						(double)cameraUp.x, (double)cameraUp.y, (double)cameraUp.z); 	// Up */
+						(double) cameraTarget.x,// + cameraFront.x,
+						(double) cameraTarget.y, //+ cameraFront.y,
+						(double) cameraTarget.z,// + cameraFront.z,
+						(double) up.x, (double) up.y, (double) up.z); 	// Up */
 	}
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
@@ -43,9 +48,7 @@ void buildHeritageHall(void){
 	//glBindTexture(GL_TEXTURE_2D, textureID[0]);	
 
 	glPushMatrix();
-cout << "before bind" << endl;
 	glBindTexture(GL_TEXTURE_2D, textureID[0]);	
-cout << "after bind" << endl;
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
 	glColor3f(1.0, 0.0, 0.0);
@@ -60,7 +63,6 @@ cout << "after bind" << endl;
 		glVertex3f ( 0, 55.1688, 0 );
 	glEnd();
 	glPopMatrix();
-cout << "after texture" << endl;
 	//glDisable(GL_TEXTURE_2D);
 
 	glPushMatrix();

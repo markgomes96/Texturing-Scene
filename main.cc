@@ -81,7 +81,7 @@ int main(int argc, char** argv)
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(specialInput);
-	loadVerticesFileData( "vertices" ); //file name is "vertices"
+//	loadVerticesFileData( "vertices" ); //file name is "vertices"
 	//initalize mouse movement function
 	glutPassiveMotionFunc(passiveMouseMovement);
 	glutMotionFunc(mouseMovement);
