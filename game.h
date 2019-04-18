@@ -22,6 +22,7 @@ public:
 
 	float frameRate;			// phys-time vars
 	vector<TestObj> golist;		// game object list
+	vector<object>  SceneObjects; 
 
 	TestObj floor;				// phys obj test vars
 	TestObj cube;
