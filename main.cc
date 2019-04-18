@@ -57,6 +57,15 @@ void init(int window_width, int window_height, int window_position_x, int window
 	glutInitWindowPosition (window_position_x, window_position_y);
 	glutCreateWindow ("Bear Force One");
 
+	//Enable gamemode if possible
+	glutGameModeString("1920x1080:32");
+	if (glutGameModeGet(GLUT_GAME_MODE_POSSIBLE)){
+		glutEnterGameMode();
+	}else{
+		printf("ERROR! --> Game mode not possible\n");
+		exit(1);
+	}
+
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glLoadIdentity();
 }
@@ -71,8 +80,15 @@ int main(int argc, char** argv)
 {
 	//set up opengl
 	glutInit(&argc, argv);
+
+	//Max display at 1920x1080
 	WINDOW_MAX_X = glutGet(GLUT_SCREEN_WIDTH);
 	WINDOW_MAX_Y = glutGet(GLUT_SCREEN_HEIGHT);
+	if(WINDOW_MAX_X > 1920 || WINDOW_POSITION_Y > 1080){
+		WINDOW_MAX_X = 1920;
+		WINDOW_MAX_Y = 1080;
+	}
+
 	init(WINDOW_MAX_X, WINDOW_MAX_Y, WINDOW_POSITION_X, WINDOW_POSITION_Y);
 
 	g.init();
