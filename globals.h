@@ -12,6 +12,8 @@ double CAMERA_PHI = 85.5;
 double directX = 0;
 double directY = 0;
 double directZ = 0;
+
+int jump = 0;
 extern void buildHeritageHall(void);
 void defineBox( struct box* );
 void drawBox( struct box* );

@@ -7,6 +7,7 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern int jump;
 extern Game g; 
 Input::Input() 
 { }
@@ -35,7 +36,7 @@ void Input::mouse( int button, int state, int x, int y )
 }
 
 void Input::keyboard( unsigned char key, int x, int y )
-{ 	
+{
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		exit(0);
@@ -89,16 +90,21 @@ void Input::keyboard( unsigned char key, int x, int y )
 			CAMERA_R = 30.0;
 		}
 	} 
-	else if ( key == 't' ) { 
+	else if (( key == 't' ) || (key == 'T')){ 
 		//Throw Object 
 		g.createProjectile( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 
 		                    CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 
 		                    CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
 		                    0.1,0.1,0.1);
 	}
-    else if ( key == 'e'){
+    else if ( key == 'e' || key == 'E'){
+        // Create a box where the eye is
         g.createEye(centerX, centerY, centerZ, 1, 0.2, 0.2, 0.2);
     }
+    else if (key == 'j' || key == 'J'){
+        if (jump == 0)
+            jump = 1;
+       }
 }
 
 void Input::specialInput(int key, int x, int y)

@@ -8,20 +8,33 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
-
+extern int jump;
 void buildHeritageHall(){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();   	//call this before setting the viewing position 
-/*    printf("Eye %f %f %f\n",  CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 
-		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  
-		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0));
-	printf("Center %f %f %f\n", centerX, centerY, centerZ); 
-    printf("Eye Vector %f %f %f\n",  (CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0) - centerX) *0.01, 
-		(CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0) - centerY-11.35) * 0.01,  
-		(CAMERA_R*cos(CAMERA_THETA*M_PI/180.0) - centerZ + 0.44)*0.01 );
-*/
-	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2  
+    
+    // This is for jumping
+    if (jump!= 0){
+        if (jump == 5){
+            jump = -1;
+        } else if (jump > 0){
+            CAMERA_THETA -= 1.0;
+            if (CAMERA_THETA < 0.0)
+                CAMERA_THETA += 360.0;
+            jump+=1;
+        } else if ((jump < 0) && (jump > -5)){
+            CAMERA_THETA += 1.0;
+            if (CAMERA_THETA > 0.0){
+                CAMERA_THETA -= 360.0;
+            }
+            jump -= 1;
+        } else{
+                jump =0;
+            }
+   }
+   
+    gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2  
 		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2
 		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),  // 0.2 Eye
 		centerX,  //1.2
