@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "prototypes.h"
 #include "game.h"
 
 // Constant values for window size and place
@@ -74,6 +75,8 @@ int main(int argc, char** argv)
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(specialInput);
+	
+	loadVerticesFileData( "vertices" ); //file name is "vertices"
 
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame

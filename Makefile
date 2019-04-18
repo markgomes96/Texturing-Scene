@@ -17,7 +17,7 @@ C++ = g++
 
 INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h prototypes.h
-OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o drawCase.o texturing.o
+OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o drawCase.o texturing.o objectdata.o
 
 CF = -DLEVEL	#-DLEVEL -> to switch to level scene
 
@@ -55,6 +55,9 @@ drawCase.o : drawCase.cc $(INCLUDES) $(HEADERS)
 
 texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) -c texturing.cc
+
+objectdata.o : objectdata.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) -c objectdata.cc
 
 main.o : main.cc $(OBJS)
 	$(C++) $(CCFLAGS) $(CF) -c main.cc 

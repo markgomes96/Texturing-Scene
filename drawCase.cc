@@ -138,7 +138,7 @@ void drawDisplayCase()
 /*dc 2*/
     /*bottom 2*/
     glPushMatrix();
-    glTranslated(5.5,0.25,0.0);//7.26298984,0.0,0.0);
+    glTranslated(5.5,0.25,0.0);
     glBegin(GL_POLYGON);
     glVertex3f(0.0,0.0,0.0);
     glVertex3f(0.0,2.8702,0.0);
@@ -266,7 +266,7 @@ void drawDisplayCase()
 /*dc 3*/
     /*bottom 3*/
     glPushMatrix();
-    glTranslated(0.5,8.6875,0.0);//0.0,7.26298984,0.0);
+    glTranslated(0.5,8.6875,0.0);
     glBegin(GL_POLYGON);
     glVertex3f(0.0,0.0,0.0);
     glVertex3f(0.0,2.8702,0.0);
@@ -1278,7 +1278,7 @@ void drawDisplayCase()
 
     /*top glass 10*/
     glPushMatrix();
-    glTranslated(5.5,35.0,0.0);//28.90519536,0.0);
+    glTranslated(5.5,35.0,0.0);
     glBegin(GL_POLYGON);
     glVertex3f(0.127,0.127,2.5146);
     glVertex3f(0.127,2.7432,2.5146);
