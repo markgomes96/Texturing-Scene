@@ -4,7 +4,7 @@
 #include "includes.h"
 #include "game.h"
 
-extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI, centerX, centerY, centerZ;
+extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI, centerX, centerY, centerZ, directX,directY, directZ;
 /*
 * Handles all functions of the game
 */
@@ -26,13 +26,15 @@ void Game::init()
 
 void Game::createProjectile(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
 	TestObj projectile = TestObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
-	projectile.updateVelo(0.0,-0.2,0.0);
-	golist.push_back(projectile);
-/* projectile.updateVelo(
-    (CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0)-centerX-2.03)*0.01, 
-    (CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0)-centerY+13) *0.01,
-    (CAMERA_R*cos(CAMERA_THETA*M_PI/180.0) - centerZ-1.9) *0.01);
-*/
+//	projectile.updateVelo(0.0,-0.2,0.0);
+	 directX =  (centerX -CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0)) * 0.01;
+	 directY = (centerY - CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0) - 10) * 0.01;
+	 directZ =  (centerZ - CAMERA_R*cos(CAMERA_THETA*M_PI/180.0) + 0.44)*0.01;
+	/* printf("What\n");
+	 printf("Direct vector %f %f %f\n", directX, directY, directZ);*/
+     projectile.updateVelo(directX,directY,directZ);
+     golist.push_back(projectile);
+
 }
 void Game::createEye(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
 	TestObj projectile = TestObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
