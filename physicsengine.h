@@ -2,7 +2,7 @@
 #define PHYSOCSENGINE_H
 
 #include "includes.h"
-#include "testobj.h"
+#include "gameobj.h"
 
 /*
 * Handles all phsical interactions of PhysObjs
@@ -24,11 +24,11 @@ public:
 	PhysicsEngine(float fr);
 
 	// Game functions
-	void updateObjects(vector<TestObj> &golist);	//move objects based on velocity/acceleration
-	void updatePosition(TestObj &go);
-	void checkCollision(TestObj &go1, TestObj &go2);
-	bool positionTest(TestObj a, TestObj b);
-	bool sphereCollsTest(TestObj a, TestObj b);
+	void updateObjects(vector<GameObj> &golist);	//move objects based on velocity/acceleration
+	void updatePosition(GameObj &go);
+	void checkCollision(GameObj &go1, GameObj &go2);
+	bool positionTest(GameObj a, GameObj b);
+	bool sphereCollsTest(GameObj a, GameObj b);
 
 	// Vector utiltiy functions
 	vect3 vectUnit(vect3 a);

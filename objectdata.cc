@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef OBJECTDATA_CC
 #define OBJECTDATA_CC
 #include "includes.h"
@@ -8,6 +9,11 @@
 #include <string> 
 extern Game g; 
 using namespace std; 
+
+void getObjectData(int index)
+{
+    return objectList[index];
+}
 
 void loadVertex( string line, vertex& ver ){ 
             std::string buffer;
@@ -50,3 +56,4 @@ void loadVerticesFileData( char* fileName ){
 }
 
 #endif
+

@@ -1614,8 +1614,8 @@ glDisable(GL_TEXTURE_2D);
 
      for(int i = 0; i < g.golist.size(); i++)
      {
-         g.drawBox(&g.golist[i].faces[0], &g.golist[i].collCenter);    // draw faces
-         g.drawBounds(&g.golist[i].bounds[0]);                       // draw box collider
+         g.drawObject(g.golist[i]);    // draw faces
+        // g.drawBounds(&g.golist[i].bounds[0]);                       // draw box collider
      }
 
      ////////////////////////////////////////////////////
