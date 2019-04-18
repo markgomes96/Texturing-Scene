@@ -10,7 +10,7 @@
 * Time Step = (1.0 / frameRate) seconds
 */
 
-class PhysicsEngine 
+class PhysicsEngine
 {
 private:
 
@@ -27,10 +27,13 @@ public:
 	void updateObjects(vector<TestObj> &golist);	//move objects based on velocity/acceleration
 	void updatePosition(TestObj &go);
 	void checkCollision(TestObj &go1, TestObj &go2);
+	bool positionTest(TestObj a, TestObj b);
+	bool sphereCollsTest(TestObj a, TestObj b);
 
 	// Vector utiltiy functions
 	vect3 vectUnit(vect3 a);
 	vect3 vectDist(vect3 a, vect3 b);
+	vect3 vectDist(vertex a, vertex b);
 	vect3 vectCross(vect3 a, vect3 b);
 	float vectMagn(vect3 a);
 	vect3 vectAdd(vect3 a, vect3 b);

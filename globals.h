@@ -10,6 +10,7 @@ double CAMERA_R = 15.0;
 double CAMERA_THETA = 89.0;
 double CAMERA_PHI = 85.5;
 
+<<<<<<< globals.h
 bool camera = false;
 
 //mouse vars
@@ -32,7 +33,19 @@ double x_rotat = 0.0;
 double y_rotat = 0.0;
 float sensitivity = 0.1;
 
+double directX = 0;
+double directY = 0;
+double directZ = 0;
+
+double scaleX = 0.1;
+double scaleY = 0.1;
+double scaleZ = 0.1;
+
+enum key_state {NOTPUSHED, PUSHED} keyarr[127];
+int jump = 0;
+
 extern void buildHeritageHall(void);
+extern void buildCameraScene(void);
 void defineBox( struct box* );
 void drawBox( struct box* );
 

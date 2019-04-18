@@ -13,6 +13,7 @@
 	#include <cmath>
 	#include <stdlib.h>
 	#include <time.h>
+    #include <stdio.h>
 	#include <iostream>
 	#include <ctime>
 
@@ -29,6 +30,7 @@
 	#include <vector>		//utility libraries
 	#include <cmath>
 	#include <stdlib.h>
+    #include <stdio.h>
 	#include <time.h>
 	#include <iostream>
 	#include <ctime>
