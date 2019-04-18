@@ -7,6 +7,7 @@
 
 void drawDisplayCase()
 {
+glEnable(GL_DEPTH_TEST);
 /*dc 1*/
 	/*bottom 1*/
 	glPushMatrix();
