@@ -14,20 +14,29 @@
 void buildHeritageHall(void){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-	glLoadIdentity();   	//call this before setting the viewing positi
-	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2  
-		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2
-		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),  // 0.2 Eye
-		centerX,  //1.2
-		centerY, //3.6
-		centerZ,
-        0,0,1 //0.7 Center
-);
-	//loadTextures();
 
-	//glEnable(GL_TEXTURE_2D);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity(); 
+
+	gluLookAt(1.2, -0.2, 0.2, 1.2, 3.6, 0.7, 0.0, 0.0, 1.0);
+
+	
+	if(camera == true){
+			//might be problem with where my origin is
+//			centerX = (double) cameraPos.x + cameraFront.x;
+//			centerY = (double) cameraPos.y + cameraFront.y;
+//			centerZ = (double) cameraPos.z + cameraFront.z;
+
+			gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
+						(double) cameraPos.x + cameraFront.x,
+						(double) cameraPos.y + cameraFront.y,
+						(double) cameraPos.z + cameraFront.z,
+						(double)cameraUp.x, (double)cameraUp.y, (double)cameraUp.z); 	// Up */
+	}
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_TEXTURE_2D);
+
+	
 
 //floor//
 	//glEnable(GL_TEXTURE_2D);

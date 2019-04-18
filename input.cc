@@ -6,9 +6,35 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double prev_mouse_x, prev_mouse_y;
+extern double mouse_dx, mouse_dy;
+extern double x_rotat, y_rotat;
+extern float sensitivity;
+extern glm::vec3 cameraFront, cameraPos, cameraUp, cameraDirection;
+extern bool camera;
 
 Input::Input() 
 { }
+
+void Input::passiveMouseMovement(int x, int y){
+	
+	y = 800 - y; //this needs to be dynamic eventually
+
+	//calculate change in x and y
+	mouse_dx = x - prev_mouse_x; 
+	mouse_dy = y- prev_mouse_y;
+
+	//reset prev mouse x and y
+	prev_mouse_x = x;
+	prev_mouse_y = y;
+
+
+	
+}
+
+void Input::mouseMovement(int x, int y){
+	//cout << "mouse moved while buttons were pressed" << endl;
+}
 
 void Input::mouse( int button, int state, int x, int y )
 { 	
@@ -39,59 +65,36 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//exit the program
 		exit(0);
 	}
-	else if (key == 'w' || key == 'W') {
-		//move up
-		CAMERA_THETA -= 1.0;
-		if (CAMERA_THETA < 0.0) {
-			CAMERA_THETA += 360.0;
-		}
-		glutPostRedisplay();	
+	if(key == 'g'){
+		camera = true;
 	}
-	else if (key == 's' || key == 'S') {
-		//move down
-		CAMERA_THETA += 1.0;
-		if (CAMERA_THETA > 0.0) {
-			CAMERA_THETA -= 360.0;
-		}
-		glutPostRedisplay();	
+	if(key == 'r'){
+		camera = false;
 	}
-	else if (key == 'a' || key == 'A') {
-		//move left
-		CAMERA_PHI -= 1.0;
-		if (CAMERA_PHI < 0.0) {
-			CAMERA_PHI += 360.0;
-		}
-		glutPostRedisplay();	
+	if(key == 'w'){
+		cameraDirection = cameraFront - cameraPos;
+		cameraDirection = glm::normalize(cameraDirection);
+		cameraPos.x = cameraPos.x + sensitivity*cameraDirection.x;
+		cameraPos.y = cameraPos.y + sensitivity*cameraDirection.y;
 	}
-	else if (key == 'd' || key == 'D') {
-		//move right
-		CAMERA_PHI += 1.0;
-		if (CAMERA_PHI > 0.0) {
-			CAMERA_PHI -= 360.0;
-		}
-		glutPostRedisplay();	
-		
+	if(key == 's'){
+		cameraDirection = cameraFront - cameraPos;
+		cameraDirection = glm::normalize(cameraDirection);
+		cameraPos.x = cameraPos.x - sensitivity*cameraDirection.x;
+		cameraPos.y = cameraPos.y - sensitivity*cameraDirection.y;
 	}
-	else if (key == '+') {
-		//move forward
-		CAMERA_R -= 0.5;
-		if (CAMERA_R <= 0.0) {
-			CAMERA_R = 0.0;
-		}
-		glutPostRedisplay();
+	if(key == 'a'){
+		 cameraPos = cameraPos - glm::normalize(glm::cross(cameraFront, cameraUp)) * sensitivity;
 	}
-	else if (key == '-') {
-		//move backward
-		CAMERA_R += 0.5;
-		if (CAMERA_R >= 30.0) {
-			CAMERA_R = 30.0;
-		}
-	}	
+	if(key == 'd'){
+		cameraPos = cameraPos + glm::normalize(glm::cross(cameraFront, cameraUp)) * sensitivity;
+	}
+
 }
 
 void Input::specialInput(int key, int x, int y)
 {
-	switch(key)
+/*	switch(key)
 	{
 		case GLUT_KEY_UP:
 			//pan up
@@ -163,7 +166,7 @@ void Input::specialInput(int key, int x, int y)
 				CAMERA_R = 30.0;
 			}
 		break;	
-	}
+	}*/
 }
 
 #endif

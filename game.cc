@@ -136,6 +136,14 @@ void Game::specialInput(int key, int x, int y)
 	input.specialInput(key, x, y);
 }
 
+void Game::mouseMovement(int x, int y){
+	input.mouseMovement(x, y);
+}
+
+void Game::passiveMouseMovement(int x, int y){
+	input.passiveMouseMovement(x, y);
+}
+
 // Physics / Framerate
 void Game::glutLockFrameRate(float desiredFrameRate)
 {
