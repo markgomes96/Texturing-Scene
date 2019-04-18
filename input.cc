@@ -7,14 +7,10 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
-<<<<<<< HEAD
 
-Input::Input()
-=======
 extern int jump;
 extern Game g; 
 Input::Input() 
->>>>>>> projectile
 { }
 
 void Input::mouse( int button, int state, int x, int y )
@@ -60,12 +56,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 		if (CAMERA_R >= 30.0) {
 			CAMERA_R = 30.0;
 		}
-<<<<<<< HEAD
-		glutPostRedisplay();
-=======
 		glutPostRedisplay();	
-
->>>>>>> projectile
 	}
 	else if (key == 'a' || key == 'A') {
 		//move left
@@ -175,11 +166,7 @@ void Input::specialInput(int key, int x, int y)
 
 			glutPostRedisplay();
 		break;
-<<<<<<< HEAD
-
-=======
 	    #ifdef DEV	
->>>>>>> projectile
 		case GLUT_KEY_PAGE_UP:
    		//move up
 		CAMERA_THETA -= 1.0;
@@ -188,17 +175,8 @@ void Input::specialInput(int key, int x, int y)
 		}
 		glutPostRedisplay();
 		break;
-
 		case GLUT_KEY_PAGE_DOWN:
-<<<<<<< HEAD
-			//move backward
-			CAMERA_R += 0.5;
-			if (CAMERA_R >= 30.0) {
-				CAMERA_R = 30.0;
-			}
-		break;
-=======
-			//move down
+				//move down
 		CAMERA_THETA += 1.0;
 		if (CAMERA_THETA > 0.0) {
 			CAMERA_THETA -= 360.0;
@@ -206,7 +184,6 @@ void Input::specialInput(int key, int x, int y)
 		glutPostRedisplay();
 		break;	
         #endif
->>>>>>> projectile
 	}
 }
 

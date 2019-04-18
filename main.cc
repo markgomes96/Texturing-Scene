@@ -21,7 +21,7 @@ void display( void )
 	buildDisplay();
 	g.HUD();
 
-	g.render();
+	//g.render();
 	glutSwapBuffers();
 #else
 	g.render();

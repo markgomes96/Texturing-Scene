@@ -4,13 +4,10 @@
 #include "includes.h"
 #include "game.h"
 
-<<<<<<< HEAD
 extern void buildDisplay();
 extern void buildCameraScene();
 extern void buildHeritageHall();
-=======
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI, centerX, centerY, centerZ, directX,directY, directZ;
->>>>>>> projectile
 /*
 * Handles all functions of the game
 */
@@ -22,15 +19,14 @@ void Game::init()
 {
 	frameRate = 60.0;
 	physEng = PhysicsEngine(frameRate);
-
+/*
 	// ***Test objects for phyiscs***
-<<<<<<< HEAD
 	floor = TestObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
 
-	/* senerio one - collision in z-axis
+	 senerio one - collision in z-axis
 	cube = TestObj(vertex(1.0, 2.0, 5.0, 1.0), vect3(1.0, 1.0, 1.0), false);
 	cube2 = TestObj(vertex(0.0, 1.0, 10.0, 1.0), vect3(1.0, 1.0, 1.0), false);
-	*/
+	
 
 	// senerio two - collision in x-axis
 	cube = TestObj(vertex(4.0, 0.0, 7.0, 1.0), vect3(1.0, 1.0, 1.0), false);
@@ -41,19 +37,18 @@ void Game::init()
 	golist.push_back(floor);
 	golist.push_back(cube);
 	golist.push_back(cube2);
-=======
-/*	floor = TestObj(vertex(0.0, 0.0, 0.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
+	floor = TestObj(vertex(0.0, 0.0, 0.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
 	cube = TestObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 3.0, 1.0), false);
 //	golist.push_back(floor);
 //	golist.push_back(cube);*/
 }
 
-// Create thorwing object
+// Create throwing object
 void Game::createProjectile(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
 	TestObj projectile = TestObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
-	 directX =  (centerX -CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0)) * 0.01;
-	 directY = (centerY - CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0)) * 0.01;
-	 directZ =  (centerZ - CAMERA_R*cos(CAMERA_THETA*M_PI/180.0))*0.01;
+	 directX =  (centerX -CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0)) * 1;
+	 directY = (centerY - CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0)) * 1;
+	 directZ =  (centerZ - CAMERA_R*cos(CAMERA_THETA*M_PI/180.0))*1;
      projectile.updateVelo(directX,directY,directZ);
      golist.push_back(projectile);
 }
@@ -62,8 +57,6 @@ void Game::createProjectile(double a1, double a2, double a3, double a4, double b
 void Game::createEye(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
 	TestObj projectile = TestObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
 	golist.push_back(projectile);
-
->>>>>>> projectile
 }
 
 void Game::update()
@@ -76,20 +69,11 @@ void Game::update()
 
 void Game::character()
 {
-<<<<<<< HEAD
-=======
-
->>>>>>> master
-
-
-<<<<<<< HEAD
-=======
 }
 void Game::minimap(){
 	buildCameraScene();
 	buildHeritageHall();
 }
->>>>>>> master
 void Game::HUD()
 {
 	//displays HUD in a 2D square on the bottom left on the screen
@@ -99,13 +83,10 @@ void Game::HUD()
 	char *test = (char*) malloc(64*sizeof(char));
 	sprintf(test, "STATS: %6.4f", testNumber);
 
-<<<<<<< HEAD
 	char *HUDtitle = (char*) malloc(64*sizeof(char));
 	sprintf(HUDtitle, "HUD");
-=======
 	/*char *HUDtitle = (char*) malloc(64*sizeof(char));
 	sprintf(HUDtitle, "HUD");*/
->>>>>>> master
 
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
@@ -153,26 +134,17 @@ void Game::render()
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();
 
-<<<<<<< HEAD
-	gluLookAt( 0.0 /*20.0*/, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 20.0
-			   20.0 /*0.0*/ /*5.0*/, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 5.0
-			   0.0 /*0.0*/ /*5.0*/, //CAMERA_R*cos(CAMERA_THETA*M_PI/180.0), 5.0 Eye
-		       0.0,  0.0,  1.0,  	// Center
-		       0.0,  0.0,  1.0); 	// Up
-=======
 	gluLookAt( 20.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 20.0
 			5.0, //CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 5.0
 			5.0, //CAMERA_R*cos(CAMERA_THETA*M_PI/180.0), 5.0 Eye
 		        0.0,  0.0,  1.0,  	// Center
 		        0.0,  0.0,  1.0); 	// Up
->>>>>>> master
 
 	glEnable(GL_DEPTH_TEST);
 
 	glColor3f(0.0,1.0,0.0);
 
 	// Physics test
-//	printf("Fuck\n");
 	for(int i = 0; i < golist.size(); i++)
 	{
 		drawBox(&golist[i].faces[0], &golist[i].collCenter);	// draw faces

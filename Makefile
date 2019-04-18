@@ -21,7 +21,7 @@ OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.
 
 
 CF = -DLEVEL	#-DLEVEL -> to switch to level scene
-#DF = -DDEV
+DF = -DDEV
 all : run
 
 run: main.o $(INCLUDES) $(HEADERS) $(OBJS) 

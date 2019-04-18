@@ -8,17 +8,12 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
-<<<<<<< HEAD
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
+extern int jump;
 
 void showMinimap(){
 	//Function to generate minimap
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-=======
-extern int jump;
-void buildHeritageHall(){
->>>>>>> projectile
-
 	glPushMatrix();
 	glEnable(GL_SCISSOR_TEST);
 	glScissor(WINDOW_MAX_X-300, 50, 200, 200);
@@ -36,7 +31,6 @@ void buildDisplay(){
 	buildCameraScene();
 	buildHeritageHall();
 
-<<<<<<< HEAD
 }
 void buildCameraScene(){
 
@@ -45,8 +39,7 @@ void buildCameraScene(){
 	glEnable(GL_SCISSOR_TEST);
 	glLoadIdentity();   	//call this before setting the viewing position
 
-
- glScissor(WINDOW_MAX_X-200, 200, 200, 200);
+    glScissor(WINDOW_MAX_X-200, 200, 200, 200);
 	if(true){
 		showMinimap();
 	}

@@ -14,7 +14,7 @@ PhysObj::PhysObj()
 
 	elasticity = 0.2;
 	stationary = false;
-	acceleration = vect3(0.0, 0.0, -0.01);		// initial gravity
+	acceleration = vect3(0.0, 0.0, -0.2);		// initial gravity
 }
 
 void PhysObj::updateVelo(float x, float y, float z){
