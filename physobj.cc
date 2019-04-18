@@ -11,10 +11,22 @@
 PhysObj::PhysObj()
 {
 	velocity = vect3(0.0, 0.0, 0.0);
-	acceleration = vect3(0.0, 0.0, -9.8);		// initial gravity
 
 	elasticity = 0.2;
 	stationary = false;
+	acceleration = vect3(0.0, 0.0, -0.01);		// initial gravity
+}
+
+void PhysObj::updateVelo(float x, float y, float z){
+    velocity.x += x;
+    velocity.y += y;
+    velocity.z += z;
+}
+
+void PhysObj::updateAcc(float x, float y, float z){
+    acceleration.x += x;
+    acceleration.y += y;
+    acceleration.x += z;
 }
 
 void PhysObj::updatePhysics()

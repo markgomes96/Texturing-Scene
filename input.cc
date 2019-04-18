@@ -2,12 +2,19 @@
 #define INPUT_CC
 
 #include "includes.h"
+#include "game.h"
 #include "input.h"
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+<<<<<<< HEAD
 
 Input::Input()
+=======
+extern int jump;
+extern Game g; 
+Input::Input() 
+>>>>>>> projectile
 { }
 
 void Input::mouse( int button, int state, int x, int y )
@@ -40,20 +47,25 @@ void Input::keyboard( unsigned char key, int x, int y )
 		exit(0);
 	}
 	else if (key == 'w' || key == 'W') {
-		//move up
-		CAMERA_THETA -= 1.0;
-		if (CAMERA_THETA < 0.0) {
-			CAMERA_THETA += 360.0;
+    	//move forward
+		CAMERA_R -= 0.5;
+		if (CAMERA_R <= 0.0) {
+			CAMERA_R = 0.0;
 		}
 		glutPostRedisplay();
 	}
 	else if (key == 's' || key == 'S') {
-		//move down
-		CAMERA_THETA += 1.0;
-		if (CAMERA_THETA > 0.0) {
-			CAMERA_THETA -= 360.0;
+		//move backward
+		CAMERA_R += 0.5;
+		if (CAMERA_R >= 30.0) {
+			CAMERA_R = 30.0;
 		}
+<<<<<<< HEAD
 		glutPostRedisplay();
+=======
+		glutPostRedisplay();	
+
+>>>>>>> projectile
 	}
 	else if (key == 'a' || key == 'A') {
 		//move left
@@ -85,12 +97,25 @@ void Input::keyboard( unsigned char key, int x, int y )
 		CAMERA_R += 0.5;
 		if (CAMERA_R >= 30.0) {
 			CAMERA_R = 30.0;
-		}
+		}	
 	}
-	else if (key == 27) {
-		//Exit program when pressed. We should probably put a menu here.
-		exit(0);
+	else if (( key == 't' ) || (key == 'T')){ 
+		//Throw Object 
+		g.createProjectile( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 
+		                    CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 
+		                    CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
+		                    0.1,0.1,0.1);
 	}
+#ifdef DEV
+    else if ( key == 'e' || key == 'E'){
+        // Create a box where the eye is
+        g.createEye(centerX, centerY, centerZ, 1, 0.2, 0.2, 0.2);
+    }
+#endif
+    else if (key == 'j' || key == 'J'){
+        if (jump == 0)
+            jump = 1;
+       }
 }
 
 void Input::specialInput(int key, int x, int y)
@@ -150,23 +175,38 @@ void Input::specialInput(int key, int x, int y)
 
 			glutPostRedisplay();
 		break;
+<<<<<<< HEAD
 
+=======
+	    #ifdef DEV	
+>>>>>>> projectile
 		case GLUT_KEY_PAGE_UP:
-			//move forward
-			CAMERA_R -= 0.5;
-			if (CAMERA_R <= 0.0) {
-				CAMERA_R = 0.0;
-			}
-			glutPostRedisplay();
+   		//move up
+		CAMERA_THETA -= 1.0;
+		if (CAMERA_THETA < 0.0) {
+			CAMERA_THETA += 360.0;
+		}
+		glutPostRedisplay();
 		break;
 
 		case GLUT_KEY_PAGE_DOWN:
+<<<<<<< HEAD
 			//move backward
 			CAMERA_R += 0.5;
 			if (CAMERA_R >= 30.0) {
 				CAMERA_R = 30.0;
 			}
 		break;
+=======
+			//move down
+		CAMERA_THETA += 1.0;
+		if (CAMERA_THETA > 0.0) {
+			CAMERA_THETA -= 360.0;
+		}
+		glutPostRedisplay();
+		break;	
+        #endif
+>>>>>>> projectile
 	}
 }
 

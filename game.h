@@ -25,10 +25,7 @@ public:
 
 	TestObj floor;				// phys obj test vars
 	TestObj cube;
-<<<<<<< HEAD
 	TestObj cube2;
-=======
->>>>>>> master
 
 	// Constructor
 	Game();
@@ -40,6 +37,8 @@ public:
 	void minimap();
 	void HUD();
 	void render();
+	void createProjectile( double, double, double, double, double, double, double ); 
+	void createEye( double, double, double, double, double, double, double ); 
 
 
 	// Input relay functions

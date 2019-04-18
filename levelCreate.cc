@@ -8,11 +8,16 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+<<<<<<< HEAD
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 
 void showMinimap(){
 	//Function to generate minimap
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+=======
+extern int jump;
+void buildHeritageHall(){
+>>>>>>> projectile
 
 	glPushMatrix();
 	glEnable(GL_SCISSOR_TEST);
@@ -31,6 +36,7 @@ void buildDisplay(){
 	buildCameraScene();
 	buildHeritageHall();
 
+<<<<<<< HEAD
 }
 void buildCameraScene(){
 
@@ -46,7 +52,31 @@ void buildCameraScene(){
 	}
 	glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
 	glScissor(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
-	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2
+    // If jump = 0, do nothing
+    // if 0 < jump < 5, go up, increase jump by 1
+    // if jump = 5, turn jump = -1
+    // if jump < 0 , go down
+    // if jump = -5, set jump = 0 
+    if (jump!= 0){
+        if (jump == 5){
+            jump = -1;
+        } else if (jump > 0){
+            CAMERA_THETA -= 1.0;
+            if (CAMERA_THETA < 0.0)
+                CAMERA_THETA += 360.0;
+            jump+=1;
+        } else if ((jump < 0) && (jump > -5)){
+            CAMERA_THETA += 1.0;
+            if (CAMERA_THETA > 0.0){
+                CAMERA_THETA -= 360.0;
+            }
+            jump -= 1;
+        } else{
+                jump =0;
+            }
+   }
+   
+    gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2  
 		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2
 		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),  // 0.2 Eye
 		centerX,  //1.2
@@ -1488,8 +1518,15 @@ glPopMatrix();
 	 glTranslatef(1.85, 15.6275, 0.0);
 	 glScalef(0.15, 0.4, 0.6);
 	 drawBox(&faces[0]);
-	glPopMatrix();
-////////////////////////////////////////////////////
+     glPopMatrix();
+
+     for(int i = 0; i < g.golist.size(); i++)
+     {
+         g.drawBox(&g.golist[i].faces[0], &g.golist[i].collCenter);    // draw faces
+         g.drawBounds(&g.golist[i].bounds[0]);                       // draw box collider
+     }
+
+     ////////////////////////////////////////////////////
 //food court area
 
 

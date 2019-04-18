@@ -49,6 +49,7 @@ void PhysicsEngine::updateObjects(vector<TestObj> &golist)
 void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
 {
 	// { collz, colly, collx }
+<<<<<<< HEAD
 	// 1 -> collision detected
 	int colls[] = {0, 0, 0};
 
@@ -70,6 +71,18 @@ void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
 		colls[0] = 1;
 	}
 	else if(go2.wzm[0] == go1.wzm[0] && go2.wzm[1] == go1.wzm[1])		// same positions
+=======
+	// -1 -> collision in negative direction / 1 -> collision in positive direction
+	int colls[] = {0, 0, 0};
+	float overlap = 0.0;
+
+	// ***Collisions in Z-axis***
+	if(go1.wzm[0] < go2.wzm[1] && go1.wzm[0] > go2.wzm[0])			// bottom collision
+	{	
+		colls[0] = -1;
+	}
+	else if(go1.wzm[1] < go2.wzm[1] && go1.wzm[1] > go2.wzm[0])		// top collision
+>>>>>>> projectile
 	{
 		colls[0] = 1;
 	}
@@ -77,12 +90,17 @@ void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
 	// ***Collisions in Y-axis***
 	if(go1.wym[0] < go2.wym[1] && go1.wym[0] > go2.wym[0])			// left collision
 	{
+<<<<<<< HEAD
 		colls[1] = 1;
+=======
+		colls[1] = -1;
+>>>>>>> projectile
 	}
 	else if(go1.wym[1] < go2.wym[1] && go1.wym[1] > go2.wym[0])		// right collision
 	{
 		colls[1] = 1;
 	}
+<<<<<<< HEAD
 	else if(go2.wym[0] < go1.wym[1] && go2.wym[0] > go1.wym[0])			// left collision
 	{
 		colls[1] = 1;
@@ -95,16 +113,23 @@ void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
 	{
 		colls[1] = 1;
 	}
+=======
+>>>>>>> projectile
 
 	// ***Collisions in X-axis***
 	if(go1.wxm[0] < go2.wxm[1] && go1.wxm[0] > go2.wxm[0])			// back collision
 	{
+<<<<<<< HEAD
 		colls[2] = 1;
+=======
+		colls[2] = -1;
+>>>>>>> projectile
 	}
 	else if(go1.wxm[1] < go2.wxm[1] && go1.wxm[1] > go2.wxm[0])		// front collision
 	{
 		colls[2] = 1;
 	}
+<<<<<<< HEAD
 	else if(go2.wxm[0] < go1.wxm[1] && go2.wxm[0] > go1.wxm[0])			// back collision
 	{
 		colls[2] = 1;
@@ -154,6 +179,31 @@ void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
 			go1.stationary = true;
 		else
 			go1.stationary = false;
+=======
+
+	// collision only occurs when collide in all 3 dimensions
+	if(colls[0] != 0 && colls[1] != 0 && colls[2] != 0) 
+	{
+		/*
+		* Handle collisions based on velocity vector
+		* reverse velocity vector, convert to unit, scale by distance to collision point
+		* apply (collision vector) to colliding objects position
+		*/
+
+		overlap = go2.wzm[1] - go1.wzm[0];		// z adjustment
+		go1.collCenter.z += (-1) * colls[0] * abs(overlap);
+
+		/*
+		overlap = go2.wym[1] - go1.wym[0];		// y adjustment
+		go1.collCenter.y += (-1) * colls[1] * abs(overlap);
+	
+		overlap = go2.wxm[1] - go1.wxm[0];		// x adjustment
+		go1.collCenter.x += (-1) * colls[2] * abs(overlap);
+		*/
+
+		go1.velocity = vect3(0.0, 0.0, 0.0);	// reset velocity
+		go1.updatePhysics();					// update go1 box collider
+>>>>>>> projectile
 	}
 }
 

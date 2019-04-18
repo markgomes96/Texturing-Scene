@@ -21,8 +21,7 @@ void display( void )
 	buildDisplay();
 	g.HUD();
 
-	//cout << "centers: " << centerX << ", " << centerY << ", " << centerZ << endl;
-//	cout << "CAMERA: " << CAMERA_R << ", " << CAMERA_THETA << ", " << CAMERA_PHI << endl;
+	g.render();
 	glutSwapBuffers();
 #else
 	g.render();
@@ -32,6 +31,7 @@ void display( void )
 void update( void )
 {
 #ifdef LEVEL
+	g.update();
 
 #else
 	g.update();
