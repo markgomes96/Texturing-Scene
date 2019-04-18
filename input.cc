@@ -2,12 +2,16 @@
 #define INPUT_CC
 
 #include "includes.h"
+#include "game.h"
 #include "input.h"
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern int jump;
+extern Game g; 
+extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 
-Input::Input()
+Input::Input() 
 { }
 
 void Input::mouse( int button, int state, int x, int y )
@@ -37,62 +41,89 @@ void Input::keyboard( unsigned char key, int x, int y )
 {
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
-		exit(0);
+		keyarr['q'] = PUSHED;
 	}
-	else if (key == 'w' || key == 'W') {
-		//move up
-		CAMERA_THETA -= 1.0;
-		if (CAMERA_THETA < 0.0) {
-			CAMERA_THETA += 360.0;
-		}
-		glutPostRedisplay();
+    if (key == 'w' || key == 'W') {
+    	//move forward
+		keyarr['w'] = PUSHED;
 	}
-	else if (key == 's' || key == 'S') {
-		//move down
-		CAMERA_THETA += 1.0;
-		if (CAMERA_THETA > 0.0) {
-			CAMERA_THETA -= 360.0;
-		}
-		glutPostRedisplay();
+	if (key == 's' || key == 'S') {
+		keyarr['s'] = PUSHED;
 	}
-	else if (key == 'a' || key == 'A') {
+	if (key == 'a' || key == 'A') {
 		//move left
-		CAMERA_PHI -= 1.0;
-		if (CAMERA_PHI < 0.0) {
-			CAMERA_PHI += 360.0;
-		}
-		glutPostRedisplay();
+		keyarr['a'] = PUSHED;
 	}
-	else if (key == 'd' || key == 'D') {
+    if (key == 'd' || key == 'D') {
 		//move right
-		CAMERA_PHI += 1.0;
-		if (CAMERA_PHI > 0.0) {
-			CAMERA_PHI -= 360.0;
-		}
-		glutPostRedisplay();
-
+		keyarr['d'] = PUSHED;
 	}
-	else if (key == '+') {
-		//move forward
-		CAMERA_R -= 0.5;
-		if (CAMERA_R <= 0.0) {
-			CAMERA_R = 0.0;
-		}
-		glutPostRedisplay();
+   	if (( key == 't' ) || (key == 'T')){ 
+		//Throw Object 
+		keyarr['t'] = PUSHED;
 	}
-	else if (key == '-') {
-		//move backward
-		CAMERA_R += 0.5;
-		if (CAMERA_R >= 30.0) {
-			CAMERA_R = 30.0;
-		}
+	if (( key == 'z' ) || (key == 'Z')){ 
+		//Make object smaller
+		keyarr['z'] = PUSHED;
 	}
-	else if (key == 27) {
-		//Exit program when pressed. We should probably put a menu here.
-		exit(0);
+	if (( key == 'x' ) || (key == 'X')){ 
+		//Make object bigger
+		keyarr['x'] = PUSHED;
 	}
+#ifdef DEV
+    if ( key == 'e' || key == 'E'){
+        // Create a box where the eye is
+   		keyarr['e'] = PUSHED;
+    }
+#endif
+    if (key == 'j' || key == 'J'){
+   		keyarr['j'] = PUSHED;
+       }
 }
 
+void Input::keyup( unsigned char key, int x, int y )
+{
+	if ( key == 'q' || key == 'Q') {
+		//exit the program
+		keyarr['q'] = NOTPUSHED;
+	}
+    if (key == 'w' || key == 'W') {
+    	//move forward
+		keyarr['w'] = NOTPUSHED;
+	}
+	if (key == 's' || key == 'S') {
+		keyarr['s'] = NOTPUSHED;
+	}
+	if (key == 'a' || key == 'A') {
+		//move left
+		keyarr['a'] = NOTPUSHED;
+	}
+    if (key == 'd' || key == 'D') {
+		//move right
+		keyarr['d'] = NOTPUSHED;
+	}
+   	if (( key == 't' ) || (key == 'T')){ 
+		//Throw Object 
+		keyarr['t'] = NOTPUSHED;
+	}
+	if (( key == 'z' ) || (key == 'Z')){ 
+		//Make object smaller
+		keyarr['z'] = NOTPUSHED;
+	}
+	if (( key == 'x' ) || (key == 'X')){ 
+		//Make object bigger
+		keyarr['x'] = NOTPUSHED;
+	}
+#ifdef DEV
+    if ( key == 'e' || key == 'E'){
+        // Create a box where the eye is
+   		keyarr['e'] = NOTPUSHED;
+    }
+#endif
+    if (key == 'j' || key == 'J'){
+   		keyarr['j'] = NOTPUSHED;
+       }
+}
 void Input::specialInput(int key, int x, int y)
 {
 	switch(key)
@@ -150,23 +181,24 @@ void Input::specialInput(int key, int x, int y)
 
 			glutPostRedisplay();
 		break;
-
+	    #ifdef DEV	
 		case GLUT_KEY_PAGE_UP:
-			//move forward
-			CAMERA_R -= 0.5;
-			if (CAMERA_R <= 0.0) {
-				CAMERA_R = 0.0;
-			}
-			glutPostRedisplay();
+   		//move up
+		CAMERA_THETA -= 1.0;
+		if (CAMERA_THETA < 0.0) {
+			CAMERA_THETA += 360.0;
+		}
+		glutPostRedisplay();
 		break;
-
 		case GLUT_KEY_PAGE_DOWN:
-			//move backward
-			CAMERA_R += 0.5;
-			if (CAMERA_R >= 30.0) {
-				CAMERA_R = 30.0;
-			}
-		break;
+				//move down
+		CAMERA_THETA += 1.0;
+		if (CAMERA_THETA > 0.0) {
+			CAMERA_THETA -= 360.0;
+		}
+		glutPostRedisplay();
+		break;	
+        #endif
 	}
 }
 

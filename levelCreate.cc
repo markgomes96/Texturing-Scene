@@ -8,12 +8,13 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double scaleX, scaleY, scaleZ ;
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
-
+extern int jump;
+extern key_state keyarr[127];
 void showMinimap(){
 	//Function to generate minimap
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	glPushMatrix();
 	glEnable(GL_SCISSOR_TEST);
 	glScissor(WINDOW_MAX_X-300, 50, 200, 200);
@@ -39,14 +40,102 @@ void buildCameraScene(){
 	glEnable(GL_SCISSOR_TEST);
 	glLoadIdentity();   	//call this before setting the viewing position
 
-
- glScissor(WINDOW_MAX_X-200, 200, 200, 200);
+    glScissor(WINDOW_MAX_X-200, 200, 200, 200);
 	if(true){
 		showMinimap();
 	}
 	glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
 	glScissor(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
-	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2
+	if ( keyarr['q']){
+		//exit the program
+		exit(0);
+	}
+	if ( keyarr['w']){
+		//move forward
+		CAMERA_R -= 0.05;
+		if (CAMERA_R <= 0.0) {
+			CAMERA_R = 0.0;
+		}
+		glutPostRedisplay();
+	}
+	if ( keyarr['s']){
+		//move backward
+		CAMERA_R += 0.05;
+		if (CAMERA_R >= 30.0) {
+			CAMERA_R = 30.0;
+		}
+		glutPostRedisplay();
+	}
+	if ( keyarr['a']){
+		//move left
+		CAMERA_PHI -= 0.1;
+		if (CAMERA_PHI < 0.0) {
+			CAMERA_PHI += 360.0;
+		}
+		glutPostRedisplay();
+	}
+	if ( keyarr['d']){
+		//move right
+		CAMERA_PHI += 0.1;
+		if (CAMERA_PHI > 0.0) {
+			CAMERA_PHI -= 360.0;
+		}
+		glutPostRedisplay();
+	}
+    if ( keyarr['z']){
+        scaleX *= 1.1;
+        scaleY *= 1.1;
+        scaleZ *= 1.1;
+    }
+ if ( keyarr['x']){
+        scaleX /= 1.1;
+        scaleY /= 1.1;
+        scaleZ /= 1.1;
+    }
+	if ( keyarr['t']){
+		//Throw Object
+		g.createProjectile( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI
+					/180.0),
+				CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI
+					/180.0),
+				CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
+				scaleX, scaleY, scaleZ);
+	}
+#ifdef DEV
+	if ( keyarr['e']){
+		// Create a box where the eye is
+		g.createEye(centerX, centerY, centerZ, 1, 0.2, 0.2, 0.2);
+	}
+#endif
+	if ( keyarr['j']){
+		if (jump == 0)
+			jump = 1;
+	}
+    // If jump = 0, do nothing
+    // if 0 < jump < 5, go up, increase jump by 1
+    // if jump = 5, turn jump = -1
+    // if jump < 0 , go down
+    // if jump = -5, set jump = 0 
+    if (jump!= 0){
+        if (jump == 5){
+            jump = -1;
+        } else if (jump > 0){
+            CAMERA_THETA -= 1.0;
+            if (CAMERA_THETA < 0.0)
+                CAMERA_THETA += 360.0;
+            jump+=1;
+        } else if ((jump < 0) && (jump > -5)){
+            CAMERA_THETA += 1.0;
+            if (CAMERA_THETA > 0.0){
+                CAMERA_THETA -= 360.0;
+            }
+            jump -= 1;
+        } else{
+                jump =0;
+            }
+   }
+   
+    gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2  
 		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2
 		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),  // 0.2 Eye
 		centerX,  //1.2
@@ -1488,8 +1577,15 @@ glPopMatrix();
 	 glTranslatef(1.85, 15.6275, 0.0);
 	 glScalef(0.15, 0.4, 0.6);
 	 drawBox(&faces[0]);
-	glPopMatrix();
-////////////////////////////////////////////////////
+     glPopMatrix();
+
+     for(int i = 0; i < g.golist.size(); i++)
+     {
+         g.drawBox(&g.golist[i].faces[0], &g.golist[i].collCenter);    // draw faces
+         g.drawBounds(&g.golist[i].bounds[0]);                       // draw box collider
+     }
+
+     ////////////////////////////////////////////////////
 //food court area
 
 
