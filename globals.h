@@ -10,8 +10,6 @@ double CAMERA_R = 15.0;
 double CAMERA_THETA = 89.0;
 double CAMERA_PHI = 85.5;
 
-<<<<<<< globals.h
-bool camera = false;
 
 //mouse vars
 glm::vec3 cameraPos = glm::vec3(3.8f, 0.0f, 2.0f); //1.2f, -0.2f, 0.5f);
