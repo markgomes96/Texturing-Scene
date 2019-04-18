@@ -36,7 +36,8 @@ public:
 	void HUD();
 	void render();
 	void createProjectile( double, double, double, double, double, double, double ); 
-	
+	void createEye( double, double, double, double, double, double, double ); 
+
 
 	// Input relay functions
 	void mouse( int button, int state, int x, int y );

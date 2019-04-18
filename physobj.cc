@@ -19,6 +19,13 @@ void PhysObj::updateVelo(float x, float y, float z){
     velocity.y += y;
     velocity.z += z;
 }
+
+void PhysObj::updateAcc(float x, float y, float z){
+    acceleration.x += x;
+    acceleration.y += y;
+    acceleration.x += z;
+}
+
 void PhysObj::updatePhysics()
 {
 	// Update bounds to new world position

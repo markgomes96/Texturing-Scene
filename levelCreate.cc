@@ -13,6 +13,10 @@ void buildHeritageHall(){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();   	//call this before setting the viewing position 
+    printf("Eye %f %f %f\n",  CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 
+		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  
+		CAMERA_R*cos(CAMERA_THETA*M_PI/180.0));
+	printf("Center %f %f %f\n", centerX, centerY, centerZ); 
 
 	gluLookAt( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), //1.2  
 		CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0),  //-0.2

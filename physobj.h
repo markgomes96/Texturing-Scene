@@ -33,6 +33,7 @@ public:
 
 	// Game functions
 	void updateVelo(float x, float y, float z);
+    void updateAcc(float x, float y, float z);
 	void updatePhysics();
 	void createBounds(box *face, vertex wpos);
 };

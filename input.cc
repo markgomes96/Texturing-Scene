@@ -95,9 +95,9 @@ void Input::keyboard( unsigned char key, int x, int y )
 		                    CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
 		                    0.1,0.1,0.1);
 	}
-
-
-	
+    else if ( key == 'e'){
+        g.createEye(centerX, centerY, centerZ, 1, 0.2, 0.2, 0.2);
+    }
 }
 
 void Input::specialInput(int key, int x, int y)
