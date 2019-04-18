@@ -1,4 +1,5 @@
 #include "includes.h"
+#include "prototypes.h"
 #include "game.h"
 
 // Constant values for window size and place
@@ -74,12 +75,13 @@ int main(int argc, char** argv)
 	//set up opengl
 	glutInit(&argc, argv);
 	init(WINDOW_MAX_X, WINDOW_MAX_Y, WINDOW_POSITION_X, WINDOW_POSITION_Y);
-
+    glewInit();
 	g.init();
 
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
 	glutSpecialFunc(specialInput);
+	loadVerticesFileData( "vertices" ); //file name is "vertices"
 	//initalize mouse movement function
 	glutPassiveMotionFunc(passiveMouseMovement);
 	glutMotionFunc(mouseMovement);

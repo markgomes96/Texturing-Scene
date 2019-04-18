@@ -2,11 +2,11 @@
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S), Linux)
 	CCFLAGS += -D LINUX
-	LBLIBS = -I.usr/include -L/usr/lib64 -lglut -lGL -lGLU -lX11 -lm
+	LBLIBS = -L. -lSOIL -lGLEW -lglut -lGL -lGLU -lm
 endif
 ifeq ($(UNAME_S), Darwin)
 	CCFLAGS += -D OSX
-	LBLIBS = -framework Carbon -framework OpenGL -framework GLUT
+	LBLIBS = -L. -lSOIL -lGLEW -framework Carbon -framework OpenGL -framework GLUT
 endif
 
 
@@ -17,8 +17,8 @@ C++ = g++
 #LDLIBS =  -lglut -lGL -lGLU  -lX11 -lm
 
 INCLUDES   = includes.h
-HEADERS    = structs.h game.h input.h globals.h
-OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.cc
+HEADERS    = structs.h game.h input.h globals.h prototypes.h
+OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o drawCase.o texturing.o objectdata.o
 
 CF = -DLEVEL	#-DLEVEL -> to switch to level scene
 
@@ -50,6 +50,15 @@ defineBox.o : defineBox.cc $(INCLUDES) $(HEADERS)
 
 drawBox.o : drawBox.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) -c drawBox.cc
+
+drawCase.o : drawCase.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) -c drawCase.cc
+
+texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) -c texturing.cc
+
+objectdata.o : objectdata.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) -c objectdata.cc
 
 main.o : main.cc $(OBJS)
 	$(C++) $(CCFLAGS) $(CF) -c main.cc 

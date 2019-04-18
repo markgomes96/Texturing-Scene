@@ -2,9 +2,10 @@
 #define INCLUDES
 
 #ifdef LINUX
-	#include <GL/gl.h>		//graphics libraries
-	#include <GL/glu.h>
+	#include <GL/glew.h>		//graphics libraries
 	#include <GL/glut.h>
+	#include <GL/glu.h>
+	#include <GL/gl.h>
 	#include <glm/glm.hpp>
 	#include <glm/gtc/matrix_transform.hpp>
 
@@ -16,12 +17,14 @@
 	#include <ctime>
 
 	#include "structs.h"
+	#include "SOIL.h"
 
 	using namespace std;
 #endif 
 
 #ifdef OSX
-	#include <GLUT/glut.h>		//graphics libraries
+	#include <GL/glew.h>		//graphics libraries
+	#include <GLUT/glut.h>
 
 	#include <vector>		//utility libraries
 	#include <cmath>
@@ -31,6 +34,7 @@
 	#include <ctime>
 
 	#include "structs.h"
+	#include "SOIL.h"
 
 	using namespace std;
 #endif

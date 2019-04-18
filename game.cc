@@ -3,6 +3,7 @@
 
 #include "includes.h"
 #include "game.h"
+#include "prototypes.h"
 
 
 /*
@@ -22,6 +23,9 @@ void Game::init()
 	cube = TestObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 1.0, 1.0), false);
 	golist.push_back(floor);
 	golist.push_back(cube);
+
+	loadTextures();
+	cout << "init" << endl;
 }
 
 void Game::update() 
@@ -92,6 +96,7 @@ void Game::HUD()
 
 void Game::render()
 {
+/*
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity(); 
 
@@ -112,7 +117,9 @@ void Game::render()
 		drawBounds(&golist[i].bounds[0]);						// draw box collider
 	}
 
-	glutSwapBuffers();
+	glutSwapBuffers();*/
+
+buildHeritageHall();
 }
 
 // Input replay functions

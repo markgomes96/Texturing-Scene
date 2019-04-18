@@ -39,4 +39,6 @@ void drawBox( struct box* );
 
 Game g;
 
+GLuint textureID[2];
+
 #endif
