@@ -8,10 +8,10 @@
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern int jump;
-extern Game g; 
+extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 
-Input::Input() 
+Input::Input()
 { }
 
 void Input::mouse( int button, int state, int x, int y )
@@ -58,17 +58,22 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//move right
 		keyarr['d'] = PUSHED;
 	}
-   	if (( key == 't' ) || (key == 'T')){ 
-		//Throw Object 
+   	if (( key == 't' ) || (key == 'T')){
+		//Throw Object
 		keyarr['t'] = PUSHED;
 	}
-	if (( key == 'z' ) || (key == 'Z')){ 
+	if (( key == 'z' ) || (key == 'Z')){
 		//Make object smaller
 		keyarr['z'] = PUSHED;
 	}
-	if (( key == 'x' ) || (key == 'X')){ 
+	if (( key == 'x' ) || (key == 'X')){
 		//Make object bigger
 		keyarr['x'] = PUSHED;
+	}
+	if ( key == 27 ){
+		//Exit gracefully
+		glutLeaveGameMode();
+		exit(0);
 	}
 #ifdef DEV
     if ( key == 'e' || key == 'E'){
@@ -102,15 +107,15 @@ void Input::keyup( unsigned char key, int x, int y )
 		//move right
 		keyarr['d'] = NOTPUSHED;
 	}
-   	if (( key == 't' ) || (key == 'T')){ 
-		//Throw Object 
+   	if (( key == 't' ) || (key == 'T')){
+		//Throw Object
 		keyarr['t'] = NOTPUSHED;
 	}
-	if (( key == 'z' ) || (key == 'Z')){ 
+	if (( key == 'z' ) || (key == 'Z')){
 		//Make object smaller
 		keyarr['z'] = NOTPUSHED;
 	}
-	if (( key == 'x' ) || (key == 'X')){ 
+	if (( key == 'x' ) || (key == 'X')){
 		//Make object bigger
 		keyarr['x'] = NOTPUSHED;
 	}
@@ -181,7 +186,7 @@ void Input::specialInput(int key, int x, int y)
 
 			glutPostRedisplay();
 		break;
-	    #ifdef DEV	
+	    #ifdef DEV
 		case GLUT_KEY_PAGE_UP:
    		//move up
 		CAMERA_THETA -= 1.0;
@@ -197,7 +202,7 @@ void Input::specialInput(int key, int x, int y)
 			CAMERA_THETA -= 360.0;
 		}
 		glutPostRedisplay();
-		break;	
+		break;
         #endif
 	}
 }
