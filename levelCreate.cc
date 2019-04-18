@@ -10,18 +10,6 @@
 
 extern glm::vec3 cameraPos, cameraTarget, up;
 
-void buildHeritageHall(void){
-
-	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity(); 
-	
-	gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
-			(double) cameraTarget.x, // + cameraFront.x,
-			(double) cameraTarget.y, // + cameraFront.y,
-			(double) cameraTarget.z, // + cameraFront.z,
-			(double) up.x, (double) up.y, (double) up.z); 	// Up */
 
 
 extern double scaleX, scaleY, scaleZ ;
@@ -117,9 +105,19 @@ void buildCameraScene(){
    }
    
 }
-void buildHeritageHall(){
-	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_TEXTURE_2D);
+void buildHeritageHall(void){
+
+	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity(); 
+	
+	gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
+			(double) cameraTarget.x, // + cameraFront.x,
+			(double) cameraTarget.y, // + cameraFront.y,
+			(double) cameraTarget.z, // + cameraFront.z,
+			(double) up.x, (double) up.y, (double) up.z); 	// Up */
+
 
 	
 
