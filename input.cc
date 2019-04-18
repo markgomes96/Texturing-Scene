@@ -41,20 +41,21 @@ void Input::keyboard( unsigned char key, int x, int y )
 		exit(0);
 	}
 	else if (key == 'w' || key == 'W') {
-		//move up
-		CAMERA_THETA -= 1.0;
-		if (CAMERA_THETA < 0.0) {
-			CAMERA_THETA += 360.0;
+    	//move forward
+		CAMERA_R -= 0.5;
+		if (CAMERA_R <= 0.0) {
+			CAMERA_R = 0.0;
 		}
-		glutPostRedisplay();	
+		glutPostRedisplay();
 	}
 	else if (key == 's' || key == 'S') {
-		//move down
-		CAMERA_THETA += 1.0;
-		if (CAMERA_THETA > 0.0) {
-			CAMERA_THETA -= 360.0;
+		//move backward
+		CAMERA_R += 0.5;
+		if (CAMERA_R >= 30.0) {
+			CAMERA_R = 30.0;
 		}
 		glutPostRedisplay();	
+
 	}
 	else if (key == 'a' || key == 'A') {
 		//move left
@@ -159,20 +160,21 @@ void Input::specialInput(int key, int x, int y)
 		break;
 		
 		case GLUT_KEY_PAGE_UP:
-			//move forward
-			CAMERA_R -= 0.5;
-			if (CAMERA_R <= 0.0) {
-				CAMERA_R = 0.0;
-			}
-			glutPostRedisplay();
+   		//move up
+		CAMERA_THETA -= 1.0;
+		if (CAMERA_THETA < 0.0) {
+			CAMERA_THETA += 360.0;
+		}
+		glutPostRedisplay();
 		break;
 
 		case GLUT_KEY_PAGE_DOWN:
-			//move backward
-			CAMERA_R += 0.5;
-			if (CAMERA_R >= 30.0) {
-				CAMERA_R = 30.0;
-			}
+			//move down
+		CAMERA_THETA += 1.0;
+		if (CAMERA_THETA > 0.0) {
+			CAMERA_THETA -= 360.0;
+		}
+		glutPostRedisplay();
 		break;	
 	}
 }

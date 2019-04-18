@@ -28,10 +28,10 @@ void Game::createProjectile(double a1, double a2, double a3, double a4, double b
 	TestObj projectile = TestObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
 //	projectile.updateVelo(0.0,-0.2,0.0);
 	 directX =  (centerX -CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0)) * 0.01;
-	 directY = (centerY - CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0) - 10) * 0.01;
-	 directZ =  (centerZ - CAMERA_R*cos(CAMERA_THETA*M_PI/180.0) + 0.44)*0.01;
-	/* printf("What\n");
-	 printf("Direct vector %f %f %f\n", directX, directY, directZ);*/
+	 directY = (centerY - CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0)) * 0.01;
+	 directZ =  (centerZ - CAMERA_R*cos(CAMERA_THETA*M_PI/180.0))*0.01;
+//	printf("What\n");
+//	 printf("Direct vector %f %f %f\n", directX, directY, directZ);
      projectile.updateVelo(directX,directY,directZ);
      golist.push_back(projectile);
 
