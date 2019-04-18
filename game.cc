@@ -163,6 +163,10 @@ void Game::keyboard( unsigned char key, int x, int y )
 {
 	input.keyboard(key, x, y);
 }
+void Game::keyup( unsigned char key, int x, int y )
+{
+	input.keyup(key, x, y);
+}
 void Game::specialInput(int key, int x, int y)
 {
 	input.specialInput(key, x, y);

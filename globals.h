@@ -13,6 +13,7 @@ double directX = 0;
 double directY = 0;
 double directZ = 0;
 
+enum key_state {NOTPUSHED, PUSHED} keyarr[127];
 int jump = 0;
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);

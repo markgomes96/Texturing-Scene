@@ -7,9 +7,10 @@
 
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
-
 extern int jump;
 extern Game g; 
+extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
+
 Input::Input() 
 { }
 
@@ -40,75 +41,73 @@ void Input::keyboard( unsigned char key, int x, int y )
 {
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
-		exit(0);
+		keyarr['q'] = PUSHED;
 	}
-	else if (key == 'w' || key == 'W') {
+    if (key == 'w' || key == 'W') {
     	//move forward
-		CAMERA_R -= 0.5;
-		if (CAMERA_R <= 0.0) {
-			CAMERA_R = 0.0;
-		}
-		glutPostRedisplay();
+		keyarr['w'] = PUSHED;
 	}
-	else if (key == 's' || key == 'S') {
-		//move backward
-		CAMERA_R += 0.5;
-		if (CAMERA_R >= 30.0) {
-			CAMERA_R = 30.0;
-		}
-		glutPostRedisplay();	
+	if (key == 's' || key == 'S') {
+		keyarr['s'] = PUSHED;
 	}
-	else if (key == 'a' || key == 'A') {
+	if (key == 'a' || key == 'A') {
 		//move left
-		CAMERA_PHI -= 1.0;
-		if (CAMERA_PHI < 0.0) {
-			CAMERA_PHI += 360.0;
-		}
-		glutPostRedisplay();
+		keyarr['a'] = PUSHED;
 	}
-	else if (key == 'd' || key == 'D') {
+    if (key == 'd' || key == 'D') {
 		//move right
-		CAMERA_PHI += 1.0;
-		if (CAMERA_PHI > 0.0) {
-			CAMERA_PHI -= 360.0;
-		}
-		glutPostRedisplay();
-
+		keyarr['d'] = PUSHED;
 	}
-	else if (key == '+') {
-		//move forward
-		CAMERA_R -= 0.5;
-		if (CAMERA_R <= 0.0) {
-			CAMERA_R = 0.0;
-		}
-		glutPostRedisplay();
-	}
-	else if (key == '-') {
-		//move backward
-		CAMERA_R += 0.5;
-		if (CAMERA_R >= 30.0) {
-			CAMERA_R = 30.0;
-		}	
-	}
-	else if (( key == 't' ) || (key == 'T')){ 
+   	if (( key == 't' ) || (key == 'T')){ 
 		//Throw Object 
-		g.createProjectile( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI/180.0), 
-		                    CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI/180.0), 
-		                    CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
-		                    0.1,0.1,0.1);
+		keyarr['t'] = PUSHED;
 	}
 #ifdef DEV
-    else if ( key == 'e' || key == 'E'){
+    if ( key == 'e' || key == 'E'){
         // Create a box where the eye is
-        g.createEye(centerX, centerY, centerZ, 1, 0.2, 0.2, 0.2);
+   		keyarr['e'] = PUSHED;
     }
 #endif
-    else if (key == 'j' || key == 'J'){
-        if (jump == 0)
-            jump = 1;
+    if (key == 'j' || key == 'J'){
+   		keyarr['j'] = PUSHED;
        }
 }
 
+void Input::keyup( unsigned char key, int x, int y )
+{
+	if ( key == 'q' || key == 'Q') {
+		//exit the program
+		keyarr['q'] = NOTPUSHED;
+	}
+    if (key == 'w' || key == 'W') {
+    	//move forward
+		keyarr['w'] = NOTPUSHED;
+	}
+	if (key == 's' || key == 'S') {
+		keyarr['s'] = NOTPUSHED;
+	}
+	if (key == 'a' || key == 'A') {
+		//move left
+		keyarr['a'] = NOTPUSHED;
+	}
+    if (key == 'd' || key == 'D') {
+		//move right
+		keyarr['d'] = NOTPUSHED;
+	}
+   	if (( key == 't' ) || (key == 'T')){ 
+		//Throw Object 
+		keyarr['t'] = NOTPUSHED;
+	}
+#ifdef DEV
+    if ( key == 'e' || key == 'E'){
+        // Create a box where the eye is
+   		keyarr['e'] = NOTPUSHED;
+    }
+#endif
+    if (key == 'j' || key == 'J'){
+   		keyarr['j'] = NOTPUSHED;
+       }
+}
 void Input::specialInput(int key, int x, int y)
 {
 	switch(key)

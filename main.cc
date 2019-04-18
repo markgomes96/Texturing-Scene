@@ -36,7 +36,8 @@ void update( void )
 #else
 	g.update();
 #endif
-	display();
+    glutPostRedisplay();
+//	display();
 }
 
 void reshape (int w, int h)
@@ -63,6 +64,7 @@ void init(int window_width, int window_height, int window_position_x, int window
 // Relay functions for input handling
 void mouse( int button, int state, int x, int y ) { g.mouse(button, state, x, y); }
 void keyboard( unsigned char key, int x, int y ) { g.keyboard(key, x, y); }
+void keyup( unsigned char key, int x, int y ) { g.keyup(key, x, y); }
 void specialInput(int key, int x, int y) {g.specialInput(key, x, y); }
 
 int main(int argc, char** argv)
@@ -77,6 +79,7 @@ int main(int argc, char** argv)
 
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
+	glutKeyboardUpFunc(keyup);
 	glutSpecialFunc(specialInput);
 
 	glutReshapeFunc(reshape);
