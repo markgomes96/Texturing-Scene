@@ -97,10 +97,12 @@ void Input::keyboard( unsigned char key, int x, int y )
 		                    CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
 		                    0.1,0.1,0.1);
 	}
+#ifdef DEV
     else if ( key == 'e' || key == 'E'){
         // Create a box where the eye is
         g.createEye(centerX, centerY, centerZ, 1, 0.2, 0.2, 0.2);
     }
+#endif
     else if (key == 'j' || key == 'J'){
         if (jump == 0)
             jump = 1;

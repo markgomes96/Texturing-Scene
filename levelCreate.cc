@@ -13,8 +13,12 @@ void buildHeritageHall(){
 
 	glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 	glLoadIdentity();   	//call this before setting the viewing position 
-    
-    // This is for jumping
+
+    // If jump = 0, do nothing
+    // if 0 < jump < 5, go up, increase jump by 1
+    // if jump = 5, turn jump = -1
+    // if jump < 0 , go down
+    // if jump = -5, set jump = 0 
     if (jump!= 0){
         if (jump == 5){
             jump = -1;

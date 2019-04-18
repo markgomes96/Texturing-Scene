@@ -8,7 +8,6 @@
 
 	#include <vector>		//utility libraries
 	#include <cmath>
-    #include <unistd.h>
 	#include <stdlib.h>
 	#include <time.h>
     #include <stdio.h>
@@ -30,7 +29,6 @@
 	#include <time.h>
 	#include <iostream>
 	#include <ctime>
-   #include <unistd.h>
 
 	#include "structs.h"
 
