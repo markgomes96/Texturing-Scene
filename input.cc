@@ -65,12 +65,6 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//exit the program
 		exit(0);
 	}
-	if(key == 'g'){
-		camera = true;
-	}
-	if(key == 'r'){
-		camera = false;
-	}
 	if(key == 'w'){
 		cameraDirection = cameraTarget - cameraPos;
 		cameraDirection = glm::normalize(cameraDirection);
