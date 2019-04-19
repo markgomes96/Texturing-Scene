@@ -42,7 +42,7 @@ double scaleZ = 0.1;
 double power = 1;
 enum key_state {NOTPUSHED, PUSHED} keyarr[127];
 int jump = 0;
-bool unhold = true;
+bool unhold = false;
 
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);
