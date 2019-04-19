@@ -5,11 +5,10 @@
 #include "game.h"
 #include "input.h"
 
-extern double centerX, centerY, centerZ;
-extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
+extern double scaleAccZ;
 extern float sensitivity;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern bool camera, unhold;
@@ -94,6 +93,11 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//Make object bigger
 		keyarr['x'] = PUSHED;
 	}
+	if (( key == 'r' ) || (key == 'R')){
+		//Reverse gravity
+		keyarr['r'] = PUSHED;
+	}
+
 	if ( key == 27 ){
 		//Exit gracefully
 		glutLeaveGameMode();
@@ -148,6 +152,13 @@ void Input::keyup( unsigned char key, int x, int y )
 		//Make object bigger
 		keyarr['x'] = NOTPUSHED;
 	}
+	if ((key == 'r' ) || (key == 'R')){
+		//Reverse gravity
+		keyarr['r'] = NOTPUSHED;
+	    scaleAccZ *= -1;
+	    //printf("%f \n", scaleAccZ);
+	}
+
 #ifdef DEV
     if ( key == 'e' || key == 'E'){
         // Create a box where the eye is

@@ -39,6 +39,11 @@ double scaleX = 0.1;
 double scaleY = 0.1;
 double scaleZ = 0.1;
 
+// acceleration of the object, at the beginning, there is only gravity 
+double scaleAccX = 0;
+double scaleAccY = 0;
+double scaleAccZ = 1;
+
 double power = 1;
 enum key_state {NOTPUSHED, PUSHED} keyarr[127];
 int jump = 0;
