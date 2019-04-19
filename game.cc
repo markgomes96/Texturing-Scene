@@ -10,6 +10,7 @@ extern void buildCameraScene();
 extern void buildHeritageHall();
 extern double directX,directY, directZ, scaleAccX, scaleAccY, scaleAccZ, power;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
+extern double addAcc[3];
 /*
 * Handles all functions of the game
 */
@@ -56,8 +57,8 @@ void Game::createProjectile(double a1, double a2, double a3, double a4, double b
 	directX =  ((double)cameraTarget.x - (double)cameraPos.x) * power;
 	directY =  ((double)cameraTarget.y - (double)cameraPos.y) * power;
 	directZ =  ((double)cameraTarget.z - (double)cameraPos.z) * power;
-    projectile.updateVelo(directX,directY,directZ);
-    projectile.updateAcc(scaleAccX,scaleAccY,scaleAccZ);
+    projectile.updateVelo(directX, directY, directZ);
+    projectile.updateAcc(addAcc[0], addAcc[1], addAcc[2]);
     golist.push_back(projectile);
 }
 
