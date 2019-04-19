@@ -22,7 +22,7 @@ Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
-	
+
 	y = 800 - y; //this needs to be dynamic eventually
 
 	//calculate change in x and y
@@ -70,36 +70,18 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//exit the program
 		keyarr['q'] = PUSHED;
 	}
-	if(key == 'w'){
-		cameraDirection = cameraTarget - cameraPos;
-		cameraDirection = glm::normalize(cameraDirection);
-		cameraPos.x = cameraPos.x + sensitivity*cameraDirection.x;
-		cameraPos.y = cameraPos.y + sensitivity*cameraDirection.y;
-		cameraTarget.x = cameraTarget.x + sensitivity*cameraDirection.x;
-		cameraTarget.y = cameraTarget.y + sensitivity*cameraDirection.y;
-	
+	if( key == 'w' || key == 'Q') {
+		keyarr['w'] = PUSHED;
 	}
-	if(key == 's'){
-		cameraDirection = cameraTarget - cameraPos;
-		cameraDirection = glm::normalize(cameraDirection);
-		cameraPos.x = cameraPos.x - sensitivity*cameraDirection.x;
-		cameraPos.y = cameraPos.y - sensitivity*cameraDirection.y;
-		cameraTarget.x = cameraTarget.x - sensitivity*cameraDirection.x;
-		cameraTarget.y = cameraTarget.y - sensitivity*cameraDirection.y;
+	if( key == 's' || key == 'S') {
+		keyarr['s'] = PUSHED;
 	}
-	if(key == 'a'){
-		 cameraDirection = cameraTarget - cameraPos;
-		 cameraDirection = glm::normalize(cameraDirection);
-		 cameraPos = cameraPos - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
-		 cameraTarget = cameraTarget - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+	if( key == 'a' || key == 'A') {
+		keyarr['a'] = PUSHED;
 	}
-	if(key == 'd'){
-		cameraDirection = cameraTarget - cameraPos;
-		cameraDirection = glm::normalize(cameraDirection);
-		cameraPos = cameraPos + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
-		cameraTarget = cameraTarget + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+	if( key == 'd' || key == 'D') {
+		keyarr['d'] = PUSHED;
 	}
-
    	if (( key == 't' ) || (key == 'T')){
 		//Throw Object
 		keyarr['t'] = PUSHED;
@@ -134,6 +116,25 @@ void Input::keyup( unsigned char key, int x, int y )
 		//exit the program
 		keyarr['q'] = NOTPUSHED;
 	}
+	 if (key == 'w' || key == 'W') {
+    	//move forward
+		keyarr['w'] = NOTPUSHED;
+	}
+	if (key == 's' || key == 'S') {
+		keyarr['s'] = NOTPUSHED;
+	}
+	if (key == 'a' || key == 'A') {
+		//move left
+		keyarr['a'] = NOTPUSHED;
+	}
+    if (key == 'd' || key == 'D') {
+		//move right
+		keyarr['d'] = NOTPUSHED;
+	}
+   	if (( key == 't' ) || (key == 'T')){ 
+		//Throw Object 
+		keyarr['t'] = NOTPUSHED;
+    }
    	if (( key == 't' ) || (key == 'T')){
 		//Throw Object
 		keyarr['t'] = NOTPUSHED;
