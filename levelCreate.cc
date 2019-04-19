@@ -8,7 +8,7 @@
 #include "prototypes.h"
 
 
-extern double scaleX, scaleY, scaleZ ;
+extern double scaleX, scaleY, scaleZ, power ;
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
@@ -17,7 +17,7 @@ extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern float sensitivity;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
-extern bool camera;
+extern bool camera, unhold;
 extern int jump;
 extern Game g;
 extern key_state keyarr[127];
@@ -102,10 +102,14 @@ void buildCameraScene(){
     }
 	if ( keyarr['t']){
 		//Throw Object
+		power *= 1.01;
+	} else if (unhold){
 		g.createProjectile( (double) cameraPos.x, 
 		                    (double) cameraPos.y, 
 		                    (double) cameraPos.z, 
 		                    1, scaleX, scaleY, scaleZ);
+		unhold = false;
+		power = 1.0;
 	}
 #ifdef DEV
 	if ( keyarr['e']){
@@ -157,10 +161,6 @@ void buildHeritageHall(void){
 			(double) cameraTarget.y, // + cameraFront.y,
 			(double) cameraTarget.z, // + cameraFront.z,
 			(double) up.x, (double) up.y, (double) up.z); 	// Up */
-
-
-	
-
 //floor//
 	//glEnable(GL_TEXTURE_2D);
 	//glBindTexture(GL_TEXTURE_2D, textureID[0]);	

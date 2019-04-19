@@ -12,7 +12,7 @@ extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern float sensitivity;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
-extern bool camera;
+extern bool camera, unhold;
 extern int jump;
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
@@ -134,6 +134,7 @@ void Input::keyup( unsigned char key, int x, int y )
    	if (( key == 't' ) || (key == 'T')){ 
 		//Throw Object 
 		keyarr['t'] = NOTPUSHED;
+		unhold = true;
     }
    	if (( key == 't' ) || (key == 'T')){
 		//Throw Object
