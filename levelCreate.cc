@@ -8,14 +8,20 @@
 #include "prototypes.h"
 
 
-extern glm::vec3 cameraPos, cameraTarget, up;
-
-
-
-extern double scaleX, scaleY, scaleZ ;
+extern double scaleX, scaleY, scaleZ, power ;
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
+extern double centerX, centerY, centerZ;
+extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
+extern double prev_mouse_x, prev_mouse_y;
+extern double mouse_dx, mouse_dy;
+extern double x_rotat, y_rotat;
+extern float sensitivity;
+extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
+extern bool camera, unhold;
 extern int jump;
+extern Game g;
 extern key_state keyarr[127];
+
 void showMinimap(){
 	//Function to generate minimap
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -31,7 +37,6 @@ void showMinimap(){
 
 }
 void buildDisplay(){
-
 
 	buildCameraScene();
 	buildHeritageHall();
@@ -50,30 +55,69 @@ void buildCameraScene(){
 	}
 	glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
 	glScissor(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
-	
+
+    if (keyarr['w']){
+        // Move forward
+        cameraDirection = cameraTarget - cameraPos;
+        cameraDirection = glm::normalize(cameraDirection);
+        cameraPos.x = cameraPos.x + sensitivity*cameraDirection.x;
+        cameraPos.y = cameraPos.y + sensitivity*cameraDirection.y;
+        cameraTarget.x = cameraTarget.x + sensitivity*cameraDirection.x;
+        cameraTarget.y = cameraTarget.y + sensitivity*cameraDirection.y;
+    }
+
+    if (keyarr['s']){
+        // Move backward
+        cameraDirection = cameraTarget - cameraPos;
+        cameraDirection = glm::normalize(cameraDirection);
+        cameraPos.x = cameraPos.x - sensitivity*cameraDirection.x;
+        cameraPos.y = cameraPos.y - sensitivity*cameraDirection.y;
+        cameraTarget.x = cameraTarget.x - sensitivity*cameraDirection.x;
+        cameraTarget.y = cameraTarget.y - sensitivity*cameraDirection.y;
+    }
+    if (keyarr['a']){
+        // Move left
+        cameraDirection = cameraTarget - cameraPos;
+        cameraDirection = glm::normalize(cameraDirection);
+        cameraPos = cameraPos - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+        cameraTarget = cameraTarget - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+    }
+
+    if (keyarr['d']){
+        cameraDirection = cameraTarget - cameraPos;
+        cameraDirection = glm::normalize(cameraDirection);
+        cameraPos = cameraPos + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+        cameraTarget = cameraTarget + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+    }
+
     if ( keyarr['z']){
         scaleX *= 1.1;
         scaleY *= 1.1;
         scaleZ *= 1.1;
     }
- if ( keyarr['x']){
+    if ( keyarr['x']){
         scaleX /= 1.1;
         scaleY /= 1.1;
         scaleZ /= 1.1;
     }
 	if ( keyarr['t']){
 		//Throw Object
-		g.createProjectile( CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*cos(CAMERA_PHI*M_PI
-					/180.0),
-				CAMERA_R*sin(CAMERA_THETA*M_PI/180.0)*sin(CAMERA_PHI*M_PI
-					/180.0),
-				CAMERA_R*cos(CAMERA_THETA*M_PI/180.0),1,
-				scaleX, scaleY, scaleZ);
+		power *= 1.01;
+	} else if (unhold){
+		g.createProjectile( (double) cameraPos.x, 
+		                    (double) cameraPos.y, 
+		                    (double) cameraPos.z, 
+		                    1, scaleX, scaleY, scaleZ);
+		unhold = false;
+		power = 1.0;
 	}
 #ifdef DEV
 	if ( keyarr['e']){
 		// Create a box where the eye is
-		g.createEye(centerX, centerY, centerZ, 1, 0.2, 0.2, 0.2);
+		g.createEye((double) cameraTarget.x, // + cameraFront.x,
+			        (double) cameraTarget.y, // + cameraFront.y,
+			        (double) cameraTarget.z, // + cameraFront.z,
+                    1, 0.2, 0.2, 0.2);
 	}
 #endif
 	if ( keyarr['j']){
@@ -117,10 +161,6 @@ void buildHeritageHall(void){
 			(double) cameraTarget.y, // + cameraFront.y,
 			(double) cameraTarget.z, // + cameraFront.z,
 			(double) up.x, (double) up.y, (double) up.z); 	// Up */
-
-
-	
-
 //floor//
 	//glEnable(GL_TEXTURE_2D);
 	//glBindTexture(GL_TEXTURE_2D, textureID[0]);	
