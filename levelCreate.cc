@@ -118,6 +118,9 @@ void buildHeritageHall(void){
 			(double) cameraTarget.z,// + cameraFront.z,
 			(double) up.x, (double) up.y, (double) up.z); 	// Up */
 
+	/*cout << cameraTarget.x + cameraFront.x << " ";
+	cout << cameraTarget.y + cameraFront.y << " ";
+	cout << cameraTarget.z + cameraFront.z << endl; */
 
 	
 

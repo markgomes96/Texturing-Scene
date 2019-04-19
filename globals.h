@@ -30,6 +30,7 @@ double mouse_dy = 0;
 double x_rotat = 0.0;
 double y_rotat = 0.0;
 float sensitivity = 0.1;
+bool first_mouse = true;
 
 double directX = 0;
 double directY = 0;

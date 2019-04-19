@@ -17,18 +17,28 @@ extern int jump;
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
+extern bool first_mouse;
 
 Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
-	float sensitivity = 1.0f;
+	float sensitivity = 0.2f;
+
 
 	y = WINDOW_MAX_Y  - y; //this needs to be dynamic eventually
+
+	if(first_mouse){
+		prev_mouse_x = x;
+		prev_mouse_y = y;
+		first_mouse = false;
+	}
 
 	//calculate change in x and y
 	mouse_dx = x - prev_mouse_x; 
 	mouse_dy = y- prev_mouse_y;
+
+	cout << x << " " << y << endl;
 
 	//reset prev mouse x and y
 	prev_mouse_x = x;
@@ -37,11 +47,14 @@ void Input::passiveMouseMovement(int x, int y){
 	mouse_dx = mouse_dx * sensitivity;
 	mouse_dy = mouse_dy * sensitivity;
 
-	cout << mouse_dx << " " << mouse_dy << endl;
+	//cout << mouse_dx << " " << mouse_dy << endl;
 
-	float yaw, pitch;
+	static float yaw, pitch;
 	yaw = yaw + mouse_dx;
 	pitch = pitch + mouse_dy;
+
+	cout << "yaw: " << yaw << endl;
+	cout << "pitch: " << pitch << endl;
 	
 	if(pitch > 89.0){
 		pitch = 89.0;
@@ -50,14 +63,26 @@ void Input::passiveMouseMovement(int x, int y){
 		pitch = 89.0;
 	}
 
-	cameraFront.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-	cameraFront.y = sin(glm::radians(pitch));
-	cameraFront.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+	float cosp = cos(glm::radians(pitch));
+	float sinp = sin(glm::radians(pitch));
+	float cosy = cos(glm::radians(yaw));
+	float siny = sin(glm::radians(yaw));
+	float nsinp = -sin(glm::radians(pitch));
+	float nsiny = -sin(glm::radians(yaw));
 
-	cameraFront = glm::normalize(cameraFront);
-	cameraTarget = cameraTarget + cameraFront;
+	float tmpx, tmpy, tmpz;
+	//calculate new camera target
+	cameraDirection = cameraTarget - cameraPos;
+	cout << cameraDirection.x << " " << cameraDirection.y << " " << cameraDirection.z << endl;
+	tmpx = cameraDirection.x*cosp + cameraDirection.z*sinp + cameraDirection.x*cosy + cameraDirection.y*nsiny;
+	tmpy = cameraDirection.y + cameraDirection.x*siny + cameraDirection.y * cosy;
+	tmpz = cameraDirection.x * nsinp + cameraDirection.z * cosp + cameraDirection.z;
 
-	//cout << cameraTarget.x << " " << cameraTarget.y << " " << cameraTarget.z << endl;
+	cameraTarget.x = tmpx;
+	cameraTarget.y = tmpy;
+	cameraTarget.z = tmpz;
+	cout << cameraTarget.x << " " << cameraTarget.y << endl; 
+
 }
 
 void Input::mouseMovement(int x, int y){
