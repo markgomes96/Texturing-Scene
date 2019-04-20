@@ -5,15 +5,15 @@
 #include "game.h"
 #include "input.h"
 
-extern double centerX, centerY, centerZ;
-extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
+extern double scaleAccZ;
 extern float sensitivity;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern bool camera, unhold;
-extern int jump;
+extern int jump, changeAcc;
+extern double addAcc[3];
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 
@@ -32,8 +32,6 @@ void Input::passiveMouseMovement(int x, int y){
 	//reset prev mouse x and y
 	prev_mouse_x = x;
 	prev_mouse_y = y;
-
-
 	
 }
 
@@ -66,7 +64,7 @@ void Input::mouse( int button, int state, int x, int y )
 
 void Input::keyboard( unsigned char key, int x, int y )
 {
-	if ( key == 'q' || key == 'Q') {
+   	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		keyarr['q'] = PUSHED;
 	}
@@ -94,6 +92,11 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//Make object bigger
 		keyarr['x'] = PUSHED;
 	}
+	if (( key == 'r' ) || (key == 'R')){
+		//Reverse gravity
+		keyarr['r'] = PUSHED;
+	}
+
 	if ( key == 27 ){
 		//Exit gracefully
 		glutLeaveGameMode();
@@ -108,10 +111,25 @@ void Input::keyboard( unsigned char key, int x, int y )
     if (key == 'j' || key == 'J'){
    		keyarr['j'] = PUSHED;
        }
+    if (key == '+'){
+        addAcc[changeAcc-1] += 1.0;
+    }
+    if (key == '-'){
+        addAcc[changeAcc-1] -= 1.0;
+    }
 }
 
 void Input::keyup( unsigned char key, int x, int y )
 {
+     if ( key == '1'){
+        changeAcc = 1;
+    }
+  if ( key == '2'){
+        changeAcc = 2;
+    }
+  if ( key == '3'){
+        changeAcc = 3;
+    }
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		keyarr['q'] = NOTPUSHED;
@@ -148,6 +166,15 @@ void Input::keyup( unsigned char key, int x, int y )
 		//Make object bigger
 		keyarr['x'] = NOTPUSHED;
 	}
+	if ((key == 'r' ) || (key == 'R')){
+		//reset Acceleration
+		keyarr['r'] = NOTPUSHED;
+		addAcc[0] = 0.0;
+		addAcc[1] = 0.0; 
+	    addAcc[2] = 1.0;
+	 //printf("%f \n", scaleAccZ);
+	}
+
 #ifdef DEV
     if ( key == 'e' || key == 'E'){
         // Create a box where the eye is

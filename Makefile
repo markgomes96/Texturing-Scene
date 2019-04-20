@@ -11,14 +11,14 @@ endif
 
 
 CC = gcc
-C++ = g++ 
+C++ = g++
 #LIBDIRS = -L/usr/lib64
 #INCDIRS = -I/usr/include
 #LDLIBS =  -lglut -lGL -lGLU  -lX11 -lm
 
 INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h prototypes.h
-OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o testobj.o physicsengine.o drawCase.o texturing.o objectdata.o
+OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o gameobj.o physicsengine.o drawCase.o texturing.o 
 
 
 CF = -DLEVEL	#-DLEVEL -> to switch to level scene
@@ -34,8 +34,8 @@ input.o : input.cc $(INCLUDES) $(HEADERS)
 physobj.o : physobj.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c physobj.cc
 
-testobj.o : testobj.cc $(INCLUDES) $(HEADERS)
-	$(C++) $(CCFLAGS) $(CF) $(DF) -c testobj.cc
+gameobj.o : testobj.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) $(DF) -c gameobj.cc
 
 physicsengine.o : physicsengine.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c physicsengine.cc
@@ -58,8 +58,8 @@ drawCase.o : drawCase.cc $(INCLUDES) $(HEADERS)
 texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) -c texturing.cc
 
-objectdata.o : objectdata.cc $(INCLUDES) $(HEADERS)
-	$(C++) $(CCFLAGS) $(CF) -c objectdata.cc
+#objectdata.o : objectdata.cc $(INCLUDES) $(HEADERS)
+#	$(C++) $(CCFLAGS) $(CF) -c objectdata.cc
 
 main.o : main.cc $(OBJS)
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c main.cc 

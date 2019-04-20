@@ -8,10 +8,8 @@
 #include "prototypes.h"
 
 
-extern double scaleX, scaleY, scaleZ, power ;
+extern double scaleX, scaleY, scaleZ, scaleAccZ ,power ;
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
-extern double centerX, centerY, centerZ;
-extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
@@ -129,7 +127,7 @@ void buildCameraScene(){
     // if jump = 5, turn jump = -1
     // if jump < 0 , go down
     // if jump = -5, set jump = 0 
-    if (jump!= 0){
+    /*if (jump!= 0){
         if (jump == 5){
             jump = -1;
         } else if (jump > 0){
@@ -146,7 +144,7 @@ void buildCameraScene(){
         } else{
                 jump =0;
             }
-   }
+   }*/
    
 }
 void buildHeritageHall(void){
@@ -1616,8 +1614,8 @@ glDisable(GL_TEXTURE_2D);
 
      for(int i = 0; i < g.golist.size(); i++)
      {
-         g.drawBox(&g.golist[i].faces[0], &g.golist[i].collCenter);    // draw faces
-         g.drawBounds(&g.golist[i].bounds[0]);                       // draw box collider
+         g.drawObject(g.golist[i]);    // draw faces
+        // g.drawBounds(&g.golist[i].bounds[0]);                       // draw box collider
      }
 
      ////////////////////////////////////////////////////

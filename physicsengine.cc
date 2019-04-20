@@ -13,7 +13,7 @@ PhysicsEngine::PhysicsEngine(float fr)
 	timeStep = (1.0 / frameRate);
 }
 
-void PhysicsEngine::updateObjects(vector<TestObj> &golist)
+void PhysicsEngine::updateObjects(vector<GameObj> &golist)
 {
 	// update position of every object
 	for(int i = 0; i < golist.size(); i++)
@@ -46,7 +46,7 @@ void PhysicsEngine::updateObjects(vector<TestObj> &golist)
 	}
 }
 
-void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
+void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 {
 	// { collz, colly, collx }
 	// -1 -> collision in negative direction / 1 -> collision in positive direction
@@ -181,9 +181,9 @@ void PhysicsEngine::checkCollision(TestObj &go1, TestObj &go2)
 	}
 }
 
-void PhysicsEngine::updatePosition(TestObj &go)
+void PhysicsEngine::updatePosition(GameObj &go)
 {
-	// record objects last position
+	// record objects last position 
 	go.prevPos.x = go.collCenter.x;
 	go.prevPos.y = go.collCenter.y;
 	go.prevPos.z = go.collCenter.z;
@@ -203,7 +203,7 @@ void PhysicsEngine::updatePosition(TestObj &go)
 	go.updatePhysics();
 }
 
-bool PhysicsEngine::positionTest(TestObj a, TestObj b)
+bool PhysicsEngine::positionTest(GameObj a, GameObj b)
 {
 	bool flag = false;
 	float delta = 0.001;
@@ -227,7 +227,7 @@ bool PhysicsEngine::positionTest(TestObj a, TestObj b)
 	return flag;
 }
 
-bool PhysicsEngine::sphereCollsTest(TestObj a, TestObj b)
+bool PhysicsEngine::sphereCollsTest(GameObj a, GameObj b)
 {
 	float centerDist = vectMagn(vectDist(a.collCenter, b.collCenter));
 	float collSphDist = a.csDist + b.csDist;

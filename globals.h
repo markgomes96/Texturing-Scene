@@ -39,10 +39,18 @@ double scaleX = 0.1;
 double scaleY = 0.1;
 double scaleZ = 0.1;
 
+// acceleration of the object, at the beginning, there is only gravity 
+double scaleAccX = 0;
+double scaleAccY = 0;
+double scaleAccZ = 0;
+double addAcc[3] = {0,0,0};
+// 1 is change scaleAccX, 2 is scaleAccY and 3 is scaleAccZ
+int changeAcc = 1;
+
 double power = 1;
 enum key_state {NOTPUSHED, PUSHED} keyarr[127];
 int jump = 0;
-bool unhold = true;
+bool unhold = false;
 
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);

@@ -26,7 +26,7 @@ void PhysObj::updateVelo(float x, float y, float z){
 void PhysObj::updateAcc(float x, float y, float z){
     acceleration.x += x;
     acceleration.y += y;
-    acceleration.x += z;
+    acceleration.z += z;
 }
 
 void PhysObj::updatePhysics()
