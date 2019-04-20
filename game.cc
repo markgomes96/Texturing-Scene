@@ -5,7 +5,6 @@
 #include "game.h"
 #include "prototypes.h"
 
-
 /*
 * Handles all functions of the game
 */

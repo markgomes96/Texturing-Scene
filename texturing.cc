@@ -5,14 +5,14 @@
 
 extern GLuint textureID[50];
 
-void loadTextures() {
+void loadTextures(void) {
 	unsigned char* image;
 	int width, height;
 	float colorMode[4] = {0.0, 0.0, 0.0, 0.0};
 
 	//to get the actual color of the texture rather than last stored color
 	glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, colorMode);
-	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 		
 	//first texture
 	glGenTextures(1, &textureID[0]);	
@@ -85,7 +85,7 @@ void loadTextures() {
 	glGenerateMipmap(GL_TEXTURE_2D);
 
 	SOIL_free_image_data(image);
-
+/*
 	//fifth texture
 	glGenTextures(1, &textureID[4]);	
 	glBindTexture(GL_TEXTURE_2D, textureID[4]);
@@ -103,7 +103,7 @@ void loadTextures() {
 	glGenerateMipmap(GL_TEXTURE_2D);
 
 	SOIL_free_image_data(image);
-/*
+
 	//sixth texture
 	glGenTextures(1, &textureID[5]);	
 	glBindTexture(GL_TEXTURE_2D, textureID[5]);
