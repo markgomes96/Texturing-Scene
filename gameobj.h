@@ -30,10 +30,10 @@ public:
 	// freeform constructor
 	GameObj(vertex _position, vect3 _scale, vector<polygon> _polygons, colortype _color, bool isStat);
 	// cube constructor
-	GameObj(vertex _position, vect3 _scale, bool isStat);
+	GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange = false);
 
 	//Game functions
-	void defineBox(box *face, vect3 scale);
+	void defineBox(box *face, vect3 scale, bool ran);
 };
 
 #endif

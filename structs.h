@@ -75,19 +75,4 @@ typedef struct object {
 	colortype color;
 } object;
 
-//structs to create cubes for display cases//
-/*
-typedef struct vertex {
-        float x;
-        float y;
-        float z;
-        float w;
-} vertex;
-
-typedef struct colortype {
-	float red;
-	float green;
-	float blue;
-} colortype;
-*/
 #endif

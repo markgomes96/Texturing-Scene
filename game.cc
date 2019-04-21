@@ -54,7 +54,7 @@ void Game::init()
 
 // Create throwing object
 void Game::createProjectile(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
-	GameObj projectile = GameObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
+	GameObj projectile = GameObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false, true);
 	directX =  ((double)cameraTarget.x - (double)cameraPos.x) * power;
 	directY =  ((double)cameraTarget.y - (double)cameraPos.y) * power;
 	directZ =  ((double)cameraTarget.z - (double)cameraPos.z) * power;
