@@ -184,11 +184,13 @@ void GameObj::defineBox(box *face, vect3 scale, bool colorChange)
 	face[5].color.green = 1.0;
 	face[5].color.blue  = 1.0;}
     else{
-        srand(time(NULL));
+        float HI = 0.9;
+        float LO = 0.2;
+        srand(static_cast <unsigned> (time(0)));
         for (int i = 0; i<6;i++){
-        face[i].color.red   = 0.5 + static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        face[i].color.green = 0.5 + static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-        face[i].color.blue  = 0.5 + static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+        face[i].color.red   = LO + static_cast <float> (rand()) / static_cast <float> (RAND_MAX)/(HI-LO);
+        face[i].color.green = LO + static_cast <float> (rand()) / static_cast <float> (RAND_MAX)/(HI-LO);
+        face[i].color.blue  = LO + static_cast <float> (rand()) / static_cast <float> (RAND_MAX)/(HI-LO);
         }
     }
 
