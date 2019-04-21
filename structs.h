@@ -66,7 +66,6 @@ typedef struct polygon {
     vector<vertex> textVerts;   // index matches up to vertices
 } polygon;
 
-
 typedef struct object {
 	string name;
 	vertex position;

@@ -33,7 +33,7 @@ public:
 	GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange = false);
 
 	//Game functions
-	void defineBox(box *face, vect3 scale, bool ran);
+	void defineBox(box *face, vect3 scale, bool colorChange);
 };
 
 #endif
