@@ -3,7 +3,7 @@
 include ../Makefile.inc
 
 INCLUDES   = includes.h
-HEADERS    = structs.h game.h input.h globals.h prototypes.h
+HEADERS    = structs.h game.h input.h globals.h prototypes.h ../lib/SOIL/SOIL.h
 OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o \
 			 gameobj.o physicsengine.o drawCase.o texturing.o 
 
@@ -13,13 +13,14 @@ OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o \
 CF = -DLEVEL	#-DLEVEL -> to switch to level scene
 DF = -DDEV
 
-all : run
+
+all : run tags
 
 run: main.o $(INCLUDES) $(HEADERS) $(OBJS) 
-	$(C++) $(CCFLAGS) $(CF) $(DF) -o run  main.o $(OBJS) $(LBLIBS) #$(INCDIRS) $(LIBDIRS) $(LDLIBS) 
+	$(C++) $(CCFLAGS) $(CF) $(DF) -o run  main.o $(OPTHDRSLOC) $(OBJS) $(LBLIBS) #$(INCDIRS) $(LIBDIRS) $(LDLIBS) 
 	cp run ../.
 
-input.o : input.cc $(INCLUDES) $(HEADERS)
+input.o : input.cc $(INCLUDES) $(HEADERS) 
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c input.cc
 
 physobj.o : physobj.cc $(INCLUDES) $(HEADERS)
@@ -55,12 +56,22 @@ texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
 main.o : main.cc $(OBJS)
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c main.cc 
 
+# make tags for vi
+
+tags :
+	ctags *.cc *.h
+
+# make targets to clean up the directory
+
 clean :
-	rm *.o
+	rm *.o 
 
 pristine :
 	rm *.o
+	rm tags
 	rm run
+	rm ../run 
+	
 
 purge :
 	rm *.o

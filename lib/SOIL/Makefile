@@ -2,7 +2,7 @@ include ../../Makefile.inc
 
 # Build SOIL targets and make object files for library
 
-all: lib
+all: lib tags
 
 SOIL.o : SOIL.c
 	$(CC) $(CFLAGS) -c SOIL.c
@@ -20,15 +20,22 @@ lib: SOIL.o image_DXT.o image_helper.o stb_image_aug.o
 	ar -rc libSOIL.a SOIL.o image_DXT.o image_helper.o stb_image_aug.o
 	ranlib libSOIL.a
 
+# Command to make tags for vim
+
+tags:
+	ctags *.c *.h
+
 # Commands to clean up the directory
 
 clean:
 	rm *.o
+	rm tags
 	touch *.c
 
 pristine:
 	rm *.o
 	rm *.a
+	rm tags
 	touch *.c
 
 
