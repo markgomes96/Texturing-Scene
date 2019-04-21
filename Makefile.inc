@@ -11,9 +11,9 @@ ifeq ($(UNAME_S), Darwin)
 	LBLIBS = -L. -lSOIL -lGLEW -framework Carbon -framework OpenGL -framework GLUT
 endif
 
-
+#Set the default compilers.
 CC = gcc
 C++ = g++
-#LIBDIRS = -L/usr/lib64
-#INCDIRS = -I/usr/include
-#LDLIBS =  -lglut -lGL -lGLU  -lX11 -lm
+
+#Note -- if the Portland Group compilers are used then several of the compiler 
+# flags will also have to be modified
