@@ -13,8 +13,11 @@ double CAMERA_PHI = 85.5;
 
 //mouse vars
 glm::vec3 cameraPos = glm::vec3(3.8f, 0.0f, 2.0f); //1.2f, -0.2f, 0.5f);
-glm::vec3 cameraTarget = glm::vec3(3.8f, 4.0f, 2.0f);
+glm::vec3 cameraTarget = glm::vec3(6.8f, 8.0f, 2.0f);
 glm::vec3 cameraDirection = glm::normalize(cameraPos-cameraTarget);
+
+glm::vec3 zVec = glm::vec3(0.0, 8.0, 2.0);
+
 
 glm::vec3 up = glm::vec3(0.0f, 0.0f, 1.0f);
 glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
@@ -30,6 +33,7 @@ double mouse_dy = 0;
 double x_rotat = 0.0;
 double y_rotat = 0.0;
 float sensitivity = 0.1;
+bool first_mouse = true;
 
 double directX = 0;
 double directY = 0;

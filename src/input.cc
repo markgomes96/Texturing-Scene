@@ -10,29 +10,117 @@ extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern double scaleAccZ;
 extern float sensitivity;
-extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
+extern glm::vec3 zVec, cameraFront, cameraTarget, cameraPos, up, cameraDirection, cameraRight;
 extern bool camera, unhold;
 extern int jump, changeAcc;
 extern double addAcc[3];
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
-
+extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
+extern bool first_mouse;
 
 Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
+	//float sensitivity = 0.001f;
 
-	y = 800 - y; //this needs to be dynamic eventually
+	y = WINDOW_MAX_Y  - y; 
+
+	if(first_mouse){
+		prev_mouse_x = x;
+		prev_mouse_y = y;
+		first_mouse = false;
+	}
+
+	//cout << "previous mouse " << prev_mouse_x << " " << prev_mouse_y << endl;
 
 	//calculate change in x and y
 	mouse_dx = x - prev_mouse_x; 
 	mouse_dy = y- prev_mouse_y;
 
+	//cout << "change " << mouse_dx << " " << mouse_dy << endl;
+
+//	cout << x << " " << y << endl;
+
 	//reset prev mouse x and y
 	prev_mouse_x = x;
 	prev_mouse_y = y;
+
+//	mouse_dx = mouse_dx * sensitivity;
+//	mouse_dy = mouse_dy * sensitivity;
+
+	//cout << mouse_dx << " " << mouse_dy << endl;
+
+
+
+	if(mouse_dx > 0){
+		mouse_dx = -1.5;// * sensitivity; //so it looks right
+	}
+	else if(mouse_dx < 0){
+		mouse_dx = 1.5;// * sensitivity; //so it looks left
+	}
 	
+	if(mouse_dy > 0){
+		mouse_dy = 1.0;
+	}
+	else if(mouse_dy < 0){
+		mouse_dy = -1.0;
+	}
+
+	static float yaw, pitch;
+	yaw = mouse_dx;
+	pitch = pitch +  mouse_dy;
+
+//	cout << "yaw: " << yaw << endl;
+//	cout << "pitch: " << pitch << endl;
+	
+	
+	if(yaw > 360.0){
+		yaw = yaw - 360.0;
+	}
+	if(yaw < -360.0){
+		yaw = yaw + 360.0;
+	}
+
+	if(pitch > 89.0){
+		pitch = 89.0;
+	}
+	if(pitch < -89.0){
+		pitch = -89.0;
+	}
+
+
+	float cosp = cos(glm::radians(pitch));
+	float sinp = sin(glm::radians(pitch));
+	float cosy = cos(glm::radians(yaw));
+	float siny = sin(glm::radians(yaw));
+	float nsinp = -sin(glm::radians(pitch));
+	float nsiny = -sin(glm::radians(yaw));
+
+	float tmpx, tmpy, tmpz;
+	float tmpzy, tmpzz;
+
+	//get new z pos
+	tmpzy = zVec.y * cosp + zVec.z * nsinp;
+	tmpzz = zVec.y * sinp + zVec.z * cosp;
+
+	//cameraTarget.y = cameraPos.y + tmpzy;
+	cameraTarget.z = cameraPos.z + tmpzz;
+
+
+	//spin around z axis
+	cameraDirection = cameraTarget - cameraPos;	
+	tmpx = cameraDirection.x * cosy + cameraDirection.y * nsiny;
+	tmpy = cameraDirection.x * siny + cameraDirection.y * cosy;
+	
+
+	//new camera target
+	cameraTarget.x = cameraPos.x + tmpx;
+	cameraTarget.y = cameraPos.y + tmpy;
+	//cameraTarget.z = cameraPos.z + tdirz;
+	//cout << "new target: " << cameraTarget.z << endl;
+	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
 }
 
 void Input::mouseMovement(int x, int y){
@@ -66,6 +154,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 {
    	if ( key == 'q' || key == 'Q') {
 		//exit the program
+		exit(0);
 		keyarr['q'] = PUSHED;
 	}
 	if( key == 'w' || key == 'Q') {
