@@ -41,4 +41,9 @@ textureID[0]:10A
 38:front_side_pattern
 39:side_straight_pattern1
 40:side_straight_pattern2
+41:floor
+42:floor2
+43:dc_short_bottom
+44:dc_long_bottom
+
 

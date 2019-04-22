@@ -30,13 +30,13 @@ void buildHeritageHall(void){
 	//glEnable(GL_TEXTURE_2D);
 
 //floor//
-	//glEnable(GL_TEXTURE_2D);
+	glEnable(GL_TEXTURE_2D);
 	//glBindTexture(GL_TEXTURE_2D, textureID[0]);	
 
 	glPushMatrix();
 //cout << "before bind" << endl;
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
-	glBindTexture(GL_TEXTURE_2D, textureID[0]);	
+	glBindTexture(GL_TEXTURE_2D, textureID[42]);	
 //cout << "after bind" << endl;
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
@@ -44,16 +44,16 @@ void buildHeritageHall(void){
 	glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 0, 0, 0 );
-		glTexCoord2d(0.0, 1.0);
+		glTexCoord2d(0.0, 10.0);
 		glVertex3f ( 7.3152, 0, 0 );
-		glTexCoord2d(1.0, 1.0);	
+		glTexCoord2d(10.0, 10.0);	
 		glVertex3f ( 7.3152, 55.1688, 0 );
-		glTexCoord2d(1.0, 0.0);
+		glTexCoord2d(10.0, 0.0);
 		glVertex3f ( 0, 55.1688, 0 );
 	glEnd();
 	glPopMatrix();
 //cout << "after texture" << endl;
-	//glDisable(GL_TEXTURE_2D);
+	glDisable(GL_TEXTURE_2D);
 
 	glPushMatrix();
 	glPolygonMode(GL_FRONT, GL_FILL);
