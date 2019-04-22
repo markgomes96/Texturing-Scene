@@ -18,7 +18,7 @@
 	#include <ctime>
 
 	#include "structs.h"
-	#include "SOIL.h"
+	#include "../lib/SOIL/SOIL.h"
 
 	using namespace std;
 #endif 
@@ -36,7 +36,7 @@
 	#include <ctime>
 
 	#include "structs.h"
-	#include "SOIL.h"
+	#include "../lib/SOIL/SOIL.h"
 
 	using namespace std;
 #endif

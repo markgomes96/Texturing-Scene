@@ -105,6 +105,7 @@ int main(int argc, char** argv)
 	glutKeyboardFunc(keyboard);
 	glutKeyboardUpFunc(keyup);
 	glutSpecialFunc(specialInput);
+    // This needs to be changed to reflect that vertices is in the ../objs directory
 //	loadVerticesFileData( "vertices" ); //file name is "vertices"
 	//initalize mouse movement function
 	glutPassiveMotionFunc(passiveMouseMovement);
