@@ -24,19 +24,18 @@ GameObj::GameObj(vertex _position, vect3 _scale, vector<polygon> _polygons,color
 	position = collCenter;
 }
 
-GameObj::GameObj(vertex _position, vect3 _scale, bool isStat)
-{
+GameObj::GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange) {
     position = _position;
     scale = _scale;
 	isStatic = isStat;
     isBox = true;
-	defineBox(&faces[0], scale);
-
+	defineBox(&faces[0], scale, colorChange);
+    
 	PhysObj::createBounds(&faces[0], position);
 	position = collCenter;
 }
 
-void GameObj::defineBox(box *face, vect3 scale)
+void GameObj::defineBox(box *face, vect3 scale, bool colorChange)
 {
 	face[0].point[0].x = -1.0 * scale.x;  // Bottom
 	face[0].point[0].y = -1.0 * scale.y;
@@ -160,6 +159,7 @@ void GameObj::defineBox(box *face, vect3 scale)
 
 
 	// Define the colors
+	if (!colorChange){
 	face[0].color.red   = 1.0;
 	face[0].color.green = 0.0;
 	face[0].color.blue  = 0.0;
@@ -182,7 +182,17 @@ void GameObj::defineBox(box *face, vect3 scale)
 
 	face[5].color.red   = 0.0;
 	face[5].color.green = 1.0;
-	face[5].color.blue  = 1.0;
+	face[5].color.blue  = 1.0;}
+    else{
+        float HI = 0.9;
+        float LO = 0.2;
+        srand(static_cast <unsigned> (time(0)));
+        for (int i = 0; i<6;i++){
+        face[i].color.red   = LO + static_cast <float> (rand()) / static_cast <float> (RAND_MAX)/(HI-LO);
+        face[i].color.green = LO + static_cast <float> (rand()) / static_cast <float> (RAND_MAX)/(HI-LO);
+        face[i].color.blue  = LO + static_cast <float> (rand()) / static_cast <float> (RAND_MAX)/(HI-LO);
+        }
+    }
 
 }
 
