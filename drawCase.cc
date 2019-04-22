@@ -13,6 +13,9 @@ glEnable(GL_DEPTH_TEST);
 glEnable(GL_TEXTURE_2D);
 
 /*dc 1*/
+
+glDisable(GL_TEXTURE_2D);
+
 	/*bottom 1*/
 	glPushMatrix();
 	glTranslated(0.5,0.25,0.0);
@@ -43,6 +46,8 @@ glEnable(GL_TEXTURE_2D);
     glEnd();
 	glPopMatrix();
 	
+glEnable(GL_TEXTURE_2D);
+
 	/*left base 1*/
 	glBindTexture(GL_TEXTURE_2D, textureID[44]);
 	glPushMatrix();
@@ -159,7 +164,6 @@ glEnable(GL_TEXTURE_2D);
     glPopMatrix();
 	
 	/*right glass 1*/
-    //glDisable(GL_TEXTURE_2D);
     	glBindTexture(GL_TEXTURE_2D, textureID[4]);
 	glPushMatrix();
 	glTranslated(0.5,0.25,0.0);
@@ -175,7 +179,6 @@ glEnable(GL_TEXTURE_2D);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
-    //glEnable(GL_TEXTURE_2D);
 
 glDisable(GL_TEXTURE_2D);
 
@@ -225,7 +228,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 2*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(5.5,0.25,0.0);
     glBegin(GL_POLYGON);
@@ -256,6 +262,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 2*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(5.5,0.25,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -288,68 +295,74 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*front glass 2*/
+    glBindTexture(GL_TEXTURE_2D, textureID[38]);
     glPushMatrix();
     glTranslated(5.5,0.25,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glEnd();
     glPopMatrix();
     
-	/*back glass 2*/
+    /*back glass 2*/
+    glBindTexture(GL_TEXTURE_2D, textureID[36]);
     glPushMatrix();
     glTranslated(5.5,0.25,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
 
     /*left glass 2*/
+    glBindTexture(GL_TEXTURE_2D, textureID[40]);
     glPushMatrix();
     glTranslated(5.5,0.25,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
     glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
+    glTexCoord2d(1.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,0.127,0.4572);
-    glTexCoord2d(1.0, 0.0);
+    glTexCoord2d(0.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
 
     /*right glass 2*/
+    glBindTexture(GL_TEXTURE_2D, textureID[39]);
     glPushMatrix();
     glTranslated(5.5,0.25,0.0);
     glColor3f(0.0,1.0,0.0);
     glBegin(GL_POLYGON);
     glTexCoord2d(0.0, 0.0);
     glVertex3f(1.4478,0.127,2.5146);
-    glTexCoord2d(0.0, 1.0);
+    glTexCoord2d(1.0, 0.0);
     glVertex3f(1.4478,2.7432,2.5146);
     glTexCoord2d(1.0, 1.0);
     glVertex3f(1.4478,2.7432,0.4572);
-    glTexCoord2d(1.0, 0.0);
+    glTexCoord2d(0.0, 1.0);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
+
+glDisable(GL_TEXTURE_2D);
 
     /*top glass 2*/
     glPushMatrix();
@@ -397,7 +410,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 3*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(0.5,8.6875,0.0);
     glBegin(GL_POLYGON);
@@ -428,6 +444,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 3*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(0.5,8.6875,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -458,9 +475,6 @@ glDisable(GL_TEXTURE_2D);
     glVertex3f(0.0,0.0,0.0);
     glEnd();
     glPopMatrix();
-
-glEnable(GL_TEXTURE_2D);
-
 
     /*front glass 3*/
     glBindTexture(GL_TEXTURE_2D, textureID[11]);
@@ -578,7 +592,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 4*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(5.5,8.6875,0.0);
     glBegin(GL_POLYGON);
@@ -609,6 +626,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 4*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(5.5,8.6875,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -640,21 +658,19 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
-glEnable(GL_TEXTURE_2D);
-
     /*front glass 4*/
     glBindTexture(GL_TEXTURE_2D, textureID[15]);
     glPushMatrix();
     glTranslated(5.5,8.6875,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glEnd();
     glPopMatrix();
@@ -665,13 +681,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(5.5,8.6875,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -684,11 +700,11 @@ glEnable(GL_TEXTURE_2D);
     glBegin(GL_POLYGON);
     glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
+    glTexCoord2d(1.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,0.127,0.4572);
-    glTexCoord2d(1.0, 0.0);
+    glTexCoord2d(0.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -701,11 +717,11 @@ glEnable(GL_TEXTURE_2D);
     glBegin(GL_POLYGON);
     glTexCoord2d(0.0, 0.0);
     glVertex3f(1.4478,0.127,2.5146);
-    glTexCoord2d(0.0, 1.0);
+    glTexCoord2d(1.0, 0.0);
     glVertex3f(1.4478,2.7432,2.5146);
     glTexCoord2d(1.0, 1.0);
     glVertex3f(1.4478,2.7432,0.4572);
-    glTexCoord2d(1.0, 0.0);
+    glTexCoord2d(0.0, 1.0);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
@@ -758,7 +774,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 5*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(5.5,17.375,0.0);
     glBegin(GL_POLYGON);
@@ -789,6 +808,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 5*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(5.5,17.375,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -820,21 +840,19 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
-glEnable(GL_TEXTURE_2D);
-
     /*front glass 5*/
     glBindTexture(GL_TEXTURE_2D, textureID[19]);
     glPushMatrix();
     glTranslated(5.5,17.375,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glEnd();
     glPopMatrix();
@@ -845,13 +863,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(5.5,17.375,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -864,11 +882,11 @@ glEnable(GL_TEXTURE_2D);
     glBegin(GL_POLYGON);
     glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
+    glTexCoord2d(1.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,0.127,0.4572);
-    glTexCoord2d(1.0, 0.0);
+    glTexCoord2d(0.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -881,11 +899,11 @@ glEnable(GL_TEXTURE_2D);
     glBegin(GL_POLYGON);
     glTexCoord2d(0.0, 0.0);
     glVertex3f(1.4478,0.127,2.5146);
-    glTexCoord2d(0.0, 1.0);
+    glTexCoord2d(1.0, 0.0);
     glVertex3f(1.4478,2.7432,2.5146);
     glTexCoord2d(1.0, 1.0);
     glVertex3f(1.4478,2.7432,0.4572);
-    glTexCoord2d(1.0, 0.0);
+    glTexCoord2d(0.0, 1.0);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
@@ -938,7 +956,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 6*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(0.5,17.375,0.0);
     glBegin(GL_POLYGON);
@@ -969,6 +990,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 6*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(0.5,17.375,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -1000,21 +1022,19 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
-glEnable(GL_TEXTURE_2D);
-
     /*front glass 6*/
     glBindTexture(GL_TEXTURE_2D, textureID[23]);
     glPushMatrix();
     glTranslated(0.5,17.375,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glEnd();
     glPopMatrix();
@@ -1025,13 +1045,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,17.375,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1042,13 +1062,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,17.375,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(0.127,0.127,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(0.127,0.127,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(0.127,0.127,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1059,13 +1079,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,17.375,0.0);
     glColor3f(0.0,1.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(1.4478,0.127,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
@@ -1118,7 +1138,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 7*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(0.5,26.0625,0.0);
     glBegin(GL_POLYGON);
@@ -1149,6 +1172,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 7*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(0.5,26.0625,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -1180,21 +1204,19 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
-glEnable(GL_TEXTURE_2D);
-
     /*front glass 7*/
     glBindTexture(GL_TEXTURE_2D, textureID[27]);
     glPushMatrix();
     glTranslated(0.5,26.0625,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glEnd();
     glPopMatrix();
@@ -1205,13 +1227,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,26.0625,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1222,13 +1244,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,26.0625,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(0.127,0.127,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(0.127,0.127,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(0.127,0.127,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1239,13 +1261,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,26.0625,0.0);
     glColor3f(0.0,1.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(1.4478,0.127,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
@@ -1298,7 +1320,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 8*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(5.5,26.0625,0.0);
     glBegin(GL_POLYGON);
@@ -1329,6 +1354,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 8*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(5.5,26.0625,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -1360,21 +1386,19 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
-glEnable(GL_TEXTURE_2D);
-
     /*front glass 8*/
     glBindTexture(GL_TEXTURE_2D, textureID[31]);
     glPushMatrix();
     glTranslated(5.5,26.0625,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glEnd();
     glPopMatrix();
@@ -1385,13 +1409,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(5.5,26.0625,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1402,13 +1426,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(5.5,26.0625,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(0.127,0.127,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(0.127,0.127,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(0.127,0.127,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1419,13 +1443,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(5.5,26.0625,0.0);
     glColor3f(0.0,1.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(1.4478,0.127,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
@@ -1478,7 +1502,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 9*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(0.5,35.0,0.0);
     glBegin(GL_POLYGON);
@@ -1509,6 +1536,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 9*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(0.5,35.0,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -1540,21 +1568,19 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
-glEnable(GL_TEXTURE_2D);
-
     /*front glass 9*/
     glBindTexture(GL_TEXTURE_2D, textureID[35]);
     glPushMatrix();
     glTranslated(0.5,35.0,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,0.127,0.4572);
+    glVertex3f(0.127,0.127,0.4572);
     glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,0.127,2.5146);
+    glVertex3f(1.4478,0.127,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
     glVertex3f(0.127,0.127,2.5146);
     glEnd();
     glPopMatrix();
@@ -1565,13 +1591,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,35.0,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(0.127,2.7432,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1599,13 +1625,13 @@ glEnable(GL_TEXTURE_2D);
     glTranslated(0.5,35.0,0.0);
     glColor3f(0.0,1.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 0.0);
-    glVertex3f(1.4478,0.127,2.5146);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(1.4478,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(1.4478,2.7432,0.4572);
     glTexCoord2d(1.0, 0.0);
+    glVertex3f(1.4478,0.127,2.5146);
+    glTexCoord2d(0.0, 0.0);
+    glVertex3f(1.4478,2.7432,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(1.4478,2.7432,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(1.4478,0.127,0.4572);
     glEnd();
     glPopMatrix();
@@ -1658,7 +1684,10 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
+
     /*left base 10*/
+    glBindTexture(GL_TEXTURE_2D, textureID[44]);
     glPushMatrix();
     glTranslated(5.5,35.0,0.0);
     glBegin(GL_POLYGON);
@@ -1689,6 +1718,7 @@ glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     /*back base 10*/
+    glBindTexture(GL_TEXTURE_2D, textureID[43]);
     glPushMatrix();
     glTranslated(5.5,35.0,0.0);
     glColor3f(0.0,1.0,1.0);
@@ -1719,8 +1749,6 @@ glDisable(GL_TEXTURE_2D);
     glVertex3f(0.0,0.0,0.0);
     glEnd();
     glPopMatrix();
-
-	glEnable(GL_TEXTURE_2D);
 
     /*front glass 10*/
     glBindTexture(GL_TEXTURE_2D, textureID[3]);
@@ -1762,13 +1790,13 @@ glDisable(GL_TEXTURE_2D);
     glTranslated(5.5,35.0,0.0);
     glColor3f(1.0,0.0,0.0);
     glBegin(GL_POLYGON);
-    glTexCoord2d(0.0, 1.0);
-    glVertex3f(0.127,2.7432,2.5146);
-    glTexCoord2d(1.0, 1.0);
-    glVertex3f(0.127,0.127,2.5146);
     glTexCoord2d(1.0, 0.0);
-    glVertex3f(0.127,0.127,0.4572);
+    glVertex3f(0.127,2.7432,2.5146);
     glTexCoord2d(0.0, 0.0);
+    glVertex3f(0.127,0.127,2.5146);
+    glTexCoord2d(0.0, 1.0);
+    glVertex3f(0.127,0.127,0.4572);
+    glTexCoord2d(1.0, 1.0);
     glVertex3f(0.127,2.7432,0.4572);
     glEnd();
     glPopMatrix();
@@ -1807,7 +1835,6 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glPopMatrix();
 
-glDisable(GL_TEXTURE_2D);
 }
 
 #endif 
