@@ -10,7 +10,7 @@ extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
 extern double scaleAccZ;
 extern float sensitivity;
-extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
+extern glm::vec3 zVec, cameraFront, cameraTarget, cameraPos, up, cameraDirection, cameraRight;
 extern bool camera, unhold;
 extern int jump, changeAcc;
 extern double addAcc[3];
@@ -23,7 +23,7 @@ Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
-	float sensitivity = 0.001f;
+	//float sensitivity = 0.001f;
 
 	y = WINDOW_MAX_Y  - y; 
 
@@ -53,20 +53,28 @@ void Input::passiveMouseMovement(int x, int y){
 	//cout << mouse_dx << " " << mouse_dy << endl;
 
 
+
 	if(mouse_dx > 0){
-		mouse_dx = -2.0;// * sensitivity; //so it looks right
+		mouse_dx = -1.5;// * sensitivity; //so it looks right
 	}
 	else if(mouse_dx < 0){
-		mouse_dx = 2.0;// * sensitivity; //so it looks left
+		mouse_dx = 1.5;// * sensitivity; //so it looks left
 	}
 	
+	if(mouse_dy > 0){
+		mouse_dy = 1.0;
+	}
+	else if(mouse_dy < 0){
+		mouse_dy = -1.0;
+	}
 
 	static float yaw, pitch;
 	yaw = mouse_dx;
-	pitch = mouse_dy;
+	pitch = pitch +  mouse_dy;
 
 //	cout << "yaw: " << yaw << endl;
 //	cout << "pitch: " << pitch << endl;
+	
 	
 	if(yaw > 360.0){
 		yaw = yaw - 360.0;
@@ -79,8 +87,9 @@ void Input::passiveMouseMovement(int x, int y){
 		pitch = 89.0;
 	}
 	if(pitch < -89.0){
-		pitch = 89.0;
+		pitch = -89.0;
 	}
+
 
 	float cosp = cos(glm::radians(pitch));
 	float sinp = sin(glm::radians(pitch));
@@ -90,34 +99,27 @@ void Input::passiveMouseMovement(int x, int y){
 	float nsiny = -sin(glm::radians(yaw));
 
 	float tmpx, tmpy, tmpz;
+	float tmpzy, tmpzz;
+
+	//get new z pos
+	tmpzy = zVec.y * cosp + zVec.z * nsinp;
+	tmpzz = zVec.y * sinp + zVec.z * cosp;
+
+	//cameraTarget.y = cameraPos.y + tmpzy;
+	cameraTarget.z = cameraPos.z + tmpzz;
+
 
 	//spin around z axis
-	cameraDirection = cameraTarget - cameraPos;
-	cout << "inital direction " << cameraDirection.x;
-	cout << " " << cameraDirection.y << " " << cameraDirection.z << endl;
-
+	cameraDirection = cameraTarget - cameraPos;	
 	tmpx = cameraDirection.x * cosy + cameraDirection.y * nsiny;
 	tmpy = cameraDirection.x * siny + cameraDirection.y * cosy;
-
-	cout << "tmp x and y: "<< tmpx << " " << tmpy << endl;
-
-
-/*	cameraDirection = cameraTarget - cameraPos;
-	cout << cameraDirection.x << " " << cameraDirection.y << " " << cameraDirection.z << endl;
-	tmpx = cameraDirection.x*cosp + cameraDirection.z*sinp + cameraDirection.x*cosy + cameraDirection.y*nsiny;
-	tmpy = cameraDirection.y + cameraDirection.x*siny + cameraDirection.y * cosy;
-	tmpz = cameraDirection.x * nsinp + cameraDirection.z * cosp + cameraDirection.z;
-
-	*/
-
-	cameraFront.x =  tmpx;
-	cameraFront.y = tmpy;
-	cameraFront.z = 0.0;
+	
 
 	//new camera target
 	cameraTarget.x = cameraPos.x + tmpx;
 	cameraTarget.y = cameraPos.y + tmpy;
-	//cameraTarget.z = tmpz;
+	//cameraTarget.z = cameraPos.z + tdirz;
+	//cout << "new target: " << cameraTarget.z << endl;
 	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
 }
 
