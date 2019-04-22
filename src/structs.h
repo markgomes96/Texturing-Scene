@@ -1,12 +1,13 @@
 #ifndef STRUCTS
 #define STRUCTS
+#include "includes.h"
+using namespace std;
 
 typedef struct colortype	//stores object color
 {
 	float red;
 	float green;
 	float blue;
-    
 	colortype()
 	{};
 
@@ -56,30 +57,21 @@ typedef struct vertex {
 
 typedef struct box {
 	vertex point[4];
-	colortype color;	
+	colortype color;
 } box;
 
-typedef struct object { 
-	std::string name; 
-	vertex position; 
-	bool isBox; 
-	std::vector<vertex> vertices;    
+typedef struct polygon {
+    int textureid;
+    vector<vertex> vertices;
+    vector<vertex> textVerts;   // index matches up to vertices
+} polygon;
+
+typedef struct object {
+	string name;
+	vertex position;
+	bool isBox;
+	vector<polygon> polygons;
 	colortype color;
-} object; 
+} object;
 
-//structs to create cubes for display cases//
-/*
-typedef struct vertex {
-        float x;
-        float y;
-        float z;
-        float w;
-} vertex;
-
-typedef struct colortype {
-	float red;
-	float green;
-	float blue;
-} colortype;
-*/
 #endif

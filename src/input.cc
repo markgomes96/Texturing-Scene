@@ -5,15 +5,15 @@
 #include "game.h"
 #include "input.h"
 
-extern double centerX, centerY, centerZ;
-extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
 extern double x_rotat, y_rotat;
+extern double scaleAccZ;
 extern float sensitivity;
-extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection; 
-extern bool camera;
-extern int jump;
+extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
+extern bool camera, unhold;
+extern int jump, changeAcc;
+extern double addAcc[3];
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
@@ -23,10 +23,9 @@ Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
-	float sensitivity = 0.2f;
+	float sensitivity = 0.001f;
 
-
-	y = WINDOW_MAX_Y  - y; //this needs to be dynamic eventually
+	y = WINDOW_MAX_Y  - y; 
 
 	if(first_mouse){
 		prev_mouse_x = x;
@@ -34,28 +33,48 @@ void Input::passiveMouseMovement(int x, int y){
 		first_mouse = false;
 	}
 
+	//cout << "previous mouse " << prev_mouse_x << " " << prev_mouse_y << endl;
+
 	//calculate change in x and y
 	mouse_dx = x - prev_mouse_x; 
 	mouse_dy = y- prev_mouse_y;
 
-	cout << x << " " << y << endl;
+	//cout << "change " << mouse_dx << " " << mouse_dy << endl;
+
+//	cout << x << " " << y << endl;
 
 	//reset prev mouse x and y
 	prev_mouse_x = x;
 	prev_mouse_y = y;
 
-	mouse_dx = mouse_dx * sensitivity;
-	mouse_dy = mouse_dy * sensitivity;
+//	mouse_dx = mouse_dx * sensitivity;
+//	mouse_dy = mouse_dy * sensitivity;
 
 	//cout << mouse_dx << " " << mouse_dy << endl;
 
-	static float yaw, pitch;
-	yaw = yaw + mouse_dx;
-	pitch = pitch + mouse_dy;
 
-	cout << "yaw: " << yaw << endl;
-	cout << "pitch: " << pitch << endl;
+	if(mouse_dx > 0){
+		mouse_dx = -2.0;// * sensitivity; //so it looks right
+	}
+	else if(mouse_dx < 0){
+		mouse_dx = 2.0;// * sensitivity; //so it looks left
+	}
 	
+
+	static float yaw, pitch;
+	yaw = mouse_dx;
+	pitch = mouse_dy;
+
+//	cout << "yaw: " << yaw << endl;
+//	cout << "pitch: " << pitch << endl;
+	
+	if(yaw > 360.0){
+		yaw = yaw - 360.0;
+	}
+	if(yaw < -360.0){
+		yaw = yaw + 360.0;
+	}
+
 	if(pitch > 89.0){
 		pitch = 89.0;
 	}
@@ -71,18 +90,35 @@ void Input::passiveMouseMovement(int x, int y){
 	float nsiny = -sin(glm::radians(yaw));
 
 	float tmpx, tmpy, tmpz;
-	//calculate new camera target
+
+	//spin around z axis
 	cameraDirection = cameraTarget - cameraPos;
+	cout << "inital direction " << cameraDirection.x;
+	cout << " " << cameraDirection.y << " " << cameraDirection.z << endl;
+
+	tmpx = cameraDirection.x * cosy + cameraDirection.y * nsiny;
+	tmpy = cameraDirection.x * siny + cameraDirection.y * cosy;
+
+	cout << "tmp x and y: "<< tmpx << " " << tmpy << endl;
+
+
+/*	cameraDirection = cameraTarget - cameraPos;
 	cout << cameraDirection.x << " " << cameraDirection.y << " " << cameraDirection.z << endl;
 	tmpx = cameraDirection.x*cosp + cameraDirection.z*sinp + cameraDirection.x*cosy + cameraDirection.y*nsiny;
 	tmpy = cameraDirection.y + cameraDirection.x*siny + cameraDirection.y * cosy;
 	tmpz = cameraDirection.x * nsinp + cameraDirection.z * cosp + cameraDirection.z;
 
-	cameraTarget.x = tmpx;
-	cameraTarget.y = tmpy;
-	cameraTarget.z = tmpz;
-	cout << cameraTarget.x << " " << cameraTarget.y << endl; 
+	*/
 
+	cameraFront.x =  tmpx;
+	cameraFront.y = tmpy;
+	cameraFront.z = 0.0;
+
+	//new camera target
+	cameraTarget.x = cameraPos.x + tmpx;
+	cameraTarget.y = cameraPos.y + tmpy;
+	//cameraTarget.z = tmpz;
+	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
 }
 
 void Input::mouseMovement(int x, int y){
@@ -114,40 +150,23 @@ void Input::mouse( int button, int state, int x, int y )
 
 void Input::keyboard( unsigned char key, int x, int y )
 {
-	if ( key == 'q' || key == 'Q') {
+   	if ( key == 'q' || key == 'Q') {
+		//exit the program
 		exit(0);
 		keyarr['q'] = PUSHED;
 	}
-	if(key == 'w'){
-		cameraDirection = cameraTarget - cameraPos;
-		cameraDirection = glm::normalize(cameraDirection);
-		cameraPos.x = cameraPos.x + sensitivity*cameraDirection.x;
-		cameraPos.y = cameraPos.y + sensitivity*cameraDirection.y;
-		cameraTarget.x = cameraTarget.x + sensitivity*cameraDirection.x;
-		cameraTarget.y = cameraTarget.y + sensitivity*cameraDirection.y;
-	
+	if( key == 'w' || key == 'Q') {
+		keyarr['w'] = PUSHED;
 	}
-	if(key == 's'){
-		cameraDirection = cameraTarget - cameraPos;
-		cameraDirection = glm::normalize(cameraDirection);
-		cameraPos.x = cameraPos.x - sensitivity*cameraDirection.x;
-		cameraPos.y = cameraPos.y - sensitivity*cameraDirection.y;
-		cameraTarget.x = cameraTarget.x - sensitivity*cameraDirection.x;
-		cameraTarget.y = cameraTarget.y - sensitivity*cameraDirection.y;
+	if( key == 's' || key == 'S') {
+		keyarr['s'] = PUSHED;
 	}
-	if(key == 'a'){
-		 cameraDirection = cameraTarget - cameraPos;
-		 cameraDirection = glm::normalize(cameraDirection);
-		 cameraPos = cameraPos - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
-		 cameraTarget = cameraTarget - glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+	if( key == 'a' || key == 'A') {
+		keyarr['a'] = PUSHED;
 	}
-	if(key == 'd'){
-		cameraDirection = cameraTarget - cameraPos;
-		cameraDirection = glm::normalize(cameraDirection);
-		cameraPos = cameraPos + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
-		cameraTarget = cameraTarget + glm::normalize(glm::cross(cameraDirection, up)) * sensitivity;
+	if( key == 'd' || key == 'D') {
+		keyarr['d'] = PUSHED;
 	}
-
    	if (( key == 't' ) || (key == 'T')){
 		//Throw Object
 		keyarr['t'] = PUSHED;
@@ -160,6 +179,11 @@ void Input::keyboard( unsigned char key, int x, int y )
 		//Make object bigger
 		keyarr['x'] = PUSHED;
 	}
+	if (( key == 'r' ) || (key == 'R')){
+		//Reverse gravity
+		keyarr['r'] = PUSHED;
+	}
+
 	if ( key == 27 ){
 		//Exit gracefully
 		glutLeaveGameMode();
@@ -174,14 +198,49 @@ void Input::keyboard( unsigned char key, int x, int y )
     if (key == 'j' || key == 'J'){
    		keyarr['j'] = PUSHED;
        }
+    if (key == '+'){
+        addAcc[changeAcc-1] += 1.0;
+    }
+    if (key == '-'){
+        addAcc[changeAcc-1] -= 1.0;
+    }
 }
 
 void Input::keyup( unsigned char key, int x, int y )
 {
+     if ( key == '1'){
+        changeAcc = 1;
+    }
+  if ( key == '2'){
+        changeAcc = 2;
+    }
+  if ( key == '3'){
+        changeAcc = 3;
+    }
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		keyarr['q'] = NOTPUSHED;
 	}
+	 if (key == 'w' || key == 'W') {
+    	//move forward
+		keyarr['w'] = NOTPUSHED;
+	}
+	if (key == 's' || key == 'S') {
+		keyarr['s'] = NOTPUSHED;
+	}
+	if (key == 'a' || key == 'A') {
+		//move left
+		keyarr['a'] = NOTPUSHED;
+	}
+    if (key == 'd' || key == 'D') {
+		//move right
+		keyarr['d'] = NOTPUSHED;
+	}
+   	if (( key == 't' ) || (key == 'T')){ 
+		//Throw Object 
+		keyarr['t'] = NOTPUSHED;
+		unhold = true;
+    }
    	if (( key == 't' ) || (key == 'T')){
 		//Throw Object
 		keyarr['t'] = NOTPUSHED;
@@ -194,6 +253,15 @@ void Input::keyup( unsigned char key, int x, int y )
 		//Make object bigger
 		keyarr['x'] = NOTPUSHED;
 	}
+	if ((key == 'r' ) || (key == 'R')){
+		//reset Acceleration
+		keyarr['r'] = NOTPUSHED;
+		addAcc[0] = 0.0;
+		addAcc[1] = 0.0; 
+	    addAcc[2] = 1.0;
+	 //printf("%f \n", scaleAccZ);
+	}
+
 #ifdef DEV
     if ( key == 'e' || key == 'E'){
         // Create a box where the eye is

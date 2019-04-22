@@ -47,7 +47,7 @@ void scrape( fstream& in, fstream& out ){
 int main( int argc, char* argv[] ){ 
 
 	fstream in1( "levelCreate.cc", ios::in ); 
-	fstream out( "vertices", ios::out ); 
+	fstream out( "../objs/vertices", ios::out ); 
 	fstream in2( "drawCase.cc", ios::in ); 
 	scrape( in1, out );
 	scrape( in2, out ); 

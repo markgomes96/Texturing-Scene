@@ -4,15 +4,14 @@
 #include "includes.h"
 #include "input.h"
 #include "physobj.h"
-#include "testobj.h"
+#include "gameobj.h"
 #include "physicsengine.h"
 
 /*
 * Handles all functions of the game
 */
 
-class Game
-{
+class Game {
 private:
 
 public:
@@ -21,12 +20,12 @@ public:
 	PhysicsEngine physEng;
 
 	float frameRate;			// phys-time vars
-	vector<TestObj> golist;		// game object list
+	vector<GameObj> golist;		// game object list
 	vector<object>  SceneObjects; 
 
-	TestObj floor;				// phys obj test vars
-	TestObj cube;
-	TestObj cube2;
+	GameObj floor;				// phys obj test vars
+	GameObj cube;
+	GameObj cube2;
 
 	// Constructor
 	Game();
@@ -41,6 +40,11 @@ public:
 	void createProjectile( double, double, double, double, double, double, double ); 
 	void createEye( double, double, double, double, double, double, double ); 
 
+	// object rendering functions
+	void drawObject(GameObj go);
+	void drawFreeForm(vector<polygon> polygons, vertex position);
+	void drawCube(struct box *face, vertex *position);
+	void drawBounds( vertex *bounds );
 
 	// Input relay functions
 	void mouse( int button, int state, int x, int y );
@@ -53,10 +57,6 @@ public:
 
 	// Phys-Time functions
 	void glutLockFrameRate(float desiredFrameRate);
-
-	// Physics testing functions
-	void drawBox( struct box *face, vertex *position );
-	void drawBounds( vertex *bounds );
 };
 
 #endif
