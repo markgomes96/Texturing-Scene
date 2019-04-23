@@ -8,6 +8,8 @@ Michaela: lighting, HUD, texturing, character
 
 Phuc --> Work with Ed in physcis(thowring, collision..)
 
+Ed   --> Implement system to scrape all enviroment objects into usable vertices
+
 Dylan --> Heritage hall creation
 
 Lauren --> Camera movement
