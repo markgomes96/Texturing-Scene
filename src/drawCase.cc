@@ -9,6 +9,9 @@ extern GLuint textureID[50];
 
 void drawDisplayCase()
 {
+
+glTranslated(0.0,5.5,0.0);
+
 glEnable(GL_DEPTH_TEST);
 glEnable(GL_TEXTURE_2D);
 /*dc 1*/
