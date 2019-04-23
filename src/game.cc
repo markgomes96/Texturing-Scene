@@ -20,8 +20,10 @@ Game::Game()
 
 void Game::init()
 {
+	cout << "in game init" << endl;
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
+    loadTextures();
     /*
     // ***Test objects for phyiscs***
     floor = GameObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef OBJECTDATA_CC
 #define OBJECTDATA_CC
 #include "includes.h"

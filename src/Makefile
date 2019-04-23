@@ -5,7 +5,7 @@ include ../Makefile.inc
 INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h prototypes.h ../lib/SOIL/SOIL.h
 OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o \
-			 gameobj.o physicsengine.o drawCase.o texturing.o 
+			 gameobj.o physicsengine.o drawCase.o texturing.o drawHH.o
 
 #Since these compiler flags are specific to the source, leave them in this makefile
 #and not in the parent makefile.
@@ -52,6 +52,10 @@ texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
 
 #objectdata.o : objectdata.cc $(INCLUDES) $(HEADERS)
 #	$(C++) $(CCFLAGS) $(CF) -c objectdata.cc
+
+
+drawHH.o : drawHH.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) -c drawHH.cc
 
 main.o : main.cc $(OBJS)
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c main.cc 
