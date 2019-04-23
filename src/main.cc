@@ -17,6 +17,8 @@ extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double x_rotat, y_rotat;
 
+extern GLuint textureID[50];
+
 void display( void )
 {
 #ifdef LEVEL
@@ -28,6 +30,12 @@ void display( void )
 
 	//g.render();
 	glutSwapBuffers();
+
+	//glEnable(GL_TEXTURE_2D);
+	//glPushMatrix();
+	//glBindTexture(GL_TEXTURE_2D, textureID[10]);
+	//glutSolidCube(10);
+	//glPopMatrix();
 #else
 	g.render();
 #endif

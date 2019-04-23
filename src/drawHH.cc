@@ -52,7 +52,7 @@ void buildHH(void){
 		glVertex3f ( 0, -7.3152, 0 );
 	glEnd();
 	glPopMatrix();
-//	glDisable(GL_TEXTURE_2D);
+	glDisable(GL_TEXTURE_2D);
 //////////////////////////////////////////////
 //ceiling//
 
