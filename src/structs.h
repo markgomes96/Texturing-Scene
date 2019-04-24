@@ -74,4 +74,13 @@ typedef struct object {
 	colortype color;
 } object;
 
+enum State
+{
+     startState,
+     gameState,
+     pauseState,
+     overState,
+     instructState
+};
+
 #endif

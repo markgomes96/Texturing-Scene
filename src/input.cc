@@ -3,6 +3,7 @@
 
 #include "includes.h"
 #include "game.h"
+#include "menu.h"
 #include "input.h"
 
 extern double prev_mouse_x, prev_mouse_y;
@@ -23,6 +24,8 @@ Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
+/* this mouse movement is restricted only when in game state*/	
+if(activeState == gameState){
 	//float sensitivity = 0.001f;
 
 	y = WINDOW_MAX_Y  - y; 
@@ -121,6 +124,7 @@ void Input::passiveMouseMovement(int x, int y){
 	//cameraTarget.z = cameraPos.z + tdirz;
 	//cout << "new target: " << cameraTarget.z << endl;
 	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
+ }
 }
 
 void Input::mouseMovement(int x, int y){
@@ -129,21 +133,65 @@ void Input::mouseMovement(int x, int y){
 
 void Input::mouse( int button, int state, int x, int y )
 {
-	switch (button)
-	{
-        	case GLUT_LEFT_BUTTON:
-		    	if (state == GLUT_DOWN)
-		    	{
-				//left click
-		    	}
-            	break;
+	y = WINDOW_MAX_Y - y; //change the y coordinate to match the screen
 
-        	case GLUT_RIGHT_BUTTON:
-		    	if (state == GLUT_DOWN)
-		    	{
-				//right click
-		    	}
-            	break;
+	switch (activeState)
+	{
+        	case gameState:
+           		break;
+
+        	case startState:
+			if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.59)
+        		{
+               			if(y<WINDOW_MAX_Y*0.57 && y>WINDOW_MAX_Y*0.47)
+                		{
+                        		activeState=gameState;
+                        		glutPostRedisplay();
+        	       		 }
+	
+		                else if(y<WINDOW_MAX_Y*0.46 && y>WINDOW_MAX_Y*0.36)
+               			 {
+                       			 activeState=instructState;
+                    			 glutPostRedisplay();
+                		}
+
+               			 else if(y<WINDOW_MAX_Y*0.35 && y>WINDOW_MAX_Y*0.25)
+                		{
+                     		   exit(0);
+                		}
+        		}
+            			break;
+
+			case pauseState:
+				 if(y<WINDOW_MAX_Y*0.57 && y>WINDOW_MAX_Y*0.47)
+               			 {
+                      			  activeState=gameState;
+                      			  glutPostRedisplay();
+                		 }
+				break;
+
+			case overState:
+				if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.59){
+               		 		if(y<WINDOW_MAX_Y*0.46 && y>WINDOW_MAX_Y*0.36)
+                			{
+                       				cout << "Play Again" << endl;
+                			}
+                			else if(y<WINDOW_MAX_Y*0.35 && y>WINDOW_MAX_Y*0.25)
+                			{
+                    			    exit(0);
+               				}
+         		  	}	
+				break;
+
+		case instructState:
+			 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.45 && x < WINDOW_MAX_X*0.55){
+                		 if(y<WINDOW_MAX_Y*0.25 && y>WINDOW_MAX_Y*0.15)
+               			 {
+                     			  activeState = startState;
+                        		  glutPostRedisplay();
+         		         }
+        		}
+			break;
 
         	default:
             	break;
@@ -151,52 +199,62 @@ void Input::mouse( int button, int state, int x, int y )
 }
 
 void Input::keyboard( unsigned char key, int x, int y )
-{
-   	if ( key == 'q' || key == 'Q') {
-		//exit the program
-		exit(0);
-		keyarr['q'] = PUSHED;
+{	
+	if(activeState == gameState){
+   		switch(tolower(key)) 
+		{
+			case 'q':
+				//exit the program
+				exit(0);
+				keyarr['q'] = PUSHED;
+			case 'p':
+				activeState = pauseState;
+				glutPostRedisplay();
+				break;
+			case 'w':
+				keyarr['w'] = PUSHED;
+				break;
+			case 's':
+				keyarr['s'] = PUSHED;
+				break;
+			case 'a':
+				keyarr['a'] = PUSHED;
+				break;
+			case 'd':
+				keyarr['d'] = PUSHED;
+				break;
+   			case 't':
+				//Throw Object
+				keyarr['t'] = PUSHED;
+				break;
+			case 'z':
+				//Make object smaller
+				keyarr['z'] = PUSHED;
+				break;
+			case 'x':
+			//Make object bigger
+				keyarr['x'] = PUSHED;
+				break;
+			case 'r':
+				//Reverse gravity
+				keyarr['r'] = PUSHED;
+				break;
+			case 27:
+				//Exit gracefully
+				glutLeaveGameMode();
+				exit(0);
+		}
 	}
-	if( key == 'w' || key == 'Q') {
-		keyarr['w'] = PUSHED;
-	}
-	if( key == 's' || key == 'S') {
-		keyarr['s'] = PUSHED;
-	}
-	if( key == 'a' || key == 'A') {
-		keyarr['a'] = PUSHED;
-	}
-	if( key == 'd' || key == 'D') {
-		keyarr['d'] = PUSHED;
-	}
-   	if (( key == 't' ) || (key == 'T')){
-		//Throw Object
-		keyarr['t'] = PUSHED;
-	}
-	if (( key == 'z' ) || (key == 'Z')){
-		//Make object smaller
-		keyarr['z'] = PUSHED;
-	}
-	if (( key == 'x' ) || (key == 'X')){
-		//Make object bigger
-		keyarr['x'] = PUSHED;
-	}
-	if (( key == 'r' ) || (key == 'R')){
-		//Reverse gravity
-		keyarr['r'] = PUSHED;
-	}
+}
 
-	if ( key == 27 ){
-		//Exit gracefully
-		glutLeaveGameMode();
-		exit(0);
-	}
 #ifdef DEV
     if ( key == 'e' || key == 'E'){
         // Create a box where the eye is
    		keyarr['e'] = PUSHED;
     }
+
 #endif
+
     if (key == 'j' || key == 'J'){
    		keyarr['j'] = PUSHED;
        }
@@ -210,20 +268,23 @@ void Input::keyboard( unsigned char key, int x, int y )
 
 void Input::keyup( unsigned char key, int x, int y )
 {
-     if ( key == '1'){
-        changeAcc = 1;
-    }
-  if ( key == '2'){
-        changeAcc = 2;
-    }
-  if ( key == '3'){
-        changeAcc = 3;
-    }
+  	 if ( key == '1'){
+        	changeAcc = 1;
+    	 }
+ 	 if ( key == '2'){
+        	changeAcc = 2;
+    	}
+
+  	if ( key == '3'){
+        	changeAcc = 3;
+    	}
+
 	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		keyarr['q'] = NOTPUSHED;
 	}
-	 if (key == 'w' || key == 'W') {
+
+	if (key == 'w' || key == 'W') {
     	//move forward
 		keyarr['w'] = NOTPUSHED;
 	}
@@ -234,7 +295,7 @@ void Input::keyup( unsigned char key, int x, int y )
 		//move left
 		keyarr['a'] = NOTPUSHED;
 	}
-    if (key == 'd' || key == 'D') {
+	if (key == 'd' || key == 'D') {
 		//move right
 		keyarr['d'] = NOTPUSHED;
 	}
@@ -260,8 +321,7 @@ void Input::keyup( unsigned char key, int x, int y )
 		keyarr['r'] = NOTPUSHED;
 		addAcc[0] = 0.0;
 		addAcc[1] = 0.0; 
-	    addAcc[2] = 1.0;
-	 //printf("%f \n", scaleAccZ);
+	 	addAcc[2] = 1.0;	 
 	}
 
 #ifdef DEV
@@ -274,6 +334,7 @@ void Input::keyup( unsigned char key, int x, int y )
    		keyarr['j'] = NOTPUSHED;
        }
 }
+
 void Input::specialInput(int key, int x, int y)
 {
 

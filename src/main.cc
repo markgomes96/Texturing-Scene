@@ -1,6 +1,7 @@
 #include "includes.h"
 #include "prototypes.h"
 #include "game.h"
+#include "menu.h"
 
 // Constant values for window size and place
 const int WINDOW_POSITION_X = 0;
@@ -16,15 +17,43 @@ extern void buildDisplay(void);
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double x_rotat, y_rotat;
+enum State activeState;
 
 void display( void )
 {
 #ifdef LEVEL
 	
-	buildHeritageHall();
-	g.HUD();
-	buildDisplay();
-	g.HUD();
+	/* displays the correct state that is currently active*/
+	switch(activeState)
+	{
+		case gameState:
+			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			buildHeritageHall();
+			g.HUD();
+			buildDisplay();
+			g.HUD();
+			break;
+
+		case startState:
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			startDisplay();
+			break;
+
+		case instructState:
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			instructDisplay();
+			break;
+		
+		case pauseState:
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			pauseDisplay();
+			break;
+
+		case overState:
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			overDisplay();
+			break;
+	}
 
 	//g.render();
 	glutSwapBuffers();
@@ -62,7 +91,7 @@ void init(int window_width, int window_height, int window_position_x, int window
 	glutInitWindowSize (window_width, window_height);
 	glutInitWindowPosition (window_position_x, window_position_y);
 	glutCreateWindow ("Bear Force One");
-
+	activeState = startState; //initialize active state as the start menu
 	//Enable gamemode if possible
 /*	glutGameModeString("1920x1080:32");
 	if (glutGameModeGet(GLUT_GAME_MODE_POSSIBLE)){
