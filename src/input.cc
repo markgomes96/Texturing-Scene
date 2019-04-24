@@ -269,6 +269,11 @@ void Input::keyup( unsigned char key, int x, int y )
     if ( key == 'e' || key == 'E'){
         // Create a box where the eye is
    		keyarr['e'] = NOTPUSHED;
+        g.createTarget((double) cameraTarget.x, // + cameraFront.x,
+                (double) cameraTarget.y, // + cameraFront.y,
+                (double) cameraTarget.z, // + cameraFront.z,
+                1, 0.2, 0.02, 0.2);
+
     }
 #endif
     if (key == 'j' || key == 'J'){

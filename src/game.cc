@@ -39,43 +39,61 @@ void Game::init()
     cube.velocity = vect3(-3.0, 0.0, 0.0);
     cube2.velocity = vect3(3.0, 0.0, 0.0);
 
-    golist.push_back(floor);
-    golist.push_back(cube);
+    obList.push_back(floor);
+    obList.push_back(cube);
 
     loadTextures();
     cout << "init" << endl;
 
-    golist.push_back(cube2);
+    obList.push_back(cube2);
     floor = GameObj(vertex(0.0, 0.0, 0.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
     cube = GameObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 3.0, 1.0), false);
-    //	golist.push_back(floor);
-    //	golist.push_back(cube);*/
+    //	obList.push_back(floor);
+    //	obList.push_back(cube);*/
 
 }
 
 // Create throwing object
-void Game::createProjectile(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
-    GameObj projectile = GameObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false, true);
+void Game::createProjectile(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
+    GameObj projectile = GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
     directX =  ((double)cameraTarget.x - (double)cameraPos.x) * power;
     directY =  ((double)cameraTarget.y - (double)cameraPos.y) * power;
     directZ =  ((double)cameraTarget.z - (double)cameraPos.z) * power;
     projectile.updateVelo(directX, directY, directZ);
     projectile.updateAcc(addAcc[0], addAcc[1], addAcc[2]);
 
-    golist.push_back(projectile);
+    obList.push_back(projectile);
+}
+
+void Game::createTarget(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
+    GameObj projectile = GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
+    float HI = 1.0;
+    float LO = -1.0;
+    float veloX, veloY, veloZ;
+    srand(time(NULL));
+    veloX   = LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO);
+    veloY  = LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO);
+    veloZ  = LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO);
+    //printf("velocity %f %f %f\n", veloX, veloX, veloZ);
+    projectile.updateVelo(veloX, veloY, veloZ);
+    projectile.updateAcc(0,0,9.8);
+    printf("velocity %f %f %f\n", projectile.velocity.x, projectile.velocity.y, projectile.velocity.z);
+    printf("acceleration %f %f %f\n", projectile.acceleration.x, projectile.acceleration.y, projectile.acceleration.z);
+
+    tarList.push_back(projectile);
 }
 
 // Create an object where the eye is
-void Game::createEye(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
-    GameObj projectile = GameObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
-    golist.push_back(projectile);
+void Game::createEye(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
+    GameObj projectile = GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
+    obList.push_back(projectile);
 }
 
 void Game::update()
 {
     // Update each phyisc object
-    physEng.updateObjects(golist);
-
+    physEng.updateObjects(obList);
+    physEng.updateObjects(tarList);
     glutLockFrameRate(frameRate);
 }
 
@@ -152,9 +170,9 @@ void Game::render()
     glColor3f(0.0,1.0,0.0);
 
     // Physics test
-    for(int i = 0; i < golist.size(); i++)
+    for(int i = 0; i < obList.size(); i++)
     {
-        drawObject(golist[i]);
+        drawObject(obList[i]);
     }
 
     glutSwapBuffers();

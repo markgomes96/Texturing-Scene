@@ -13,31 +13,31 @@ PhysicsEngine::PhysicsEngine(float fr)
 	timeStep = (1.0 / frameRate);
 }
 
-void PhysicsEngine::updateObjects(vector<GameObj> &golist)
+void PhysicsEngine::updateObjects(vector<GameObj> &obList)
 {
 	// update position of every object
-	for(int i = 0; i < golist.size(); i++)
+	for(int i = 0; i < obList.size(); i++)
 	{
-		if(!golist[i].isStatic)
+		if(!obList[i].isStatic)
 		{
-			updatePosition(golist[i]);
+			updatePosition(obList[i]);
 		}
 	}
 
 	// check for collisions
-	for(int i = 0; i < golist.size(); i++)
+	for(int i = 0; i < obList.size(); i++)
 	{
-		for(int j = 0; j < golist.size(); j++)
+		for(int j = 0; j < obList.size(); j++)
 		{
 			if(i != j)		// don't check object with itself
 			{
-				if(!golist[i].isStatic)		// don't check static objects
+				if(!obList[i].isStatic)		// don't check static objects
 				{
-					if(positionTest(golist[i], golist[j]))	// check if any object is moving
+					if(positionTest(obList[i], obList[j]))	// check if any object is moving
 					{
-						if(sphereCollsTest(golist[i], golist[j]))		// check if objects are in range to collide
+						if(sphereCollsTest(obList[i], obList[j]))		// check if objects are in range to collide
 						{
-							checkCollision(golist[i], golist[j]);
+							checkCollision(obList[i], obList[j]);
 						}
 					}
 				}
