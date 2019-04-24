@@ -5125,7 +5125,7 @@ glPushMatrix();
 	 glEnd();
 	glPopMatrix();
 	
-	//pieces above door
+	//pieces  above door
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
