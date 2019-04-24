@@ -7730,7 +7730,7 @@ glTranslated(0.0, -40.11168, 0.0);
 //archway windows
 
 
-//drawDisplayCase();
+drawDisplayCase();
 
 }
 #endif
