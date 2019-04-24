@@ -18,6 +18,7 @@ GameObj::GameObj(vertex _position, vect3 _scale, vector<polygon> _polygons,color
     scale = _scale;
 	isStatic = isStat;
     isBox = false;
+    isScene = false;
     polygons = _polygons;
     color = _color;
 	PhysObj::createBounds(&faces[0], position);
@@ -29,10 +30,21 @@ GameObj::GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange) 
     scale = _scale;
 	isStatic = isStat;
     isBox = true;
+    isScene = false;
 	defineBox(&faces[0], scale, colorChange);
-    
+
 	PhysObj::createBounds(&faces[0], position);
 	position = collCenter;
+}
+
+// bounds[xmin, xmax, ymin, ymax, zmin, zmax]
+GameObj::GameObj(float* bounds)
+{
+  isStatic = true;
+  isBox = false;
+  isScene = true;
+  PhysObj::createSceneBounds(bounds);
+  position = collCenter;
 }
 
 void GameObj::defineBox(box *face, vect3 scale, bool colorChange)

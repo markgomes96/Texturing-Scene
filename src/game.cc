@@ -24,6 +24,9 @@ void Game::init()
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
     loadTextures();
+
+	addSceneObjects();		// add scene objects to physics engine
+
     /*
     // ***Test objects for phyiscs***
     floor = GameObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
@@ -150,23 +153,34 @@ void Game::render()
 
     glColor3f(0.0,1.0,0.0);
 
-    // Physics test
+		buildHeritageHall();
+		buildDisplay();
+
+		// draw game objects
     for(int i = 0; i < golist.size(); i++)
     {
         drawObject(golist[i]);
+
+				/*
+				if(golist[i].isScene)
+				{
+						drawBounds(&golist[i].bounds[0]);
+				}
+				*/
     }
 
     glutSwapBuffers();
-
-    buildHeritageHall();
-}
+	}
 
 void Game::drawObject(GameObj go)
 {
-    if(go.isBox)
-        drawCube(&go.faces[0], &go.collCenter);
-    else
-        drawFreeForm(go.polygons, go.collCenter);
+		if(!go.isScene)		// don't draw scene objects
+		{
+		    if(go.isBox)
+		        drawCube(&go.faces[0], &go.collCenter);
+		    else
+		        drawFreeForm(go.polygons, go.collCenter);
+		}
 
     if(go.drawBounds)
         drawBounds(&go.bounds[0]);
@@ -277,5 +291,15 @@ void Game::passiveMouseMovement(int x, int y){
     input.passiveMouseMovement(x, y);
 }
 
+void Game::addSceneObjects()
+{
+		float *bs = (float*) malloc(6*sizeof(float));
+
+		// floor
+		bs[0]= 0.0; bs[1] =  7.5; bs[2]= -10.0; bs[3]= 60.0; bs[4] = -5.0; bs[5]= 0.0;
+		golist.push_back(GameObj(bs));
+
+		free(bs);
+}
 
 #endif

@@ -22,7 +22,7 @@ extern GLuint textureID[50];
 void display( void )
 {
 #ifdef LEVEL
-	
+
 	buildHeritageHall();
 	g.HUD();
 	buildDisplay();
@@ -38,6 +38,7 @@ void display( void )
 	//glPopMatrix();
 #else
 	g.render();
+	g.HUD();
 #endif
 
 }
@@ -126,5 +127,3 @@ int main(int argc, char** argv)
 
 	glutMainLoop();
 }
-
-

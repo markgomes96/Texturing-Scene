@@ -55,7 +55,7 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 
     // ***Collisions in Z-axis***
     if(go1.wzm[0] < go2.wzm[1] && go1.wzm[0] > go2.wzm[0])			// bottom collision
-    {	
+    {
         colls[0] = -1;
     }
     else if(go1.wzm[1] < go2.wzm[1] && go1.wzm[1] > go2.wzm[0])		// top collision
@@ -122,68 +122,45 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 	// collision only occurs when collide in all 3 dimensions
 	if(colls[0] != 0 && colls[1] != 0 && colls[2] != 0)
 	{
-		// bounce object outside of collided object
-		vect3 bounceVect = vectMult(go1.velocity, -timeStep);
-		go1.collCenter.x += bounceVect.x;
-		go1.collCenter.y += bounceVect.y;
-		go1.collCenter.z += bounceVect.z;
+			// bounce object outside of collided object
+			vect3 bounceVect = vectMult(go1.velocity, -timeStep);
+			go1.collCenter.x += bounceVect.x;
+			go1.collCenter.y += bounceVect.y;
+			go1.collCenter.z += bounceVect.z;
 
-		go1.updatePhysics();					// update go1 box collider
+			go1.updatePhysics();					// update go1 box collider
 
-		//check for horizontal collison
-		bool horizColl = true;
-		if(go1.wzm[0] > go2.wzm[1])		// bottom collision
-			horizColl = false;
-		else if(go1.wzm[1] < go2.wzm[0])	// top collision
-			horizColl = false;
+			//check for horizontal collison
+			bool horizColl = true;
+			if(go1.wzm[0] > go2.wzm[1])		// bottom collision
+				horizColl = false;
+			else if(go1.wzm[1] < go2.wzm[0])	// top collision
+				horizColl = false;
 
-		bounceVect = vectMult(go1.velocity, -go1.elasticity);
-		if(horizColl)
-		{
-			bounceVect.z = bounceVect.z * -1.0;
-		}
-		else
-		{
-			bounceVect.x = bounceVect.x * -1.0;
-			bounceVect.y = bounceVect.y * -1.0;
-		}
-		go1.velocity = bounceVect;
+			bounceVect = vectMult(go1.velocity, -go1.elasticity);
+			if(horizColl)
+			{
+				bounceVect.z = bounceVect.z * -1.0;
+			}
+			else
+			{
+				bounceVect.x = bounceVect.x * -1.0;
+				bounceVect.y = bounceVect.y * -1.0;
+			}
+			go1.velocity = bounceVect;
 
-		// check if object is stationary
-		vect3 deltaVec = vectMult(go1.acceleration, -timeStep);
-		if (abs(go1.velocity.z) <= abs(deltaVec.z))
-			go1.stationary = true;
-		else
-			go1.stationary = false;
-    }
-	// collision only occurs when collide in all 3 dimensions
-	if(colls[0] != 0 && colls[1] != 0 && colls[2] != 0) 
-	{
-		/*
-		* Handle collisions based on velocity vector
-		* reverse velocity vector, convert to unit, scale by distance to collision point
-		* apply (collision vector) to colliding objects position
-		*/
-
-		overlap = go2.wzm[1] - go1.wzm[0];		// z adjustment
-		go1.collCenter.z += (-1) * colls[0] * abs(overlap);
-
-		/*
-		overlap = go2.wym[1] - go1.wym[0];		// y adjustment
-		go1.collCenter.y += (-1) * colls[1] * abs(overlap);
-	
-		overlap = go2.wxm[1] - go1.wxm[0];		// x adjustment
-		go1.collCenter.x += (-1) * colls[2] * abs(overlap);
-		*/
-
-		go1.velocity = vect3(0.0, 0.0, 0.0);	// reset velocity
-		go1.updatePhysics();					// update go1 box collider
+			// check if object is stationary
+			vect3 deltaVec = vectMult(go1.acceleration, -timeStep);
+			if (abs(go1.velocity.z) <= abs(deltaVec.z))
+				go1.stationary = true;
+			else
+				go1.stationary = false;
 	}
 }
 
 void PhysicsEngine::updatePosition(GameObj &go)
 {
-	// record objects last position 
+	// record objects last position
 	go.prevPos.x = go.collCenter.x;
 	go.prevPos.y = go.collCenter.y;
 	go.prevPos.z = go.collCenter.z;

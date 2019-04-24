@@ -21,7 +21,7 @@ public:
 
 	float frameRate;			// phys-time vars
 	vector<GameObj> golist;		// game object list
-	vector<object>  SceneObjects; 
+	vector<object>  SceneObjects;
 
 	GameObj floor;				// phys obj test vars
 	GameObj cube;
@@ -37,8 +37,8 @@ public:
 	void minimap();
 	void HUD();
 	void render();
-	void createProjectile( double, double, double, double, double, double, double ); 
-	void createEye( double, double, double, double, double, double, double ); 
+	void createProjectile( double, double, double, double, double, double, double );
+	void createEye( double, double, double, double, double, double, double );
 
 	// object rendering functions
 	void drawObject(GameObj go);
@@ -57,6 +57,9 @@ public:
 
 	// Phys-Time functions
 	void glutLockFrameRate(float desiredFrameRate);
+
+	// Add physics to scene
+	 void addSceneObjects();
 };
 
 #endif
