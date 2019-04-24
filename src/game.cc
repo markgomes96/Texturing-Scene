@@ -20,7 +20,6 @@ Game::Game()
 
 void Game::init()
 {
-	cout << "in game init" << endl;
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
     loadTextures();
