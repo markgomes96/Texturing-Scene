@@ -17,6 +17,8 @@ extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double x_rotat, y_rotat;
 
+extern GLuint textureID[50];
+
 void display( void )
 {
 #ifdef LEVEL
@@ -24,10 +26,8 @@ void display( void )
 	buildHeritageHall();
 	g.HUD();
 	buildDisplay();
-	g.HUD();
-
-	//g.render();
 	glutSwapBuffers();
+
 #else
 	g.render();
 #endif
@@ -51,7 +51,7 @@ void reshape (int w, int h)
 	glViewport (0, 0, (GLsizei) w, (GLsizei) h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(40.0, (GLfloat) w/(GLfloat) h, 1.0, 40.0);
+	gluPerspective(40.0, (GLfloat) w/(GLfloat) h, 1.0, 60.0);
 	glMatrixMode(GL_MODELVIEW);
 }
 

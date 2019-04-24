@@ -5,7 +5,7 @@ include ../Makefile.inc
 INCLUDES   = includes.h
 HEADERS    = structs.h game.h input.h globals.h prototypes.h ../lib/SOIL/SOIL.h
 OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o \
-			 gameobj.o physicsengine.o drawCase.o texturing.o 
+			 gameobj.o physicsengine.o drawCase.o texturing.o drawHH.o
 
 #Since these compiler flags are specific to the source, leave them in this makefile
 #and not in the parent makefile.
@@ -18,7 +18,7 @@ all : run tags
 
 run: main.o $(INCLUDES) $(HEADERS) $(OBJS) 
 	$(C++) $(CCFLAGS) $(CF) $(DF) -o run  main.o $(OPTHDRSLOC) $(OBJS) $(LBLIBS) #$(INCDIRS) $(LIBDIRS) $(LDLIBS) 
-	cp run ../.
+	mv run ../.
 
 input.o : input.cc $(INCLUDES) $(HEADERS) 
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c input.cc
@@ -53,6 +53,10 @@ texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
 #objectdata.o : objectdata.cc $(INCLUDES) $(HEADERS)
 #	$(C++) $(CCFLAGS) $(CF) -c objectdata.cc
 
+
+drawHH.o : drawHH.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) -c drawHH.cc
+
 main.o : main.cc $(OBJS)
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c main.cc 
 
@@ -69,10 +73,9 @@ clean :
 pristine :
 	rm *.o
 	rm tags
-	rm run
 	rm ../run 
 	
 
 purge :
 	rm *.o
-	rm run
+	rm ../run

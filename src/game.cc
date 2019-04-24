@@ -20,8 +20,10 @@ Game::Game()
 
 void Game::init()
 {
+	cout << "in game init" << endl;
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
+    loadTextures();
     /*
     // ***Test objects for phyiscs***
     floor = GameObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
@@ -59,6 +61,7 @@ void Game::createProjectile(double a1, double a2, double a3, double a4, double b
     directZ =  ((double)cameraTarget.z - (double)cameraPos.z) * power;
     projectile.updateVelo(directX, directY, directZ);
     projectile.updateAcc(addAcc[0], addAcc[1], addAcc[2]);
+
     golist.push_back(projectile);
 }
 
