@@ -824,7 +824,7 @@ void loadTextures(void) {
 	glGenerateMipmap(GL_TEXTURE_2D);
 
 	SOIL_free_image_data(image);
-/*
+
 	//forty-sixth texture
 	glGenTextures(1, &textureID[45]);
     glBindTexture(GL_TEXTURE_2D, textureID[45]);
@@ -1166,7 +1166,7 @@ void loadTextures(void) {
     glGenerateMipmap(GL_TEXTURE_2D);
 
     SOIL_free_image_data(image);
-*/
+
 }
 
 

@@ -1692,7 +1692,9 @@ glPopMatrix();
 //pres dinnig room area
 glPushMatrix();
 	//wall that has doors
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[56]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.6, 0.0);
@@ -1707,7 +1709,7 @@ glPushMatrix();
 		glVertex3f ( 7.3152, -9.8152, 0.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//floor piece
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -2116,21 +2118,24 @@ glPopMatrix();
 	glPopMatrix();
 
    //ticket booth outside
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[55]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.0, 0.7);
 	 glBegin ( GL_POLYGON );
-		glTexCoord2d(0.0, 0.0);
-		glVertex3f ( 7.3152, 11.02792, 0.0 );
-		glTexCoord2d(0.0, 1.0);
-		glVertex3f ( 7.3152, 11.02792, 3.4864 );	
 		glTexCoord2d(1.0, 1.0);
-		glVertex3f ( 10.3152, 11.02792, 3.4864 );
+		glVertex3f ( 7.3152, 11.02792, 0.0 );
 		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 7.3152, 11.02792, 3.4864 );	
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 10.3152, 11.02792, 3.4864 );
+		glTexCoord2d(0.0, 1.0);
 		glVertex3f ( 10.3152, 11.02792, 0.0 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //sky above ticket booth
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
