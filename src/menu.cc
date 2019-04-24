@@ -187,25 +187,24 @@ void startDisplay()
 
 void instructScreenText()
 {
-	textToScreen("Get to the end ", WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.54));
-	textToScreen("without being hit!", WINDOW_MAX_X*(0.55), WINDOW_MAX_Y*(0.54));
-	textToScreen("W = move ahead", WINDOW_MAX_X*(0.20), WINDOW_MAX_Y*(0.46));
-	textToScreen("S = move back", WINDOW_MAX_X*(0.35), WINDOW_MAX_Y*(0.46));
-	textToScreen("A = move left", WINDOW_MAX_X*(0.50), WINDOW_MAX_Y*(0.46));
-	textToScreen("D = move right", WINDOW_MAX_X*(0.65), WINDOW_MAX_Y*(0.46));
-	textToScreen("T = throw object", WINDOW_MAX_X*(0.20), WINDOW_MAX_Y*(0.38));
-	textToScreen("Z = make smaller", WINDOW_MAX_X*(0.35), WINDOW_MAX_Y*(0.38));
-	textToScreen("X = make bigger", WINDOW_MAX_X*(0.50), WINDOW_MAX_Y*(0.38));
-	textToScreen("R = reverse", WINDOW_MAX_X*(0.65), WINDOW_MAX_Y*(0.38));
+	textToScreen("Get to the end ", WINDOW_MAX_X*(0.425), WINDOW_MAX_Y*(0.54));
+	textToScreen("without being hit!", WINDOW_MAX_X*(0.50), WINDOW_MAX_Y*(0.54));
+	textToScreen("W = move ahead", WINDOW_MAX_X*(0.25), WINDOW_MAX_Y*(0.46));
+	textToScreen("S = move back", WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.46));
+	textToScreen("A = move left", WINDOW_MAX_X*(0.55), WINDOW_MAX_Y*(0.46));
+	textToScreen("D = move right", WINDOW_MAX_X*(0.70), WINDOW_MAX_Y*(0.46));
+	textToScreen("T = throw object", WINDOW_MAX_X*(0.25), WINDOW_MAX_Y*(0.38));
+	textToScreen("Z = make smaller", WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.38));
+	textToScreen("X = make bigger", WINDOW_MAX_X*(0.55), WINDOW_MAX_Y*(0.38));
+	textToScreen("R = reverse", WINDOW_MAX_X*(0.70), WINDOW_MAX_Y*(0.38));
 	textToScreen("P = pause game", WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.30));
 	textToScreen("Q = quit game", WINDOW_MAX_X*(0.55), WINDOW_MAX_Y*(0.30));
-	textToScreen("BACK", WINDOW_MAX_X*(0.475), WINDOW_MAX_Y*(0.19));
+	textToScreen("BACK", WINDOW_MAX_X*(0.485), WINDOW_MAX_Y*(0.19));
 }
 
 void instructDisplay()
 {
 	char name []= "Controls";
-//	drawInstructBounds();
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
         glLoadIdentity();
@@ -217,7 +216,7 @@ void instructDisplay()
 	
         drawInstructBounds();
 	instructScreenText();
-	drawTitle(WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.6), 1.0f, name);
+	drawTitle(WINDOW_MAX_X*(0.30), WINDOW_MAX_Y*(0.6), 1.0f, name);
 
         glPopMatrix();
         glMatrixMode(GL_PROJECTION);
@@ -239,13 +238,12 @@ void pauseDisplay()
         glPushMatrix();
         glLoadIdentity();
 
-//	glPushMatrix();
+	drawBoundaries();
         textToScreen("Resume Game" , WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
         textToScreen("Time Left: ", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.4));
         textToScreen("Leave Game", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.29));
-	drawBoundaries();
+//	drawBoundaries();
 	drawTitle(WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.6), 1.0, name);
-//	glPopMatrix();
         glPopMatrix();
         glMatrixMode(GL_PROJECTION);
         glPopMatrix();
@@ -255,7 +253,7 @@ void pauseDisplay()
 
 void overDisplay()
 {
-	char name [] = "GAMEOVER";
+	char name [] = "GAME OVER";
 	glMatrixMode(GL_PROJECTION);
         glPushMatrix();
         glLoadIdentity();
@@ -265,11 +263,14 @@ void overDisplay()
         glPushMatrix();
         glLoadIdentity();
 
-	drawTitle(WINDOW_MAX_X*(0.1), WINDOW_MAX_Y*(0.6), 1.0, name);
+	//drawTitle(WINDOW_MAX_X*(0.1), WINDOW_MAX_Y*(0.6), 1.0, name);
 	drawBoundaries();
         textToScreen("Your score: " , WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
         textToScreen("Play Again", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.4));
         textToScreen("Leave Game", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.29));
+	drawTitle(WINDOW_MAX_X*(0.20), WINDOW_MAX_Y*(0.6), 1.0, name);
+//	drawBoundaries();	
+
         glPopMatrix();
         glMatrixMode(GL_PROJECTION);
         glPopMatrix();

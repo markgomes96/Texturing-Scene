@@ -137,8 +137,8 @@ void Input::mouse( int button, int state, int x, int y )
 
 	switch (activeState)
 	{
-        	case gameState:
-           		break;
+		case gameState:
+			break;
 
         	case startState:
 			if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.59)
@@ -146,52 +146,69 @@ void Input::mouse( int button, int state, int x, int y )
                			if(y<WINDOW_MAX_Y*0.57 && y>WINDOW_MAX_Y*0.47)
                 		{
                         		activeState=gameState;
+					cout << "Start Display--Start" << endl;
                         		glutPostRedisplay();
         	       		 }
 	
 		                else if(y<WINDOW_MAX_Y*0.46 && y>WINDOW_MAX_Y*0.36)
                			 {
                        			 activeState=instructState;
+					cout << "Start Display--Instructions" << endl;
                     			 glutPostRedisplay();
                 		}
 
                			 else if(y<WINDOW_MAX_Y*0.35 && y>WINDOW_MAX_Y*0.25)
                 		{
+				   cout << "Start Display--End Game" << endl;
                      		   exit(0);
                 		}
         		}
             			break;
 
 			case pauseState:
-				 if(y<WINDOW_MAX_Y*0.57 && y>WINDOW_MAX_Y*0.47)
-               			 {
-                      			  activeState=gameState;
-                      			  glutPostRedisplay();
-                		 }
+				if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.59)
+        	                {
+	
+					 if(y<WINDOW_MAX_Y*0.57 && y>WINDOW_MAX_Y*0.47)
+               				 {
+                      				  activeState=gameState;
+						  cout << "Pause Display--Resume Game" << endl;
+                      				  glutPostRedisplay();
+                			 }
+
+					else if(y<WINDOW_MAX_Y*0.35 && y>WINDOW_MAX_Y*0.25)
+                               		 {
+						   cout << "Pause Display--End Game" << endl;
+                                		   exit(0);
+                               		 }
+				}
+
 				break;
 
 			case overState:
 				if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.59){
                		 		if(y<WINDOW_MAX_Y*0.46 && y>WINDOW_MAX_Y*0.36)
                 			{
-                       				cout << "Play Again" << endl;
+                       				cout << "Over State--Play Again" << endl;
                 			}
                 			else if(y<WINDOW_MAX_Y*0.35 && y>WINDOW_MAX_Y*0.25)
                 			{
+					    cout << "Over State--End Game" << endl;
                     			    exit(0);
                				}
-         		  	}	
+				}
 				break;
 
-		case instructState:
-			 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.45 && x < WINDOW_MAX_X*0.55){
-                		 if(y<WINDOW_MAX_Y*0.25 && y>WINDOW_MAX_Y*0.15)
-               			 {
-                     			  activeState = startState;
-                        		  glutPostRedisplay();
-         		         }
-        		}
-			break;
+			case instructState:
+				 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.45 && x < WINDOW_MAX_X*0.55){
+                			 if(y<WINDOW_MAX_Y*0.25 && y>WINDOW_MAX_Y*0.15)
+               				 {
+                     				  activeState = startState;
+						  cout << "Instruct State--Back to Start" << endl;
+                       		 		  glutPostRedisplay();
+         		        	 }
+        			}
+				break;
 
         	default:
             	break;
