@@ -5162,7 +5162,7 @@ glTranslated(0.0, -40.11168 ,0.0);
 
 ///////////////////////////////////////////////////////////
 //Windows inbetween doors
-5.01396
+//5.01396
 //bottom piece
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);

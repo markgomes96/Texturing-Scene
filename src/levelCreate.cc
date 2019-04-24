@@ -26,9 +26,11 @@ void showMinimap(){
     glEnable(GL_SCISSOR_TEST);
     glScissor(WINDOW_MAX_X-300, 50, 200, 200);
     glLoadIdentity();
-    //gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0 ,0 ,1);
+    gluLookAt(cameraPos.x, cameraPos.y, cameraPos.z+3, cameraPos.x, cameraPos.y, cameraPos.z, 0 ,0 ,1);
     glMatrixMode(GL_MODELVIEW);
 
+    //This is why it's broken.
+    //I need to call the updated HH function for this to work
     buildHeritageHall();
     glPopMatrix();
 
