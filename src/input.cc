@@ -23,8 +23,18 @@ Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
-	//float sensitivity = 0.001f;
 
+
+	//have can't move it to parameter spot or it gets stuck
+	//so if at very right, moves cursor x to 1
+	//if at very left, moves cursor pos to MAX - 2
+	if(x == (WINDOW_MAX_X - 1)){
+		glutWarpPointer(1, y);
+	}
+	else if(x == 0){
+		glutWarpPointer(WINDOW_MAX_X-2, y);
+	}
+	
 	y = WINDOW_MAX_Y  - y; 
 
 	if(first_mouse){
@@ -33,25 +43,13 @@ void Input::passiveMouseMovement(int x, int y){
 		first_mouse = false;
 	}
 
-	//cout << "previous mouse " << prev_mouse_x << " " << prev_mouse_y << endl;
-
 	//calculate change in x and y
 	mouse_dx = x - prev_mouse_x; 
 	mouse_dy = y- prev_mouse_y;
 
-	//cout << "change " << mouse_dx << " " << mouse_dy << endl;
-
-//	cout << x << " " << y << endl;
-
 	//reset prev mouse x and y
 	prev_mouse_x = x;
 	prev_mouse_y = y;
-
-//	mouse_dx = mouse_dx * sensitivity;
-//	mouse_dy = mouse_dy * sensitivity;
-
-	//cout << mouse_dx << " " << mouse_dy << endl;
-
 
 
 	if(mouse_dx > 0){
