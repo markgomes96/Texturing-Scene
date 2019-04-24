@@ -146,6 +146,13 @@ void buildCameraScene(){
 
 }
 void buildHeritageHall(void){
+	GLfloat lightPos1[] = {3.5, 5.0, 3.0, 1.0};
+	GLfloat lightColor[] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat ambient[] = {0.2, 0.2, 0.2, 0.2};
+	GLfloat spec[] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat diff[] = {0.5, 0.5, 0.5, 1.0};
+	GLfloat on[] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat direction[] = {0.0, 0.0, -1.0};
 
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
@@ -157,7 +164,30 @@ void buildHeritageHall(void){
             (double) cameraTarget.y, // + cameraFront.y,
             (double) cameraTarget.z, // + cameraFront.z,
             (double) up.x, (double) up.y, (double) up.z); 	// Up */
-    
+
+
+	glEnable(GL_TEXTURE_2D);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_LIGHTING);
+
+	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+
+	glColorMaterial(GL_FRONT and GL_BACK, GL_AMBIENT_AND_DIFFUSE);
+	glColorMaterial(GL_FRONT and GL_BACK, GL_SPECULAR);
+	glEnable(GL_COLOR_MATERIAL);
+	
+	glMaterialfv(GL_FRONT and GL_BACK, GL_SPECULAR, on);
+	glMaterialfv(GL_FRONT and GL_BACK, GL_DIFFUSE, on);
+	glMaterialfv(GL_FRONT and GL_BACK, GL_AMBIENT, ambient);
+	glMaterialf(GL_FRONT and GL_BACK, GL_SHININESS, 10.0);
+	glMaterialfv(GL_FRONT and GL_BACK, GL_EMISSION, on);
+	
+
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos1);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, on);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, on);
+	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
+	glEnable(GL_LIGHT0);
 
     // Draw objectiles directly after setting the camera 
     // ****** WARNING ******
@@ -169,7 +199,18 @@ void buildHeritageHall(void){
 
 	//draw heritage hall
 	buildHH();
- 
+ 	
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+	glTranslatef(3.5, 5.0, 3.0);
+	glColor3f(1.0, 1.0, 0.0);
+	glutWireSphere(1.5, 10.0, 10.0);
+	glPopMatrix();
+	glEnable(GL_LIGHTING);
+	
+
+
+
     ////////////////////////////////////////////////////
     //food court area
 

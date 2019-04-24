@@ -51,6 +51,13 @@ void Game::init()
     //	golist.push_back(floor);
     //	golist.push_back(cube);*/
 
+	//lighting
+	glShadeModel(GL_SMOOTH);
+	glEnable(GL_CULL_FACE);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
+	glEnable(GL_DEPTH_TEST);
+
 }
 
 // Create throwing object
