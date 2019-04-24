@@ -5160,8 +5160,34 @@ glPushMatrix();
   glPopMatrix();  
 glTranslated(0.0, -40.11168 ,0.0);  
 
+///////////////////////////////////////////////////////////
+//Windows inbetween doors
+5.01396
+//bottom piece
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0, 13.23188, 0.0);
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0, 13.23188, 2.3);	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0, 13.25188, 2.3);
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0, 13.25188, 0.0 );
+	 glEnd();
+	glPopMatrix();
+//top piece
+//left piece
+//side piece
 
-drawDisplayCase();
+///////////////////////////////////////////////////////////
+//archway windows
+
+
+//drawDisplayCase();
 
 }
 #endif
