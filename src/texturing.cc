@@ -10,6 +10,7 @@ void loadTextures(void) {
 	int width, height;
 	float colorMode[4] = {0.0, 0.0, 0.0, 0.0};
 
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 	//to get the actual color of the texture rather than last stored color
 	glTexEnvfv(GL_TEXTURE_ENV, GL_TEXTURE_ENV_COLOR, colorMode);
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
