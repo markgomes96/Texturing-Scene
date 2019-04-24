@@ -26,7 +26,7 @@ void showMinimap(){
     glEnable(GL_SCISSOR_TEST);
     glScissor(WINDOW_MAX_X-300, 50, 200, 200);
     glLoadIdentity();
-    gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0 ,0 ,1);
+    //gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0 ,0 ,1);
     glMatrixMode(GL_MODELVIEW);
 
     buildHeritageHall();
@@ -126,24 +126,23 @@ void buildCameraScene(){
     // if jump = 5, turn jump = -1
     // if jump < 0 , go down
     // if jump = -5, set jump = 0 
-    /*if (jump!= 0){
-      if (jump == 5){
-      jump = -1;
-      } else if (jump > 0){
-      CAMERA_THETA -= 1.0;
-      if (CAMERA_THETA < 0.0)
-      CAMERA_THETA += 360.0;
-      jump+=1;
-      } else if ((jump < 0) && (jump > -5)){
-      CAMERA_THETA += 1.0;
-      if (CAMERA_THETA > 0.0){
-      CAMERA_THETA -= 360.0;
-      }
-      jump -= 1;
-      } else{
-      jump =0;
-      }
-      }*/
+    int jumpTime = 20; // The higher it is the longer the jump is
+    double jumpChange = 10.0 / (double) jumpTime;
+    if (jump != 0){
+        if (jump == jumpTime){
+            jump = -1;
+        } else if (jump > 0){
+            cameraPos.z += jumpChange * sensitivity;
+        //    cameraTarget.z += jumpChange * sensitivity;
+            jump +=1;
+        } else if ((jump < 0) && (jump > -20)){
+            cameraPos.z -= jumpChange * sensitivity;
+      //      cameraTarget.z += jumpChange * sensitivity;
+            jump -= 1;
+        } else{
+            jump =0;
+        }
+    }
 
 }
 void buildHeritageHall(void){
@@ -158,16 +157,19 @@ void buildHeritageHall(void){
             (double) cameraTarget.y, // + cameraFront.y,
             (double) cameraTarget.z, // + cameraFront.z,
             (double) up.x, (double) up.y, (double) up.z); 	// Up */
- 
-	//draw heritage hall
-	buildHH();
- 
-    // Draw all the game object that is in the list
+    
+
+    // Draw objectiles directly after setting the camera 
+    // ****** WARNING ******
+    // Camera and objectile must go hand in hand. Please DO NOT move this. 
     for(int i = 0; i < g.golist.size(); i++)
     {
         g.drawObject(g.golist[i]);    
     }
 
+	//draw heritage hall
+	buildHH();
+ 
     ////////////////////////////////////////////////////
     //food court area
 
