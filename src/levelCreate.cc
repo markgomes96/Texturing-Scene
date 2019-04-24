@@ -26,7 +26,7 @@ void showMinimap(){
     glEnable(GL_SCISSOR_TEST);
     glScissor(WINDOW_MAX_X-300, 50, 200, 200);
     glLoadIdentity();
-    gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0 ,0 ,1);
+    //gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0 ,0 ,1);
     glMatrixMode(GL_MODELVIEW);
 
     buildHeritageHall();
@@ -158,16 +158,19 @@ void buildHeritageHall(void){
             (double) cameraTarget.y, // + cameraFront.y,
             (double) cameraTarget.z, // + cameraFront.z,
             (double) up.x, (double) up.y, (double) up.z); 	// Up */
- 
-	//draw heritage hall
-	buildHH();
- 
-    // Draw all the game object that is in the list
+    
+
+    // Draw objectiles directly after setting the camera 
+    // ****** WARNING ******
+    // Camera and objectile must go hand in hand. Please DO NOT move this. 
     for(int i = 0; i < g.golist.size(); i++)
     {
         g.drawObject(g.golist[i]);    
     }
 
+	//draw heritage hall
+	buildHH();
+ 
     ////////////////////////////////////////////////////
     //food court area
 

@@ -26,16 +26,8 @@ void display( void )
 	buildHeritageHall();
 	g.HUD();
 	buildDisplay();
-	//g.HUD();
-
-	//g.render();
 	glutSwapBuffers();
 
-	//glEnable(GL_TEXTURE_2D);
-	//glPushMatrix();
-	//glBindTexture(GL_TEXTURE_2D, textureID[10]);
-	//glutSolidCube(10);
-	//glPopMatrix();
 #else
 	g.render();
 #endif

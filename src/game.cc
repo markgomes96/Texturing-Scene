@@ -61,6 +61,7 @@ void Game::createProjectile(double a1, double a2, double a3, double a4, double b
     directZ =  ((double)cameraTarget.z - (double)cameraPos.z) * power;
     projectile.updateVelo(directX, directY, directZ);
     projectile.updateAcc(addAcc[0], addAcc[1], addAcc[2]);
+
     golist.push_back(projectile);
 }
 
