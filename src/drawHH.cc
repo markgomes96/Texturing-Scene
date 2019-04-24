@@ -5162,7 +5162,6 @@ glTranslated(0.0, -40.11168 ,0.0);
 
 ///////////////////////////////////////////////////////////
 //Windows inbetween doors
-5.01396
 //bottom piece
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -5170,16 +5169,31 @@ glTranslated(0.0, -40.11168 ,0.0);
 	 glColor3f(1.0, 1.0, 1.0);
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
-		glVertex3f ( 0.0, 13.23188, 0.0);
+		glVertex3f ( 0.0, 5.01396, 0.0);
 		glTexCoord2d(0.0, 1.0);
-		glVertex3f ( 0.0, 13.23188, 2.3);	
+		glVertex3f ( 0.0, 5.01396, 0.15);	
 		glTexCoord2d(1.0, 1.0);
-		glVertex3f ( 0.0, 13.25188, 2.3);
+		glVertex3f ( 0.0, 10.02792, 0.15);
 		glTexCoord2d(1.0, 0.0);
-		glVertex3f ( 0.0, 13.25188, 0.0 );
+		glVertex3f ( 0.0, 10.02792, 0.0 );
 	 glEnd();
 	glPopMatrix();
 //top piece
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0, 5.01396, 3.0);
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0, 5.01396, 2.9);	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0, 10.02792, 2.9);
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0, 10.02792, 3.0 );
+	 glEnd();
+	glPopMatrix();
 //left piece
 //side piece
 
