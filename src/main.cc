@@ -21,7 +21,8 @@ void display( void )
 {
 #ifdef LEVEL
 	
-	buildHeritageHall();
+	//buildHeritageHall();
+        //g.drawSceneObjects( ); 
 	g.HUD();
 	buildDisplay();
 	g.HUD();
@@ -106,7 +107,7 @@ int main(int argc, char** argv)
 	glutKeyboardUpFunc(keyup);
 	glutSpecialFunc(specialInput);
     // This needs to be changed to reflect that vertices is in the ../objs directory
-//	loadVerticesFileData( "vertices" ); //file name is "vertices"
+	g.loadVerticesFileData( "vertices" ); //file name is "vertices"
 	//initalize mouse movement function
 	glutPassiveMotionFunc(passiveMouseMovement);
 	glutMotionFunc(mouseMovement);
