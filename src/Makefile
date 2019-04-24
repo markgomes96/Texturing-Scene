@@ -18,7 +18,7 @@ all : run tags
 
 run: main.o $(INCLUDES) $(HEADERS) $(OBJS) 
 	$(C++) $(CCFLAGS) $(CF) $(DF) -o run  main.o $(OPTHDRSLOC) $(OBJS) $(LBLIBS) #$(INCDIRS) $(LIBDIRS) $(LDLIBS) 
-	cp run ../.
+	mv run ../.
 
 input.o : input.cc $(INCLUDES) $(HEADERS) 
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c input.cc
@@ -73,10 +73,9 @@ clean :
 pristine :
 	rm *.o
 	rm tags
-	rm run
 	rm ../run 
 	
 
 purge :
 	rm *.o
-	rm run
+	rm ../run
