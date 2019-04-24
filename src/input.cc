@@ -239,6 +239,15 @@ void Input::keyboard( unsigned char key, int x, int y )
 				//Reverse gravity
 				keyarr['r'] = PUSHED;
 				break;
+			case 'j':
+				keyarr['j'] = PUSHED;
+				break;
+			case '+':
+				addAcc[changeAcc-1] += 1.0;
+				break;
+			case '-': 
+				addAcc[changeAcc-1] -= 1.0;
+				break;
 			case 27:
 				//Exit gracefully
 				glutLeaveGameMode();
@@ -247,7 +256,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 	}
 }
 
-#ifdef DEV
+/*#ifdef DEV
     if ( key == 'e' || key == 'E'){
         // Create a box where the eye is
    		keyarr['e'] = PUSHED;
@@ -263,8 +272,8 @@ void Input::keyboard( unsigned char key, int x, int y )
     }
     if (key == '-'){
         addAcc[changeAcc-1] -= 1.0;
-    }
-}
+    }*/
+
 
 void Input::keyup( unsigned char key, int x, int y )
 {
