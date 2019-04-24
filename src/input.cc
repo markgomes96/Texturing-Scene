@@ -184,8 +184,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 	if (( key == 'r' ) || (key == 'R')){
 		//Reverse gravity
 		keyarr['r'] = PUSHED;
-	}
-
+	}   
 	if ( key == 27 ){
 		//Exit gracefully
 		glutLeaveGameMode();
@@ -199,6 +198,8 @@ void Input::keyboard( unsigned char key, int x, int y )
 #endif
     if (key == 'j' || key == 'J'){
    		keyarr['j'] = PUSHED;
+   		if (jump == 0)
+   		    jump = 1;
        }
     if (key == '+'){
         addAcc[changeAcc-1] += 1.0;

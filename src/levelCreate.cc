@@ -126,24 +126,23 @@ void buildCameraScene(){
     // if jump = 5, turn jump = -1
     // if jump < 0 , go down
     // if jump = -5, set jump = 0 
-    /*if (jump!= 0){
-      if (jump == 5){
-      jump = -1;
-      } else if (jump > 0){
-      CAMERA_THETA -= 1.0;
-      if (CAMERA_THETA < 0.0)
-      CAMERA_THETA += 360.0;
-      jump+=1;
-      } else if ((jump < 0) && (jump > -5)){
-      CAMERA_THETA += 1.0;
-      if (CAMERA_THETA > 0.0){
-      CAMERA_THETA -= 360.0;
-      }
-      jump -= 1;
-      } else{
-      jump =0;
-      }
-      }*/
+    int jumpTime = 20; // The higher it is the longer the jump is
+    double jumpChange = 10.0 / (double) jumpTime;
+    if (jump != 0){
+        if (jump == jumpTime){
+            jump = -1;
+        } else if (jump > 0){
+            cameraPos.z += jumpChange * sensitivity;
+        //    cameraTarget.z += jumpChange * sensitivity;
+            jump +=1;
+        } else if ((jump < 0) && (jump > -20)){
+            cameraPos.z -= jumpChange * sensitivity;
+      //      cameraTarget.z += jumpChange * sensitivity;
+            jump -= 1;
+        } else{
+            jump =0;
+        }
+    }
 
 }
 void buildHeritageHall(void){
