@@ -15,7 +15,7 @@ extern double x_rotat, y_rotat;
 extern float sensitivity;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern bool camera, unhold;
-extern int jump;
+extern int jump, counter;
 extern Game g;
 extern key_state keyarr[127];
 
@@ -159,8 +159,18 @@ void buildHeritageHall(void){
             (double) cameraTarget.y, // + cameraFront.y,
             (double) cameraTarget.z, // + cameraFront.z,
             (double) up.x, (double) up.y, (double) up.z); 	// Up */
-    
-
+   
+    if (counter == 10){
+        printf("You won you sneaky bastard\n");
+        exit(0);
+    }
+    if (destroy){
+        g.createTarget(randomize(MIN_X, MAX_X), // + cameraFront.x,
+                randomize(MIN_Y, MAX_Y), // + cameraFront.y,
+                randomize(MIN_Z, MAX_Z), // + cameraFront.z,
+                1, 0.2, 0.001, 0.2);
+        destroy = false;
+    }
     // Draw objectiles directly after setting the camera 
     // ****** WARNING ******
     // Camera and objectile must go hand in hand. Please DO NOT move this. 

@@ -11,6 +11,7 @@ extern void buildDisplay();
 extern void buildCameraScene();
 extern void buildHeritageHall();
 extern double directX,directY, directZ, scaleAccX, scaleAccY, scaleAccZ, power;
+extern double MIN_X, MIN_Y, MIN_Z, MAX_X, MAX_Y, MAX_Z;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern double addAcc[3];
 /*
@@ -25,6 +26,11 @@ void Game::init()
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
     loadTextures();
+    createTarget(randomize(MIN_X, MAX_X), // + cameraFront.x,
+             randomize(MIN_Y, MAX_Y), // + cameraFront.y,
+            randomize(MIN_Z, MAX_Z), // + cameraFront.z,
+            1, 0.2, 0.001, 0.2);
+
     /*
     // ***Test objects for phyiscs***
     floor = GameObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
@@ -68,17 +74,20 @@ void Game::createProjectile(double posX, double posY, double posZ, double posW, 
 
 void Game::createTarget(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
     GameObj projectile = GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
-    float HI = 1.0;
-    float LO = -1.0;
+
+    // randomize the velocity
+    float HI = 0.5;
+    float LO = -0.5;
     float veloX, veloY, veloZ;
     srand(time(NULL));
-    veloX   = LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO);
-    veloY  = LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO);
-    veloZ  = LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO);
-    //printf("velocity %f %f %f\n", veloX, veloX, veloZ);
+    veloX   = randomize(LO,HI);
+    veloY   = randomize(LO,HI);
+    veloZ   = randomize(LO,HI);
+
+    // Update the velocity and also remove gravity
     projectile.updateVelo(veloX, veloY, veloZ);
     projectile.updateAcc(0,0,9.8);
-//    printf("velocity %f %f %f\n", projectile.velocity.x, projectile.velocity.y, projectile.velocity.z);
+    //printf("velocity %f %f %f\n", projectile.velocity.x, projectile.velocity.y, projectile.velocity.z);
 //    printf("acceleration %f %f %f\n", projectile.acceleration.x, projectile.acceleration.y, projectile.acceleration.z);
 
     tarList.push_back(projectile);
@@ -387,5 +396,10 @@ void Game::passiveMouseMovement(int x, int y){
     input.passiveMouseMovement(x, y);
 }
 
+// Other function that is not part of game object
+float randomize(float LO, float HI){
+   float random =  (LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO));
+   return random;
+}
 
 #endif

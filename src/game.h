@@ -68,4 +68,5 @@ public:
 	float randColorVal( ); 
 };
 
+float randomize(float LO, float HI);
 #endif

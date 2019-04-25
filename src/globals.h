@@ -25,6 +25,12 @@ glm::vec3 cameraRight = glm::normalize(glm::cross(up, cameraDirection));
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, 1.0f); //this keeps it upright
 float fov = 45.0f;
 
+double MIN_X = 1.0;
+double MAX_X = 6.5;
+double MIN_Y = -6.5;
+double MAX_Y = 54.5;
+double MIN_Z = 1.0;
+double MAX_Z = 4.5;
 
 double prev_mouse_x = 0;
 double prev_mouse_y = 0;
@@ -57,11 +63,14 @@ enum key_state {NOTPUSHED, PUSHED} keyarr[127];
 int jump = 0;
 bool unhold = false;
 
+// This is for the target mechanism
+bool destroy = false;
+int counter = 0;
+
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);
 void defineBox( struct box* );
 void drawBox( struct box* );
-
 Game g;
 
 GLuint textureID[50];
