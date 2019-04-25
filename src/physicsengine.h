@@ -25,7 +25,6 @@ public:
 
 	// Game functions
 	void updateObjects(vector<GameObj> &golist);	//move objects based on velocity/acceleration
-    void updateObjects(vector<GameObj> &golist, vector<GameObj> &tarList);	
 	void updatePosition(GameObj &go);
 	void checkCollision(GameObj &go1, GameObj &go2);
 	bool positionTest(GameObj a, GameObj b);
