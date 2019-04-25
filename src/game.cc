@@ -175,16 +175,18 @@ void Game::render()
 
 void Game::drawObject(GameObj go)
 {
-		if(!go.isScene)		// don't draw scene objects
-		{
-		    if(go.isBox)
-		        drawCube(&go.faces[0], &go.collCenter);
-		    else
-		        drawFreeForm(go.polygons, go.collCenter);
-		}
+	if(!go.isScene)		// don't draw scene objects
+	{
+	    if(go.isBox)
+	        drawCube(&go.faces[0], &go.collCenter);
+	    else
+	        drawFreeForm(go.polygons, go.collCenter);
+	}
 
+    /*
     if(go.drawBounds)
         drawBounds(&go.bounds[0]);
+    */
 }
 
 // Physics / Framerate
@@ -305,6 +307,28 @@ void Game::addSceneObjects()
 	bs[0]= -5.0; bs[1] = 12.0; bs[2]= -18.0; bs[3]= 55.0; bs[4] = -1.0; bs[5]= 0.0;
 	golist.push_back(GameObj(bs));
 
+    // *** ceiling *** -> flat all the way through, no arches
+    bs[0]= -5.0; bs[1] = 12.0; bs[2]= -18.0; bs[3]= 55.0; bs[4] = 5.4864; bs[5]= 7.0;
+	golist.push_back(GameObj(bs));
+
+    // *** walls ***
+    // left wall
+    bs[0]= -1.0; bs[1] = 0.2; bs[2]= -18.0; bs[3]= 55.0; bs[4] = 0.0; bs[5]= 5.4864;
+	golist.push_back(GameObj(bs));
+
+    // right wall
+    bs[0]= 7.0; bs[1] = 8.0; bs[2]= -18.0; bs[3]= 55.0; bs[4] = 0.0; bs[5]= 5.4864;
+	golist.push_back(GameObj(bs));
+
+    // back wall
+    bs[0]= -5.0; bs[1] = 12.0; bs[2]= -7.6; bs[3]= -6.6; bs[4] = 0.0; bs[5]= 5.4864;
+    golist.push_back(GameObj(bs));
+
+    // front wall
+    bs[0]= -5.0; bs[1] = 12.0; bs[2]= 54.9; bs[3]= 55.9; bs[4] = 0.0; bs[5]= 5.4864;
+    golist.push_back(GameObj(bs));
+
+    // *** display cases **** -> base and glass box colliders
 	bo[0] = 0.0; bo[1] = 1.5748; bo[2]= 0.0; bo[3]= 2.8702; bo[4] = 0.0; bo[5]= 0.4572;
 	go[0]= 0.127; go[1] = 1.4478; go[2]=  0.127; go[3]= 2.7432; go[4] = 0.4572; go[5]= 2.5146;
 	base[0] = 0.0; base[1] = 0.0; base[2]= 0.0; base[3]= 0.0; base[4] = 0.0; base[5]= 0.0;
@@ -314,7 +338,6 @@ void Game::addSceneObjects()
 	vect3 trans = vect3(0.0,0.0,0.0);
 	vect3 mod = vect3(0.0,0.0,0.0);
 
-	// *** display cases **** -> base and glass box colliders
 	// case 1
 	mod = vect3(0.5,0.25,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
