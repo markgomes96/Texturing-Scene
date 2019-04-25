@@ -24,14 +24,14 @@ void showMinimap(){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glPushMatrix();
     glEnable(GL_SCISSOR_TEST);
-    glScissor(WINDOW_MAX_X-300, 50, 200, 200);
+    glScissor(WINDOW_MAX_X-200, 0, 200, 200);
+    //glScissor(1000, 1000, 200, 200);
     glLoadIdentity();
     gluLookAt(cameraPos.x, cameraPos.y, cameraPos.z+3, cameraPos.x, cameraPos.y, cameraPos.z, 0 ,0 ,1);
     glMatrixMode(GL_MODELVIEW);
 
-    //This is why it's broken.
-    //I need to call the updated HH function for this to work
-    buildHeritageHall();
+    //buildHeritageHall();
+    buildHH();
     glPopMatrix();
 
 }
@@ -48,12 +48,15 @@ void buildCameraScene(){
     glEnable(GL_SCISSOR_TEST);
     glLoadIdentity();   	//call this before setting the viewing position
 
-    glScissor(WINDOW_MAX_X-200, 200, 200, 200);
+    glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
+    //glScissor(200, 200, WINDOW_MAX_X, WINDOW_MAX_Y);
+
+    glScissor(0, 0, 200, 200);
     if(true){
         showMinimap();
     }
-    glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
-    glScissor(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
+    //glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
+    glScissor(0, 200, WINDOW_MAX_X, WINDOW_MAX_Y);
 
     if (keyarr['w']){
         // Move forward
@@ -103,9 +106,9 @@ void buildCameraScene(){
         //Throw Object
         power *= 1.01;
     } else if (unhold){
-        g.createProjectile( (double) cameraPos.x, 
-                (double) cameraPos.y, 
-                (double) cameraPos.z, 
+        g.createProjectile( (double) cameraPos.x,
+                (double) cameraPos.y,
+                (double) cameraPos.z,
                 1, scaleX, scaleY, scaleZ);
         unhold = false;
         power = 1.0;
@@ -127,7 +130,7 @@ void buildCameraScene(){
     // if 0 < jump < 5, go up, increase jump by 1
     // if jump = 5, turn jump = -1
     // if jump < 0 , go down
-    // if jump = -5, set jump = 0 
+    // if jump = -5, set jump = 0
     int jumpTime = 20; // The higher it is the longer the jump is
     double jumpChange = 10.0 / (double) jumpTime;
     if (jump != 0){
@@ -152,26 +155,26 @@ void buildHeritageHall(void){
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
     glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity(); 
+    glLoadIdentity();
 
     gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
             (double) cameraTarget.x, // + cameraFront.x,
             (double) cameraTarget.y, // + cameraFront.y,
             (double) cameraTarget.z, // + cameraFront.z,
             (double) up.x, (double) up.y, (double) up.z); 	// Up */
-    
 
-    // Draw objectiles directly after setting the camera 
+
+    // Draw objectiles directly after setting the camera
     // ****** WARNING ******
-    // Camera and objectile must go hand in hand. Please DO NOT move this. 
+    // Camera and objectile must go hand in hand. Please DO NOT move this.
     for(int i = 0; i < g.golist.size(); i++)
     {
-        g.drawObject(g.golist[i]);    
+        g.drawObject(g.golist[i]);
     }
 
 	//draw heritage hall
 	buildHH();
- 
+
     ////////////////////////////////////////////////////
     //food court area
 
