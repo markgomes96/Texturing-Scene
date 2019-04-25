@@ -164,10 +164,12 @@ void Game::render()
     {
         drawObject(golist[i]);
 
+        /*
 		if(golist[i].isScene)
 		{
 				drawBounds(&golist[i].bounds[0]);
 		}
+        */
     }
 
     glutSwapBuffers();
