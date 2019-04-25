@@ -216,15 +216,18 @@ float randColorVal( ){
 }
 
 /* Draw polygon shapes */ 
-void Game::drawPoly( polygon p ){ 
+void Game::drawPoly( object ob ){ 
   glPushMatrix( ); 
   glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); 
   glColor3f( 0.0, 0.0, 1.0 ); 
   glBegin( GL_POLYGON ); 
-  for( int x = 0; x < p.vertices.size( ); x++ ){ 
-    glVertex3f( p.vertices[x].x, 
-		p.vertices[x].y, 
-		p.vertices[x].z ); 
+  for( int i = 0; i < ob.polygons.size(); i++) {
+      polygon p = ob.polygons[i];
+      for (int j = 0; j < p.vertices.size(); j++){
+            glVertex3f( p.vertices[j].x, 
+		    p.vertices[j].y, 
+		    p.vertices[j].z );
+      }
   }
   glEnd( ); 
   glPopMatrix( ); 
@@ -263,17 +266,17 @@ void Game::loadVertex( string buffer, vertex& ver ){
 void Game::loadVerticesFileData( char* fileName ){ 
   fstream file( fileName, ios::in ); 
   string buffer; 
-  polygon p; 
+  object ob; 
    
   while( getline( file, buffer ) ){ 
     vertex v; 
     if( buffer[0] == 'v' ){ 
 	loadVertex( buffer, v ); 
-	p.vertices.push_back( v ); 
+	ob.polygons[0].vertices.push_back( v ); 
     } else if ( buffer[0] == '#' ) { 
-      SceneObjects.push_back( p ); 
-      polygon newPol; 
-      p = newPol; 
+      SceneObjects.push_back( ob ); 
+      object newPol; 
+      ob = newPol; 
     }
   }
 }

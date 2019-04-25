@@ -36,8 +36,8 @@ void showMinimap(){
 void buildDisplay(){
 
     buildCameraScene();
-    //buildHeritageHall();
-    g.drawSceneObjects( ); 
+    buildHeritageHall();
+    //g.drawSceneObjects( ); 
 
 }
 void buildCameraScene(){

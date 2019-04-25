@@ -23,12 +23,11 @@ void display( void )
 {
 #ifdef LEVEL
 	
-	//buildHeritageHall();
-        //g.drawSceneObjects( ); 
+	buildHeritageHall();
+    g.drawSceneObjects( ); 
 	g.HUD();
 	buildDisplay();
 	glutSwapBuffers();
-
 #else
 	g.render();
 #endif
