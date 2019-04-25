@@ -61,4 +61,5 @@ public:
 	void glutLockFrameRate(float desiredFrameRate);
 };
 
+float randomize(float LO, float HI);
 #endif

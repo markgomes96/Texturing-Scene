@@ -4,6 +4,8 @@
 #include "includes.h"
 #include "physicsengine.h"
 
+extern bool destroy;
+extern int counter;
 PhysicsEngine::PhysicsEngine()
 { }
 
@@ -69,6 +71,8 @@ void PhysicsEngine::updateObjects(vector<GameObj> &obList, vector<GameObj> &tarL
                     if (sphereCollsTest(obList[countOb], tarList[countTar])){
                         tarList.erase(tarList.begin() + countTar);
                         obList.erase(obList.begin() + countOb);
+                        destroy = true;
+                        counter++;
                         countOb--;
                         break;
                     }
