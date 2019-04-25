@@ -22,7 +22,7 @@ public:
 	float frameRate;			// phys-time vars
 	vector<GameObj> obList;		// Objectile list
     vector<GameObj> tarList;    // Target list	
-	vector<object>  SceneObjects; 
+	vector<polygon>  SceneObjects; 
 
 	GameObj floor;				// phys obj test vars
 	GameObj cube;
