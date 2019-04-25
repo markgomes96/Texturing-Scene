@@ -4,6 +4,8 @@
 #include "includes.h"
 #include "game.h"
 #include "prototypes.h"
+#include <fstream> 
+#include <stdlib.h>
 
 extern void buildDisplay();
 extern void buildCameraScene();
@@ -171,6 +173,94 @@ void Game::drawObject(GameObj go)
     if(go.drawBounds)
         drawBounds(&go.bounds[0]);
 }
+
+//Renders the SceneObjects vector 
+void Game::drawSceneObjects( ){ 
+
+  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); 
+  glMatrixMode( GL_MODELVIEW ); 
+  glLoadIdentity( ); 
+
+  gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
+     (double) cameraTarget.x, // + cameraFront.x,
+     (double) cameraTarget.y, // + cameraFront.y,
+     (double) cameraTarget.z, // + cameraFront.z,
+     (double) up.x, (double) up.y, (double) up.z);       // Up */
+
+
+  for( int i = 0; i < SceneObjects.size(); i++ ){ 
+    drawPoly( SceneObjects[ i ] );    
+  }
+}
+
+/* Generate a random float */ 
+float randColorVal( ){ 
+  return (float) rand() / RAND_MAX; 
+}
+
+/* Draw polygon shapes */ 
+void Game::drawPoly( polygon p ){ 
+  glPushMatrix( ); 
+  glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); 
+  glColor3f( 0.0, 0.0, 1.0 ); 
+  glBegin( GL_POLYGON ); 
+  for( int x = 0; x < p.vertices.size( ); x++ ){ 
+    glVertex3f( p.vertices[x].x, 
+		p.vertices[x].y, 
+		p.vertices[x].z ); 
+  }
+  glEnd( ); 
+  glPopMatrix( ); 
+}
+
+/* Helper function to read in the vertices from the data file */ 
+void Game::loadVertex( string buffer, vertex& ver ){ 
+  string token; 
+  size_t pos = 0; 
+  buffer.erase(0,1); 
+  pos = buffer.find(","); 
+  token = buffer.substr(0,pos); 
+  ver.x = atof(token.c_str()); 
+  //cout << ver.x << endl; 
+  buffer.erase( 0, pos );
+
+  buffer.erase(0,1); 
+  pos = buffer.find(","); 
+  token = buffer.substr(0,pos); 
+  ver.y = atof(token.c_str()); 
+  //cout << ver.y << endl; 
+  buffer.erase( 0, pos );
+
+  buffer.erase(0,1); 
+  pos = buffer.find(","); 
+  token = buffer.substr(0,pos); 
+  ver.z = atof(token.c_str()); 
+  //cout << ver.z << endl; 
+  buffer.erase( 0, pos );
+}
+
+/*  
+ *  Read in the vertices file and load them into the game object. This function should be 
+ *  called only ONCE -- probably somewhere in init. 
+ */
+void Game::loadVerticesFileData( char* fileName ){ 
+  fstream file( fileName, ios::in ); 
+  string buffer; 
+  polygon p; 
+   
+  while( getline( file, buffer ) ){ 
+    vertex v; 
+    if( buffer[0] == 'v' ){ 
+	loadVertex( buffer, v ); 
+	p.vertices.push_back( v ); 
+    } else if ( buffer[0] == '#' ) { 
+      SceneObjects.push_back( p ); 
+      polygon newPol; 
+      p = newPol; 
+    }
+  }
+}
+
 // Physics / Framerate
 void Game::drawFreeForm(vector<polygon> polygons, vertex position)
 {
