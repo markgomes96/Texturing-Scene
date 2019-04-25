@@ -39,9 +39,10 @@ double directX = 0;
 double directY = 0;
 double directZ = 0;
 
-double scaleX = 0.1;
-double scaleY = 0.1;
-double scaleZ = 0.1;
+// Scale of projectile
+double scaleObX = 0.1;
+double scaleObY = 0.1;
+double scaleObZ = 0.1;
 
 // acceleration of the object, at the beginning, there is only gravity 
 double scaleAccX = 0;
