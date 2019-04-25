@@ -44,6 +44,8 @@ public:
 
 	// object rendering functions
 	void drawObject(GameObj go);
+	void drawPoly( polygon p ); 
+	void drawSceneObjects( ); 
 	void drawFreeForm(vector<polygon> polygons, vertex position);
 	void drawCube(struct box *face, vertex *position);
 	void drawBounds( vertex *bounds );
@@ -59,6 +61,11 @@ public:
 
 	// Phys-Time functions
 	void glutLockFrameRate(float desiredFrameRate);
+
+	//Functions for loading scene object data 
+	void loadVertex( string, vertex& ); 
+	void loadVerticesFileData( char* ); 
+	float randColorVal( ); 
 };
 
 #endif

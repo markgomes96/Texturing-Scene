@@ -23,7 +23,8 @@ void display( void )
 {
 #ifdef LEVEL
 	
-	buildHeritageHall();
+	//buildHeritageHall();
+        //g.drawSceneObjects( ); 
 	g.HUD();
 	buildDisplay();
 	glutSwapBuffers();
@@ -51,7 +52,7 @@ void reshape (int w, int h)
 	glViewport (0, 0, (GLsizei) w, (GLsizei) h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(40.0, (GLfloat) w/(GLfloat) h, 1.0, 60.0);
+	gluPerspective(40.0, (GLfloat) w/(GLfloat) h, 1.0, 70.0);
 	glMatrixMode(GL_MODELVIEW);
 }
 
@@ -106,11 +107,12 @@ int main(int argc, char** argv)
 	glutKeyboardUpFunc(keyup);
 	glutSpecialFunc(specialInput);
     // This needs to be changed to reflect that vertices is in the ../objs directory
-//	loadVerticesFileData( "vertices" ); //file name is "vertices"
+	g.loadVerticesFileData( "vertices" ); //file name is "vertices"
 	//initalize mouse movement function
 	glutPassiveMotionFunc(passiveMouseMovement);
 	glutMotionFunc(mouseMovement);
-
+	//make cursor invisible
+	glutSetCursor(GLUT_CURSOR_NONE);
 
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame
