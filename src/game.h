@@ -22,7 +22,7 @@ public:
 	float frameRate;			// phys-time vars
 	vector<GameObj> obList;		// Objectile list
     vector<GameObj> tarList;    // Target list	
-	vector<polygon>  SceneObjects; 
+	vector<object>  SceneObjects; 
 
 	GameObj floor;				// phys obj test vars
 	GameObj cube;
@@ -44,7 +44,7 @@ public:
 
 	// object rendering functions
 	void drawObject(GameObj go);
-	void drawPoly( polygon p ); 
+	void drawPoly( object p ); 
 	void drawSceneObjects( ); 
 	void drawFreeForm(vector<polygon> polygons, vertex position);
 	void drawCube(struct box *face, vertex *position);

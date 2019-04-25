@@ -9,6 +9,11 @@
 extern Game g; 
 using namespace std; 
 
+void getObjectData(int index)
+{
+        return objectList[index];
+}
+
 /* 
  * The function, loadVerticesFileData( char* ) is going to be the function that 
  * loads the actual object info into the Game object. 
