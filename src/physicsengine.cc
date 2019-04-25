@@ -13,30 +13,29 @@ PhysicsEngine::PhysicsEngine(float fr)
 	timeStep = (1.0 / frameRate);
 }
 
-void PhysicsEngine::updateObjects(vector<GameObj> &obList)
+void PhysicsEngine::updateObjects(vector<GameObj> &obList, vector<GameObj> &tarList)
 {
 	// update position of every object
-	for(int i = 0; i < obList.size(); i++)
-	{
-		if(!obList[i].isStatic)
-		{
+	for(int i = 0; i < obList.size(); i++){
+		if(!obList[i].isStatic){
 			updatePosition(obList[i]);
 		}
 	}
 
+
+	for(int i = 0; i < tarList.size(); i++){
+		if(!tarList[i].isStatic){
+			updatePosition(tarList[i]);
+		}
+	}
+
 	// check for collisions
-	for(int i = 0; i < obList.size(); i++)
-	{
-		for(int j = 0; j < obList.size(); j++)
-		{
-			if(i != j)		// don't check object with itself
-			{
-				if(!obList[i].isStatic)		// don't check static objects
-				{
-					if(positionTest(obList[i], obList[j]))	// check if any object is moving
-					{
-						if(sphereCollsTest(obList[i], obList[j]))		// check if objects are in range to collide
-						{
+	for(int i = 0; i < obList.size(); i++){
+		for(int j = 0; j < obList.size(); j++){
+			if(i != j){		// don't check object with itself
+				if(!obList[i].isStatic){		// don't check static objects
+					if(positionTest(obList[i], obList[j])){	// check if any object is moving
+						if(sphereCollsTest(obList[i], obList[j])){		// check if objects are in range to collide
 							checkCollision(obList[i], obList[j]);
 						}
 					}
@@ -44,6 +43,42 @@ void PhysicsEngine::updateObjects(vector<GameObj> &obList)
 			}
 		}
 	}
+
+
+	for(int i = 0; i < tarList.size(); i++){
+		for(int j = 0; j < tarList.size(); j++){
+			if(i != j){		// don't check tarject with itself
+				if(!tarList[i].isStatic){		// don't check static tarjects
+					if(positionTest(tarList[i], tarList[j])){	// check if any tarject is moving
+						if(sphereCollsTest(tarList[i], tarList[j])){		// check if tarjects are in range to collide
+							checkCollision(tarList[i], tarList[j]);
+						}
+					}
+				}
+			}
+		}
+	}
+
+    int countOb = 0;
+    int countTar = 0;
+    while (countOb < obList.size()){
+        countTar = 0;
+        while (countTar < tarList.size()){
+            if(!tarList[countTar].isStatic){	
+		        if(positionTest(obList[countOb], tarList[countTar])){
+                    if (sphereCollsTest(obList[countOb], tarList[countTar])){
+                        tarList.erase(tarList.begin() + countTar);
+                        obList.erase(obList.begin() + countOb);
+                        countOb--;
+                        break;
+                    }
+                }
+
+            }
+            countTar++;
+        }
+        countOb++;
+    }
 }
 
 void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
@@ -118,10 +153,11 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 	{
 		colls[2] = 1;
 	}
-
+    
 	// collision only occurs when collide in all 3 dimensions
 	if(colls[0] != 0 && colls[1] != 0 && colls[2] != 0)
 	{
+	    printf("What's up" );
 		// bounce object outside of collided object
 		vect3 bounceVect = vectMult(go1.velocity, -timeStep);
 		go1.collCenter.x += bounceVect.x;

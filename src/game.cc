@@ -77,8 +77,8 @@ void Game::createTarget(double posX, double posY, double posZ, double posW, doub
     //printf("velocity %f %f %f\n", veloX, veloX, veloZ);
     projectile.updateVelo(veloX, veloY, veloZ);
     projectile.updateAcc(0,0,9.8);
-    printf("velocity %f %f %f\n", projectile.velocity.x, projectile.velocity.y, projectile.velocity.z);
-    printf("acceleration %f %f %f\n", projectile.acceleration.x, projectile.acceleration.y, projectile.acceleration.z);
+//    printf("velocity %f %f %f\n", projectile.velocity.x, projectile.velocity.y, projectile.velocity.z);
+//    printf("acceleration %f %f %f\n", projectile.acceleration.x, projectile.acceleration.y, projectile.acceleration.z);
 
     tarList.push_back(projectile);
 }
@@ -92,8 +92,7 @@ void Game::createEye(double posX, double posY, double posZ, double posW, double 
 void Game::update()
 {
     // Update each phyisc object
-    physEng.updateObjects(obList);
-    physEng.updateObjects(tarList);
+    physEng.updateObjects(obList, tarList);
     glutLockFrameRate(frameRate);
 }
 
