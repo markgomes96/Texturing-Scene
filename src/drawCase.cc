@@ -5,7 +5,7 @@
 #include "game.h"
 #include "prototypes.h"
 
-extern GLuint textureID[50];
+extern GLuint textureID[100];
 
 void drawDisplayCase()
 {

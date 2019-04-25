@@ -63,6 +63,6 @@ void drawBox( struct box* );
 
 Game g;
 
-GLuint textureID[50];
+GLuint textureID[100];
 
 #endif

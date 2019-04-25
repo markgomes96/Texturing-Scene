@@ -3,7 +3,7 @@
 
 #include "includes.h"
 
-extern GLuint textureID[50];
+extern GLuint textureID[0];
 
 void loadTextures(void) {
 	unsigned char* image;
@@ -1115,7 +1115,7 @@ void loadTextures(void) {
 	
 	//62
 	glGenTextures(1, &textureID[61]);
-    glBindTexture(GL_TEXTURE_2D, textureID[62]);
+    glBindTexture(GL_TEXTURE_2D, textureID[61]);
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
@@ -1161,6 +1161,24 @@ void loadTextures(void) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     image = SOIL_load_image("./textures/wallpic1.png", &width, &height, 0, SOIL_LOAD_RGB);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
+
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    SOIL_free_image_data(image);
+
+	//65
+	glGenTextures(1, &textureID[64]);
+    glBindTexture(GL_TEXTURE_2D, textureID[64]);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    image = SOIL_load_image("./textures/fc.png", &width, &height, 0, SOIL_LOAD_RGB);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, image);
 
     glGenerateMipmap(GL_TEXTURE_2D);
