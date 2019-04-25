@@ -22,11 +22,14 @@ extern GLuint textureID[50];
 void display( void )
 {
 #ifdef LEVEL
-	
 	//buildHeritageHall();
         //g.drawSceneObjects( ); 
-	g.HUD();
+	//g.HUD();
 	buildDisplay();
+        cout << "Before drawSO" << endl; 
+	g.drawSceneObjects( ); 
+        cout << "After drawSO" << endl; 
+
 	glutSwapBuffers();
 
 #else

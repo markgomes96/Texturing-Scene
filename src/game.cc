@@ -204,8 +204,9 @@ void Game::drawSceneObjects( ){
      (double) cameraTarget.z, // + cameraFront.z,
      (double) up.x, (double) up.y, (double) up.z);       // Up */
 
-
+  cout << "Size of the scene objs vector: " << SceneObjects.size() << endl; 
   for( int i = 0; i < SceneObjects.size(); i++ ){ 
+    cout << "Drawing object --> " << i << endl; 
     drawPoly( SceneObjects[ i ] );    
   }
 }
@@ -217,6 +218,7 @@ float randColorVal( ){
 
 /* Draw polygon shapes */ 
 void Game::drawPoly( polygon p ){ 
+  cout << "Drawing a poly" << endl; 
   glPushMatrix( ); 
   glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); 
   glColor3f( 0.0, 0.0, 1.0 ); 
