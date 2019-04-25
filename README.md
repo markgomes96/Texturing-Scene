@@ -13,22 +13,22 @@ Each person needs to prepare to give a 3 to 5 minute summary of what they did
 in the project.  We will then play the game in class.
 
 
-**Button: **<br />
-*  w: Move forward
-*  s: Move backward
-*  a: Move left
-*  d: Move right
-*  t: Throwing projectile. Hold "t" for more powerful throw
-*  j: Jump 
-*  z: Make projectile bigger
-*  x: Make projectile smaller
+### Button <br />
+*  **W**: Move forward
+*  **S**: Move backward
+*  **A**: Move left
+*  **D**: Move right
+*  **T**: Throwing projectile. Hold "T" for more powerful throw
+*  **J**: Jump 
+*  **Z**: Make projectile bigger
+*  **X**: Make projectile smaller
 *  1 and "+": Increase acceleration of projectile leftward
 *  1 and "-": Increase acceleration of projectile rightward
 *  2 and "+": Increase acceleration of projectile forward
 *  2 and "-": Increase acceleration of projectile backward
 *  3 and "+": Increase acceleration of projectile upward
 *  3 and "-": Increase acceleration of projectile downward
-*  r: Reset all acceleration 
+*  **R**: Reset all acceleration 
 
 
 
