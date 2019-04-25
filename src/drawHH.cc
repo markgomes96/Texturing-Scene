@@ -1903,22 +1903,7 @@ glPopMatrix();
 	 glEnd();
 	glPopMatrix();
 
-   //left wall stone piece that cuts off doors and archways (needs texture)
-	glPushMatrix();
-	 glPolygonMode(GL_FRONT, GL_FILL);
-	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.4, 0.8, 0.0); 
-	 glBegin ( GL_POLYGON );
-		glTexCoord2d(0.0, 0.0);
-		glVertex3f ( 0.0, 5.01396, 3.0 );
-		glTexCoord2d(0.0, 1.0);
-		glVertex3f ( 0.0, 5.01396, 4.3 );	
-		glTexCoord2d(1.0, 1.0);
-		glVertex3f ( 0.0, 55.1688, 4.3 );
-		glTexCoord2d(1.0, 0.0);
-		glVertex3f ( 0.0, 55.1688, 3.0 );
-	 glEnd();
-	glPopMatrix();
+
 
    //left wall outer (needs hawkins areana texture)
 	glPushMatrix();
@@ -2016,22 +2001,7 @@ glPopMatrix();
 		glVertex3f ( 10.3152, 55.1688, 7.62 );
 	 glEnd();
 	glPopMatrix();
-   //right wall stone piece that cuts off doors and archways (needs texture)
-	glPushMatrix();
-	 glPolygonMode(GL_FRONT, GL_FILL);
-	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.4, 0.8, 0.0); 
-	 glBegin ( GL_POLYGON );
-		glTexCoord2d(0.0, 0.0);
-		glVertex3f ( 7.3152, 10.02792, 3.0 );
-		glTexCoord2d(0.0, 1.0);
-		glVertex3f ( 7.3152, 10.02792, 4.3 );	
-		glTexCoord2d(1.0, 1.0);
-		glVertex3f ( 7.3152, 55.1688, 4.3 );
-		glTexCoord2d(1.0, 0.0);
-		glVertex3f ( 7.3152, 55.1688, 3.0 );
-	 glEnd();
-	glPopMatrix();
+
     //rightwall outer ground(needs texture)
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -7727,8 +7697,1938 @@ glTranslated(7.3152, 0.0 , 0.0);
 glTranslated(-7.3152, 0.0 , 0.0);
 glTranslated(0.0, -40.11168, 0.0);
 ///////////////////////////////////////////////////////////
-//archway windows
+//archway windows 
+//need texture, maybe try and fit the texture to the polygon
+//or make a square the goes behind, and add filler to texture so that it fits
 
+   //left wall stone piece that cuts off doors and archways (needs texture)
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.4, 0.4, 0.4); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 3.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 55.1688, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 55.1688, 3.0 );
+	 glEnd();
+	glPopMatrix();
+   //right wall stone piece that cuts off doors and archways (needs texture)
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.4, 0.4, 0.4); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 7.3151, 5.01396, 3.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 7.3151, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 7.3151, 55.1688, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 7.3151, 55.1688, 3.0 );
+	 glEnd();
+	glPopMatrix();
+
+//1st arches 
+  //right
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 7.3151, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 7.3151, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 7.3151, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 7.3151, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);  
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 7.3151, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 7.3151,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 7.3151, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 7.3151, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 7.3151, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 7.3151, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 7.3151, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 7.3151, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);  
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 7.3151, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 7.3151, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 7.3151, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 7.3151, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+  //left
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);  
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+	
+//2nd set of arches
+
+glTranslated(0.0, 10.02792 , 0.0);
+  //left
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(7.3152, 0.0 , 0.0);
+  //right
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(-7.3152, 0.0 , 0.0);
+glTranslated(0.0, -10.02792 , 0.0);
+
+//3rd set of arches
+
+glTranslated(0.0, 20.05584 , 0.0);
+  //left
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(7.3152, 0.0 , 0.0);
+  //right
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(-7.3152, 0.0 , 0.0);
+glTranslated(0.0, -20.05584 , 0.0);
+
+//4th set of arches
+glTranslated(0.0, 30.08376 , 0.0);
+  //left
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(7.3152, 0.0 , 0.0);
+  //right
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71);
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(-7.3152, 0.0 , 0.0);
+glTranslated(0.0, -30.08376 , 0.0);
+
+//5th set of arches
+glTranslated(0.0, 40.11168 , 0.0);
+  //left
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(7.3152, 0.0 , 0.0);
+  //right
+   //vertical side pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001,10.02792, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.4008 );
+	 glEnd();
+	glPopMatrix();
+   //diagonal pieces
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 5.01396, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.2 );
+	 glEnd();
+	glPopMatrix();
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(0.93, 0.89, 0.71); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.52094, 7.00 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.52094, 7.62 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 10.02792, 6.4008 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.2 );
+	 glEnd();
+	glPopMatrix();
+   //arch window bars
+	//middle
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.49094, 7.0 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.49094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.54094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.54094, 7.0 );
+	 glEnd();
+	glPopMatrix();
+      //small box
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.14094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.14094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.89094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.89094, 4.3 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.3 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+	//top
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.3 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.25 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.25 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.3 );
+	 glEnd();
+	glPopMatrix();
+    //diagonals from box to wall
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 6.22 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 5.32 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 5.28 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 6.18 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 6.22 );
+	 glEnd();
+	glPopMatrix();
+  //lower diagonals
+	//left
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.09094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.09094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 6.01396, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 6.01396, 4.97 );
+	 glEnd();
+	glPopMatrix();
+	//right
+	glPushMatrix();
+	 glPolygonMode(GL_FRONT, GL_FILL);
+	 glPolygonMode(GL_BACK, GL_FILL);
+	 glColor3f(1.0, 1.0, 1.0); 
+	 glBegin ( GL_POLYGON );
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0001, 7.94094, 4.82 );
+		glTexCoord2d(0.0, 1.0);
+		glVertex3f ( 0.0001, 7.94094, 4.78 );	
+		glTexCoord2d(1.0, 1.0);
+		glVertex3f ( 0.0001, 9.02792, 4.93 );
+		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0001, 9.02792, 4.97 );
+	 glEnd();
+	glPopMatrix();  
+glTranslated(-7.3152, 0.0 , 0.0);
+glTranslated(0.0, -40.11168 , 0.0);
 
 drawDisplayCase();
 
