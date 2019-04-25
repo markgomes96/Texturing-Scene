@@ -100,7 +100,6 @@ void init(int window_width, int window_height, int window_position_x, int window
 		printf("ERROR! --> Game mode not possible\n");
 		exit(1);
 	}*/
-
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glLoadIdentity();
 }
