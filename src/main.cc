@@ -37,8 +37,8 @@ void display( void )
 	//glutSolidCube(10);
 	//glPopMatrix();
 #else
-	g.render();
 	g.HUD();
+	g.render();
 #endif
 
 }
@@ -47,7 +47,6 @@ void update( void )
 {
 #ifdef LEVEL
 	g.update();
-
 #else
 	g.update();
 #endif

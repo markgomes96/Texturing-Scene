@@ -20,7 +20,7 @@ Game::Game()
 
 void Game::init()
 {
-	cout << "in game init" << endl;
+	//cout << "in game init" << endl;
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
     loadTextures();
@@ -84,10 +84,13 @@ void Game::update()
 void Game::character()
 {
 }
-void Game::minimap(){
+
+void Game::minimap()
+{
     buildCameraScene();
     buildHeritageHall();
 }
+
 void Game::HUD()
 {
     //displays HUD in a 2D square on the bottom left on the screen
@@ -153,24 +156,22 @@ void Game::render()
 
     glColor3f(0.0,1.0,0.0);
 
-		buildHeritageHall();
-		buildDisplay();
+	buildHeritageHall();
+	buildDisplay();
 
 		// draw game objects
     for(int i = 0; i < golist.size(); i++)
     {
         drawObject(golist[i]);
 
-				/*
-				if(golist[i].isScene)
-				{
-						drawBounds(&golist[i].bounds[0]);
-				}
-				*/
+		if(golist[i].isScene)
+		{
+				drawBounds(&golist[i].bounds[0]);
+		}
     }
 
     glutSwapBuffers();
-	}
+}
 
 void Game::drawObject(GameObj go)
 {
@@ -185,6 +186,7 @@ void Game::drawObject(GameObj go)
     if(go.drawBounds)
         drawBounds(&go.bounds[0]);
 }
+
 // Physics / Framerate
 void Game::drawFreeForm(vector<polygon> polygons, vertex position)
 {
@@ -270,7 +272,7 @@ void Game::glutLockFrameRate(float desiredFrameRate)
 // Input replay functions
 void Game::mouse( int button, int state, int x, int y )
 {
-    input.mouse(button, state, x, y);
+	input.mouse(button, state, x, y);
 }
 void Game::keyboard( unsigned char key, int x, int y )
 {
@@ -293,13 +295,111 @@ void Game::passiveMouseMovement(int x, int y){
 
 void Game::addSceneObjects()
 {
-		float *bs = (float*) malloc(6*sizeof(float));
+	float *bs = (float*) malloc(6*sizeof(float));
+	float *bo = (float*) malloc(6*sizeof(float));
+	float *go = (float*) malloc(6*sizeof(float));
+	float *base = (float*) malloc(6*sizeof(float));
+	float *glass = (float*) malloc(6*sizeof(float));
 
-		// floor
-		bs[0]= 0.0; bs[1] =  7.5; bs[2]= -10.0; bs[3]= 60.0; bs[4] = -5.0; bs[5]= 0.0;
-		golist.push_back(GameObj(bs));
+	// *** floor *** -> large floor supports entire scene
+	bs[0]= -5.0; bs[1] = 12.0; bs[2]= -18.0; bs[3]= 55.0; bs[4] = -1.0; bs[5]= 0.0;
+	golist.push_back(GameObj(bs));
 
-		free(bs);
+	bo[0] = 0.0; bo[1] = 1.5748; bo[2]= 0.0; bo[3]= 2.8702; bo[4] = 0.0; bo[5]= 0.4572;
+	go[0]= 0.127; go[1] = 1.4478; go[2]=  0.127; go[3]= 2.7432; go[4] = 0.4572; go[5]= 2.5146;
+	base[0] = 0.0; base[1] = 0.0; base[2]= 0.0; base[3]= 0.0; base[4] = 0.0; base[5]= 0.0;
+	glass[0]= 0.0; glass[1] = 0.0; glass[2]=  0.0; glass[3]= 0.0; glass[4] = 0.0; glass[5]= 0.0;
+
+	vect3 orig = vect3(0.0,5.75,0.0);
+	vect3 trans = vect3(0.0,0.0,0.0);
+	vect3 mod = vect3(0.0,0.0,0.0);
+
+	// *** display cases **** -> base and glass box colliders
+	// case 1
+	mod = vect3(0.5,0.25,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 2
+	mod = vect3(5.5,0.25,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 3
+	mod = vect3(0.5,8.6875,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 4
+	mod = vect3(5.5,8.6875,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 5
+	mod = vect3(5.5,17.375,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 6
+	mod = vect3(0.5,17.375,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 7
+	mod = vect3(0.5,26.0625,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 8
+	mod = vect3(5.5,26.0625,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 9
+	mod = vect3(0.5,35.0,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	// case 10
+	mod = vect3(5.5,35.0,0.0);
+	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
+	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
+	golist.push_back(GameObj(base));
+	glass[0] = go[0]+trans.x; glass[1] = go[1]+trans.x; glass[2] = go[2]+trans.y; glass[3] = go[3]+trans.y; glass[4] = go[4]+trans.z; glass[5] = go[5]+trans.z;
+	golist.push_back(GameObj(glass));
+
+	free(bs);
+	free(bo);
+	free(go);
+	free(base);
+	free(glass);
 }
 
 #endif

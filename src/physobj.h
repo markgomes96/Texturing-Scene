@@ -42,7 +42,7 @@ public:
 	void updatePhysics();
 	void createBounds(box *face, vertex wpos);
 	// bounds[xmin, xmax, ymin, ymax, zmin, zmax]
-	void createSceneBounds(float* bounds);
+	void createSceneBounds(float* bs);
 };
 
 #endif

@@ -35,7 +35,7 @@ public:
 	GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange = false);
 	// scene object constructor
 	// bounds[xmin, xmax, ymin, ymax, zmin, zmax]
-	GameObj(float* bounds);
+	GameObj(float* bs);
 
 	//Game functions
 	void defineBox(box *face, vect3 scale, bool colorChange);
