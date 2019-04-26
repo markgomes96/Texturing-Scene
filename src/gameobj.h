@@ -25,12 +25,17 @@ public:
 	bool isBox;				// variables for cube objects
 	struct box faces[6];
 
+	bool isScene;		// object has virtual box collider
+
 	//Constructors
 	GameObj();
 	// freeform constructor
 	GameObj(vertex _position, vect3 _scale, vector<polygon> _polygons, colortype _color, bool isStat);
 	// cube constructor
 	GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange = false);
+	// scene object constructor
+	// bounds[xmin, xmax, ymin, ymax, zmin, zmax]
+	GameObj(float* bs);
 
 	//Game functions
 	void defineBox(box *face, vect3 scale, bool colorChange);

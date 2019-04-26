@@ -22,13 +22,14 @@ extern GLuint textureID[50];
 void display( void )
 {
 #ifdef LEVEL
-	
+
 	buildHeritageHall();
     g.drawSceneObjects( ); 
 	g.HUD();
 	buildDisplay();
 	glutSwapBuffers();
 #else
+	g.HUD();
 	g.render();
 #endif
 
@@ -38,7 +39,6 @@ void update( void )
 {
 #ifdef LEVEL
 	g.update();
-
 #else
 	g.update();
 #endif
@@ -119,5 +119,3 @@ int main(int argc, char** argv)
 
 	glutMainLoop();
 }
-
-

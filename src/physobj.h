@@ -41,6 +41,8 @@ public:
     void updateAcc(float x, float y, float z);
 	void updatePhysics();
 	void createBounds(box *face, vertex wpos);
+	// bounds[xmin, xmax, ymin, ymax, zmin, zmax]
+	void createSceneBounds(float* bs);
 };
 
 #endif

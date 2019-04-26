@@ -94,7 +94,7 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 
     // ***Collisions in Z-axis***
     if(go1.wzm[0] < go2.wzm[1] && go1.wzm[0] > go2.wzm[0])			// bottom collision
-    {	
+    {
         colls[0] = -1;
     }
     else if(go1.wzm[1] < go2.wzm[1] && go1.wzm[1] > go2.wzm[0])		// top collision
@@ -223,7 +223,7 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 
 void PhysicsEngine::updatePosition(GameObj &go)
 {
-	// record objects last position 
+	// record objects last position
 	go.prevPos.x = go.collCenter.x;
 	go.prevPos.y = go.collCenter.y;
 	go.prevPos.z = go.collCenter.z;

@@ -10,17 +10,17 @@ OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o \
 #Since these compiler flags are specific to the source, leave them in this makefile
 #and not in the parent makefile.
 
-CF = -DLEVEL	#-DLEVEL -> to switch to level scene
+CF = #-DLEVEL	#-DLEVEL -> to switch to level scene
 DF = -DDEV
 
 
 all : run tags
 
-run: main.o $(INCLUDES) $(HEADERS) $(OBJS) 
-	$(C++) $(CCFLAGS) $(CF) $(DF) -o run  main.o $(OPTHDRSLOC) $(OBJS) $(LBLIBS) #$(INCDIRS) $(LIBDIRS) $(LDLIBS) 
+run: main.o $(INCLUDES) $(HEADERS) $(OBJS)
+	$(C++) $(CCFLAGS) $(CF) $(DF) -o run  main.o $(OPTHDRSLOC) $(OBJS) $(LBLIBS) #$(INCDIRS) $(LIBDIRS) $(LDLIBS)
 	mv run ../.
 
-input.o : input.cc $(INCLUDES) $(HEADERS) 
+input.o : input.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) $(DF) -c input.cc
 
 physobj.o : physobj.cc $(INCLUDES) $(HEADERS)
@@ -58,7 +58,7 @@ drawHH.o : drawHH.cc $(INCLUDES) $(HEADERS)
 	$(C++) $(CCFLAGS) $(CF) -c drawHH.cc
 
 main.o : main.cc $(OBJS)
-	$(C++) $(CCFLAGS) $(CF) $(DF) -c main.cc 
+	$(C++) $(CCFLAGS) $(CF) $(DF) -c main.cc
 
 # make tags for vi
 
@@ -68,13 +68,13 @@ tags :
 # make targets to clean up the directory
 
 clean :
-	rm *.o 
+	rm *.o
 
 pristine :
 	rm *.o
 	rm tags
-	rm ../run 
-	
+	rm ../run
+
 
 purge :
 	rm *.o
