@@ -146,13 +146,14 @@ void buildCameraScene(){
 
 }
 void buildHeritageHall(void){
-	GLfloat lightPos1[] = {3.5, 5.0, 3.0, 1.0};
+	GLfloat lightPos1[] = {3.5, 5.0, 5.0, 1.0};
 	GLfloat lightColor[] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat ambient[] = {0.2, 0.2, 0.2, 0.2};
-	GLfloat spec[] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat diff[] = {0.5, 0.5, 0.5, 1.0};
+	GLfloat ambient[] = {0.2, 0.2, 0.2, 1.0};
+	GLfloat spec[] = {0.0, 0.0, 0.0, 1.0};
+	GLfloat diff[] = {0.8, 0.8, 0.8, 1.0};
 	GLfloat on[] = {1.0, 1.0, 1.0, 1.0};
 	GLfloat direction[] = {0.0, 0.0, -1.0};
+	GLfloat emiss[] = {0.0, 0.0, 0., 1.0};
 
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
@@ -169,24 +170,27 @@ void buildHeritageHall(void){
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
-
-	//glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glEnable(GL_NORMALIZE);
+	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
 	glColorMaterial(GL_FRONT and GL_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glColorMaterial(GL_FRONT and GL_BACK, GL_SPECULAR);
 	glEnable(GL_COLOR_MATERIAL);
 	
-	glMaterialfv(GL_FRONT and GL_BACK, GL_SPECULAR, on);
-	glMaterialfv(GL_FRONT and GL_BACK, GL_DIFFUSE, on);
+	glMaterialfv(GL_FRONT and GL_BACK, GL_SPECULAR, spec);
+	glMaterialfv(GL_FRONT and GL_BACK, GL_DIFFUSE, diff);
 	glMaterialfv(GL_FRONT and GL_BACK, GL_AMBIENT, ambient);
-	glMaterialf(GL_FRONT and GL_BACK, GL_SHININESS, 10.0);
-	glMaterialfv(GL_FRONT and GL_BACK, GL_EMISSION, on);
+	glMaterialf(GL_FRONT and GL_BACK, GL_SHININESS, 0.0);
+	//glMaterialfv(GL_FRONT and GL_BACK, GL_EMISSION, emiss);
 	
 
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPos1);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, on);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, on);
-	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
+	//glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
+	glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 0.2);
 	glEnable(GL_LIGHT0);
 
     // Draw objectiles directly after setting the camera 
@@ -202,7 +206,7 @@ void buildHeritageHall(void){
  	
 	glDisable(GL_LIGHTING);
 	glPushMatrix();
-	glTranslatef(3.5, 5.0, 3.0);
+	glTranslatef(3.5, 5.0, 5.0);
 	glColor3f(1.0, 1.0, 0.0);
 	glutWireSphere(1.5, 10.0, 10.0);
 	glPopMatrix();
