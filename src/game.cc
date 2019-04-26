@@ -4,11 +4,14 @@
 #include "includes.h"
 #include "game.h"
 #include "prototypes.h"
+#include <fstream> 
+#include <stdlib.h>
 
 extern void buildDisplay();
 extern void buildCameraScene();
 extern void buildHeritageHall();
 extern double directX,directY, directZ, scaleAccX, scaleAccY, scaleAccZ, power;
+extern double MIN_X, MIN_Y, MIN_Z, MAX_X, MAX_Y, MAX_Z;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern double addAcc[3];
 /*
@@ -20,12 +23,22 @@ Game::Game()
 
 void Game::init()
 {
+
 	//cout << "in game init" << endl;
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
     loadTextures();
 
 	addSceneObjects();		// add scene objects to physics engine
+
+    frameRate = 60.0;
+    physEng = PhysicsEngine(frameRate);
+    loadTextures();
+    createTarget(randomize(MIN_X, MAX_X), // + cameraFront.x,
+             randomize(MIN_Y, MAX_Y), // + cameraFront.y,
+            randomize(MIN_Z, MAX_Z), // + cameraFront.z,
+            1, 0.2, 0.001, 0.2);
+
 
     /*
     // ***Test objects for phyiscs***
@@ -42,42 +55,63 @@ void Game::init()
     cube.velocity = vect3(-3.0, 0.0, 0.0);
     cube2.velocity = vect3(3.0, 0.0, 0.0);
 
-    golist.push_back(floor);
-    golist.push_back(cube);
+    obList.push_back(floor);
+    obList.push_back(cube);
 
     loadTextures();
     cout << "init" << endl;
 
-    golist.push_back(cube2);
+    obList.push_back(cube2);
     floor = GameObj(vertex(0.0, 0.0, 0.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
     cube = GameObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 3.0, 1.0), false);
-    //	golist.push_back(floor);
-    //	golist.push_back(cube);*/
+    //	obList.push_back(floor);
+    //	obList.push_back(cube);*/
 
 }
 
 // Create throwing object
-void Game::createProjectile(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
-    GameObj projectile = GameObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false, true);
+void Game::createProjectile(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
+    GameObj projectile = GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
     directX =  ((double)cameraTarget.x - (double)cameraPos.x) * power;
     directY =  ((double)cameraTarget.y - (double)cameraPos.y) * power;
     directZ =  ((double)cameraTarget.z - (double)cameraPos.z) * power;
     projectile.updateVelo(directX, directY, directZ);
     projectile.updateAcc(addAcc[0], addAcc[1], addAcc[2]);
-    golist.push_back(projectile);
+
+    obList.push_back(projectile);
+}
+
+void Game::createTarget(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
+    GameObj projectile = GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
+
+    // randomize the velocity
+    float HI = 0.5;
+    float LO = -0.5;
+    float veloX, veloY, veloZ;
+    srand(time(NULL));
+    veloX   = randomize(LO,HI);
+    veloY   = randomize(LO,HI);
+    veloZ   = randomize(LO,HI);
+
+    // Update the velocity and also remove gravity
+    projectile.updateVelo(veloX, veloY, veloZ);
+    projectile.updateAcc(0,0,9.8);
+    //printf("velocity %f %f %f\n", projectile.velocity.x, projectile.velocity.y, projectile.velocity.z);
+//    printf("acceleration %f %f %f\n", projectile.acceleration.x, projectile.acceleration.y, projectile.acceleration.z);
+
+    tarList.push_back(projectile);
 }
 
 // Create an object where the eye is
-void Game::createEye(double a1, double a2, double a3, double a4, double b1, double b2, double b3){
-    GameObj projectile = GameObj(vertex(a1,a2,a3,a4), vect3(b1,b2,b3), false);
-    golist.push_back(projectile);
+void Game::createEye(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
+    GameObj projectile = GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
+    obList.push_back(projectile);
 }
 
 void Game::update()
 {
     // Update each phyisc object
-    physEng.updateObjects(golist);
-
+    physEng.updateObjects(obList, tarList);
     glutLockFrameRate(frameRate);
 }
 
@@ -160,7 +194,7 @@ void Game::render()
 	buildDisplay();
 
 		// draw game objects
-    for(int i = 0; i < golist.size(); i++)
+   /* for(int i = 0; i < golist.size(); i++)
     {
         drawObject(golist[i]);
 
@@ -170,6 +204,11 @@ void Game::render()
 				drawBounds(&golist[i].bounds[0]);
 		}
         */
+
+    // Physics test
+    for(int i = 0; i < obList.size(); i++)
+    {
+        drawObject(obList[i]);
     }
 
     glutSwapBuffers();
@@ -190,6 +229,99 @@ void Game::drawObject(GameObj go)
         drawBounds(&go.bounds[0]);
     */
 }
+
+
+=======
+//Renders the SceneObjects vector 
+void Game::drawSceneObjects( ){ 
+
+  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); 
+  glMatrixMode( GL_MODELVIEW ); 
+  glLoadIdentity( ); 
+
+  gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
+     (double) cameraTarget.x, // + cameraFront.x,
+     (double) cameraTarget.y, // + cameraFront.y,
+     (double) cameraTarget.z, // + cameraFront.z,
+     (double) up.x, (double) up.y, (double) up.z);       // Up */
+
+
+  for( int i = 0; i < SceneObjects.size(); i++ ){ 
+    drawPoly( SceneObjects[ i ] );    
+  }
+}
+
+/* Generate a random float */ 
+float randColorVal( ){ 
+  return (float) rand() / RAND_MAX; 
+}
+
+/* Draw polygon shapes */ 
+void Game::drawPoly( object ob ){ 
+  glPushMatrix( ); 
+  glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); 
+  glColor3f( 0.0, 0.0, 1.0 ); 
+  glBegin( GL_POLYGON ); 
+  for( int i = 0; i < ob.polygons.size(); i++) {
+      polygon p = ob.polygons[i];
+      for (int j = 0; j < p.vertices.size(); j++){
+            glVertex3f( p.vertices[j].x, 
+		    p.vertices[j].y, 
+		    p.vertices[j].z );
+      }
+  }
+  glEnd( ); 
+  glPopMatrix( ); 
+}
+
+/* Helper function to read in the vertices from the data file */ 
+void Game::loadVertex( string buffer, vertex& ver ){ 
+  string token; 
+  size_t pos = 0; 
+  buffer.erase(0,1); 
+  pos = buffer.find(","); 
+  token = buffer.substr(0,pos); 
+  ver.x = atof(token.c_str()); 
+  //cout << ver.x << endl; 
+  buffer.erase( 0, pos );
+
+  buffer.erase(0,1); 
+  pos = buffer.find(","); 
+  token = buffer.substr(0,pos); 
+  ver.y = atof(token.c_str()); 
+  //cout << ver.y << endl; 
+  buffer.erase( 0, pos );
+
+  buffer.erase(0,1); 
+  pos = buffer.find(","); 
+  token = buffer.substr(0,pos); 
+  ver.z = atof(token.c_str()); 
+  //cout << ver.z << endl; 
+  buffer.erase( 0, pos );
+}
+
+/*  
+ *  Read in the vertices file and load them into the game object. This function should be 
+ *  called only ONCE -- probably somewhere in init. 
+ */
+void Game::loadVerticesFileData( char* fileName ){ 
+  fstream file( fileName, ios::in ); 
+  string buffer; 
+  object ob; 
+   
+  while( getline( file, buffer ) ){ 
+    vertex v; 
+    if( buffer[0] == 'v' ){ 
+	loadVertex( buffer, v ); 
+	ob.polygons[0].vertices.push_back( v ); 
+    } else if ( buffer[0] == '#' ) { 
+      SceneObjects.push_back( ob ); 
+      object newPol; 
+      ob = newPol; 
+    }
+  }
+}
+
 
 // Physics / Framerate
 void Game::drawFreeForm(vector<polygon> polygons, vertex position)
@@ -296,6 +428,7 @@ void Game::mouseMovement(int x, int y){
 void Game::passiveMouseMovement(int x, int y){
     input.passiveMouseMovement(x, y);
 }
+
 
 void Game::addSceneObjects()
 {
@@ -425,6 +558,12 @@ void Game::addSceneObjects()
 	free(go);
 	free(base);
 	free(glass);
+=======
+// Other function that is not part of game object
+float randomize(float LO, float HI){
+   float random =  (LO + (static_cast <float> (rand()) / static_cast <float> (RAND_MAX)) * (HI-LO));
+   return random;
+
 }
 
 #endif
