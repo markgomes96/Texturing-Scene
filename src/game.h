@@ -20,6 +20,7 @@ public:
 	PhysicsEngine physEng;
 
 	float frameRate;			// phys-time vars
+	//vector<GameObj> golist;		// game object list
 	vector<GameObj> obList;		// Objectile list
     vector<GameObj> tarList;    // Target list	
 	vector<object>  SceneObjects; 
@@ -62,6 +63,8 @@ public:
 	// Phys-Time functions
 	void glutLockFrameRate(float desiredFrameRate);
 
+	// Add physics to scene
+	 void addSceneObjects();
 	//Functions for loading scene object data 
 	void loadVertex( string, vertex& ); 
 	void loadVerticesFileData( char* ); 
