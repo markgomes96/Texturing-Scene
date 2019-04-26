@@ -9,7 +9,7 @@ extern GLuint textureID[50];
 
 void drawDisplayCase()
 {
-glPushMatrix();
+//glPushMatrix();
 glTranslated(0.0,5.75,0.0);
 
 glEnable(GL_DEPTH_TEST);
