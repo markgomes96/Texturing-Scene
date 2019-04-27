@@ -18,7 +18,9 @@ extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 extern bool first_mouse, left_mouse_down, left_mouse_released;
+extern bool SHOW_HUD;
 //extern double power, scaleObX, scaleObY, scaleObZ;
+
 
 Input::Input()
 { }
@@ -35,8 +37,8 @@ void Input::passiveMouseMovement(int x, int y){
 	else if(x == 0){
 		glutWarpPointer(WINDOW_MAX_X-2, y);
 	}
-	
-	y = WINDOW_MAX_Y  - y; 
+
+	y = WINDOW_MAX_Y  - y;
 
 	if(first_mouse){
 		prev_mouse_x = x;
@@ -45,7 +47,7 @@ void Input::passiveMouseMovement(int x, int y){
 	}
 
 	//calculate change in x and y
-	mouse_dx = x - prev_mouse_x; 
+	mouse_dx = x - prev_mouse_x;
 	mouse_dy = y- prev_mouse_y;
 
 	//reset prev mouse x and y
@@ -59,7 +61,7 @@ void Input::passiveMouseMovement(int x, int y){
 	else if(mouse_dx < 0){
 		mouse_dx = 1.5;// * sensitivity; //so it looks left
 	}
-	
+
 	if(mouse_dy > 0){
 		mouse_dy = 1.0;
 	}
@@ -73,8 +75,8 @@ void Input::passiveMouseMovement(int x, int y){
 
 //	cout << "yaw: " << yaw << endl;
 //	cout << "pitch: " << pitch << endl;
-	
-	
+
+
 	if(yaw > 360.0){
 		yaw = yaw - 360.0;
 	}
@@ -109,10 +111,10 @@ void Input::passiveMouseMovement(int x, int y){
 
 
 	//spin around z axis
-	cameraDirection = cameraTarget - cameraPos;	
+	cameraDirection = cameraTarget - cameraPos;
 	tmpx = cameraDirection.x * cosy + cameraDirection.y * nsiny;
 	tmpy = cameraDirection.x * siny + cameraDirection.y * cosy;
-	
+
 
 	//new camera target
 	cameraTarget.x = cameraPos.x + tmpx;
@@ -124,7 +126,7 @@ void Input::passiveMouseMovement(int x, int y){
 
 //able to move while buttons are pressed
 void Input::mouseMovement(int x, int y){
-	
+
 	//have can't move it to parameter spot or it gets stuck
 	//so if at very right, moves cursor x to 1
 	//if at very left, moves cursor pos to MAX - 2
@@ -134,8 +136,8 @@ void Input::mouseMovement(int x, int y){
 	else if(x == 0){
 		glutWarpPointer(WINDOW_MAX_X-2, y);
 	}
-	
-	y = WINDOW_MAX_Y  - y; 
+
+	y = WINDOW_MAX_Y  - y;
 
 	if(first_mouse){
 		prev_mouse_x = x;
@@ -144,7 +146,7 @@ void Input::mouseMovement(int x, int y){
 	}
 
 	//calculate change in x and y
-	mouse_dx = x - prev_mouse_x; 
+	mouse_dx = x - prev_mouse_x;
 	mouse_dy = y- prev_mouse_y;
 
 	//reset prev mouse x and y
@@ -158,7 +160,7 @@ void Input::mouseMovement(int x, int y){
 	else if(mouse_dx < 0){
 		mouse_dx = 1.5;// * sensitivity; //so it looks left
 	}
-	
+
 	if(mouse_dy > 0){
 		mouse_dy = 1.0;
 	}
@@ -172,8 +174,8 @@ void Input::mouseMovement(int x, int y){
 
 //	cout << "yaw: " << yaw << endl;
 //	cout << "pitch: " << pitch << endl;
-	
-	
+
+
 	if(yaw > 360.0){
 		yaw = yaw - 360.0;
 	}
@@ -208,10 +210,10 @@ void Input::mouseMovement(int x, int y){
 
 
 	//spin around z axis
-	cameraDirection = cameraTarget - cameraPos;	
+	cameraDirection = cameraTarget - cameraPos;
 	tmpx = cameraDirection.x * cosy + cameraDirection.y * nsiny;
 	tmpy = cameraDirection.x * siny + cameraDirection.y * cosy;
-	
+
 
 	//new camera target
 	cameraTarget.x = cameraPos.x + tmpx;
@@ -287,7 +289,11 @@ void Input::keyboard( unsigned char key, int x, int y )
 	if (( key == 'r' ) || (key == 'R')){
 		//Reverse gravity
 		keyarr['r'] = PUSHED;
-	}   
+	}
+	if (( key == 'h' ) || (key == 'H')){
+		//Show/HIDE HUD
+		SHOW_HUD = !SHOW_HUD;
+	}
 	if ( key == 27 ){
 		//Exit gracefully
 		glutLeaveGameMode();
@@ -342,8 +348,8 @@ void Input::keyup( unsigned char key, int x, int y )
 		//move right
 		keyarr['d'] = NOTPUSHED;
 	}
-   	if (( key == 't' ) || (key == 'T')){ 
-		//Throw Object 
+   	if (( key == 't' ) || (key == 'T')){
+		//Throw Object
 		keyarr['t'] = NOTPUSHED;
 		unhold = true;
     }
@@ -363,7 +369,7 @@ void Input::keyup( unsigned char key, int x, int y )
 		//reset Acceleration
 		keyarr['r'] = NOTPUSHED;
 		addAcc[0] = 0.0;
-		addAcc[1] = 0.0; 
+		addAcc[1] = 0.0;
 	    addAcc[2] = 1.0;
 	 //printf("%f \n", scaleAccZ);
 	}
