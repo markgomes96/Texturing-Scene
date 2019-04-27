@@ -18,6 +18,8 @@ extern bool camera, unhold;
 extern int jump, counter;
 extern Game g;
 extern key_state keyarr[127];
+extern bool left_mouse_down, left_mouse_released;
+
 
 void showMinimap(){
     //Function to generate minimap
@@ -53,6 +55,8 @@ void buildCameraScene(){
     }
     glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
     glScissor(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
+
+
 
     if (keyarr['w']){
         // Move forward
@@ -98,7 +102,24 @@ void buildCameraScene(){
         scaleObY /= 1.1;
         scaleObZ /= 1.1;
     }
-    if ( keyarr['t']){
+
+	//throwing with mouse
+	if(left_mouse_down){
+        cout << "increasing power" << endl;
+        power *=1.01;
+    }
+    if(left_mouse_released){
+        g.createProjectile((double) cameraPos.x,
+                           (double) cameraPos.y,
+                           (double) cameraPos.z,
+                           1, scaleObX, scaleObY, scaleObZ);
+        //reset power
+        power = 1.0;
+		left_mouse_released = false;
+    }
+
+
+    /*if ( keyarr['t']){
         //Throw Object
         power *= 1.01;
     } else if (unhold){
@@ -108,7 +129,8 @@ void buildCameraScene(){
                 1, scaleObX, scaleObY, scaleObZ);
         unhold = false;
         power = 1.0;
-    }
+    }*/
+
 #ifdef DEV
     if ( keyarr['e']){
         // Create a box where the eye is
