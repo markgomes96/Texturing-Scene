@@ -7,7 +7,7 @@
 #include "structs.h"
 #include "prototypes.h"
 
-extern double scaleX, scaleY, scaleZ, scaleAccZ ,power ;
+extern double scaleObX, scaleObY, scaleObZ, scaleAccZ ,power ;
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
@@ -15,7 +15,7 @@ extern double x_rotat, y_rotat;
 extern float sensitivity;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern bool camera, unhold;
-extern int jump;
+extern int jump, counter;
 extern Game g;
 extern key_state keyarr[127];
 
@@ -37,6 +37,7 @@ void buildDisplay(){
 
     buildCameraScene();
     buildHeritageHall();
+    //g.drawSceneObjects( ); 
 
 }
 void buildCameraScene(){
@@ -88,14 +89,14 @@ void buildCameraScene(){
     }
 
     if ( keyarr['z']){
-        scaleX *= 1.1;
-        scaleY *= 1.1;
-        scaleZ *= 1.1;
+        scaleObX *= 1.1;
+        scaleObY *= 1.1;
+        scaleObZ *= 1.1;
     }
     if ( keyarr['x']){
-        scaleX /= 1.1;
-        scaleY /= 1.1;
-        scaleZ /= 1.1;
+        scaleObX /= 1.1;
+        scaleObY /= 1.1;
+        scaleObZ /= 1.1;
     }
     if ( keyarr['t']){
         //Throw Object
@@ -104,17 +105,18 @@ void buildCameraScene(){
         g.createProjectile( (double) cameraPos.x, 
                 (double) cameraPos.y, 
                 (double) cameraPos.z, 
-                1, scaleX, scaleY, scaleZ);
+                1, scaleObX, scaleObY, scaleObZ);
         unhold = false;
         power = 1.0;
     }
 #ifdef DEV
     if ( keyarr['e']){
         // Create a box where the eye is
-        g.createEye((double) cameraTarget.x, // + cameraFront.x,
+    /*    g.createEye((double) cameraTarget.x, // + cameraFront.x,
                 (double) cameraTarget.y, // + cameraFront.y,
                 (double) cameraTarget.z, // + cameraFront.z,
                 1, 0.2, 0.2, 0.2);
+*/
     }
 #endif
     if ( keyarr['j']){
@@ -157,15 +159,31 @@ void buildHeritageHall(void){
             (double) cameraTarget.y, // + cameraFront.y,
             (double) cameraTarget.z, // + cameraFront.z,
             (double) up.x, (double) up.y, (double) up.z); 	// Up */
-    
-
+   
+    if (counter == 10){
+        printf("You won you sneaky bastard\n");
+        exit(0);
+    }
+    if (destroy){
+        g.createTarget(randomize(MIN_X, MAX_X), // + cameraFront.x,
+                randomize(MIN_Y, MAX_Y), // + cameraFront.y,
+                randomize(MIN_Z, MAX_Z), // + cameraFront.z,
+                1, 0.2, 0.001, 0.2);
+        destroy = false;
+    }
     // Draw objectiles directly after setting the camera 
     // ****** WARNING ******
     // Camera and objectile must go hand in hand. Please DO NOT move this. 
-    for(int i = 0; i < g.golist.size(); i++)
+    for(int i = 0; i < g.obList.size(); i++)
     {
-        g.drawObject(g.golist[i]);    
+        g.drawObject(g.obList[i]);    
     }
+    
+    for(int i = 0; i < g.tarList.size(); i++)
+    {
+        g.drawObject(g.tarList[i]);    
+    }
+
 
 	//draw heritage hall
 	buildHH();

@@ -137,4 +137,50 @@ void PhysObj::createBounds(box *face, vertex wpos)		// create cube bound around 
 	prevPos = collCenter;
 }
 
+// bounds[xmin, xmax, ymin, ymax, zmin, zmax]
+void PhysObj::createSceneBounds(float* bs)
+{
+	wxm[0] = bs[0];	wxm[1] = bs[1];
+	wym[0] = bs[2];	wym[1] = bs[3];
+	wzm[0] = bs[4];	wzm[1] = bs[5];
+
+	collCenter = vertex( (wxm[1] + wxm[0])/2.0 , (wym[1] + wym[0])/2.0 , (wzm[1] + wzm[0])/2.0 , 1.0);
+
+	lxm[0] = wxm[0] - collCenter.x;	lxm[1] = wxm[1] - collCenter.x;
+	lym[0] = wym[0] - collCenter.y;	lym[1] = wym[1] - collCenter.y;
+	lzm[0] = wzm[0] - collCenter.z;	lzm[1] = wzm[1] - collCenter.z;
+
+	int ind = 0;
+	for(int x = 0; x < 2; x++)					// Iterate through possible combinations of extrema
+	{
+		for(int y = 0; y < 2; y++)
+		{
+			for(int z = 0; z < 2; z++)
+			{
+				bounds[ind] = vertex(wxm[x], wym[y], wzm[z], 1.0);
+				ind++;
+			}
+		}
+	}
+
+	// store potential largest distances for vertices
+	float dist[] = {(wzm[1] - collCenter.z), (wym[1] - collCenter.y), (wxm[1] - collCenter.x)};
+	float max = -1.0, max2 = -1.0;
+	// find two greatest distances from center
+	for(int i = 0; i < 3; i++)
+	{
+		if(dist[i] > max)
+		{
+			max2 = max;
+			max = dist[i];
+		}
+		else if(dist[i] > max2)
+		{
+			max2 = dist[i];
+		}
+	}
+	csDist = sqrt(pow(max, 2) + pow(max2, 2));
+	prevPos = collCenter;
+}
+
 #endif
