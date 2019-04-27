@@ -17,7 +17,8 @@ extern double addAcc[3];
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
-extern bool first_mouse;
+extern bool first_mouse, left_mouse_down, left_mouse_released;
+//extern double power, scaleObX, scaleObY, scaleObZ;
 
 Input::Input()
 { }
@@ -121,19 +122,122 @@ void Input::passiveMouseMovement(int x, int y){
 	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
 }
 
+//able to move while buttons are pressed
 void Input::mouseMovement(int x, int y){
-	//cout << "mouse moved while buttons were pressed" << endl;
+	
+	//have can't move it to parameter spot or it gets stuck
+	//so if at very right, moves cursor x to 1
+	//if at very left, moves cursor pos to MAX - 2
+	if(x == (WINDOW_MAX_X - 1)){
+		glutWarpPointer(1, y);
+	}
+	else if(x == 0){
+		glutWarpPointer(WINDOW_MAX_X-2, y);
+	}
+	
+	y = WINDOW_MAX_Y  - y; 
+
+	if(first_mouse){
+		prev_mouse_x = x;
+		prev_mouse_y = y;
+		first_mouse = false;
+	}
+
+	//calculate change in x and y
+	mouse_dx = x - prev_mouse_x; 
+	mouse_dy = y- prev_mouse_y;
+
+	//reset prev mouse x and y
+	prev_mouse_x = x;
+	prev_mouse_y = y;
+
+
+	if(mouse_dx > 0){
+		mouse_dx = -1.5;// * sensitivity; //so it looks right
+	}
+	else if(mouse_dx < 0){
+		mouse_dx = 1.5;// * sensitivity; //so it looks left
+	}
+	
+	if(mouse_dy > 0){
+		mouse_dy = 1.0;
+	}
+	else if(mouse_dy < 0){
+		mouse_dy = -1.0;
+	}
+
+	static float yaw, pitch;
+	yaw = mouse_dx;
+	pitch = pitch +  mouse_dy;
+
+//	cout << "yaw: " << yaw << endl;
+//	cout << "pitch: " << pitch << endl;
+	
+	
+	if(yaw > 360.0){
+		yaw = yaw - 360.0;
+	}
+	if(yaw < -360.0){
+		yaw = yaw + 360.0;
+	}
+
+	if(pitch > 89.0){
+		pitch = 89.0;
+	}
+	if(pitch < -89.0){
+		pitch = -89.0;
+	}
+
+
+	float cosp = cos(glm::radians(pitch));
+	float sinp = sin(glm::radians(pitch));
+	float cosy = cos(glm::radians(yaw));
+	float siny = sin(glm::radians(yaw));
+	float nsinp = -sin(glm::radians(pitch));
+	float nsiny = -sin(glm::radians(yaw));
+
+	float tmpx, tmpy, tmpz;
+	float tmpzy, tmpzz;
+
+	//get new z pos
+	tmpzy = zVec.y * cosp + zVec.z * nsinp;
+	tmpzz = zVec.y * sinp + zVec.z * cosp;
+
+	//cameraTarget.y = cameraPos.y + tmpzy;
+	cameraTarget.z = cameraPos.z + tmpzz;
+
+
+	//spin around z axis
+	cameraDirection = cameraTarget - cameraPos;	
+	tmpx = cameraDirection.x * cosy + cameraDirection.y * nsiny;
+	tmpy = cameraDirection.x * siny + cameraDirection.y * cosy;
+	
+
+	//new camera target
+	cameraTarget.x = cameraPos.x + tmpx;
+	cameraTarget.y = cameraPos.y + tmpy;
+	//cameraTarget.z = cameraPos.z + tdirz;
+	//cout << "new target: " << cameraTarget.z << endl;
+	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
 }
 
 void Input::mouse( int button, int state, int x, int y )
 {
+
+	//static bool left_mouse_down = false;
+
 	switch (button)
 	{
         	case GLUT_LEFT_BUTTON:
 		    	if (state == GLUT_DOWN)
 		    	{
-				//left click
+					//left click
+					left_mouse_down = true;
 		    	}
+				if(state == GLUT_UP && left_mouse_down == true){
+					left_mouse_released = true;
+					left_mouse_down = false;
+				}
             	break;
 
         	case GLUT_RIGHT_BUTTON:
@@ -145,7 +249,8 @@ void Input::mouse( int button, int state, int x, int y )
 
         	default:
             	break;
-    	}
+    }
+
 }
 
 void Input::keyboard( unsigned char key, int x, int y )

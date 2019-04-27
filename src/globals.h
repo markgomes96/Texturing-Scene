@@ -63,6 +63,9 @@ enum key_state {NOTPUSHED, PUSHED} keyarr[127];
 int jump = 0;
 bool unhold = false;
 
+bool left_mouse_down = false;
+bool left_mouse_released = false;
+
 // This is for the target mechanism
 bool destroy = false;
 int counter = 0;
