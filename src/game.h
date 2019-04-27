@@ -24,6 +24,7 @@ public:
 	vector<GameObj> obList;		// Objectile list
     vector<GameObj> tarList;    // Target list	
 	vector<object>  SceneObjects; 
+    GameObj reticle;
 
 	GameObj floor;				// phys obj test vars
 	GameObj cube;
@@ -42,6 +43,7 @@ public:
 	void createProjectile( double, double, double, double, double, double, double );
 	void createTarget( double, double, double, double, double, double, double );
 	void createEye( double, double, double, double, double, double, double ); 
+	void createReticle( double, double, double, double, double, double, double ); 
 
 	// object rendering functions
 	void drawObject(GameObj go);

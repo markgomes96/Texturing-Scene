@@ -161,7 +161,7 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 	// collision only occurs when collide in all 3 dimensions
 	if(colls[0] != 0 && colls[1] != 0 && colls[2] != 0)
 	{
-	    printf("What's up" );
+	    //printf("What's up" );
 		// bounce object outside of collided object
 		vect3 bounceVect = vectMult(go1.velocity, -timeStep);
 		go1.collCenter.x += bounceVect.x;

@@ -183,7 +183,10 @@ void buildHeritageHall(void){
     {
         g.drawObject(g.tarList[i]);    
     }
-
+    g.reticle.collCenter.x =   (double) cameraTarget.x;
+    g.reticle.collCenter.y =   (double) cameraTarget.y;
+    g.reticle.collCenter.z =   (double) cameraTarget.z;
+    g.drawObject(g.reticle);
 
 	//draw heritage hall
 	buildHH();

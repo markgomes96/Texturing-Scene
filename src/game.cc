@@ -38,8 +38,11 @@ void Game::init()
              randomize(MIN_Y, MAX_Y), // + cameraFront.y,
             randomize(MIN_Z, MAX_Z), // + cameraFront.z,
             1, 0.2, 0.001, 0.2);
-
-
+    createReticle((double) cameraTarget.x,
+                    (double) cameraTarget.y,
+                    (double) cameraTarget.z,
+                    1,0.1,0.1,0.1);
+    reticle.updateAcc(0,0,9.8);
     /*
     // ***Test objects for phyiscs***
     floor = GameObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
@@ -108,6 +111,29 @@ void Game::createEye(double posX, double posY, double posZ, double posW, double 
     obList.push_back(projectile);
 }
 
+void Game::createReticle(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){
+    reticle= GameObj(vertex(posX, posY, posZ ,posW), vect3(scaleX , scaleY ,scaleZ), false, true);
+    reticle.isBox = false;
+    // g.polygons[0].push_back(-0.5,,0,1);
+    float l = 0.5;
+    float w = 0.1;
+    float d = 5.0;
+    polygon p;
+    p.vertices.push_back(vertex(l/d, w, l, 1));
+   p.vertices.push_back(vertex(-l/d, w, l,1));
+   p.vertices.push_back(vertex(-l/d, w, l/d,1));
+    p.vertices.push_back(vertex(-l, w, l/d, 1));
+   p.vertices.push_back(vertex(-l, w, -l/d,1));
+    p.vertices.push_back(vertex(-l/d, w, -l/d,1));
+    p.vertices.push_back(vertex(-l/d, w, -l, 1));
+    p.vertices.push_back(vertex(l/d, w, -l,1));
+    p.vertices.push_back(vertex(l/d, w, -l/d,1));
+    p.vertices.push_back(vertex(l, w, -l/d, 1));
+    p.vertices.push_back(vertex(l, w, l/d,1));
+    p.vertices.push_back(vertex(l/d, w, l/d,1));
+
+    reticle.polygons.push_back(p);
+}
 void Game::update()
 {
     // Update each phyisc object
@@ -325,14 +351,15 @@ void Game::loadVerticesFileData( char* fileName ){
 // Physics / Framerate
 void Game::drawFreeForm(vector<polygon> polygons, vertex position)
 {
+    glColor3f(1.0,0.0,0.0);
     for(int p = 0; p < polygons.size(); p++)
     {
         glBegin( GL_POLYGON );
         for (int v = 0; v < polygons[p].vertices.size(); v++)
         {
-            glVertex3f(polygons[p].vertices[v].x,
-                    polygons[p].vertices[v].y,
-                    polygons[p].vertices[v].z);
+             glVertex3f(polygons[p].vertices[v].x + position.x,
+                    polygons[p].vertices[v].y + position.y,
+                    polygons[p].vertices[v].z + position.z);
         }
         glEnd();
     }
