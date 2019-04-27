@@ -105,7 +105,7 @@ void buildCameraScene(){
 
 	//throwing with mouse
 	if(left_mouse_down){
-        cout << "increasing power" << endl;
+        //cout << "increasing power" << endl;
         power *=1.01;
     }
     if(left_mouse_released){
