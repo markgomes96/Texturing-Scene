@@ -19,7 +19,7 @@ in the project.  We will then play the game in class.
 *  **A**: Move left
 *  **D**: Move right
 *  **T**: Throwing projectile. Hold "T" for more powerful throw
-*  **J**: Jump 
+*  **Left Mouse**: Jump 
 *  **Z**: Make projectile bigger
 *  **X**: Make projectile smaller
 *  1 and "+": Increase acceleration of projectile leftward
