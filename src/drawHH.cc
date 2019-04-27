@@ -52,12 +52,11 @@ void buildHH(void){
 		glVertex3f ( 0, -7.3152, 0 );
 	glEnd();
 	glPopMatrix();
-	glDisable(GL_TEXTURE_2D);
 //////////////////////////////////////////////
 //ceiling//
 
 //ceiling above the front of pdr 
-	//glBindTexture(GL_TEXTURE_2D, textureID[1]);
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	glPushMatrix();
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
@@ -73,13 +72,13 @@ void buildHH(void){
 		glVertex3f ( 0, -7.3152, 5.4864 );
 	glEnd();
 	glPopMatrix();
-
-
+	glDisable(GL_TEXTURE_2D);
 
 // the ceiling of heritage hall is set up as arches and flats
 
   //flats from front to back	
-	//glBindTexture(GL_TEXTURE_2D, textureID[2]);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	//ceiling above ticket booth
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -98,6 +97,7 @@ void buildHH(void){
 	glPopMatrix();
 	//1
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -114,6 +114,7 @@ void buildHH(void){
 	glPopMatrix();
 	//2
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -130,6 +131,7 @@ void buildHH(void){
 	glPopMatrix();
 	//3
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -146,6 +148,7 @@ void buildHH(void){
 	glPopMatrix();
 	//4
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -162,6 +165,7 @@ void buildHH(void){
 	glPopMatrix();
 	//5
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -176,12 +180,14 @@ void buildHH(void){
 		glVertex3f ( 0,      55.1688, 5.4864 );
 	  glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
  //arches (multi rectangles) from front to back
     //first arch combo
       //veritcal flat short walls that connect to the angled ceiling pieces
-	glBindTexture(GL_TEXTURE_2D, textureID[3]);
         //front
+    glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -198,6 +204,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -215,6 +222,7 @@ void buildHH(void){
       //angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.9, 0.5);
@@ -231,6 +239,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.5, 0.8);
@@ -245,11 +254,11 @@ void buildHH(void){
 		glVertex3f ( 0,      7.52094,  7.62 );
 	  glEnd();
 	glPopMatrix();
-
     //second arch combo
       //veritcal flat short walls that connect to the angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -266,6 +275,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -283,6 +293,7 @@ void buildHH(void){
       //angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.9, 0.5);
@@ -299,6 +310,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.5, 0.8);
@@ -318,6 +330,7 @@ void buildHH(void){
       //veritcal flat short walls that connect to the angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -334,6 +347,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -351,6 +365,7 @@ void buildHH(void){
       //angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.9, 0.5);
@@ -367,6 +382,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.5, 0.8);
@@ -386,6 +402,7 @@ void buildHH(void){
       //veritcal flat short walls that connect to the angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -402,6 +419,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -419,6 +437,7 @@ void buildHH(void){
       //angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.9, 0.5);
@@ -435,6 +454,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.5, 0.8);
@@ -454,6 +474,7 @@ void buildHH(void){
       //veritcal flat short walls that connect to the angled ceiling pieces
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -470,6 +491,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.5, 0.5);
@@ -487,6 +509,7 @@ void buildHH(void){
       //angled ceiling pieces next to uc door
 	//front
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.9, 0.5);
@@ -503,6 +526,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.5, 0.5, 0.8);
@@ -518,6 +542,7 @@ void buildHH(void){
 	  glEnd();
 	glPopMatrix();
 
+	glDisable(GL_TEXTURE_2D);
 //////////////////////////////////////////////
 //walls//
    /*//left wall
@@ -570,9 +595,9 @@ void buildHH(void){
 		glVertex3f ( 7.3152, 55.1688, 0 );
 	 glEnd();
 	glPopMatrix();
-	glDisable(GL_TEXTURE_2D);
    //frontwall
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -589,6 +614,7 @@ void buildHH(void){
 	glPopMatrix();
 	//back of front wall
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -605,6 +631,7 @@ void buildHH(void){
 	glPopMatrix();
 	//bottom of front wall
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -620,7 +647,6 @@ void buildHH(void){
 	 glEnd();
 	glPopMatrix();
        //frontwall leftindent
-    glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[46]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -860,13 +886,13 @@ void buildHH(void){
 		glVertex3f ( 5.0292, -0.3048, 0 );
 	 glEnd();
 	glPopMatrix();
-	glDisable(GL_TEXTURE_2D);
 ///////////////////////////////////////////////////////////
 //arches towards food court///////////////////////////////
 
 glPushMatrix();
 glRotatef(-90, 0.0, 0.0, 1.0);
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -883,6 +909,7 @@ glRotatef(-90, 0.0, 0.0, 1.0);
 	glPopMatrix();
 	
     glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -899,6 +926,7 @@ glRotatef(-90, 0.0, 0.0, 1.0);
 	glPopMatrix();
 
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -913,7 +941,6 @@ glRotatef(-90, 0.0, 0.0, 1.0);
 		glVertex3f ( 7.3152, -0.3048, 3.9624 );
 	 glEnd();
 	glPopMatrix();
-glEnable(GL_TEXTURE_2D);
        //frontwall leftindent
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[46]);
@@ -1154,7 +1181,6 @@ glEnable(GL_TEXTURE_2D);
 	 glEnd();
 	glPopMatrix();
 
-glDisable(GL_TEXTURE_2D);
 glPopMatrix();
 
 /////////////////////////////////////////////////////////////////////////
@@ -1165,6 +1191,7 @@ glPushMatrix();
 glTranslatef(7.4676, 0.0, 0.0);
 glRotatef(-90, 0.0, 0.0, 1.0);
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -1181,6 +1208,7 @@ glRotatef(-90, 0.0, 0.0, 1.0);
 	glPopMatrix();
 
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -1197,6 +1225,7 @@ glRotatef(-90, 0.0, 0.0, 1.0);
 	glPopMatrix();
 
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -1212,7 +1241,6 @@ glRotatef(-90, 0.0, 0.0, 1.0);
 	 glEnd();
 	glPopMatrix();
        //frontwall leftindent
-	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[46]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -1461,7 +1489,9 @@ glPushMatrix();
 
 glTranslatef(0.0, -7.3152, 0.0);
 
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -1478,6 +1508,7 @@ glTranslatef(0.0, -7.3152, 0.0);
 	glPopMatrix();
 
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.6);
@@ -1494,6 +1525,7 @@ glTranslatef(0.0, -7.3152, 0.0);
 	glPopMatrix();
 
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.8, 0.8, 0.8);
@@ -1509,7 +1541,6 @@ glTranslatef(0.0, -7.3152, 0.0);
 	 glEnd();
 	glPopMatrix();
        //frontwall leftindent
-	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[46]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -1828,7 +1859,7 @@ glPushMatrix();
 
 	//cieling piece
 	glPushMatrix();
-	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
+	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.9, 0.9);
@@ -2018,7 +2049,7 @@ glEnable(GL_TEXTURE_2D);
    
 	//left outer floor
 	glPushMatrix();
-	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
+	 glBindTexture(GL_TEXTURE_2D, textureID[66]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.4, 0.6, 0.4); 
@@ -2090,7 +2121,7 @@ glEnable(GL_TEXTURE_2D);
     
 	//rightwall outer back connector top(needs texture)
 	glPushMatrix();
-	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
+	 glBindTexture(GL_TEXTURE_2D, textureID[65]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.6, 0.6, 0.4);
@@ -2140,12 +2171,12 @@ glEnable(GL_TEXTURE_2D);
 		glVertex3f ( 7.3152, 55.1688, 0.0 );
 	 glEnd();
 	glPopMatrix();
-    //rightwall outer sky
+	//rightwall outer sky
 	glPushMatrix();
-	 glBindTexture(GL_TEXTURE_2D, textureID[54]);
+	 glBindTexture(GL_TEXTURE_2D, textureID[65]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.0, 0.5, 0.7);
+	 glColor3f(105,163, 226);
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 7.3152, 5.01396, 7.62 );
@@ -2230,10 +2261,9 @@ glEnable(GL_TEXTURE_2D);
 	 glEnd();
 	glPopMatrix();
 
-	glDisable(GL_TEXTURE_2D);
    //sky above ticket booth
 	glPushMatrix();
-	 //glBindTexture(GL_TEXTURE_2D, textureID[64]);
+	 glBindTexture(GL_TEXTURE_2D, textureID[65]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.0, 0.7);
@@ -2249,6 +2279,7 @@ glEnable(GL_TEXTURE_2D);
 	 glEnd();
 	glPopMatrix();
 
+	glDisable(GL_TEXTURE_2D);
 //0th bumps
 	//left
 	glEnable(GL_TEXTURE_2D);
