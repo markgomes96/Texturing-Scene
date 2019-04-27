@@ -5382,9 +5382,7 @@ glTranslated(0.0, -40.11168 ,0.0);
 
 //0th window
 //bottom piece
-//glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
-//	 glBindTexture(GL_TEXTURE_2D, textureID[60]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(1.0, 1.0, 1.0);
@@ -5399,7 +5397,6 @@ glTranslated(0.0, -40.11168 ,0.0);
 		glVertex3f ( 0.0, 10.02792, 0.0 );
 	 glEnd();
 	glPopMatrix();
-//glDisable(GL_TEXTURE_2D);
 //top piece
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -7952,10 +7949,12 @@ glTranslated(0.0, -40.11168, 0.0);
 //or make a square the goes behind, and add filler to texture so that it fits
 
    //left wall stone piece that cuts off doors and archways (needs texture)
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.4, 0.4, 0.4); 
+	 glColor3f(1,0,0);//0.4, 0.4, 0.4); 
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 0.0001, 5.01396, 3.0 );
@@ -7969,6 +7968,7 @@ glTranslated(0.0, -40.11168, 0.0);
 	glPopMatrix();
    //right wall stone piece that cuts off doors and archways (needs texture)
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.4, 0.4, 0.4); 
@@ -7983,12 +7983,14 @@ glTranslated(0.0, -40.11168, 0.0);
 		glVertex3f ( 7.3151, 55.1688, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 //1st arches 
   //right
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8006,6 +8008,7 @@ glTranslated(0.0, -40.11168, 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);  
@@ -8023,6 +8026,7 @@ glTranslated(0.0, -40.11168, 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8039,6 +8043,7 @@ glTranslated(0.0, -40.11168, 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);  
@@ -8057,6 +8062,7 @@ glTranslated(0.0, -40.11168, 0.0);
    //vertical side pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8074,6 +8080,7 @@ glTranslated(0.0, -40.11168, 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);  
@@ -8091,6 +8098,7 @@ glTranslated(0.0, -40.11168, 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8107,6 +8115,7 @@ glTranslated(0.0, -40.11168, 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8121,6 +8130,7 @@ glTranslated(0.0, -40.11168, 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -8260,7 +8270,9 @@ glTranslated(0.0, 10.02792 , 0.0);
   //left
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8278,6 +8290,7 @@ glTranslated(0.0, 10.02792 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8295,6 +8308,7 @@ glTranslated(0.0, 10.02792 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8311,6 +8325,7 @@ glTranslated(0.0, 10.02792 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8325,6 +8340,7 @@ glTranslated(0.0, 10.02792 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -8461,7 +8477,9 @@ glTranslated(7.3152, 0.0 , 0.0);
   //right
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8479,6 +8497,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8496,6 +8515,7 @@ glTranslated(7.3152, 0.0 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8512,6 +8532,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8526,6 +8547,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -8667,7 +8689,9 @@ glTranslated(0.0, 20.05584 , 0.0);
   //left
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8685,6 +8709,7 @@ glTranslated(0.0, 20.05584 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8702,6 +8727,7 @@ glTranslated(0.0, 20.05584 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8718,6 +8744,7 @@ glTranslated(0.0, 20.05584 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8732,6 +8759,7 @@ glTranslated(0.0, 20.05584 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -8868,7 +8896,9 @@ glTranslated(7.3152, 0.0 , 0.0);
   //right
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -8886,6 +8916,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8903,6 +8934,7 @@ glTranslated(7.3152, 0.0 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8919,6 +8951,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -8933,6 +8966,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -9073,7 +9107,9 @@ glTranslated(0.0, 30.08376 , 0.0);
   //left
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -9091,6 +9127,7 @@ glTranslated(0.0, 30.08376 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9108,6 +9145,7 @@ glTranslated(0.0, 30.08376 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -9124,6 +9162,7 @@ glTranslated(0.0, 30.08376 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -9138,6 +9177,7 @@ glTranslated(0.0, 30.08376 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -9274,7 +9314,9 @@ glTranslated(7.3152, 0.0 , 0.0);
   //right
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -9292,6 +9334,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -9309,6 +9352,7 @@ glTranslated(7.3152, 0.0 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9325,6 +9369,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71);
@@ -9339,6 +9384,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -9479,7 +9525,9 @@ glTranslated(0.0, 40.11168 , 0.0);
   //left
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9497,6 +9545,7 @@ glTranslated(0.0, 40.11168 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9514,6 +9563,7 @@ glTranslated(0.0, 40.11168 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9530,6 +9580,7 @@ glTranslated(0.0, 40.11168 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9544,6 +9595,7 @@ glTranslated(0.0, 40.11168 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
@@ -9680,7 +9732,9 @@ glTranslated(7.3152, 0.0 , 0.0);
   //right
    //vertical side pieces
 	//right
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9698,6 +9752,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9715,6 +9770,7 @@ glTranslated(7.3152, 0.0 , 0.0);
    //diagonal pieces
 	//right
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9731,6 +9787,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 	glPopMatrix();
 	//left
 	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.93, 0.89, 0.71); 
@@ -9745,6 +9802,7 @@ glTranslated(7.3152, 0.0 , 0.0);
 		glVertex3f ( 0.0001, 9.02792, 6.2 );
 	 glEnd();
 	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
    //arch window bars
 	//middle
 	glPushMatrix();
