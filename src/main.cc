@@ -24,7 +24,7 @@ void display( void )
 #ifdef LEVEL
 
 	buildHeritageHall();
-    g.drawSceneObjects( ); 
+    //g.drawSceneObjects( ); 
 	g.HUD();
 	buildDisplay();
 	glutSwapBuffers();
