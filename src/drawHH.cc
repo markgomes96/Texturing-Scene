@@ -1961,7 +1961,6 @@ glPopMatrix();
 		glVertex3f ( -3.0, 2.0, 0.0 );
 	 glEnd();
 	glPopMatrix();
-
    //left wall outer right connecter wall if you are looking into areana
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
@@ -1979,13 +1978,13 @@ glPopMatrix();
 		glVertex3f ( -3.0, 55.1688, 0.0 );
 	 glEnd();
 	glPopMatrix();
-
-   //left wall stone piece that cuts off doors and archways (needs texture)
+   
+	//left wall stone piece that cuts off doors and archways (needs texture)
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.4, 0.8, 0.0); 
+	 glColor3f(1,0,0);//0.4, 0.8, 0.0); 
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 0.0, 5.01396, 3.0 );
@@ -1998,12 +1997,13 @@ glPopMatrix();
 	 glEnd();
 	glPopMatrix();
 
+glEnable(GL_TEXTURE_2D);
    //left wall outer (needs hawkins areana texture)
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[52]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.4, 0.8, 1.0); 
+	 glColor3f(1,0,0);//0.4, 0.8, 1.0); 
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(1.0, 1.0);
 		glVertex3f ( -3.0, 2.0, 0.0 );
@@ -2015,7 +2015,8 @@ glPopMatrix();
 		glVertex3f ( -3.0, 55.1688, 0.0 );
 	 glEnd();
 	glPopMatrix();
-   //left outer floor
+   
+	//left outer floor
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -2032,7 +2033,8 @@ glPopMatrix();
 		glVertex3f ( 0.0, 55.1688, 0.0 );
 	 glEnd();
 	glPopMatrix();
-   //left outer cieling 
+   
+	//left outer cieling 
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -2049,7 +2051,8 @@ glPopMatrix();
 		glVertex3f ( 0.0, 55.1688, 7.62 );
 	 glEnd();
 	glPopMatrix();
-    //rightwall outer 
+    
+	//rightwall outer 
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[53]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -2066,6 +2069,7 @@ glPopMatrix();
 		glVertex3f ( 10.3152, 55.1688, 0.0 );
 	 glEnd();
 	glPopMatrix();
+
     //rightwall outer back connector bottom(needs texture)
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
@@ -2083,7 +2087,8 @@ glPopMatrix();
 		glVertex3f ( 10.3152, 55.1688, 0.0 );
 	 glEnd();
 	glPopMatrix();
-    //rightwall outer back connector top(needs texture)
+    
+	//rightwall outer back connector top(needs texture)
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -2100,7 +2105,7 @@ glPopMatrix();
 		glVertex3f ( 10.3152, 55.1688, 7.62 );
 	 glEnd();
 	glPopMatrix();
-
+	
    //right wall stone piece that cuts off doors and archways (needs texture)
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
@@ -2118,7 +2123,6 @@ glPopMatrix();
 		glVertex3f ( 7.3152, 55.1688, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
     //rightwall outer ground
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[54]);
@@ -2171,7 +2175,7 @@ glPopMatrix();
 	 glEnd();
 	glPopMatrix();
 
-   //ticket booth inside bottom right
+   //ticket booth inside bottom 
 	glPushMatrix();
 	 glBindTexture(GL_TEXTURE_2D, textureID[58]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
@@ -2188,12 +2192,12 @@ glPopMatrix();
 	 glEnd();
 	glPopMatrix();
  
-	glDisable(GL_TEXTURE_2D);
   //ticket booth inside top
 	glPushMatrix();
+	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.4, 0.4, 0.7);
+	 //glColor3f(0.4, 0.4, 0.7);
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 7.3152, 5.01396, 7.62 );
@@ -2206,6 +2210,7 @@ glPopMatrix();
 	 glEnd();
 	glPopMatrix();
 
+	glDisable(GL_TEXTURE_2D);
    //ticket booth outside
 	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
@@ -2246,26 +2251,27 @@ glPopMatrix();
 
 //0th bumps
 	//left
-	//glEnable(GL_TEXTURE_2D);
+	glEnable(GL_TEXTURE_2D);
 	glPushMatrix();
- 	 //glBindTexture(GL_TEXTURE_2D, textureID[64]);
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[62]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.5, 0.0);
 	 glBegin ( GL_POLYGON );
-		glTexCoord2d(0.0, 0.0);
-		glVertex3f ( 0.0, 0.0, 0.0 );
-		glTexCoord2d(0.0, 1.0);
-		glVertex3f ( 0.0, 0.0, 7.62 );	
 		glTexCoord2d(1.0, 1.0);
-		glVertex3f ( 0.0, 5.01396, 7.62 );
+		glVertex3f ( 0.0, 0.0, 0.0 );
 		glTexCoord2d(1.0, 0.0);
+		glVertex3f ( 0.0, 0.0, 5.4864);//7.62 );	
+		glTexCoord2d(0.0, 0.0);
+		glVertex3f ( 0.0, 5.01396, 5.4864);//7.62 );
+		glTexCoord2d(0.0, 1.0);
 		glVertex3f ( 0.0, 5.01396, 0 );
 	 glEnd();
 	glPopMatrix();
-	//glDisable(GL_TEXTURE_2D);
+	
 	//right
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.5, 0.0);
@@ -2273,13 +2279,31 @@ glPopMatrix();
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 7.3152, -7.3152, 0.0 );
 		glTexCoord2d(0.0, 1.0);
-		glVertex3f ( 7.3152, -7.3152, 7.62 );	
+		glVertex3f ( 7.3152, -7.3152, 5.4864);//7.62 );	
 		glTexCoord2d(1.0, 1.0);
-		glVertex3f ( 7.3152, 5.01396, 7.62 );
+		glVertex3f ( 7.3152, 0.0, 5.4864);//7.62 );
 		glTexCoord2d(1.0, 0.0);
-		glVertex3f ( 7.3152, 5.01396, 0 );
+		glVertex3f ( 7.3152, 0.0, 0 );
 	 glEnd();
 	glPopMatrix();
+	
+	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[63]);
+	 glPolygonMode(GL_FRONT, GL_FILL);
+     glPolygonMode(GL_BACK, GL_FILL);
+     glColor3f(0.7, 0.5, 0.0);
+     glBegin ( GL_POLYGON );
+        glTexCoord2d(1.0, 1.0);
+        glVertex3f ( 7.3152, 0.0,0.0);
+		glTexCoord2d(1.0, 0.0);
+        glVertex3f ( 7.3152, 0.0,5.4864);//7.62);
+		glTexCoord2d(0.0, 0.0);
+        glVertex3f ( 7.3152, 5.01396, 5.4864);//7.62 );
+        glTexCoord2d(0.0, 1.0);
+        glVertex3f ( 7.3152, 5.01396, 0 );
+     glEnd();
+	glPopMatrix();
+	glDisable(GL_TEXTURE_2D);
 //1st bumps
   glPushMatrix();
 	//left
