@@ -2308,10 +2308,12 @@ glEnable(GL_TEXTURE_2D);
   glPushMatrix();
 	//left
 	//pertruding wall part 1
+	glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.7, 0.7, 0.7);
+	 glColor3f(1,0,0);//0.7, 0.7, 0.7);
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 0.3048, 10.02792, 0.0);
@@ -2325,9 +2327,10 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
-	 	glColor3f(0.3, 0.7, 0.7);
+	 	 glColor3f(0.3, 0.7, 0.7);
 		 glBegin ( GL_POLYGON );
 			glTexCoord2d(0.0, 0.0);
 			glVertex3f ( 0.3048, 11.02792, 0.0);
@@ -2341,9 +2344,10 @@ glEnable(GL_TEXTURE_2D);
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
-	 glColor3f(0.7, 0.7, 0.7);
+	 glColor3f(1,0,0);//0.7, 0.7, 0.7);
 	 glBegin ( GL_POLYGON );
 		glTexCoord2d(0.0, 0.0);
 		glVertex3f ( 0.3048, 14.04188, 0.0);
@@ -2357,6 +2361,7 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -2374,6 +2379,7 @@ glEnable(GL_TEXTURE_2D);
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -2390,6 +2396,7 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -2404,8 +2411,10 @@ glEnable(GL_TEXTURE_2D);
 		glVertex3f ( 0.3048, 15.04188, 0.0 );
 	 glEnd();
 	glPopMatrix();
+	
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -2423,6 +2432,7 @@ glEnable(GL_TEXTURE_2D);
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -2438,6 +2448,7 @@ glEnable(GL_TEXTURE_2D);
 	 glEnd();
 	glPopMatrix();
 
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -2603,7 +2614,9 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 //right
 //pertruding wall part 1
+	 glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -2620,6 +2633,7 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -2636,6 +2650,7 @@ glEnable(GL_TEXTURE_2D);
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -2652,6 +2667,7 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -2669,6 +2685,7 @@ glEnable(GL_TEXTURE_2D);
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -2685,6 +2702,7 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -2701,6 +2719,7 @@ glEnable(GL_TEXTURE_2D);
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -2718,6 +2737,7 @@ glEnable(GL_TEXTURE_2D);
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -2733,6 +2753,7 @@ glEnable(GL_TEXTURE_2D);
 	 glEnd();
 	glPopMatrix();
 
+	 glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -2904,7 +2925,9 @@ glTranslated(0.0,10.02792 ,0.0);
 glPushMatrix();
 	//left
 	//pertruding wall part 1
+	 glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -2921,6 +2944,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -2937,6 +2961,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -2953,6 +2978,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -2970,6 +2996,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -2986,6 +3013,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -3002,6 +3030,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -3019,6 +3048,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -3034,6 +3064,7 @@ glPushMatrix();
 	 glEnd();
 	glPopMatrix();
 
+	 glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -3199,7 +3230,9 @@ glPushMatrix();
 	glPopMatrix();
 //right
 //pertruding wall part 1
+	glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -3216,6 +3249,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -3232,6 +3266,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -3248,6 +3283,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -3265,6 +3301,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -3281,6 +3318,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -3297,6 +3335,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -3314,6 +3353,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -3328,7 +3368,7 @@ glPushMatrix();
 		glVertex3f ( 7.0104, 15.04188, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -3500,7 +3540,9 @@ glTranslated(0.0, 20.05584 ,0.0);
 glPushMatrix();
 	//left
 	//pertruding wall part 1
+	glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -3517,6 +3559,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -3533,6 +3576,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -3549,6 +3593,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -3566,6 +3611,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -3582,6 +3628,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -3598,6 +3645,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -3615,6 +3663,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -3629,7 +3678,7 @@ glPushMatrix();
 		glVertex3f ( 0.3049, 15.04188, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -3795,7 +3844,9 @@ glPushMatrix();
 	glPopMatrix();
 //right
 //pertruding wall part 1
+	glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -3812,6 +3863,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -3828,6 +3880,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -3844,6 +3897,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -3861,6 +3915,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -3877,6 +3932,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -3893,6 +3949,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -3910,6 +3967,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -3924,7 +3982,7 @@ glPushMatrix();
 		glVertex3f ( 7.0104, 15.04188, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -4096,7 +4154,9 @@ glTranslated(0.0, 30.08376 ,0.0);
 glPushMatrix();
 	//left
 	//pertruding wall part 1
+	 glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -4113,6 +4173,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -4129,6 +4190,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -4145,6 +4207,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -4162,6 +4225,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -4178,6 +4242,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -4194,6 +4259,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -4211,6 +4277,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -4225,7 +4292,7 @@ glPushMatrix();
 		glVertex3f ( 0.3049, 15.04188, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -4391,7 +4458,9 @@ glPushMatrix();
 	glPopMatrix();
 //right
 //pertruding wall part 1
+	glEnable(GL_TEXTURE_2D);
 	 glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -4408,6 +4477,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -4424,6 +4494,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -4440,6 +4511,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -4457,6 +4529,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -4473,6 +4546,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -4489,6 +4563,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -4506,6 +4581,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -4520,7 +4596,7 @@ glPushMatrix();
 		glVertex3f ( 7.0104, 15.04188, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -4692,7 +4768,9 @@ glTranslated(0.0, 40.11168 ,0.0);
 glPushMatrix();
 	//left
 	//pertruding wall part 1
-	 glPushMatrix();
+	glEnable(GL_TEXTURE_2D); 
+	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -4709,6 +4787,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -4725,6 +4804,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -4741,6 +4821,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -4758,6 +4839,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -4774,6 +4856,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -4790,6 +4873,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -4807,6 +4891,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -4821,7 +4906,7 @@ glPushMatrix();
 		glVertex3f ( 0.3049, 15.04188, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
@@ -4987,7 +5072,9 @@ glPushMatrix();
 	glPopMatrix();
 //right
 //pertruding wall part 1
-	 glPushMatrix();
+	glEnable(GL_TEXTURE_2D); 
+	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -5004,6 +5091,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 1
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -5020,6 +5108,7 @@ glPushMatrix();
 		glPopMatrix();		
 		//
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.7, 0.7);
@@ -5036,6 +5125,7 @@ glPushMatrix();
 	glPopMatrix();
 		//wall connector 2
 		glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 		 glPolygonMode(GL_FRONT, GL_FILL);
 		 glPolygonMode(GL_BACK, GL_FILL);
 	 	glColor3f(0.3, 0.7, 0.7);
@@ -5053,6 +5143,7 @@ glPushMatrix();
 		//
        //connecting walls outer
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -5069,6 +5160,7 @@ glPushMatrix();
 	glPopMatrix();
 
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.0, 0.7, 0.7);
@@ -5085,6 +5177,7 @@ glPushMatrix();
 	glPopMatrix();
 	//above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[57]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.1, 0.4, 0.7);
@@ -5102,6 +5195,7 @@ glPushMatrix();
 
 	//cieling connector above doors
 	glPushMatrix();
+ 	 glBindTexture(GL_TEXTURE_2D, textureID[61]);
 	 glPolygonMode(GL_FRONT, GL_FILL);
 	 glPolygonMode(GL_BACK, GL_FILL);
 	 glColor3f(0.7, 0.3, 0.7);
@@ -5116,7 +5210,7 @@ glPushMatrix();
 		glVertex3f ( 7.0104, 15.04188, 3.0 );
 	 glEnd();
 	glPopMatrix();
-
+	glDisable(GL_TEXTURE_2D);
 	//doors
 	//bottom of doors
 	glPushMatrix();
