@@ -144,7 +144,7 @@ void Input::mouse( int button, int state, int x, int y )
                                 {
                                         activeState=gameState;
                                         cout << "Start Display--Start" << endl;
-                                        glutPostRedisplay();
+              //                          glutPostRedisplay();
                                  }
 
                                 else if(y<WINDOW_MAX_Y*0.50 && y>WINDOW_MAX_Y*0.43)

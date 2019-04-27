@@ -27,11 +27,13 @@ void display( void )
         {
                 case gameState:
 			buildHeritageHall();
+			//g.render();
     			g.drawSceneObjects( ); 
 			g.HUD();
 			buildDisplay();
 			break;
 		  case startState:
+			//g.render();
                         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                         startDisplay();
                         break;
@@ -54,8 +56,8 @@ void display( void )
 
 		glutSwapBuffers();
 #else
-	g.HUD();
-	g.render();
+//	g.HUD();
+//	g.render();
 #endif
 
 }
@@ -97,6 +99,7 @@ void init(int window_width, int window_height, int window_position_x, int window
 		exit(1);
 	}*/
 	activeState = startState;
+	//g.render();
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glLoadIdentity();
 }
@@ -125,7 +128,7 @@ int main(int argc, char** argv)
 	init(WINDOW_MAX_X, WINDOW_MAX_Y, WINDOW_POSITION_X, WINDOW_POSITION_Y);
     glewInit();
 	g.init();
-
+	//g.render();
 	glutMouseFunc(mouse);		//input functions
 	glutKeyboardFunc(keyboard);
 	glutKeyboardUpFunc(keyup);
