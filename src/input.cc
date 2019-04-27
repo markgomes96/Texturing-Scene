@@ -162,17 +162,17 @@ void Input::mouse( int button, int state, int x, int y )
                         }
                                 break;
 		case pauseState:
-                                if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.395 && x < WINDOW_MAX_X*0.580)
+                                if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.580)
                                 {
 
-                                         if(y<WINDOW_MAX_Y*0.60 && y>WINDOW_MAX_Y*0.53)
+                                         if(y<WINDOW_MAX_Y*0.65 && y>WINDOW_MAX_Y*0.58)
                                          {
                                                   activeState=gameState;
                                                   cout << "Pause Display--Resume Game" << endl;
                                                   glutPostRedisplay();
                                          }
 
-                                        else if(y<WINDOW_MAX_Y*0.40 && y>WINDOW_MAX_Y*0.33)
+                                        else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
                                          {
                                                    cout << "Pause Display--End Game" << endl;
                                                    exit(0);
@@ -182,12 +182,12 @@ void Input::mouse( int button, int state, int x, int y )
                                 break;
 
                         case overState:
-                                if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.59){
- if(y<WINDOW_MAX_Y*0.50 && y>WINDOW_MAX_Y*0.43)
+                                if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.58){
+ if(y<WINDOW_MAX_Y*0.54 && y>WINDOW_MAX_Y*0.47)
                                         {
                                                 cout << "Over State--Play Again" << endl;
                                         }
-                                        else if(y<WINDOW_MAX_Y*0.40 && y>WINDOW_MAX_Y*0.33)
+                                        else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
                                         {
                                             cout << "Over State--End Game" << endl;
                                             exit(0);
