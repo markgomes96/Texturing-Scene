@@ -167,7 +167,8 @@ void Input::mouse( int button, int state, int x, int y )
 
                                          if(y<WINDOW_MAX_Y*0.65 && y>WINDOW_MAX_Y*0.58)
                                          {
-                                                  activeState=gameState;
+                                                  //activeState=gameState;
+                                                  activeState = overState;
                                                   cout << "Pause Display--Resume Game" << endl;
                                                   glutPostRedisplay();
                                          }
@@ -183,7 +184,7 @@ void Input::mouse( int button, int state, int x, int y )
 
                         case overState:
                                 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.58){
- if(y<WINDOW_MAX_Y*0.54 && y>WINDOW_MAX_Y*0.47)
+ 					if(y<WINDOW_MAX_Y*0.54 && y>WINDOW_MAX_Y*0.47)
                                         {
                                                 cout << "Over State--Play Again" << endl;
                                         }

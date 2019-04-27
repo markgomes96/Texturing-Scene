@@ -272,10 +272,12 @@ void overDisplay()
         glLoadIdentity();
 
 	//drawTitle(WINDOW_MAX_X*(0.1), WINDOW_MAX_Y*(0.6), 1.0, name);
-	drawBoundaries();
+//	drawBoundaries();
+//	drawTitle(WINDOW_MAX_X*(0.20), WINDOW_MAX_Y*(0.6), 1.0, name);
         textToScreen("Your score: " , WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
         textToScreen("Play Again", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.4));
         textToScreen("Leave Game", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.29));
+	drawBoundaries();
 	drawTitle(WINDOW_MAX_X*(0.20), WINDOW_MAX_Y*(0.6), 1.0, name);
 //	drawBoundaries();	
 
