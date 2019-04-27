@@ -28,6 +28,7 @@ in the project.  We will then play the game in class.
 *  2 and "-": Increase acceleration of projectile backward
 *  3 and "+": Increase acceleration of projectile upward
 *  3 and "-": Increase acceleration of projectile downward
+*  **H**: Hide HUD
 *  **R**: Reset all acceleration 
 
 
