@@ -19,7 +19,6 @@ GLOBALS	globals.h	2;"	d
 Game	game.cc	/^Game::Game()$/;"	f	class:Game
 Game	game.h	/^class Game {$/;"	c
 GameObj	gameobj.cc	/^GameObj::GameObj()$/;"	f	class:GameObj
-GameObj	gameobj.cc	/^GameObj::GameObj(float* bs)$/;"	f	class:GameObj
 GameObj	gameobj.cc	/^GameObj::GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange) {$/;"	f	class:GameObj
 GameObj	gameobj.cc	/^GameObj::GameObj(vertex _position, vect3 _scale, vector<polygon> _polygons,colortype _color, bool isStat)$/;"	f	class:GameObj
 GameObj	gameobj.h	/^class GameObj : public PhysObj$/;"	c
@@ -45,7 +44,7 @@ PhysicsEngine	physicsengine.cc	/^PhysicsEngine::PhysicsEngine()$/;"	f	class:Phys
 PhysicsEngine	physicsengine.cc	/^PhysicsEngine::PhysicsEngine(float fr)$/;"	f	class:PhysicsEngine
 PhysicsEngine	physicsengine.h	/^class PhysicsEngine$/;"	c
 STRUCTS	structs.h	2;"	d
-SceneObjects	game.h	/^	vector<object>  SceneObjects;$/;"	m	class:Game
+SceneObjects	game.h	/^	vector<object>  SceneObjects; $/;"	m	class:Game
 TESTOBJ_CC	testobj.cc	2;"	d	file:
 TESTOBJ_H	testobj.h	2;"	d
 TEXTURING	texturing.cc	2;"	d	file:
@@ -145,7 +144,7 @@ lym	physobj.h	/^	float lxm[2];	float lym[2];	float lzm[2];$/;"	m	class:PhysObj
 lzm	physobj.h	/^	float lxm[2];	float lym[2];	float lzm[2];$/;"	m	class:PhysObj
 main	main.cc	/^int main(int argc, char** argv)$/;"	f
 main	scrape.cc	/^int main( int argc, char* argv[] ){ $/;"	f
-minimap	game.cc	/^void Game::minimap()$/;"	f	class:Game
+minimap	game.cc	/^void Game::minimap(){$/;"	f	class:Game
 mouse	game.cc	/^void Game::mouse( int button, int state, int x, int y )$/;"	f	class:Game
 mouse	input.cc	/^void Input::mouse( int button, int state, int x, int y )$/;"	f	class:Input
 mouse	main.cc	/^void mouse( int button, int state, int x, int y ) { g.mouse(button, state, x, y); }$/;"	f
@@ -223,17 +222,17 @@ vertex	structs.h	/^	vertex(float _x, float _y, float _z, float _w)$/;"	f	struct:
 vertex	structs.h	/^typedef struct vertex {$/;"	s
 vertex	structs.h	/^} vertex;$/;"	t	typeref:struct:vertex
 vertices	structs.h	/^    vector<vertex> vertices;$/;"	m	struct:polygon
-w	structs.h	/^    float w;$/;"	m	struct:vertex
+w	structs.h	/^        float w;$/;"	m	struct:vertex
 writeVertices	scrape.cc	/^void writeVertices( fstream& file, string line ){ $/;"	f
 wxm	physobj.h	/^	float wxm[2];	float wym[2];	float wzm[2];$/;"	m	class:PhysObj
 wym	physobj.h	/^	float wxm[2];	float wym[2];	float wzm[2];$/;"	m	class:PhysObj
 wzm	physobj.h	/^	float wxm[2];	float wym[2];	float wzm[2];$/;"	m	class:PhysObj
 x	structs.h	/^	float x;$/;"	m	struct:vect3
-x	structs.h	/^    float x;$/;"	m	struct:vertex
+x	structs.h	/^        float x;$/;"	m	struct:vertex
 x_rotat	globals.h	/^double x_rotat = 0.0;$/;"	v
 y	structs.h	/^	float y;$/;"	m	struct:vect3
-y	structs.h	/^    float y;$/;"	m	struct:vertex
+y	structs.h	/^        float y;$/;"	m	struct:vertex
 y_rotat	globals.h	/^double y_rotat = 0.0;$/;"	v
 z	structs.h	/^	float z;$/;"	m	struct:vect3
-z	structs.h	/^    float z;$/;"	m	struct:vertex
+z	structs.h	/^        float z;$/;"	m	struct:vertex
 zVec	globals.h	/^glm::vec3 zVec = glm::vec3(0.0, 8.0, 2.0);$/;"	v
