@@ -2,7 +2,6 @@
 #define INPUT_H
 
 #include "includes.h"
-#include "menu.h"
 
 class Input 
 {

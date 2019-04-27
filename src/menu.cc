@@ -39,6 +39,11 @@ void drawBoundaries()
 		glVertex2i((WINDOW_MAX_X/WINDOW_MAX_X)*100, (WINDOW_MAX_Y/WINDOW_MAX_Y)*100);
                 glVertex2i((WINDOW_MAX_X/WINDOW_MAX_X)*100, WINDOW_MAX_Y -100);
 	glEnd();
+	
+	cout << WINDOW_MAX_X-100 << ", " <<  WINDOW_MAX_Y-100 << endl;
+	cout << WINDOW_MAX_X-100 << ", " <<  (WINDOW_MAX_Y/WINDOW_MAX_Y)*100 << endl;
+	cout << (WINDOW_MAX_X/WINDOW_MAX_X)*100 << ", " <<  (WINDOW_MAX_Y/WINDOW_MAX_Y)*100 << endl;
+	cout << (WINDOW_MAX_X/WINDOW_MAX_X)*100 << ", " <<  WINDOW_MAX_Y-100 << endl;
 
 	//option outlines, first choice
 	glColor3ub(0, 0, 0);
@@ -238,13 +243,16 @@ void pauseDisplay()
         glPushMatrix();
         glLoadIdentity();
 
-	drawBoundaries();
+	drawTitle(WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.6), 1.0, name);
+	//drawBoundaries();
+	 //drawTitle(WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.6), 1.0, name);
         textToScreen("Resume Game" , WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
         textToScreen("Time Left: ", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.4));
         textToScreen("Leave Game", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.29));
-//	drawBoundaries();
-	drawTitle(WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.6), 1.0, name);
-        glPopMatrix();
+	drawBoundaries();
+//	drawTitle(WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.6), 1.0, name);
+//  	drawBoundaries();
+	glPopMatrix();
         glMatrixMode(GL_PROJECTION);
         glPopMatrix();
         glMatrixMode(GL_MODELVIEW);     

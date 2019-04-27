@@ -18,46 +18,43 @@ extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double x_rotat, y_rotat;
 enum State activeState;
+extern GLuint textureID[50];
 
 void display( void )
 {
 #ifdef LEVEL
-	
-	/* displays the correct state that is currently active*/
 	switch(activeState)
-	{
-		case gameState:
-			//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        {
+                case gameState:
 			buildHeritageHall();
+    			g.drawSceneObjects( ); 
 			g.HUD();
 			buildDisplay();
-			g.HUD();
 			break;
+		  case startState:
+                        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        startDisplay();
+                        break;
 
-		case startState:
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			startDisplay();
-			break;
+                case instructState:
+                        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        instructDisplay();
+                        break;
 
-		case instructState:
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			instructDisplay();
-			break;
-		
-		case pauseState:
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			pauseDisplay();
-			break;
+                case pauseState:
+                        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        pauseDisplay();
+                        break;
 
-		case overState:
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			overDisplay();
-			break;
-	}
+                case overState:
+                        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        overDisplay();
+                        break;
+        }
 
-	//g.render();
-	glutSwapBuffers();
+		glutSwapBuffers();
 #else
+	g.HUD();
 	g.render();
 #endif
 
@@ -67,7 +64,6 @@ void update( void )
 {
 #ifdef LEVEL
 	g.update();
-
 #else
 	g.update();
 #endif
@@ -80,7 +76,7 @@ void reshape (int w, int h)
 	glViewport (0, 0, (GLsizei) w, (GLsizei) h);
 	glMatrixMode (GL_PROJECTION);
 	glLoadIdentity();
-	gluPerspective(40.0, (GLfloat) w/(GLfloat) h, 1.0, 40.0);
+	gluPerspective(40.0, (GLfloat) w/(GLfloat) h, 1.0, 70.0);
 	glMatrixMode(GL_MODELVIEW);
 }
 
@@ -91,7 +87,7 @@ void init(int window_width, int window_height, int window_position_x, int window
 	glutInitWindowSize (window_width, window_height);
 	glutInitWindowPosition (window_position_x, window_position_y);
 	glutCreateWindow ("Bear Force One");
-	activeState = startState; //initialize active state as the start menu
+
 	//Enable gamemode if possible
 /*	glutGameModeString("1920x1080:32");
 	if (glutGameModeGet(GLUT_GAME_MODE_POSSIBLE)){
@@ -100,6 +96,7 @@ void init(int window_width, int window_height, int window_position_x, int window
 		printf("ERROR! --> Game mode not possible\n");
 		exit(1);
 	}*/
+	activeState = startState;
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glLoadIdentity();
 }
@@ -134,17 +131,17 @@ int main(int argc, char** argv)
 	glutKeyboardUpFunc(keyup);
 	glutSpecialFunc(specialInput);
     // This needs to be changed to reflect that vertices is in the ../objs directory
-//	loadVerticesFileData( "vertices" ); //file name is "vertices"
+	g.loadVerticesFileData( (char *) "vertices" ); //file name is "vertices"
 	//initalize mouse movement function
 	glutPassiveMotionFunc(passiveMouseMovement);
 	glutMotionFunc(mouseMovement);
-
-
+	//make cursor invisible
+	if(activeState == gameState){
+	glutSetCursor(GLUT_CURSOR_NONE);
+}
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame
 	glutIdleFunc(update);			//update game
 
 	glutMainLoop();
 }
-
-

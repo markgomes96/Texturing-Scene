@@ -37,10 +37,10 @@ typedef struct vect3		//stores data for a 3D vector used for calculations
 } vect3;
 
 typedef struct vertex {
-        float x;
-        float y;
-        float z;
-        float w;
+    float x;
+    float y;
+    float z;
+    float w;
 
 	vertex()
 	{}
@@ -73,6 +73,7 @@ typedef struct object {
 	vector<polygon> polygons;
 	colortype color;
 } object;
+
 
 enum State
 {
