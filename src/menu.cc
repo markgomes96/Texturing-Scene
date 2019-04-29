@@ -44,7 +44,7 @@ void drawTitle(int x, int y, int z, char title [])
 
 void drawBoundaries()
 {
-	 glColor3ub(255, 140, 0);
+	glColor3ub(255, 140, 0);
         glBegin(GL_POLYGON);
                 glVertex2i(WINDOW_MAX_X-100, WINDOW_MAX_Y-100);
                 glVertex2i(WINDOW_MAX_X-100, (WINDOW_MAX_Y/WINDOW_MAX_Y)*100);

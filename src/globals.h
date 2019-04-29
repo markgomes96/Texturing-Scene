@@ -78,4 +78,8 @@ Game g;
 
 GLuint textureID[100];
 
+/*int starT = 0;
+int startP = 0;
+int pauseT = 0;*/
+
 #endif

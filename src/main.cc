@@ -19,10 +19,17 @@ extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double x_rotat, y_rotat;
 enum State activeState;
 extern GLuint textureID[50];
+int startT = 0;
+int startP = 0;
+int pauseT = 0;
 
 void display( void )
 {
 
+	if(glutGet(GLUT_ELAPSED_TIME) - startT - pauseT > 120000)
+	{
+		activeState = overState;
+	}
 #ifdef LEVEL
 	switch(activeState)
 	{

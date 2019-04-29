@@ -18,6 +18,7 @@ extern double addAcc[3];
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
+extern int startT, pauseT, startP;
 extern bool first_mouse, left_mouse_down, left_mouse_released;
 //extern double power, scaleObX, scaleObY, scaleObZ;
 
@@ -263,7 +264,9 @@ void Input::mouse( int button, int state, int x, int y )
                                 if(y<WINDOW_MAX_Y*0.60 && y>WINDOW_MAX_Y*0.53)
                                 {
                                         activeState=gameState;
-			 }
+					startT = glutGet(GLUT_ELAPSED_TIME);
+					glutPostRedisplay();
+	                	 }
 
                                 else if(y<WINDOW_MAX_Y*0.50 && y>WINDOW_MAX_Y*0.43)
                                  {
@@ -284,7 +287,8 @@ void Input::mouse( int button, int state, int x, int y )
 
                                          if(y<WINDOW_MAX_Y*0.65 && y>WINDOW_MAX_Y*0.58)
                                          {
-						activeState = overState;
+						activeState = gameState;
+						pauseT=pauseT + glutGet(GLUT_ELAPSED_TIME) - startP;
 						glutPostRedisplay();
 					 }
 					
@@ -361,6 +365,7 @@ void Input::keyboard( unsigned char key, int x, int y )
 	} 
 	if (( key == 'p' ) || (key == 'P')){
 		activeState = pauseState;
+		startP = glutGet(GLUT_ELAPSED_TIME);
 		glutPostRedisplay();
 	}  
 	if ( key == 27 ){
