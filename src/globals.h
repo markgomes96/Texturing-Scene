@@ -69,7 +69,7 @@ bool left_mouse_released = false;
 // This is for the target mechanism
 bool destroy = false;
 int counter = 0;
-
+int score = 0;
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);
 void defineBox( struct box* );
