@@ -5,8 +5,9 @@
 #include <stdio.h>
 
 //void *fontStroke = GLUT_STROKE_ROMAN;
-extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 
+extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
+extern int score;
 void makeString(float x, float y, void *font, const char* string)
 {
         const char *c;
@@ -40,10 +41,10 @@ void drawBoundaries()
                 glVertex2i((WINDOW_MAX_X/WINDOW_MAX_X)*100, WINDOW_MAX_Y -100);
 	glEnd();
 	
-	cout << WINDOW_MAX_X-100 << ", " <<  WINDOW_MAX_Y-100 << endl;
-	cout << WINDOW_MAX_X-100 << ", " <<  (WINDOW_MAX_Y/WINDOW_MAX_Y)*100 << endl;
-	cout << (WINDOW_MAX_X/WINDOW_MAX_X)*100 << ", " <<  (WINDOW_MAX_Y/WINDOW_MAX_Y)*100 << endl;
-	cout << (WINDOW_MAX_X/WINDOW_MAX_X)*100 << ", " <<  WINDOW_MAX_Y-100 << endl;
+	//cout << WINDOW_MAX_X-100 << ", " <<  WINDOW_MAX_Y-100 << endl;
+//	cout << WINDOW_MAX_X-100 << ", " <<  (WINDOW_MAX_Y/WINDOW_MAX_Y)*100 << endl;
+//	cout << (WINDOW_MAX_X/WINDOW_MAX_X)*100 << ", " <<  (WINDOW_MAX_Y/WINDOW_MAX_Y)*100 << endl;
+//	cout << (WINDOW_MAX_X/WINDOW_MAX_X)*100 << ", " <<  WINDOW_MAX_Y-100 << endl;
 
 	//option outlines, first choice
 	glColor3ub(0, 0, 0);
@@ -262,6 +263,8 @@ void pauseDisplay()
 void overDisplay()
 {
 	char name [] = "GAME OVER";
+	char *scoreTex = (char*) malloc(12*sizeof(char));
+	sprintf(scoreTex, "Your score: %d", score);
 	glMatrixMode(GL_PROJECTION);
         glPushMatrix();
         glLoadIdentity();
@@ -274,7 +277,7 @@ void overDisplay()
 	//drawTitle(WINDOW_MAX_X*(0.1), WINDOW_MAX_Y*(0.6), 1.0, name);
 //	drawBoundaries();
 //	drawTitle(WINDOW_MAX_X*(0.20), WINDOW_MAX_Y*(0.6), 1.0, name);
-        textToScreen("Your score: " , WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
+        textToScreen(scoreTex, WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
         textToScreen("Play Again", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.4));
         textToScreen("Leave Game", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.29));
 	drawBoundaries();

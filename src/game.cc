@@ -14,6 +14,7 @@ extern double directX,directY, directZ, scaleAccX, scaleAccY, scaleAccZ, power;
 extern double MIN_X, MIN_Y, MIN_Z, MAX_X, MAX_Y, MAX_Z;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern double addAcc[3];
+extern int score;
 /*
  * Handles all functions of the game
  */
@@ -192,7 +193,7 @@ void Game::render()
 
 	buildHeritageHall();
 	buildDisplay();
-
+	//cout << "score: " << score << endl;
 		// draw game objects
    /* for(int i = 0; i < golist.size(); i++)
     {

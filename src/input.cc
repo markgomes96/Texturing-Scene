@@ -19,7 +19,6 @@ extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 extern bool first_mouse;
-
 Input::Input()
 { }
 
@@ -131,7 +130,7 @@ void Input::mouse( int button, int state, int x, int y )
 {
 	 y = WINDOW_MAX_Y - y; 
 
-        cout << WINDOW_MAX_X << ", " << WINDOW_MAX_Y << " " << x << ", " << y << endl;
+//        cout << WINDOW_MAX_X << ", " << WINDOW_MAX_Y << " " << x << ", " << y << endl;
         switch (activeState)
         {
                 case gameState:
@@ -143,20 +142,20 @@ void Input::mouse( int button, int state, int x, int y )
                                 if(y<WINDOW_MAX_Y*0.60 && y>WINDOW_MAX_Y*0.53)
                                 {
                                         activeState=gameState;
-                                        cout << "Start Display--Start" << endl;
+                                      //  cout << "Start Display--Start" << endl;
               //                          glutPostRedisplay();
                                  }
 
                                 else if(y<WINDOW_MAX_Y*0.50 && y>WINDOW_MAX_Y*0.43)
                                  {
                                          activeState=instructState;
-                                         cout << "Start Display--Instructions" << endl;
+                                        // cout << "Start Display--Instructions" << endl;
                                          glutPostRedisplay();
                                 }
 
                                  else if(y<WINDOW_MAX_Y*0.40 && y>WINDOW_MAX_Y*0.33)
                                 {
-                                   cout << "Start Display--End Game" << endl;
+                                  // cout << "Start Display--End Game" << endl;
                                    exit(0);
                                 }
                         }
@@ -169,13 +168,13 @@ void Input::mouse( int button, int state, int x, int y )
                                          {
                                                   //activeState=gameState;
                                                   activeState = overState;
-                                                  cout << "Pause Display--Resume Game" << endl;
+                                    //              cout << "Pause Display--Resume Game" << endl;
                                                   glutPostRedisplay();
                                          }
 
                                         else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
                                          {
-                                                   cout << "Pause Display--End Game" << endl;
+                                      //             cout << "Pause Display--End Game" << endl;
                                                    exit(0);
                                          }
                                 }
@@ -186,11 +185,11 @@ void Input::mouse( int button, int state, int x, int y )
                                 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.58){
  					if(y<WINDOW_MAX_Y*0.54 && y>WINDOW_MAX_Y*0.47)
                                         {
-                                                cout << "Over State--Play Again" << endl;
+                                        //        cout << "Over State--Play Again" << endl;
                                         }
                                         else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
                                         {
-                                            cout << "Over State--End Game" << endl;
+                                          //  cout << "Over State--End Game" << endl;
                                             exit(0);
                                         }
                                 }
@@ -201,7 +200,7 @@ void Input::mouse( int button, int state, int x, int y )
                                          if(y<WINDOW_MAX_Y*0.46 && y>WINDOW_MAX_Y*0.24)
                                          {
                                                   activeState = startState;
-                                                  cout << "Instruct State--Back to Start" << endl;
+                                            //      cout << "Instruct State--Back to Start" << endl;
                                                   glutPostRedisplay();
 
                 glutPostRedisplay();
@@ -241,7 +240,6 @@ void Input::keyboard( unsigned char key, int x, int y )
                                 keyarr['d'] = PUSHED;
                                 break;
                         case 't':
-
                                 keyarr['t'] = PUSHED;
                                 break;
                         case 'z':
