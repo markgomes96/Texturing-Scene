@@ -6,6 +6,7 @@
 
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
 extern int score;
+extern int startT, startP, pauseT;
 void makeString(float x, float y, void *font, const char* string)
 {
         const char *c;
@@ -221,6 +222,10 @@ void instructDisplay()
 void pauseDisplay()
 {
         char name []= "BFO";
+	char *timeLeft = (char*) malloc(12*sizeof(char));
+	int time = 120000 -  ((glutGet(GLUT_ELAPSED_TIME)- startT) -pauseT - (glutGet(GLUT_ELAPSED_TIME) -startP));
+	sprintf(timeLeft, "Time Left: %d seconds", time/1000);
+	cout << pauseT << endl;
         glMatrixMode(GL_PROJECTION);
         glPushMatrix();
         glLoadIdentity();
@@ -231,8 +236,8 @@ void pauseDisplay()
         glLoadIdentity();
 
         drawTitle(WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.6), 1.0, name);
- textToScreen("Resume Game" , WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
-        textToScreen("Time Left: ", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.4));
+ 	textToScreen("Resume Game" , WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.51));
+        textToScreen(timeLeft, WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.4));
         textToScreen("Leave Game", WINDOW_MAX_X*(0.46), WINDOW_MAX_Y*(0.29));
         drawBoundaries();
  glPopMatrix();
