@@ -21,61 +21,92 @@ extern key_state keyarr[127];
 extern bool left_mouse_down, left_mouse_released;
 extern bool SHOW_HUD;
 
-
 void showMinimap(){
     //Function to generate minimap
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glMatrixMode(GL_PROJECTION);
     glPushMatrix();
-    glEnable(GL_SCISSOR_TEST);
-    glScissor(WINDOW_MAX_X-200, 0, 200, 200);
-    glLoadIdentity();
-    gluLookAt(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0 ,0 ,1);
-    glMatrixMode(GL_MODELVIEW);
+      glLoadIdentity();
+      gluOrtho2D(0,WINDOW_MAX_X,0,WINDOW_MAX_Y);
+      glMatrixMode(GL_MODELVIEW);
+      glDisable(GL_CULL_FACE);
+      glClear(GL_DEPTH_BUFFER_BIT);
+        glPushMatrix();
+          glLoadIdentity();
+          glMatrixMode(GL_MODELVIEW);
+          glPushMatrix();
+            //room
+            glColor3f(0.0, 0.0, 0.0);
+            //glTranslatef(-30.0, -10.0, 0.0);
+            glBegin(GL_LINES);
+              glVertex2f(70.0, 170.0);
+              glVertex2f(120.0, 170.0);
+            glEnd();
+            glBegin(GL_LINES);
+              glVertex2f(45.0, 30.0);
+              glVertex2f(120.0, 30.0);
+            glEnd();
+            glBegin(GL_LINES);
+              glVertex2f(120.0, 30.0);
+              glVertex2f(120.0, 170.0);
+            glEnd();
+            glBegin(GL_LINES);
+              glVertex2f(70.0, 170.0);
+              glVertex2f(70.0, 50.0);
+            glEnd();
+            glBegin(GL_LINES);
+              glVertex2f(45.0, 50.0);
+              glVertex2f(70.0, 50.0);
+            glEnd();
+            glBegin(GL_LINES);
+              glVertex2f(45.0, 30.0);
+              glVertex2f(45.0, 50.0);
+            glEnd();
+          glPopMatrix();
+          glPushMatrix();
+            glTranslatef(75.0, 50.0, 0.0);
+            glColor3f(1.0, 0.0, 0.0);
+            glPointSize(10.0);
+            float xLoc = 5*cameraPos.x;
+            float yLoc = 2*cameraPos.y;
 
-    buildHH();
-    //buildHeritageHall();
-    glPopMatrix();
+            if(xLoc > 120)
+              xLoc = 120;
+            if(xLoc < -75)
+              xLoc =  -75;
+            if(yLoc > 145)
+              yLoc = 145;
+            if(yLoc < -50)
+              yLoc = -50;
 
-    glPushMatrix();
-    //info block
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glEnable(GL_SCISSOR_TEST);
-    glScissor(0, 0, WINDOW_MAX_X-300, 200);
-    glLoadIdentity();
-    gluOrtho2D(0, 100, 0, 100);
-    glColor3f(1.0,1.0,1.0);
-    glRecti(0,0,30,30);
-
-    glPopMatrix();
+            glBegin(GL_POINTS);
+              //Point
+              glVertex2f(xLoc, yLoc);
+            glEnd();
+          glPopMatrix();
+          glColor3f(1.0,1.0,1.0);
+          glRecti(0,0,200,200);
+        glPopMatrix();
+        glMatrixMode(GL_PROJECTION);
+      glPopMatrix();
+    glEnable(GL_TEXTURE_2D);
 
 }
 void buildDisplay(){
 
     buildCameraScene();
     buildHeritageHall();
-    //g.drawSceneObjects( );
 
+    if(SHOW_HUD){
+      showMinimap();
+    }
 }
 void buildCameraScene(){
 
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
-    //glPushMatrix();
-    glEnable(GL_SCISSOR_TEST);
-    glLoadIdentity();   	//call this before setting the viewing position
 
-    glViewport(0,0, WINDOW_MAX_X, WINDOW_MAX_Y);
-    //glScissor(WINDOW_MAX_X-200, 200, 200, 200);
-    if(SHOW_HUD){
-        showMinimap();
-        glScissor(0, 200, WINDOW_MAX_X, WINDOW_MAX_Y);
-    }else{
-      glScissor(0,0, WINDOW_MAX_X, WINDOW_MAX_Y);
-    }
-    //glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
-    //glScissor(0, 200, WINDOW_MAX_X, WINDOW_MAX_Y);
+    glViewport(0, 0, WINDOW_MAX_X, WINDOW_MAX_Y);
 
-
+    glLoadIdentity();
 
     if (keyarr['w']){
         // Move forward
