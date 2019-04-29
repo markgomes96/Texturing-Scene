@@ -29,8 +29,9 @@ void display( void )
 	buildDisplay();
 	glutSwapBuffers();
 #else
-	g.HUD();
 	g.render();
+	g.HUD();
+	glutSwapBuffers( ); 
 #endif
 
 }

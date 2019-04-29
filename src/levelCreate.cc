@@ -192,7 +192,7 @@ void buildCameraScene(){
 
     /*if ( keyarr['t']){
         //Throw Object
-        power *= 1.01;
+        power *= 1.05;
     } else if (unhold){
         g.createProjectile( (double) cameraPos.x,
                 (double) cameraPos.y,
@@ -276,7 +276,6 @@ void buildHeritageHall(void){
     {
         g.drawObject(g.tarList[i]);
     }
-
 
 	//draw heritage hall
 	buildHH();
