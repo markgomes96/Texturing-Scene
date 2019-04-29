@@ -214,14 +214,14 @@ void buildHeritageHall(void){
 	glEnable(GL_NORMALIZE);
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
 
-	glColorMaterial(GL_FRONT and GL_BACK, GL_AMBIENT_AND_DIFFUSE);
-	glColorMaterial(GL_FRONT and GL_BACK, GL_SPECULAR);
+	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
+	glColorMaterial(GL_FRONT_AND_BACK, GL_SPECULAR);
 	glEnable(GL_COLOR_MATERIAL);
 	
-	glMaterialfv(GL_FRONT and GL_BACK, GL_SPECULAR, spec);
-	glMaterialfv(GL_FRONT and GL_BACK, GL_DIFFUSE, diff);
-	glMaterialfv(GL_FRONT and GL_BACK, GL_AMBIENT, ambient);
-	glMaterialf(GL_FRONT and GL_BACK, GL_SHININESS, 0.0);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
+	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0);
 	//glMaterialfv(GL_FRONT and GL_BACK, GL_EMISSION, emiss);
 	
 
@@ -231,6 +231,8 @@ void buildHeritageHall(void){
 	//glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
 	glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 0.2);
 	glEnable(GL_LIGHT0);
+	glDisable( GL_LIGHTING ); 
+	glEnable( GL_COLOR_MATERIAL ); 
 
     // Draw objectiles directly after setting the camera 
     // ****** WARNING ******
