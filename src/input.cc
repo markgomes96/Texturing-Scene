@@ -26,7 +26,7 @@ Input::Input()
 
 void Input::passiveMouseMovement(int x, int y){
 	if(activeState==gameState){
-
+	
 	//have can't move it to parameter spot or it gets stuck
 	//so if at very right, moves cursor x to 1
 	//if at very left, moves cursor pos to MAX - 2

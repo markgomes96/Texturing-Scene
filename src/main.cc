@@ -22,10 +22,12 @@ extern GLuint textureID[50];
 
 void display( void )
 {
+
 #ifdef LEVEL
 	switch(activeState)
 	{
 		case gameState:
+			glutSetCursor(GLUT_CURSOR_NONE);
 			buildHeritageHall();
     			g.drawSceneObjects( ); 
 			g.HUD();
@@ -33,22 +35,26 @@ void display( void )
 			glutSwapBuffers();
 			break;
 		case startState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                         startDisplay();
 			glutSwapBuffers();
                         break;
 		 case instructState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
                         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                         instructDisplay();
 			glutSwapBuffers();
                         break;
-case pauseState:
+		case pauseState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
                         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                         pauseDisplay();
 			glutSwapBuffers();
                         break;
 
                 case overState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
                         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
                         overDisplay();
 			glutSwapBuffers();
@@ -140,9 +146,9 @@ int main(int argc, char** argv)
 	glutPassiveMotionFunc(passiveMouseMovement);
 	glutMotionFunc(mouseMovement);
 	//make cursor invisible
-	if(activeState==gameState){
+	/*if(activeState==gameState){
 	glutSetCursor(GLUT_CURSOR_NONE);
-	}
+	}*/
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame
 	glutIdleFunc(update);			//update game
