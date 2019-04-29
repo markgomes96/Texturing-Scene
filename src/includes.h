@@ -26,7 +26,9 @@
 #ifdef OSX
 	#include <GL/glew.h>		//graphics libraries
 	#include <GLUT/glut.h>
-
+	#include <glm/glm.hpp>
+	#include <glm/gtc/matrix_transform.hpp>
+	
 	#include <vector>		//utility libraries
 	#include <cmath>
 	#include <stdlib.h>

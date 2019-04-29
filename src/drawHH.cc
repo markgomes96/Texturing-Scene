@@ -12,7 +12,6 @@ extern GLuint textureID[100];
 void buildHH(void){
 
 	glEnable(GL_DEPTH_TEST);
-
 //floor//
 	glEnable(GL_TEXTURE_2D);
 
@@ -5412,6 +5411,8 @@ glTranslated(0.0, -40.11168 ,0.0);
 //Windows inbetween doors
 
 //0th window
+//5.01396
+
 //bottom piece
 	glPushMatrix();
 	 glPolygonMode(GL_FRONT, GL_FILL);

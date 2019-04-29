@@ -25,7 +25,41 @@ void display( void )
 
 	buildHeritageHall();
     g.drawSceneObjects( ); 
+/*	//lighting
+	GLfloat lightPos1[] = {3.5, 5.0, 3.0, 1.0};
+	GLfloat lightColor[] = {0.0, 1.0, 1.0, 1.0};
+	GLfloat ambient[] = {0.2, 0.2, 0.2, 0.2};
+	GLfloat spec[] = {1.0, 1.0, 1.0, 1.0};
+	GLfloat diff[] = {0.5, 0.5, 0.5, 1.0};
+	GLfloat on[] = {1.0, 1.0, 1.0, 1.0};
+
+	//to mark light position
+	glDisable(GL_LIGHTING);
+	glPushMatrix();
+	glTranslatef(1.0, 1.0, 1.0);
+	glColor3f(1.0, 1.0, 0.0);
+	glutWireSphere(5.5, 10.0, 10.0);
+	glPopMatrix();
+	glEnable(GL_LIGHTING);
+
+	glColorMaterial(GL_FRONT, GL_AMBIENT_AND_DIFFUSE);
+	glColorMaterial(GL_FRONT, GL_SPECULAR);
+	glEnable(GL_COLOR_MATERIAL);
+
+	glMaterialfv(GL_FRONT, GL_SPECULAR, spec);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, diff);
+	glMaterialf(GL_FRONT, GL_SHININESS, 10.0);
+
+	glLightfv(GL_LIGHT0, GL_POSITION, lightPos1);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, on);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, on);	
+	
+	buildHeritageHall();
+*/
+	glDisable(GL_LIGHTING);
 	g.HUD();
+	glEnable(GL_LIGHTING);	
+
 	buildDisplay();
 	glutSwapBuffers();
 #else
