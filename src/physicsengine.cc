@@ -66,8 +66,8 @@ void PhysicsEngine::updateObjects(vector<GameObj> &obList, vector<GameObj> &tarL
     while (countOb < obList.size()){
         countTar = 0;
         while (countTar < tarList.size()){
-            if(!tarList[countTar].isStatic){	
-		        if(positionTest(obList[countOb], tarList[countTar])){
+            if ((!tarList[countTar].isStatic) && (!obList[countOb].isStatic)){	
+		if(positionTest(obList[countOb], tarList[countTar])){
                     if (sphereCollsTest(obList[countOb], tarList[countTar])){
                         tarList.erase(tarList.begin() + countTar);
                         obList.erase(obList.begin() + countOb);
@@ -77,7 +77,6 @@ void PhysicsEngine::updateObjects(vector<GameObj> &obList, vector<GameObj> &tarL
                         break;
                     }
                 }
-
             }
             countTar++;
         }
