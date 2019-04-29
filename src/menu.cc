@@ -181,13 +181,13 @@ void startDisplay()
 
 void instructScreenText()
 {
-        textToScreen("Get to the end ", WINDOW_MAX_X*(0.425), WINDOW_MAX_Y*(0.54));
-        textToScreen("without being hit!", WINDOW_MAX_X*(0.50), WINDOW_MAX_Y*(0.54));
+        textToScreen("See how many ta", WINDOW_MAX_X*(0.417), WINDOW_MAX_Y*(0.54));
+        textToScreen("rgets you can hit!", WINDOW_MAX_X*(0.505), WINDOW_MAX_Y*(0.54));
         textToScreen("W = move ahead", WINDOW_MAX_X*(0.25), WINDOW_MAX_Y*(0.46));
         textToScreen("S = move back", WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.46));
         textToScreen("A = move left", WINDOW_MAX_X*(0.55), WINDOW_MAX_Y*(0.46));
         textToScreen("D = move right", WINDOW_MAX_X*(0.70), WINDOW_MAX_Y*(0.46));
-        textToScreen("T = throw object", WINDOW_MAX_X*(0.25), WINDOW_MAX_Y*(0.38));
+        textToScreen("Click = throw", WINDOW_MAX_X*(0.25), WINDOW_MAX_Y*(0.38));
         textToScreen("Z = make smaller", WINDOW_MAX_X*(0.40), WINDOW_MAX_Y*(0.38));
         textToScreen("X = make bigger", WINDOW_MAX_X*(0.55), WINDOW_MAX_Y*(0.38));
         textToScreen("R = reverse", WINDOW_MAX_X*(0.70), WINDOW_MAX_Y*(0.38));
