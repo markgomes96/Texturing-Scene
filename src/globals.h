@@ -70,6 +70,8 @@ bool left_mouse_released = false;
 bool destroy = false;
 bool SHOW_HUD = true;
 int counter = 0;
+int score = 0;
+int penalty = 36000;
 
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);

@@ -15,11 +15,21 @@ extern double x_rotat, y_rotat;
 extern float sensitivity;
 extern glm::vec3 cameraFront, cameraTarget, cameraPos, up, cameraDirection;
 extern bool camera, unhold;
-extern int jump, counter;
+extern int jump, counter, score, penalty;
 extern Game g;
 extern key_state keyarr[127];
 extern bool left_mouse_down, left_mouse_released;
 extern bool SHOW_HUD;
+
+void writeToScreen(std::string str, int x, int y){
+  //Writes Characters to screen
+  glColor3f(0.0, 0.0, 0.0);
+  glRasterPos2i(x,y);
+  void *font = GLUT_BITMAP_HELVETICA_12;
+  for(int i = 0; i < str.size(); i++){
+      glutBitmapCharacter(font, str[i]);
+  }
+}
 
 void showMinimap(){
     //Function to generate minimap
@@ -35,6 +45,10 @@ void showMinimap(){
           glMatrixMode(GL_MODELVIEW);
           glPushMatrix();
             //room
+            int score = 9000*counter-penalty;
+            std::string scoreStr = "Score: " + to_string(score);
+            writeToScreen(scoreStr, 50, 180);
+
             glColor3f(0.0, 0.0, 0.0);
             //glTranslatef(-30.0, -10.0, 0.0);
             glBegin(GL_LINES);
@@ -85,12 +99,18 @@ void showMinimap(){
           glPopMatrix();
           glColor3f(1.0,1.0,1.0);
           glRecti(0,0,200,200);
+
         glPopMatrix();
         glMatrixMode(GL_PROJECTION);
+      glPopMatrix();
+
+      glPushMatrix();
+
       glPopMatrix();
     glEnable(GL_TEXTURE_2D);
 
 }
+
 void buildDisplay(){
 
     buildCameraScene();
@@ -165,6 +185,7 @@ void buildCameraScene(){
                            1, scaleObX, scaleObY, scaleObZ);
         //reset power
         power = 1.0;
+        penalty += 100;
 		left_mouse_released = false;
     }
 
