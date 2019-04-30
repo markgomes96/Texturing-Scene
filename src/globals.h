@@ -50,7 +50,7 @@ double scaleObX = 0.1;
 double scaleObY = 0.1;
 double scaleObZ = 0.1;
 
-// acceleration of the object, at the beginning, there is only gravity 
+// acceleration of the object, at the beginning, there is only gravity
 double scaleAccX = 0;
 double scaleAccY = 0;
 double scaleAccZ = 0;
@@ -68,7 +68,10 @@ bool left_mouse_released = false;
 
 // This is for the target mechanism
 bool destroy = false;
+bool SHOW_HUD = true;
 int counter = 0;
+int score = 0;
+int penalty = 0;
 
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);
@@ -77,5 +80,9 @@ void drawBox( struct box* );
 Game g;
 
 GLuint textureID[100];
+
+/*int starT = 0;
+int startP = 0;
+int pauseT = 0;*/
 
 #endif

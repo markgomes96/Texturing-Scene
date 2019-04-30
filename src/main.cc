@@ -1,6 +1,7 @@
 #include "includes.h"
 #include "prototypes.h"
 #include "game.h"
+#include "menu.h"
 
 // Constant values for window size and place
 const int WINDOW_POSITION_X = 0;
@@ -16,21 +17,63 @@ extern void buildDisplay(void);
 extern double centerX, centerY, centerZ;
 extern double CAMERA_R, CAMERA_THETA, CAMERA_PHI;
 extern double x_rotat, y_rotat;
-
+enum State activeState;
 extern GLuint textureID[50];
+int startT = 0;
+int startP = 0;
+int pauseT = 0;
 
 void display( void )
 {
-#ifdef LEVEL
 
-	buildHeritageHall();
-    g.drawSceneObjects( ); 
-	g.HUD();
-	buildDisplay();
-	glutSwapBuffers();
+	if(glutGet(GLUT_ELAPSED_TIME) - startT - pauseT > 120000)
+	{
+		activeState = overState;
+	}
+#ifdef LEVEL
+	switch(activeState)
+	{
+		case gameState:
+			glutSetCursor(GLUT_CURSOR_NONE);
+			buildHeritageHall();
+    			g.drawSceneObjects( ); 
+			g.HUD();
+			buildDisplay();
+			glutSwapBuffers();
+			break;
+		case startState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        startDisplay();
+			glutSwapBuffers();
+                        break;
+		 case instructState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
+                        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        instructDisplay();
+			glutSwapBuffers();
+                        break;
+		case pauseState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
+                        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        pauseDisplay();
+			glutSwapBuffers();
+                        break;
+
+                case overState:
+			glutSetCursor(GLUT_CURSOR_RIGHT_ARROW);
+                        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                        overDisplay();
+			glutSwapBuffers();
+                        break;
+        }
+
+//		glutSwapBuffers();
+
 #else
-	g.HUD();
 	g.render();
+	g.HUD();
+	glutSwapBuffers( ); 
 #endif
 
 }
@@ -71,7 +114,7 @@ void init(int window_width, int window_height, int window_position_x, int window
 		printf("ERROR! --> Game mode not possible\n");
 		exit(1);
 	}*/
-
+	activeState = startState;
 	glClearColor (0.0, 0.0, 0.0, 0.0);
 	glLoadIdentity();
 }
@@ -111,8 +154,9 @@ int main(int argc, char** argv)
 	glutPassiveMotionFunc(passiveMouseMovement);
 	glutMotionFunc(mouseMovement);
 	//make cursor invisible
+	/*if(activeState==gameState){
 	glutSetCursor(GLUT_CURSOR_NONE);
-
+	}*/
 	glutReshapeFunc(reshape);
 	glutDisplayFunc(display);		//render next frame
 	glutIdleFunc(update);			//update game

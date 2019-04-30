@@ -3,15 +3,15 @@
 include ../Makefile.inc
 
 INCLUDES   = includes.h
-HEADERS    = structs.h game.h input.h globals.h prototypes.h ../lib/SOIL/SOIL.h
-OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o \
+HEADERS    = structs.h game.h input.h globals.h prototypes.h menu.h ../lib/SOIL/SOIL.h
+OBJS 	   = game.o input.o levelCreate.o defineBox.o drawBox.o physobj.o menu.o \
 			 gameobj.o physicsengine.o drawCase.o texturing.o drawHH.o
 
 #Since these compiler flags are specific to the source, leave them in this makefile
 #and not in the parent makefile.
 
-CF = #-DLEVEL	#-DLEVEL -> to switch to level scene
-DF = -DDEV
+CF = -DLEVEL	#-DLEVEL -> to switch to level scene
+DF = #-DDEV
 
 
 all : run tags
@@ -52,6 +52,9 @@ texturing.o : texturing.cc $(INCLUDES) $(HEADERS)
 
 #objectdata.o : objectdata.cc $(INCLUDES) $(HEADERS)
 #	$(C++) $(CCFLAGS) $(CF) -c objectdata.cc
+
+menu.o : menu.cc $(INCLUDES) $(HEADERS)
+	$(C++) $(CCFLAGS) $(CF) $(DF) -c menu.cc
 
 
 drawHH.o : drawHH.cc $(INCLUDES) $(HEADERS)

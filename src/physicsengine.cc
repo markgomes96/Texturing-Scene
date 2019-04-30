@@ -6,6 +6,7 @@
 
 extern bool destroy;
 extern int counter;
+extern int score;
 PhysicsEngine::PhysicsEngine()
 { }
 
@@ -73,6 +74,7 @@ void PhysicsEngine::updateObjects(vector<GameObj> &obList, vector<GameObj> &tarL
                         obList.erase(obList.begin() + countOb);
                         destroy = true;
                         counter++;
+			score = counter*10;
                         countOb--;
                         break;
                     }
