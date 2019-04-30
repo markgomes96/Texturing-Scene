@@ -67,7 +67,7 @@ void PhysicsEngine::updateObjects(vector<GameObj> &obList, vector<GameObj> &tarL
     while (countOb < obList.size()){
         countTar = 0;
         while (countTar < tarList.size()){
-            if ((!tarList[countTar].isStatic) && (!obList[countOb].isStatic)){	
+            if ((!tarList[countTar].isStatic) && (!obList[countOb].isStatic)){
 		if(positionTest(obList[countOb], tarList[countTar])){
                     if (sphereCollsTest(obList[countOb], tarList[countTar])){
                         tarList.erase(tarList.begin() + countTar);
@@ -96,13 +96,12 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
     // ***Collisions in Z-axis***
     if(go1.wzm[0] < go2.wzm[1] && go1.wzm[0] > go2.wzm[0])			// bottom collision
     {
-        colls[0] = -1;
+        colls[0] = 1;
     }
     else if(go1.wzm[1] < go2.wzm[1] && go1.wzm[1] > go2.wzm[0])		// top collision
     {
         colls[0] = 1;
     }
-
     else if(go2.wzm[0] < go1.wzm[1] && go2.wzm[0] > go1.wzm[0])          // bottom collision
     {
         colls[0] = 1;
@@ -115,10 +114,11 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
     {
         colls[0] = 1;
     }
-	//                                                      ***Collisions in Y-axis***
+
+	// ***Collisions in Y-axis***
 	if(go1.wym[0] < go2.wym[1] && go1.wym[0] > go2.wym[0])			// left collision
 	{
-		colls[1] = -1;
+		colls[1] = 1;
 	}
 	else if(go1.wym[1] < go2.wym[1] && go1.wym[1] > go2.wym[0])		// right collision
 	{
@@ -140,7 +140,7 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 	// ***Collisions in X-axis***
 	if(go1.wxm[0] < go2.wxm[1] && go1.wxm[0] > go2.wxm[0])			// back collision
 	{
-		colls[2] = -1;
+		colls[2] = 1;
 	}
 	else if(go1.wxm[1] < go2.wxm[1] && go1.wxm[1] > go2.wxm[0])		// front collision
 	{
@@ -158,7 +158,7 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 	{
 		colls[2] = 1;
 	}
-    
+
 	// collision only occurs when collide in all 3 dimensions
 	if(colls[0] != 0 && colls[1] != 0 && colls[2] != 0)
 	{
@@ -178,10 +178,24 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 		else if(go1.wzm[1] < go2.wzm[0])	// top collision
 			horizColl = false;
 
+		bool xColl = false;		// assume front/back collison
+		if(horizColl)
+		{
+			if(go1.wym[0] > go2.wym[1])		// left collision
+				xColl = true;
+			else if(go1.wym[1] < go2.wym[0])	// right collision
+				xColl = true;
+		}
+
+
 		bounceVect = vectMult(go1.velocity, -go1.elasticity);
 		if(horizColl)
 		{
 			bounceVect.z = bounceVect.z * -1.0;
+			if(xColl)
+				bounceVect.x = bounceVect.x * -1.0;
+			else
+				bounceVect.y = bounceVect.y * -1.0;
 		}
 		else
 		{
@@ -191,35 +205,14 @@ void PhysicsEngine::checkCollision(GameObj &go1, GameObj &go2)
 		go1.velocity = bounceVect;
 
 		// check if object is stationary
+		/*
 		vect3 deltaVec = vectMult(go1.acceleration, -timeStep);
 		if (abs(go1.velocity.z) <= abs(deltaVec.z))
 			go1.stationary = true;
 		else
 			go1.stationary = false;
+		*/
     }
-	// collision only occurs when collide in all 3 dimensions
-	if(colls[0] != 0 && colls[1] != 0 && colls[2] != 0) 
-	{
-		/*
-		* Handle collisions based on velocity vector
-		* reverse velocity vector, convert to unit, scale by distance to collision point
-		* apply (collision vector) to colliding objects position
-		*/
-
-		overlap = go2.wzm[1] - go1.wzm[0];		// z adjustment
-		go1.collCenter.z += (-1) * colls[0] * abs(overlap);
-
-		/*
-		overlap = go2.wym[1] - go1.wym[0];		// y adjustment
-		go1.collCenter.y += (-1) * colls[1] * abs(overlap);
-	
-		overlap = go2.wxm[1] - go1.wxm[0];		// x adjustment
-		go1.collCenter.x += (-1) * colls[2] * abs(overlap);
-		*/
-
-		go1.velocity = vect3(0.0, 0.0, 0.0);	// reset velocity
-		go1.updatePhysics();					// update go1 box collider
-	}
 }
 
 void PhysicsEngine::updatePosition(GameObj &go)

@@ -4,7 +4,7 @@
 #include "includes.h"
 #include "game.h"
 #include "prototypes.h"
-#include <fstream> 
+#include <fstream>
 #include <stdlib.h>
 
 extern void buildDisplay();
@@ -39,34 +39,6 @@ void Game::init()
              randomize(MIN_Y, MAX_Y), // + cameraFront.y,
             randomize(MIN_Z, MAX_Z), // + cameraFront.z,
             1, 0.2, 0.001, 0.2);
-
-    /*
-    // ***Test objects for phyiscs***
-    floor = GameObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
-
-    senerio one - collision in z-axis
-    cube = GameObj(vertex(1.0, 2.0, 5.0, 1.0), vect3(1.0, 1.0, 1.0), false);
-    cube2 = GameObj(vertex(0.0, 1.0, 10.0, 1.0), vect3(1.0, 1.0, 1.0), false);
-
-
-    // senerio two - collision in x-axis
-    cube = GameObj(vertex(4.0, 0.0, 7.0, 1.0), vect3(1.0, 1.0, 1.0), false);
-    cube2 = GameObj(vertex(-4.0, 0.0, 7.0, 1.0), vect3(0.5, 0.5, 0.5), false);
-    cube.velocity = vect3(-3.0, 0.0, 0.0);
-    cube2.velocity = vect3(3.0, 0.0, 0.0);
-
-    obList.push_back(floor);
-    obList.push_back(cube);
-
-    loadTextures();
-    cout << "init" << endl;
-
-    obList.push_back(cube2);
-    floor = GameObj(vertex(0.0, 0.0, 0.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
-    cube = GameObj(vertex(0.0, 0.0, 6.0, 1.0), vect3(1.0, 3.0, 1.0), false);
-    //	obList.push_back(floor);
-    //	obList.push_back(cube);*/
-
 }
 
 // Create throwing object
@@ -130,9 +102,9 @@ void Game::HUD()
     //displays HUD in a 2D square on the bottom left on the screen
     //	buildHeritageHall();
     //
-    //	Disabling this HUD doesn't render correctly otherwise 
-        glDisable( GL_TEXTURE_2D ); 
-        glDisable( GL_TEXTURE ); 
+    //	Disabling this HUD doesn't render correctly otherwise
+        glDisable( GL_TEXTURE_2D );
+        glDisable( GL_TEXTURE );
 
     float testNumber = 3.00;
 
@@ -143,8 +115,8 @@ void Game::HUD()
     sprintf(HUDtitle, "HUD");
 
     //This is for the crossahirs laDieZZzz
-    char* cross = (char*) malloc(2*sizeof(char)); 
-    sprintf(cross,"o"); 
+    char* cross = (char*) malloc(2*sizeof(char));
+    sprintf(cross,"o");
 
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
@@ -167,11 +139,11 @@ void Game::HUD()
     for (c=test;*c!='\0';c++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
     }
-    
+
     glColor3f( 1.0, 0.0, 0.0 );
-    glRasterPos2i( 50, 50 ); 
-    for( c = cross; *c != '\0'; ++c ) 
-        glutBitmapCharacter( GLUT_BITMAP_HELVETICA_18, *c ); 
+    glRasterPos2i( 50, 50 );
+    for( c = cross; *c != '\0'; ++c )
+        glutBitmapCharacter( GLUT_BITMAP_HELVETICA_18, *c );
 
     //HUD title
     /*glRasterPos2i(10, 25);
@@ -191,9 +163,9 @@ void Game::HUD()
     //buildCameraScene();
     free(test);
 
-	//Enable it again 
-        glEnable( GL_TEXTURE_2D ); 
-        glEnable( GL_TEXTURE ); 
+	//Enable it again
+        glEnable( GL_TEXTURE_2D );
+        glEnable( GL_TEXTURE );
 
 }
 
@@ -212,25 +184,21 @@ void Game::render()
 	buildHeritageHall();
 	buildDisplay();
 
-		// draw game objects
-   /* for(int i = 0; i < golist.size(); i++)
-    {
-        drawObject(golist[i]);
-
-        /*
-		if(golist[i].isScene)
-		{
-				drawBounds(&golist[i].bounds[0]);
-		}
-        */
-
     // Physics test
     for(int i = 0; i < obList.size(); i++)
     {
         drawObject(obList[i]);
+
+        // draws collision boundary in red lines
+        /*
+        if(obList[i].isScene)
+        {
+            drawBounds(&obList[i].bounds[0]);
+        }
+        */
     }
 
-    //glutSwapBuffers();--->  calling this in the display function 
+    //glutSwapBuffers();--->  calling this in the display function
 }
 
 void Game::drawObject(GameObj go)
@@ -242,20 +210,15 @@ void Game::drawObject(GameObj go)
 	    else
 	        drawFreeForm(go.polygons, go.collCenter);
 	}
-
-    /*
-    if(go.drawBounds)
-        drawBounds(&go.bounds[0]);
-    */
 }
 
 
-//Renders the SceneObjects vector 
-void Game::drawSceneObjects( ){ 
+//Renders the SceneObjects vector
+void Game::drawSceneObjects( ){
 
-  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT ); 
-  glMatrixMode( GL_MODELVIEW ); 
-  glLoadIdentity( ); 
+  glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+  glMatrixMode( GL_MODELVIEW );
+  glLoadIdentity( );
 
   gluLookAt( (double)cameraPos.x, (double)cameraPos.y, (double)cameraPos.z,
      (double) cameraTarget.x, // + cameraFront.x,
@@ -264,78 +227,78 @@ void Game::drawSceneObjects( ){
      (double) up.x, (double) up.y, (double) up.z);       // Up */
 
 
-  for( int i = 0; i < SceneObjects.size(); i++ ){ 
-    drawPoly( SceneObjects[ i ] );    
+  for( int i = 0; i < SceneObjects.size(); i++ ){
+    drawPoly( SceneObjects[ i ] );
   }
 }
 
-/* Generate a random float */ 
-float randColorVal( ){ 
-  return (float) rand() / RAND_MAX; 
+/* Generate a random float */
+float randColorVal( ){
+  return (float) rand() / RAND_MAX;
 }
 
-/* Draw polygon shapes */ 
-void Game::drawPoly( object ob ){ 
-  glPushMatrix( ); 
-  glPolygonMode( GL_FRONT_AND_BACK, GL_FILL ); 
-  glColor3f( 0.0, 0.0, 1.0 ); 
-  glBegin( GL_POLYGON ); 
+/* Draw polygon shapes */
+void Game::drawPoly( object ob ){
+  glPushMatrix( );
+  glPolygonMode( GL_FRONT_AND_BACK, GL_FILL );
+  glColor3f( 0.0, 0.0, 1.0 );
+  glBegin( GL_POLYGON );
   for( int i = 0; i < ob.polygons.size(); i++) {
       polygon p = ob.polygons[i];
       for (int j = 0; j < p.vertices.size(); j++){
-            glVertex3f( p.vertices[j].x, 
-		    p.vertices[j].y, 
+            glVertex3f( p.vertices[j].x,
+		    p.vertices[j].y,
 		    p.vertices[j].z );
       }
   }
-  glEnd( ); 
-  glPopMatrix( ); 
+  glEnd( );
+  glPopMatrix( );
 }
 
-/* Helper function to read in the vertices from the data file */ 
-void Game::loadVertex( string buffer, vertex& ver ){ 
-  string token; 
-  size_t pos = 0; 
-  buffer.erase(0,1); 
-  pos = buffer.find(","); 
-  token = buffer.substr(0,pos); 
-  ver.x = atof(token.c_str()); 
-  //cout << ver.x << endl; 
+/* Helper function to read in the vertices from the data file */
+void Game::loadVertex( string buffer, vertex& ver ){
+  string token;
+  size_t pos = 0;
+  buffer.erase(0,1);
+  pos = buffer.find(",");
+  token = buffer.substr(0,pos);
+  ver.x = atof(token.c_str());
+  //cout << ver.x << endl;
   buffer.erase( 0, pos );
 
-  buffer.erase(0,1); 
-  pos = buffer.find(","); 
-  token = buffer.substr(0,pos); 
-  ver.y = atof(token.c_str()); 
-  //cout << ver.y << endl; 
+  buffer.erase(0,1);
+  pos = buffer.find(",");
+  token = buffer.substr(0,pos);
+  ver.y = atof(token.c_str());
+  //cout << ver.y << endl;
   buffer.erase( 0, pos );
 
-  buffer.erase(0,1); 
-  pos = buffer.find(","); 
-  token = buffer.substr(0,pos); 
-  ver.z = atof(token.c_str()); 
-  //cout << ver.z << endl; 
+  buffer.erase(0,1);
+  pos = buffer.find(",");
+  token = buffer.substr(0,pos);
+  ver.z = atof(token.c_str());
+  //cout << ver.z << endl;
   buffer.erase( 0, pos );
 }
 
-/*  
- *  Read in the vertices file and load them into the game object. This function should be 
- *  called only ONCE -- probably somewhere in init. 
+/*
+ *  Read in the vertices file and load them into the game object. This function should be
+ *  called only ONCE -- probably somewhere in init.
  */
-void Game::loadVerticesFileData( char* fileName ){ 
-  fstream file( fileName, ios::in ); 
-  string buffer; 
-  object ob; 
-   
-  while( getline( file, buffer ) ){ 
-    vertex v; 
-    if( buffer[0] == 'v' ){ 
-	loadVertex( buffer, v ); 
-	ob.polygons[0].vertices.push_back( v ); 
-    } else if ( buffer[0] == '#' ) { 
-      SceneObjects.push_back( ob ); 
-      object newPol; 
-      ob = newPol; 
+void Game::loadVerticesFileData( char* fileName ){
+  fstream file( fileName, ios::in );
+  string buffer;
+  object ob;
+
+  while( getline( file, buffer ) ){
+    vertex v;
+    if( buffer[0] == 'v' ){
+	loadVertex( buffer, v );
+	ob.polygons[0].vertices.push_back( v );
+    } else if ( buffer[0] == '#' ) {
+      SceneObjects.push_back( ob );
+      object newPol;
+      ob = newPol;
     }
   }
 }
@@ -475,7 +438,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(bs));
 
     // back wall
-    bs[0]= -5.0; bs[1] = 12.0; bs[2]= -7.6; bs[3]= -6.6; bs[4] = 0.0; bs[5]= 5.4864;
+    bs[0]= -5.0; bs[1] = 12.0; bs[2]= -10.0; bs[3]= -9.0; bs[4] = 0.0; bs[5]= 5.4864;
     obList.push_back(GameObj(bs));
 
     // front wall
@@ -488,12 +451,12 @@ void Game::addSceneObjects()
 	base[0] = 0.0; base[1] = 0.0; base[2]= 0.0; base[3]= 0.0; base[4] = 0.0; base[5]= 0.0;
 	glass[0]= 0.0; glass[1] = 0.0; glass[2]=  0.0; glass[3]= 0.0; glass[4] = 0.0; glass[5]= 0.0;
 
-	vect3 orig = vect3(0.0,5.75,0.0);
-	vect3 trans = vect3(0.0,0.0,0.0);
-	vect3 mod = vect3(0.0,0.0,0.0);
+	vect3 orig = vect3(0.0, 0.0, 0.0);
+	vect3 trans = vect3(0.0, 0.0, 0.0);
+	vect3 mod = vect3(0.0, 0.0, 0.0);
 
 	// case 1
-	mod = vect3(0.5,0.25,0.0);
+	mod = vect3(0.75,5.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -501,7 +464,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 2
-	mod = vect3(5.5,0.25,0.0);
+	mod = vect3(5.25,5.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -509,7 +472,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 3
-	mod = vect3(0.5,8.6875,0.0);
+	mod = vect3(0.75,15.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -517,7 +480,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 4
-	mod = vect3(5.5,8.6875,0.0);
+	mod = vect3(5.25,15.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -525,7 +488,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 5
-	mod = vect3(5.5,17.375,0.0);
+	mod = vect3(5.25,25.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -533,7 +496,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 6
-	mod = vect3(0.5,17.375,0.0);
+	mod = vect3(0.75,25.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -541,7 +504,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 7
-	mod = vect3(0.5,26.0625,0.0);
+	mod = vect3(0.75,35.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -549,7 +512,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 8
-	mod = vect3(5.5,26.0625,0.0);
+	mod = vect3(5.25,35.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -557,7 +520,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 9
-	mod = vect3(0.5,35.0,0.0);
+	mod = vect3(0.75,45.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));
@@ -565,7 +528,7 @@ void Game::addSceneObjects()
 	obList.push_back(GameObj(glass));
 
 	// case 10
-	mod = vect3(5.5,35.0,0.0);
+	mod = vect3(5.25,45.75,0.0);
 	trans = vect3( (orig.x+mod.x), (orig.y+mod.y), (orig.z+mod.z) );
 	base[0] = bo[0]+trans.x; base[1] = bo[1]+trans.x; base[2] = bo[2]+trans.y; base[3] = bo[3]+trans.y; base[4] = bo[4]+trans.z; base[5] = bo[5]+trans.z;
 	obList.push_back(GameObj(base));

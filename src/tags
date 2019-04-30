@@ -19,6 +19,7 @@ GLOBALS	globals.h	2;"	d
 Game	game.cc	/^Game::Game()$/;"	f	class:Game
 Game	game.h	/^class Game {$/;"	c
 GameObj	gameobj.cc	/^GameObj::GameObj()$/;"	f	class:GameObj
+GameObj	gameobj.cc	/^GameObj::GameObj(float* bs)$/;"	f	class:GameObj
 GameObj	gameobj.cc	/^GameObj::GameObj(vertex _position, vect3 _scale, bool isStat, bool colorChange) {$/;"	f	class:GameObj
 GameObj	gameobj.cc	/^GameObj::GameObj(vertex _position, vect3 _scale, vector<polygon> _polygons,colortype _color, bool isStat)$/;"	f	class:GameObj
 GameObj	gameobj.h	/^class GameObj : public PhysObj$/;"	c
@@ -29,6 +30,12 @@ INPUT_H	input.h	2;"	d
 Input	input.cc	/^Input::Input()$/;"	f	class:Input
 Input	input.h	/^class Input $/;"	c
 LEVELS	levelCreate.cc	2;"	d	file:
+MAX_X	globals.h	/^double MAX_X = 6.5;$/;"	v
+MAX_Y	globals.h	/^double MAX_Y = 54.5;$/;"	v
+MAX_Z	globals.h	/^double MAX_Z = 4.5;$/;"	v
+MIN_X	globals.h	/^double MIN_X = 1.0;$/;"	v
+MIN_Y	globals.h	/^double MIN_Y = -6.5;$/;"	v
+MIN_Z	globals.h	/^double MIN_Z = 1.0;$/;"	v
 NOTPUSHED	globals.h	/^enum key_state {NOTPUSHED, PUSHED} keyarr[127];$/;"	e	enum:key_state
 NOTPUSHED	input.cc	/^extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];$/;"	e	enum:key_state	file:
 OBJECTDATA_CC	objectdata.cc	2;"	d	file:
@@ -85,16 +92,19 @@ colortype	structs.h	/^	colortype()$/;"	f	struct:colortype
 colortype	structs.h	/^	colortype(float _red, float _green, float _blue)$/;"	f	struct:colortype
 colortype	structs.h	/^typedef struct colortype	\/\/stores object color$/;"	s
 colortype	structs.h	/^} colortype;$/;"	t	typeref:struct:colortype
+counter	globals.h	/^int counter = 0;$/;"	v
 createBounds	physobj.cc	/^void PhysObj::createBounds(box *face, vertex wpos)		\/\/ create cube bound around object$/;"	f	class:PhysObj
-createEye	game.cc	/^void Game::createEye(double a1, double a2, double a3, double a4, double b1, double b2, double b3){$/;"	f	class:Game
-createProjectile	game.cc	/^void Game::createProjectile(double a1, double a2, double a3, double a4, double b1, double b2, double b3){$/;"	f	class:Game
+createEye	game.cc	/^void Game::createEye(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){$/;"	f	class:Game
+createProjectile	game.cc	/^void Game::createProjectile(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){$/;"	f	class:Game
 createSceneBounds	physobj.cc	/^void PhysObj::createSceneBounds(float* bs)$/;"	f	class:PhysObj
+createTarget	game.cc	/^void Game::createTarget(double posX, double posY, double posZ, double posW, double scaleX, double scaleY, double scaleZ){$/;"	f	class:Game
 csDist	physobj.h	/^	float csDist;	\/\/ collsion sphere distance$/;"	m	class:PhysObj
 cube	game.h	/^	GameObj cube;$/;"	m	class:Game
 cube2	game.h	/^	GameObj cube2;$/;"	m	class:Game
 defineBox	defineBox.cc	/^void defineBox( box *face )$/;"	f
 defineBox	gameobj.cc	/^void GameObj::defineBox(box *face, vect3 scale, bool colorChange)$/;"	f	class:GameObj
 defineBox	testobj.cc	/^void TestObj::defineBox(box *face, vect3 scale)$/;"	f	class:TestObj
+destroy	globals.h	/^bool destroy = false;$/;"	v
 directX	globals.h	/^double directX = 0;$/;"	v
 directY	globals.h	/^double directY = 0;$/;"	v
 directZ	globals.h	/^double directZ = 0;$/;"	v
@@ -106,6 +116,8 @@ drawCube	game.cc	/^void Game::drawCube(struct box *face, vertex *position)$/;"	f
 drawDisplayCase	drawCase.cc	/^void drawDisplayCase()$/;"	f
 drawFreeForm	game.cc	/^void Game::drawFreeForm(vector<polygon> polygons, vertex position)$/;"	f	class:Game
 drawObject	game.cc	/^void Game::drawObject(GameObj go)$/;"	f	class:Game
+drawPoly	game.cc	/^void Game::drawPoly( object ob ){$/;"	f	class:Game
+drawSceneObjects	game.cc	/^void Game::drawSceneObjects( ){$/;"	f	class:Game
 elasticity	physobj.h	/^	float elasticity;		\/\/ range [0.0:1.0]$/;"	m	class:PhysObj
 faces	gameobj.h	/^	struct box faces[6];$/;"	m	class:GameObj	typeref:struct:GameObj::box
 faces	testobj.h	/^	struct box faces[6];$/;"	m	class:TestObj	typeref:struct:TestObj::box
@@ -117,7 +129,6 @@ frameRate	physicsengine.h	/^	float frameRate;$/;"	m	class:PhysicsEngine
 g	globals.h	/^Game g;$/;"	v
 getObjectData	objectdata.cc	/^void getObjectData(int index)$/;"	f
 glutLockFrameRate	game.cc	/^void Game::glutLockFrameRate(float desiredFrameRate)$/;"	f	class:Game
-golist	game.h	/^	vector<GameObj> golist;		\/\/ game object list$/;"	m	class:Game
 green	structs.h	/^	float green;$/;"	m	struct:colortype
 init	game.cc	/^void Game::init()$/;"	f	class:Game
 init	main.cc	/^void init(int window_width, int window_height, int window_position_x, int window_position_y)$/;"	f
@@ -136,15 +147,17 @@ keyboard	main.cc	/^void keyboard( unsigned char key, int x, int y ) { g.keyboard
 keyup	game.cc	/^void Game::keyup( unsigned char key, int x, int y )$/;"	f	class:Game
 keyup	input.cc	/^void Input::keyup( unsigned char key, int x, int y )$/;"	f	class:Input
 keyup	main.cc	/^void keyup( unsigned char key, int x, int y ) { g.keyup(key, x, y); }$/;"	f
+left_mouse_down	globals.h	/^bool left_mouse_down = false;$/;"	v
+left_mouse_released	globals.h	/^bool left_mouse_released = false;$/;"	v
 loadTextures	texturing.cc	/^void loadTextures(void) {$/;"	f
-loadVertex	objectdata.cc	/^void loadVertex( string line, vertex& ver ){ $/;"	f
-loadVerticesFileData	objectdata.cc	/^void loadVerticesFileData( char* fileName ){ $/;"	f
+loadVertex	game.cc	/^void Game::loadVertex( string buffer, vertex& ver ){$/;"	f	class:Game
+loadVerticesFileData	game.cc	/^void Game::loadVerticesFileData( char* fileName ){$/;"	f	class:Game
 lxm	physobj.h	/^	float lxm[2];	float lym[2];	float lzm[2];$/;"	m	class:PhysObj
 lym	physobj.h	/^	float lxm[2];	float lym[2];	float lzm[2];$/;"	m	class:PhysObj
 lzm	physobj.h	/^	float lxm[2];	float lym[2];	float lzm[2];$/;"	m	class:PhysObj
 main	main.cc	/^int main(int argc, char** argv)$/;"	f
 main	scrape.cc	/^int main( int argc, char* argv[] ){ $/;"	f
-minimap	game.cc	/^void Game::minimap(){$/;"	f	class:Game
+minimap	game.cc	/^void Game::minimap()$/;"	f	class:Game
 mouse	game.cc	/^void Game::mouse( int button, int state, int x, int y )$/;"	f	class:Game
 mouse	input.cc	/^void Input::mouse( int button, int state, int x, int y )$/;"	f	class:Input
 mouse	main.cc	/^void mouse( int button, int state, int x, int y ) { g.mouse(button, state, x, y); }$/;"	f
@@ -155,6 +168,7 @@ mousePosition	input.h	/^	vect3 mousePosition;$/;"	m	class:Input
 mouse_dx	globals.h	/^double mouse_dx = 0;$/;"	v
 mouse_dy	globals.h	/^double mouse_dy = 0;$/;"	v
 name	structs.h	/^	string name;$/;"	m	struct:object
+obList	game.h	/^	vector<GameObj> obList;		\/\/ Objectile list$/;"	m	class:Game
 object	structs.h	/^typedef struct object {$/;"	s
 object	structs.h	/^} object;$/;"	t	typeref:struct:object
 passiveMouseMovement	game.cc	/^void Game::passiveMouseMovement(int x, int y){$/;"	f	class:Game
@@ -174,6 +188,8 @@ power	globals.h	/^double power = 1;$/;"	v
 prevPos	physobj.h	/^	vertex prevPos;$/;"	m	class:PhysObj
 prev_mouse_x	globals.h	/^double prev_mouse_x = 0;$/;"	v
 prev_mouse_y	globals.h	/^double prev_mouse_y = 0;$/;"	v
+randColorVal	game.cc	/^float randColorVal( ){$/;"	f
+randomize	game.cc	/^float randomize(float LO, float HI){$/;"	f
 red	structs.h	/^	float red;$/;"	m	struct:colortype
 render	game.cc	/^void Game::render()$/;"	f	class:Game
 reshape	main.cc	/^void reshape (int w, int h)$/;"	f
@@ -181,9 +197,9 @@ scale	gameobj.h	/^	vect3 scale;$/;"	m	class:GameObj
 scaleAccX	globals.h	/^double scaleAccX = 0;$/;"	v
 scaleAccY	globals.h	/^double scaleAccY = 0;$/;"	v
 scaleAccZ	globals.h	/^double scaleAccZ = 0;$/;"	v
-scaleX	globals.h	/^double scaleX = 0.1;$/;"	v
-scaleY	globals.h	/^double scaleY = 0.1;$/;"	v
-scaleZ	globals.h	/^double scaleZ = 0.1;$/;"	v
+scaleObX	globals.h	/^double scaleObX = 0.1;$/;"	v
+scaleObY	globals.h	/^double scaleObY = 0.1;$/;"	v
+scaleObZ	globals.h	/^double scaleObZ = 0.1;$/;"	v
 scrape	scrape.cc	/^void scrape( fstream& in, fstream& out ){ $/;"	f
 sensitivity	globals.h	/^float sensitivity = 0.1;$/;"	v
 showMinimap	levelCreate.cc	/^void showMinimap(){$/;"	f
@@ -192,8 +208,9 @@ specialInput	input.cc	/^void Input::specialInput(int key, int x, int y)$/;"	f	cl
 specialInput	main.cc	/^void specialInput(int key, int x, int y) {g.specialInput(key, x, y); }$/;"	f
 sphereCollsTest	physicsengine.cc	/^bool PhysicsEngine::sphereCollsTest(GameObj a, GameObj b)$/;"	f	class:PhysicsEngine
 stationary	physobj.h	/^	bool stationary;$/;"	m	class:PhysObj
+tarList	game.h	/^    vector<GameObj> tarList;    \/\/ Target list	$/;"	m	class:Game
 textVerts	structs.h	/^    vector<vertex> textVerts;   \/\/ index matches up to vertices$/;"	m	struct:polygon
-textureID	globals.h	/^GLuint textureID[50];$/;"	v
+textureID	globals.h	/^GLuint textureID[100];$/;"	v
 textureid	structs.h	/^    int textureid;$/;"	m	struct:polygon
 timeStep	physicsengine.h	/^	float timeStep;$/;"	m	class:PhysicsEngine
 unhold	globals.h	/^bool unhold = false;$/;"	v
@@ -201,7 +218,7 @@ up	globals.h	/^glm::vec3 up = glm::vec3(0.0f, 0.0f, 1.0f);$/;"	v
 update	game.cc	/^void Game::update()$/;"	f	class:Game
 update	main.cc	/^void update( void )$/;"	f
 updateAcc	physobj.cc	/^void PhysObj::updateAcc(float x, float y, float z){$/;"	f	class:PhysObj
-updateObjects	physicsengine.cc	/^void PhysicsEngine::updateObjects(vector<GameObj> &golist)$/;"	f	class:PhysicsEngine
+updateObjects	physicsengine.cc	/^void PhysicsEngine::updateObjects(vector<GameObj> &obList, vector<GameObj> &tarList)$/;"	f	class:PhysicsEngine
 updatePhysics	physobj.cc	/^void PhysObj::updatePhysics()$/;"	f	class:PhysObj
 updatePosition	physicsengine.cc	/^void PhysicsEngine::updatePosition(GameObj &go)$/;"	f	class:PhysicsEngine
 updateVelo	physobj.cc	/^void PhysObj::updateVelo(float x, float y, float z){$/;"	f	class:PhysObj
@@ -222,17 +239,17 @@ vertex	structs.h	/^	vertex(float _x, float _y, float _z, float _w)$/;"	f	struct:
 vertex	structs.h	/^typedef struct vertex {$/;"	s
 vertex	structs.h	/^} vertex;$/;"	t	typeref:struct:vertex
 vertices	structs.h	/^    vector<vertex> vertices;$/;"	m	struct:polygon
-w	structs.h	/^        float w;$/;"	m	struct:vertex
+w	structs.h	/^    float w;$/;"	m	struct:vertex
 writeVertices	scrape.cc	/^void writeVertices( fstream& file, string line ){ $/;"	f
 wxm	physobj.h	/^	float wxm[2];	float wym[2];	float wzm[2];$/;"	m	class:PhysObj
 wym	physobj.h	/^	float wxm[2];	float wym[2];	float wzm[2];$/;"	m	class:PhysObj
 wzm	physobj.h	/^	float wxm[2];	float wym[2];	float wzm[2];$/;"	m	class:PhysObj
 x	structs.h	/^	float x;$/;"	m	struct:vect3
-x	structs.h	/^        float x;$/;"	m	struct:vertex
+x	structs.h	/^    float x;$/;"	m	struct:vertex
 x_rotat	globals.h	/^double x_rotat = 0.0;$/;"	v
 y	structs.h	/^	float y;$/;"	m	struct:vect3
-y	structs.h	/^        float y;$/;"	m	struct:vertex
+y	structs.h	/^    float y;$/;"	m	struct:vertex
 y_rotat	globals.h	/^double y_rotat = 0.0;$/;"	v
 z	structs.h	/^	float z;$/;"	m	struct:vect3
-z	structs.h	/^        float z;$/;"	m	struct:vertex
+z	structs.h	/^    float z;$/;"	m	struct:vertex
 zVec	globals.h	/^glm::vec3 zVec = glm::vec3(0.0, 8.0, 2.0);$/;"	v
