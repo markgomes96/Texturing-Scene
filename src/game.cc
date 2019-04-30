@@ -33,7 +33,7 @@ void Game::init()
 
     frameRate = 60.0;
     physEng = PhysicsEngine(frameRate);
-    loadTextures();
+    //loadTextures();
     createTarget(randomize(MIN_X, MAX_X), // + cameraFront.x,
              randomize(MIN_Y, MAX_Y), // + cameraFront.y,
             randomize(MIN_Z, MAX_Z), // + cameraFront.z,

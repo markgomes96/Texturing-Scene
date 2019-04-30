@@ -10,7 +10,6 @@
 extern GLuint textureID[100];
 
 void buildHH(void){
-
 	glEnable(GL_DEPTH_TEST);
 //floor//
 	glEnable(GL_TEXTURE_2D);

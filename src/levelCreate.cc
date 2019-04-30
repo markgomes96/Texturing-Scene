@@ -170,18 +170,15 @@ void buildCameraScene(){
 
 }
 void buildHeritageHall(void){
-	GLfloat lightPos1[] = {3.5, 5.0, 5.0, 0.0};
+	GLfloat lightPos1[] = {3.5, 6.0, 5.0, 0.0};
 	GLfloat lightColor[] = {1.0, 1.0, 1.0, 1.0};
-	GLfloat ambient[] = {0.2, 0.2, 0.2, 1.0};
+	GLfloat amblight[] = {0.3, 0.3, 0.3, 1.0};
+	GLfloat ambient[] = {0.5, 0.5, 0.5, 1.0};
 	GLfloat spec[] = {0.0, 0.0, 0.0, 1.0};
 	GLfloat diff[] = {0.8, 0.8, 0.8, 1.0};
 	GLfloat on[] = {1.0, 1.0, 1.0, 1.0};
 	GLfloat direction[] = {0.0, 0.0, -1.0};
-	GLfloat emiss[] = {0.0, 0.0, 0., 1.0};
-	//GLfloat dir[] = {0.0, 0.0, -1.0};
-	//GLfloat spotamb[] = {0.5, 0.5, 0.5, 1.0};
-	//GLfloat spotdiff[] = {0.0, 0.5, 0.0, 1.0};
-	//GLfloat spotspec[] = {0.0, 0.5, 0.0, 1.0};
+	GLfloat emiss[] = {0.0, 0.0, 0.0, 1.0};
 
     glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
 
@@ -209,10 +206,11 @@ void buildHeritageHall(void){
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_LIGHTING);
+
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_NORMALIZE);
-	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND);
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
 
 	glColorMaterial(GL_FRONT_AND_BACK, GL_AMBIENT_AND_DIFFUSE);
 	glColorMaterial(GL_FRONT_AND_BACK, GL_SPECULAR);
@@ -221,18 +219,18 @@ void buildHeritageHall(void){
 	glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
 	glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, ambient);
-	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 0.0);
+	glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, 10.0);
 	//glMaterialfv(GL_FRONT and GL_BACK, GL_EMISSION, emiss);
 	
 
 	glLightfv(GL_LIGHT0, GL_POSITION, lightPos1);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, on);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, on);
-	//glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
-	glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 0.2);
+	glLightfv(GL_LIGHT0, GL_AMBIENT, amblight);
+	
+	//glLightf(GL_LIGHT0, GL_CONSTANT_ATTENUATION, 0.2);
+	
 	glEnable(GL_LIGHT0);
-	glDisable( GL_LIGHTING ); 
-	glEnable( GL_COLOR_MATERIAL ); 
 
     // Draw objectiles directly after setting the camera 
     // ****** WARNING ******
@@ -247,15 +245,14 @@ void buildHeritageHall(void){
         g.drawObject(g.tarList[i]);    
     }
 
-
 	//draw heritage hall
 	buildHH();
  	
 	glDisable(GL_LIGHTING);
 	glPushMatrix();
-	glTranslatef(3.5, 5.0, 5.0);
+	glTranslatef(3.5, 6.0, 5.0);
 	glColor3f(1.0, 1.0, 0.0);
-	glutWireSphere(1.5, 10.0, 10.0);
+	glutWireSphere(1.0, 10.0, 10.0);
 	glPopMatrix();
 	glEnable(GL_LIGHTING);
 	
