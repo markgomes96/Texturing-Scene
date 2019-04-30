@@ -29,7 +29,7 @@ Input::Input()
 
 void Input::passiveMouseMovement(int x, int y){
 	if(activeState==gameState){
-	
+
 	//have can't move it to parameter spot or it gets stuck
 	//so if at very right, moves cursor x to 1
 	//if at very left, moves cursor pos to MAX - 2
@@ -294,7 +294,7 @@ void Input::mouse( int button, int state, int x, int y )
 						pauseT=pauseT + glutGet(GLUT_ELAPSED_TIME) - startP;
 						glutPostRedisplay();
 					 }
-					
+
                                         else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
                                          {
 						exit(0);
@@ -306,16 +306,16 @@ void Input::mouse( int button, int state, int x, int y )
 				 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.58){
  					if(y<WINDOW_MAX_Y*0.54 && y>WINDOW_MAX_Y*0.47)
                                         {
-						
+
 					}
 					else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
                                         {
-						exit(0);	
+						exit(0);
 					}
 				}
 				break;
-	
-		case instructState: 
+
+		case instructState:
 					 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.46 && x < WINDOW_MAX_X*0.54){
                                          if(y<WINDOW_MAX_Y*0.46 && y>WINDOW_MAX_Y*0.24)
                                          {
@@ -365,20 +365,19 @@ void Input::keyboard( unsigned char key, int x, int y )
 	if (( key == 'r' ) || (key == 'R')){
 		//Reverse gravity
 		keyarr['r'] = PUSHED;
-<<<<<<< src/input.cc
-	} 
+
+	}
 	if (( key == 'p' ) || (key == 'P')){
 		activeState = pauseState;
 		startP = glutGet(GLUT_ELAPSED_TIME);
 		glutPostRedisplay();
-	}  
-=======
 	}
+
 	if (( key == 'h' ) || (key == 'H')){
 		//Show/HIDE HUD
 		SHOW_HUD = !SHOW_HUD;
 	}
->>>>>>> src/input.cc
+
 	if ( key == 27 ){
 		//Exit gracefully
 		glutLeaveGameMode();
