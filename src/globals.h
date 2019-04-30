@@ -71,7 +71,7 @@ bool destroy = false;
 bool SHOW_HUD = true;
 int counter = 0;
 int score = 0;
-int penalty = 36000;
+int penalty = 0;
 
 extern void buildHeritageHall(void);
 extern void buildCameraScene(void);
@@ -80,5 +80,9 @@ void drawBox( struct box* );
 Game g;
 
 GLuint textureID[100];
+
+/*int starT = 0;
+int startP = 0;
+int pauseT = 0;*/
 
 #endif

@@ -4,6 +4,7 @@
 #include "includes.h"
 #include "game.h"
 #include "input.h"
+#include "menu.h"
 
 extern double prev_mouse_x, prev_mouse_y;
 extern double mouse_dx, mouse_dy;
@@ -17,6 +18,7 @@ extern double addAcc[3];
 extern Game g;
 extern enum key_state {NOTPUSHED,PUSHED} keyarr[127];
 extern const int WINDOW_MAX_X, WINDOW_MAX_Y;
+extern int startT, pauseT, startP;
 extern bool first_mouse, left_mouse_down, left_mouse_released;
 extern bool SHOW_HUD;
 //extern double power, scaleObX, scaleObY, scaleObZ;
@@ -26,8 +28,8 @@ Input::Input()
 { }
 
 void Input::passiveMouseMovement(int x, int y){
-
-
+	if(activeState==gameState){
+	
 	//have can't move it to parameter spot or it gets stuck
 	//so if at very right, moves cursor x to 1
 	//if at very left, moves cursor pos to MAX - 2
@@ -122,10 +124,12 @@ void Input::passiveMouseMovement(int x, int y){
 	//cameraTarget.z = cameraPos.z + tdirz;
 	//cout << "new target: " << cameraTarget.z << endl;
 	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
+	}
 }
 
 //able to move while buttons are pressed
 void Input::mouseMovement(int x, int y){
+	if(activeState == gameState){
 
 	//have can't move it to parameter spot or it gets stuck
 	//so if at very right, moves cursor x to 1
@@ -221,13 +225,13 @@ void Input::mouseMovement(int x, int y){
 	//cameraTarget.z = cameraPos.z + tdirz;
 	//cout << "new target: " << cameraTarget.z << endl;
 	//cout << "new direction " << cameraTarget.x << " " << cameraTarget.y << " "  << cameraTarget.z<< endl;
+	}
 }
 
 void Input::mouse( int button, int state, int x, int y )
 {
-
 	//static bool left_mouse_down = false;
-
+   if(activeState == gameState){
 	switch (button)
 	{
         	case GLUT_LEFT_BUTTON:
@@ -252,11 +256,83 @@ void Input::mouse( int button, int state, int x, int y )
         	default:
             	break;
     }
+  }
+ else{
+	y=WINDOW_MAX_Y - y;
+	switch(activeState)
+	{
+		case startState:
+				 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.395 && x < WINDOW_MAX_X*0.580)
+                        {
+                                if(y<WINDOW_MAX_Y*0.60 && y>WINDOW_MAX_Y*0.53)
+                                {
+                                        activeState=gameState;
+					startT = glutGet(GLUT_ELAPSED_TIME);
+					glutPostRedisplay();
+	                	 }
 
+                                else if(y<WINDOW_MAX_Y*0.50 && y>WINDOW_MAX_Y*0.43)
+                                 {
+                                         activeState=instructState;
+   glutPostRedisplay();
+                                }
+
+                                 else if(y<WINDOW_MAX_Y*0.40 && y>WINDOW_MAX_Y*0.33)
+                                {
+					exit(0);
+				}
+			}
+			break;
+
+		case pauseState:
+				if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.580)
+                                {
+
+                                         if(y<WINDOW_MAX_Y*0.65 && y>WINDOW_MAX_Y*0.58)
+                                         {
+						activeState = gameState;
+						pauseT=pauseT + glutGet(GLUT_ELAPSED_TIME) - startP;
+						glutPostRedisplay();
+					 }
+					
+                                        else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
+                                         {
+						exit(0);
+					 }
+				}
+				break;
+
+		case overState:
+				 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.39 && x < WINDOW_MAX_X*0.58){
+ 					if(y<WINDOW_MAX_Y*0.54 && y>WINDOW_MAX_Y*0.47)
+                                        {
+						
+					}
+					else if(y<WINDOW_MAX_Y*0.43 && y>WINDOW_MAX_Y*0.35)
+                                        {
+						exit(0);	
+					}
+				}
+				break;
+	
+		case instructState: 
+					 if(button == GLUT_LEFT_BUTTON && state == GLUT_DOWN && x > WINDOW_MAX_X*0.46 && x < WINDOW_MAX_X*0.54){
+                                         if(y<WINDOW_MAX_Y*0.46 && y>WINDOW_MAX_Y*0.24)
+                                         {
+                                                  activeState = startState;
+						  glutPostRedisplay();
+					 }
+				}
+				break;
+		default:
+			break;
+	}
+   }
 }
 
 void Input::keyboard( unsigned char key, int x, int y )
 {
+   if(activeState == gameState){
    	if ( key == 'q' || key == 'Q') {
 		//exit the program
 		exit(0);
@@ -289,11 +365,20 @@ void Input::keyboard( unsigned char key, int x, int y )
 	if (( key == 'r' ) || (key == 'R')){
 		//Reverse gravity
 		keyarr['r'] = PUSHED;
+<<<<<<< src/input.cc
+	} 
+	if (( key == 'p' ) || (key == 'P')){
+		activeState = pauseState;
+		startP = glutGet(GLUT_ELAPSED_TIME);
+		glutPostRedisplay();
+	}  
+=======
 	}
 	if (( key == 'h' ) || (key == 'H')){
 		//Show/HIDE HUD
 		SHOW_HUD = !SHOW_HUD;
 	}
+>>>>>>> src/input.cc
 	if ( key == 27 ){
 		//Exit gracefully
 		glutLeaveGameMode();
@@ -317,9 +402,10 @@ void Input::keyboard( unsigned char key, int x, int y )
         addAcc[changeAcc-1] -= 1.0;
     }
 }
-
+}
 void Input::keyup( unsigned char key, int x, int y )
 {
+   if(activeState == gameState){
      if ( key == '1'){
         changeAcc = 1;
     }
@@ -387,6 +473,7 @@ void Input::keyup( unsigned char key, int x, int y )
     if (key == 'j' || key == 'J'){
    		keyarr['j'] = NOTPUSHED;
        }
+  }
 }
 void Input::specialInput(int key, int x, int y)
 {
