@@ -107,7 +107,8 @@ void showMinimap(){
       glPushMatrix();
 
       glPopMatrix();
-    glEnable(GL_TEXTURE_2D);
+	glPointSize(1.0);
+ //   glEnable(GL_TEXTURE_2D);
 
 }
 
