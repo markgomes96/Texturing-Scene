@@ -40,7 +40,6 @@ void Game::init()
             randomize(MIN_Z, MAX_Z), // + cameraFront.z,
             1, 0.2, 0.001, 0.2);
 
-
     /*
     // ***Test objects for phyiscs***
     floor = GameObj(vertex(0.0, 0.0, -3.0, 1.0), vect3(5.0, 5.0, 1.0), true);		// (position, scale, isStatic)
@@ -130,6 +129,11 @@ void Game::HUD()
 {
     //displays HUD in a 2D square on the bottom left on the screen
     //	buildHeritageHall();
+    //
+    //	Disabling this HUD doesn't render correctly otherwise 
+        glDisable( GL_TEXTURE_2D ); 
+        glDisable( GL_TEXTURE ); 
+
     float testNumber = 3.00;
 
     char *test = (char*) malloc(64*sizeof(char));
@@ -137,6 +141,10 @@ void Game::HUD()
 
     char *HUDtitle = (char*) malloc(64*sizeof(char));
     sprintf(HUDtitle, "HUD");
+
+    //This is for the crossahirs laDieZZzz
+    char* cross = (char*) malloc(2*sizeof(char)); 
+    sprintf(cross,"o"); 
 
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
@@ -159,6 +167,11 @@ void Game::HUD()
     for (c=test;*c!='\0';c++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
     }
+    
+    glColor3f( 1.0, 0.0, 0.0 );
+    glRasterPos2i( 50, 50 ); 
+    for( c = cross; *c != '\0'; ++c ) 
+        glutBitmapCharacter( GLUT_BITMAP_HELVETICA_18, *c ); 
 
     //HUD title
     /*glRasterPos2i(10, 25);
@@ -177,11 +190,16 @@ void Game::HUD()
 
     //buildCameraScene();
     free(test);
+
+	//Enable it again 
+        glEnable( GL_TEXTURE_2D ); 
+        glEnable( GL_TEXTURE ); 
+
 }
 
 void Game::render()
 {
-    glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
+    //glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     glLoadIdentity();
 
     gluLookAt(  20.0, 5.0,   5.0,   // Eye
@@ -212,7 +230,7 @@ void Game::render()
         drawObject(obList[i]);
     }
 
-    glutSwapBuffers();
+    //glutSwapBuffers();--->  calling this in the display function 
 }
 
 void Game::drawObject(GameObj go)
@@ -326,14 +344,15 @@ void Game::loadVerticesFileData( char* fileName ){
 // Physics / Framerate
 void Game::drawFreeForm(vector<polygon> polygons, vertex position)
 {
+    glColor3f(1.0,0.0,0.0);
     for(int p = 0; p < polygons.size(); p++)
     {
         glBegin( GL_POLYGON );
         for (int v = 0; v < polygons[p].vertices.size(); v++)
         {
-            glVertex3f(polygons[p].vertices[v].x,
-                    polygons[p].vertices[v].y,
-                    polygons[p].vertices[v].z);
+             glVertex3f(polygons[p].vertices[v].x + position.x,
+                    polygons[p].vertices[v].y + position.y,
+                    polygons[p].vertices[v].z + position.z);
         }
         glEnd();
     }

@@ -71,8 +71,9 @@ void display( void )
 //		glutSwapBuffers();
 
 #else
-	g.HUD();
 	g.render();
+	g.HUD();
+	glutSwapBuffers( ); 
 #endif
 
 }
