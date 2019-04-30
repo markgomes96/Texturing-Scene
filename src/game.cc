@@ -128,6 +128,11 @@ void Game::HUD()
 {
     //displays HUD in a 2D square on the bottom left on the screen
     //	buildHeritageHall();
+    //
+    //	Disabling this HUD doesn't render correctly otherwise 
+        glDisable( GL_TEXTURE_2D ); 
+        glDisable( GL_TEXTURE ); 
+
     float testNumber = 3.00;
 
     char *test = (char*) malloc(64*sizeof(char));
@@ -138,7 +143,7 @@ void Game::HUD()
 
     //This is for the crossahirs laDieZZzz
     char* cross = (char*) malloc(2*sizeof(char)); 
-    sprintf(cross,"+"); 
+    sprintf(cross,"o"); 
 
     glMatrixMode(GL_PROJECTION);
     glPushMatrix();
@@ -161,9 +166,10 @@ void Game::HUD()
     for (c=test;*c!='\0';c++) {
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *c);
     }
-
+    
+    glColor3f( 1.0, 0.0, 0.0 );
     glRasterPos2i( 50, 50 ); 
-    for( c = cross; *c != '\0'; ++c )
+    for( c = cross; *c != '\0'; ++c ) 
         glutBitmapCharacter( GLUT_BITMAP_HELVETICA_18, *c ); 
 
     //HUD title
@@ -183,6 +189,11 @@ void Game::HUD()
 
     //buildCameraScene();
     free(test);
+
+	//Enable it again 
+        glEnable( GL_TEXTURE_2D ); 
+        glEnable( GL_TEXTURE ); 
+
 }
 
 void Game::render()
